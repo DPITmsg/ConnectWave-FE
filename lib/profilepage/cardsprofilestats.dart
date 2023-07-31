@@ -9,27 +9,45 @@ class CardProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: 95,
       height: 100,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        gradient: LinearGradient(colors: [Color(0xffFFFFFF), Color(0xffc9cfcf)], stops: [0.3, 0.8], transform: GradientRotation(8)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3),
-          )
-        ]
+          borderRadius: BorderRadius.circular(12),
+          gradient: LinearGradient(colors: [Color(0xffDFDFDF), Color(0xffc9cfcf)], stops: [0.3, 0.8], transform: GradientRotation(8)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              blurRadius: 2,
+              spreadRadius: 2,
+              offset: Offset(0, 3),
+            )
+          ]
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Center(child: Text(text, style: TextStyle(fontSize: 16))),
-          Center(child: Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),)),
-        ],
-      )
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Center(
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: Text(
+                  value,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

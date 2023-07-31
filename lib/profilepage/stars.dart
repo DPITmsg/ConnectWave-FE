@@ -14,7 +14,7 @@ class Stars extends StatelessWidget {
       direction: Axis.horizontal,
       allowHalfRating: true,
       itemCount: 5,
-      itemSize: 30.0, // Adjust the size of the stars as per your preference
+      itemSize: 32.0,
       itemBuilder: (context, _) => const Icon(
         Icons.star_rounded,
         color: Color(0xff1a1a1a),
