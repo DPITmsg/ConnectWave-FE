@@ -13,7 +13,7 @@ class AwesomeGradient extends StatelessWidget {
       width: screenWidth,
       height: screenHeight*0.2,
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Color(0xFF45BAC4), Color(0xff81dbe3)], stops: [0.3, 0.8])
+          gradient: LinearGradient(colors: [Color(0xff25656B), Color(0xff45BAC4)], stops: [0, 0.7])
       ),
     );
   }

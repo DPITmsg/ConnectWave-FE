@@ -23,7 +23,7 @@ class AvatarContainer extends StatelessWidget {
         ],
       ),
       child: CircleAvatar(
-        radius: 30.0,
+        radius: 72.0,
         backgroundImage: image,
       )
     );
