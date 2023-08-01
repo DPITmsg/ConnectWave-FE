@@ -1,5 +1,7 @@
+import 'package:dpit_connect_wave/Views/trending_activity.dart';
 import 'package:flutter/material.dart';
 import 'Views/detailed_activty.dart';
+import 'Views/trending_activity.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -17,6 +19,6 @@ class DetailedActivity extends StatefulWidget {
 class _DetailedActivityState extends State<DetailedActivity> {
   @override
   Widget build(BuildContext context) {
-    return detailed_activity();
+    return trending_activity();
   }
 }
