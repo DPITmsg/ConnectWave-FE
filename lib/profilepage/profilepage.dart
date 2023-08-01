@@ -6,14 +6,22 @@ import 'awesomegradient.dart';
 import 'stars.dart';
 import 'cardsprofilestats.dart';
 import 'interestsortags.dart';
+import 'user.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 
 class ProfilePage extends StatelessWidget {
-  String name = "John Thomas";
-  double rating = 4.0;
-  List<String> elementList = ['Element 1', 'Element 2', 'Element 3'];
-  String description = 'Hi, my name is John Thomas and I am 21. I live in Cluj Napoca but I was born on Mars. I am passionate about playing golf and gaming. I also won 3 marathons.';
+  User user_details = User(
+      name: 'John Thomas',
+      rating: 3.5,
+      activicompleted: 8,
+      friends: 0,
+      favcategory: 'Gaming',
+      about: 'Hi, my name is John Thomas and I am 22. I live in Cluj Napoca but I was born on Mars. I am passionate about playing golf and gaming. I also won 3 marathons.',
+      interests: ['hello', 'not', 's'],
+      tags: ['wh', 'fws', 'w']
+  );
+
 
   final AssetImage profilePic = const AssetImage('assets/profilepic2.png');
   ProfilePage({super.key});
@@ -38,17 +46,17 @@ class ProfilePage extends StatelessWidget {
                   AvatarContainer(profilePic),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                    child: Text(name, style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xff1a1a1a))),
+                    child: Text(user_details.name, style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xff1a1a1a))),
                   ),
-                  Stars(rating),
+                  Stars(user_details.rating),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        CardProfile('12', 'Activities Completed'),
-                        CardProfile('0', 'Friends'),
-                        CardProfile('Sports', 'Favorite Category'),
+                        CardProfile(user_details.activicompleted.toString(), 'Activities Completed'),
+                        CardProfile(user_details.friends.toString(), 'Friends'),
+                        CardProfile(user_details.favcategory, 'Favorite Category'),
                       ],
                     ),
                   ),
@@ -59,7 +67,7 @@ class ProfilePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('About', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                          Text(description)
+                          Text(user_details.about)
                         ],
                       ),
                     ),
@@ -70,7 +78,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: IntOrTags(elementList),
+                    child: IntOrTags(user_details.interests),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -78,7 +86,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: IntOrTags(elementList),
+                    child: IntOrTags(user_details.tags),
                   ),
                 ],
               ),
@@ -103,7 +111,6 @@ class ProfilePage extends StatelessWidget {
                 )
             ),
           ],
-
         ),
       ),
     );

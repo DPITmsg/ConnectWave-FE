@@ -4,6 +4,7 @@ class CardProfile extends StatelessWidget {
   final String text;
   final String value;
 
+
   CardProfile(this.value, this.text);
 
   @override
