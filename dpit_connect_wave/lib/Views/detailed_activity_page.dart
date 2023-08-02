@@ -2,18 +2,17 @@ import 'package:dpit_connect_wave/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:flutter/material.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
-import 'Classes/activity_details.dart';
+import 'Classes/Activity.dart';
 
-Activity_Details activity_details = Activity_Details(
-    activity_title: 'Football la Baza Sportiva Gheorgheni',
-    activity_author: 'Zdroba Petru',
-    activity_date: '26.07.2023',
-    activity_location: 'Str. Alexandru Vaida Voievod nr. 24',
-    activity_number_participants: 14,
-    activity_descrpition:
+Activity activity = Activity(
+    title: 'Football la Baza Sportiva Gheorgheni',
+    author: 'Zdroba Petru',
+    date: '26.07.2023',
+    location: 'Str. Alexandru Vaida Voievod nr. 24',
+    number_participants: 14,
+    descrpition:
         'Caut oameni din zona Gheorgheni cu care sa ies la un footbal, nu conteaza daca esti bun, numai sa fii sociabil',
-    activity_creator_completed_activities: 7,
-    activity_creator_rating: 4);
+    creator_id: 666);
 
 class detailed_activity extends StatelessWidget {
   const detailed_activity({super.key});
@@ -44,7 +43,7 @@ class detailed_activity extends StatelessWidget {
                   left: 35,
                   top: 35,
                   child: Text(
-                    activity_details.activity_title,
+                    activity.title,
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -75,7 +74,7 @@ class detailed_activity extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  activity_details.activity_author,
+                                  activity.author,
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.white,
@@ -94,7 +93,7 @@ class detailed_activity extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  activity_details.activity_date,
+                                  activity.date,
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.white,
@@ -113,7 +112,7 @@ class detailed_activity extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  activity_details.activity_location,
+                                  activity.location,
                                   softWrap: true,
                                   style: TextStyle(
                                     fontSize: 16.0,
@@ -133,7 +132,7 @@ class detailed_activity extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  activity_details.activity_number_participants
+                                  activity.number_participants
                                       .toString(),
                                   style: TextStyle(
                                     fontSize: 18.0,
@@ -162,7 +161,7 @@ class detailed_activity extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                activity_details.activity_descrpition,
+                                activity.descrpition,
                                 softWrap: true,
                                 style: TextStyle(
                                   fontSize: 16.0,
@@ -198,7 +197,7 @@ class detailed_activity extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        activity_details.activity_author,
+                                        activity.author,
                                         style: TextStyle(
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
@@ -218,9 +217,7 @@ class detailed_activity extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                        activity_details
-                                            .activity_creator_completed_activities
-                                            .toString(),
+                                        'TBD',
                                         style: TextStyle(
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
@@ -250,7 +247,10 @@ class detailed_activity extends StatelessWidget {
                                     color: Color(0xFF81dbe3),
                                   ),
                                 ),
-                                Icon(Icons.add_circle,color: Color(0xFF81dbe3),)
+                                Icon(
+                                  Icons.add_circle,
+                                  color: Color(0xFF81dbe3),
+                                )
                               ],
                             ),
                             Color(0xFF1a1a1a),
