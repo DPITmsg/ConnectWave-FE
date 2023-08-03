@@ -41,14 +41,18 @@ class detailed_activity extends StatelessWidget {
               children: <Widget>[
                 Positioned(
                   left: 35,
-                  top: 35,
-                  child: Text(
-                    activity.title,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
-                      color: Color(0xFF1a1a1a),
+                  top: 25,
+                  child: Container(
+                    width: 343,
+                    child: Text(
+                      activity.title,
+                      softWrap: true,
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                        color: Color(0xFF1a1a1a),
+                      ),
                     ),
                   ),
                 ),
@@ -58,7 +62,7 @@ class detailed_activity extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 85),
+                      SizedBox(height: 95),
                       WidgetBox(
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,7 +151,7 @@ class detailed_activity extends StatelessWidget {
                         Color(0xFF45bac4),
                         Color(0xFF81dbe3),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       WidgetBox(
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,8 +175,9 @@ class detailed_activity extends StatelessWidget {
                             ],
                           ),
                           Color(0xFF81dbe3),
-                          Color(0xFF45bac4)),
-                      SizedBox(height: 20),
+                          Color(0xFF45bac4)
+                      ),
+                      SizedBox(height: 10),
                       WidgetBox(
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -232,7 +237,7 @@ class detailed_activity extends StatelessWidget {
                           ),
                           Color(0xFF45bac4),
                           Color(0xFF81dbe3)),
-                      SizedBox(height: 18.0),
+                      SizedBox(height: 15.0),
                       Row(
                         children: <Widget>[
                           WidgetButton(
