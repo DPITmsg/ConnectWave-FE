@@ -1,6 +1,6 @@
 {
-    "name": "dpit_connect_wave",
-    "short_name": "dpit_connect_wave",
+    "name": "my_project",
+    "short_name": "my_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
