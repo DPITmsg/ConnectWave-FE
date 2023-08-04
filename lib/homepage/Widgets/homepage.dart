@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/homepage/cardmenuaddactivity.dart';
-import 'package:my_project/homepage/cardmenubig.dart';
+import 'package:my_project/homepage/Widgets/cardmenuaddactivity.dart';
+import 'package:my_project/homepage/Widgets/cardmenubig.dart';
 import 'cardmenusmall.dart';
 import 'foryou.dart';
 import 'searchbar.dart';
