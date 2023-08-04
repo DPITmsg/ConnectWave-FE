@@ -1,12 +1,12 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:my_project/profilepage/avatarcontainer.dart';
+import 'package:my_project/profilepage/Widgets/avatarcontainer.dart';
 import 'awesomegradient.dart';
 import 'stars.dart';
 import 'cardsprofilestats.dart';
 import 'interestsortags.dart';
-import 'user.dart';
+import '../Classes/user.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 
