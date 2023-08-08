@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'profilepage/Widgets/profilepage.dart';
+
+import 'homepage/Widgets/homepage.dart';
 
 void main() => runApp(MaterialApp(
-  home: ProfilePage(),
+  home: HomePage(),
 ));
 
