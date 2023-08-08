@@ -1,45 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:my_project/Views/Styles/Shadows.dart';
 
 class WidgetBackgroundBox extends StatelessWidget {
   final Widget child;
+
   const WidgetBackgroundBox(this.child, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 0,
-      top: 230,
-      child: Container(
-        width: 410,
-        height: 760,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+    return Column(
+      children: [
+        SizedBox(
+          width: 530,
+          height: 250,
         ),
-        child: Stack(children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40),
+              topRight: Radius.circular(40),
+            ),
             child: Container(
-              width: 395,
-              height: 760,
+              width: 400,
+              height: 600,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35),
+                color: Color_Gray,
+                boxShadow: [
+                  Shadow_Widget_Box
+                ],
               ),
-              child: SizedBox(
-                width: 390,
-                height: 760,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35),
-                    color: Color(0xFFc9cfcf),
-                  ),
-                  child: this.child,
-                ),
-              ),
+              child:this.child,
+              )
             ),
           ),
-        ]),
-      ),
+      ],
     );
   }
 }

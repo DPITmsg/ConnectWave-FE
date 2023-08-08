@@ -1,8 +1,8 @@
 class Trending {
   String _title = '';
   String _category = '';
-  String _stat_1 = '';
-  String _stat_2 = '';
+  List <String> _stats = [];
+
   String _image_url = '';
 
   String get title => _title;
@@ -11,16 +11,13 @@ class Trending {
     _title = value;
   }
 
-  Trending(
-      {required title,
-      required category,
-      required stat_1,
-      required stat_2,
-      required image_url})
+  Trending({required title,
+    required category,
+    required stats,
+    required image_url})
       : _title = title,
         _category = category,
-        _stat_1 = stat_1,
-        _stat_2 = stat_2,
+        _stats = stats,
         _image_url = image_url;
 
   String get category => _category;
@@ -31,16 +28,11 @@ class Trending {
     _image_url = value;
   }
 
-  String get stat_2 => _stat_2;
 
-  set stat_2(String value) {
-    _stat_2 = value;
-  }
+  List<String> get stats => _stats;
 
-  String get stat_1 => _stat_1;
-
-  set stat_1(String value) {
-    _stat_1 = value;
+  set stats(List<String> value) {
+    _stats = value;
   }
 
   set category(String value) {

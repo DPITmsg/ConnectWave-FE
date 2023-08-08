@@ -1,8 +1,12 @@
-import 'package:dpit_connect_wave/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:flutter/material.dart';
+
+import 'Classes/Activity.dart';
+import 'Styles/Backgrounds/Background_1.dart';
+import 'Styles/Colors.dart';
+import 'Styles/StyleText.dart';
+import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
-import 'Classes/Activity.dart';
 
 Activity activity = Activity(
     title: 'Football la Baza Sportiva Gheorgheni',
@@ -14,8 +18,8 @@ Activity activity = Activity(
         'Caut oameni din zona Gheorgheni cu care sa ies la un footbal, nu conteaza daca esti bun, numai sa fii sociabil',
     creator_id: 666);
 
-class detailed_activity extends StatelessWidget {
-  const detailed_activity({super.key});
+class detailed_activity_page extends StatelessWidget {
+  const detailed_activity_page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class detailed_activity extends StatelessWidget {
             child: SizedBox(
               width: 530,
               height: 450,
-              child: Image.asset('Assets/map.png'),
+              child: Image.asset('assets/map.png'),
             ),
           ),
           //"CARD" FRAME
@@ -39,6 +43,7 @@ class detailed_activity extends StatelessWidget {
           WidgetBackgroundBox(
             Stack(
               children: <Widget>[
+                Background_1(),
                 Positioned(
                   left: 35,
                   top: 25,
@@ -47,12 +52,7 @@ class detailed_activity extends StatelessWidget {
                     child: Text(
                       activity.title,
                       softWrap: true,
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                        color: Color(0xFF1a1a1a),
-                      ),
+                      style: Text_Title_Top
                     ),
                   ),
                 ),
@@ -72,18 +72,11 @@ class detailed_activity extends StatelessWidget {
                               children: [
                                 Text(
                                   'Creat de:  ',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
+                                  style: Text_Detailed_Page_Regular,
                                 ),
                                 Text(
                                   activity.author,
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Text_Detailed_Page_Bold
                                 ),
                               ],
                             ),
@@ -91,18 +84,11 @@ class detailed_activity extends StatelessWidget {
                               children: [
                                 Text(
                                   'Data: ',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
+                                  style: Text_Detailed_Page_Regular
                                 ),
                                 Text(
                                   activity.date,
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Text_Detailed_Page_Bold
                                 ),
                               ],
                             ),
@@ -110,18 +96,15 @@ class detailed_activity extends StatelessWidget {
                               children: [
                                 Text(
                                   'Locatie: ',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
+                                  style: Text_Detailed_Page_Regular
                                 ),
                                 Text(
                                   activity.location,
                                   softWrap: true,
                                   style: TextStyle(
                                     fontSize: 16.0,
-                                    color: Colors.white,
                                     fontWeight: FontWeight.bold,
+                                    color: Color_White,
                                   ),
                                 ),
                               ],
@@ -130,26 +113,19 @@ class detailed_activity extends StatelessWidget {
                               children: [
                                 Text(
                                   'Participanti necesari: ',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
+                                  style: Text_Detailed_Page_Regular
                                 ),
                                 Text(
                                   activity.number_participants
                                       .toString(),
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Text_Detailed_Page_Bold
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        Color(0xFF45bac4),
-                        Color(0xFF81dbe3),
+                        Color_Blue,
+                        Color_Light_Blue,
                       ),
                       SizedBox(height: 10),
                       WidgetBox(
@@ -158,24 +134,17 @@ class detailed_activity extends StatelessWidget {
                             children: [
                               Text(
                                 'Descriere: ',
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
+                                style: Text_Detailed_Page_Bold
                               ),
                               Text(
                                 activity.descrpition,
                                 softWrap: true,
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.white,
-                                ),
+                                style: Text_Detailed_Page_Regular
                               ),
                             ],
                           ),
-                          Color(0xFF81dbe3),
-                          Color(0xFF45bac4)
+                          Color_Light_Blue,
+                          Color_Blue
                       ),
                       SizedBox(height: 10),
                       WidgetBox(
@@ -184,7 +153,7 @@ class detailed_activity extends StatelessWidget {
                             children: [
                               CircleAvatar(
                                 backgroundImage:
-                                    AssetImage('Assets/yoda.pfp.jpg'),
+                                    AssetImage('assets/yoda.pfp.jpg'),
                                 radius: 45.0,
                               ),
                               SizedBox(width: 10.0),
@@ -195,19 +164,11 @@ class detailed_activity extends StatelessWidget {
                                     children: [
                                       Text(
                                         'Nume: ',
-                                        style: TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
+                                        style: Text_Detailed_Page_Bold
                                       ),
                                       Text(
                                         activity.author,
-                                        style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
+                                        style: Text_Detailed_Page_Bold
                                       ),
                                     ],
                                   ),
@@ -215,19 +176,11 @@ class detailed_activity extends StatelessWidget {
                                     children: [
                                       Text(
                                         'Activitati completate: ',
-                                        style: TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
+                                        style: Text_Detailed_Page_Bold
                                       ),
                                       Text(
                                         'TBD',
-                                        style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
+                                        style: Text_Detailed_Page_Bold
                                       ),
                                     ],
                                   ),
@@ -235,45 +188,41 @@ class detailed_activity extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Color(0xFF45bac4),
-                          Color(0xFF81dbe3)),
-                      SizedBox(height: 15.0),
-                      Row(
-                        children: <Widget>[
-                          WidgetButton(
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Join ',
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF81dbe3),
+                          Color_Blue,
+                          Color_Light_Blue
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(25,15,25,15),
+                        child: Row(
+                          children: <Widget>[
+                            WidgetButton(
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Join ',
+                                    style: Text_Widget_Buttons_Blue
                                   ),
-                                ),
-                                Icon(
-                                  Icons.add_circle,
-                                  color: Color(0xFF81dbe3),
-                                )
-                              ],
-                            ),
-                            Color(0xFF1a1a1a),
-                          ),
-                          SizedBox(width: 20.0),
-                          WidgetButton(
-                            Center(
-                              child: Text(
-                                "I'm interested",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF81dbe3)),
+                                  Icon(
+                                    Icons.add_circle,
+                                    color: Color_Light_Blue,
+                                  )
+                                ],
                               ),
+                              Color_Dark_Gray,
                             ),
-                            Color(0xFF1a1a1a),
-                          ),
-                        ],
+                            SizedBox(width: 20.0),
+                            WidgetButton(
+                              Center(
+                                child: Text(
+                                  "I'm interested",
+                                  style: Text_Widget_Buttons_Blue
+                                ),
+                              ),
+                              Color_Dark_Gray,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

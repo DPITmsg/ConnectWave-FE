@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/homepage/cardmenuaddactivity.dart';
-import 'package:my_project/homepage/cardmenubig.dart';
-import 'cardmenusmall.dart';
-import 'foryou.dart';
-import 'searchbar.dart';
+import 'Widgets/cardmenuaddactivity.dart';
+import 'Widgets/cardmenubig.dart';
+import 'Widgets/cardmenusmall.dart';
+import 'Widgets/foryou.dart';
+import 'Widgets/searchbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

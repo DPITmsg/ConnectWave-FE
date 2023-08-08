@@ -1,6 +1,10 @@
-import 'package:dpit_connect_wave/Views/Classes/Trending.dart';
-import 'package:dpit_connect_wave/Views/Widgets/WidgetTextTrending.dart';
+
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:my_project/Views/Styles/Shadows.dart';
+
+import '../Classes/Trending.dart';
+import 'WidgetTextTrending.dart';
 
 class WidgetBoxSlice extends StatelessWidget {
   final Trending activity;
@@ -17,11 +21,7 @@ class WidgetBoxSlice extends StatelessWidget {
             height: 120,
             decoration: BoxDecoration(
               boxShadow: [
-                BoxShadow(
-                  color: Colors.blueGrey,
-                  blurRadius: 10.0,
-                  spreadRadius: 0.5,
-                ),
+                Shadow_Widget_Box
               ],
             ),
             child: Row(
@@ -40,7 +40,7 @@ class WidgetBoxSlice extends StatelessWidget {
                     Container(
                       height: 120,
                       width: 160,
-                      color: Color(0xFF1a1a1a),
+                      color: Color_Dark_Gray,
                     ),
 
                     Row(
@@ -55,7 +55,7 @@ class WidgetBoxSlice extends StatelessWidget {
                               gradient: LinearGradient(
                                   begin: Alignment.center,
                                   end: Alignment.bottomCenter,
-                                  colors: [Color(0xFF1a1a1a),Color(0xffffff)]
+                                  colors: [Color_Dark_Gray,Color(0xffffff)]
                               ),
                             ),
                           ),

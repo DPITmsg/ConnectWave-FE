@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Shadows.dart';
 
 class WidgetBox extends StatelessWidget {
   final Widget child;
@@ -38,11 +39,7 @@ class WidgetBox extends StatelessWidget {
                       colors: [this.color_primary, this.color_secondary]
                     ),
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.blueGrey,
-                        blurRadius: 10.0,
-                        spreadRadius: 0.5,
-                      ),
+                      Shadow_Widget_Box
                     ],
                   ),
                   child: Padding(
