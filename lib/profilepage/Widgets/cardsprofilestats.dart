@@ -11,7 +11,7 @@ class CardProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 95,
-      height: 100,
+      height: 110,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           gradient: LinearGradient(colors: [Color(0xffDFDFDF), Color(0xffc9cfcf)], stops: [0.3, 0.8], transform: GradientRotation(8)),

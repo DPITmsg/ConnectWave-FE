@@ -7,6 +7,7 @@ class User {
   String _about = '';
   List<String> _interests = [];
   List<String> _tags = [];
+  String _image = '';
 
 
   User({
@@ -17,13 +18,21 @@ class User {
     required favcategory,
     required about,
     required interests,
-    required tags}):_name = name, _rating = rating, _activicompleted = activicompleted, _friends = friends, _favcategory = favcategory, _about = about, _interests = interests, _tags = tags;
+    required tags,
+    required image}):_name = name, _rating = rating, _activicompleted = activicompleted, _friends = friends, _favcategory = favcategory, _about = about, _interests = interests, _tags = tags, _image = image;
 
   String get name => _name;
   List<String> get tags => _tags;
   List<String> get interests => _interests;
   String get about => _about;
   String get favcategory => _favcategory;
+
+  String get image => _image;
+
+  set image(String value) {
+    _image = value;
+  }
+
   int get friends => _friends;
   int get activicompleted => _activicompleted;
   double get rating => _rating;
