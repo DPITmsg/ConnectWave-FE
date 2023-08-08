@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'stars.dart';
 import '../Classes/activitydetails.dart';
+import 'tags.dart';
 
 class ContainerActivity extends StatelessWidget {
   final String date;
@@ -13,6 +14,8 @@ class ContainerActivity extends StatelessWidget {
   final String description;
 
   ContainerActivity(this.date, this.title, this.tags, this.nrParticipants, this.category, this.userRating, this.address, this.description);
+
+  List<String> elementList = ["football", "fun"];
 
   @override
   Widget build(BuildContext context) {
@@ -38,51 +41,91 @@ class ContainerActivity extends StatelessWidget {
             )
           ]
         ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(date),
-                Text(title, style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                CircleAvatar(radius: 72, backgroundColor: Colors.black),
-                Column(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Text("Participants", style: TextStyle(color: Color(0xff45bac4), fontWeight: FontWeight.bold),),
-                        Text(nrParticipants.toString()),
-                      ]
-                    ),
-                    Row(
-                        children: [
-                          Text("Category", style: TextStyle(color: Color(0xff45bac4), fontWeight: FontWeight.bold),),
-                          Text(category),
-                        ]
+                    Text(date),
+                    Text(title, style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      ),
                     ),
                   ],
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(address),
-                Stars(userRating),
-              ],
-            ),
-            Text("About"),
-            Text(description)
-          ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(image: AssetImage('assets/mapimg.png')),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: Offset(0, 3),
+                        )
+                      ]
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Tags(elementList),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: [
+                            Text("Participants", style: TextStyle(color: Color(0xff45bac4), fontWeight: FontWeight.bold, fontSize: 16),),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: Text(nrParticipants.toString(), style: TextStyle(fontSize: 16),),
+                            ),
+                          ]
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                            children: [
+                              Text("Category", style: TextStyle(color: Color(0xff45bac4), fontWeight: FontWeight.bold, fontSize: 16),),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                child: Text(category, style: TextStyle(fontSize: 16),),
+                              ),
+                            ]
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(address),
+                  Column(
+                    children: [
+                      Text("Average rating received"),
+                      Stars(userRating),
+                    ],
+                  ),
+                ],
+              ),
+              Align(alignment: Alignment.bottomLeft, child: Text("About", style: TextStyle(fontWeight: FontWeight.bold),)),
+              Text(description)
+            ],
+          ),
         ),
       ),
     );

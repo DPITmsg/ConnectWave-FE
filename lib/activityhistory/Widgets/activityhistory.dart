@@ -6,7 +6,7 @@ class ActivityHistoryPage extends StatelessWidget {
 
   final ActivityDetails activityDetails = ActivityDetails(
       date: '12-02-2023',
-      title: 'Fotbal afara',
+      title: 'Fotbal afara in casa la mac',
       tags: ['fotbal', 'begginner'],
       nrParticipants: 14,
       category: 'Sports',
@@ -20,13 +20,13 @@ class ActivityHistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
+      appBar: AppBar(title: Text("Activity History"), backgroundColor: Color(0xffc9cfcf),),
       body: Container(
         color: Color(0xffc9cfcf),
         child: Column(
           children: [
             Expanded(flex: 1, child: SizedBox()),
-            Expanded(flex: 3,child: ContainerActivity(
+            Expanded(flex: 15,child: ContainerActivity(
               activityDetails.date,
               activityDetails.title,
               activityDetails.tags,
@@ -36,7 +36,7 @@ class ActivityHistoryPage extends StatelessWidget {
               activityDetails.address,
               activityDetails.description,
             )),
-            Expanded(flex: 3,child: ContainerActivity(
+            Expanded(flex: 15,child: ContainerActivity(
               activityDetails.date,
               activityDetails.title,
               activityDetails.tags,

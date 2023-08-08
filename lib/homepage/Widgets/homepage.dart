@@ -6,6 +6,7 @@ import 'cardmenusmall.dart';
 import 'foryou.dart';
 import 'searchbar.dart';
 import 'test.dart';
+import 'package:my_project/activityhistory/Widgets/activityhistory.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -63,7 +64,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       CardMenuSmall(Icons.people, Test()),
-                      CardMenuSmall(Icons.access_time_filled, Test()),
+                      CardMenuSmall(Icons.access_time_filled, ActivityHistoryPage()),
                     ],
                   ),
                 ),
