@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/homepage/Widgets/cardmenuaddactivity.dart';
 import 'package:my_project/homepage/Widgets/cardmenubig.dart';
+import 'package:my_project/profilepage/Widgets/profilepage.dart';
 import 'cardmenusmall.dart';
 import 'foryou.dart';
 import 'searchbar.dart';
+import 'test.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,8 +42,8 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.star_rounded),
-                      CardMenuSmall(Icons.person_rounded),
+                      CardMenuSmall(Icons.star_rounded, Test()),
+                      CardMenuSmall(Icons.person_rounded, ProfilePage()),
                     ],
                   ),
                 ),
@@ -50,8 +52,8 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      CardMenuBig(Icons.share_location),
-                      CardMenuBig(Icons.connect_without_contact),
+                      InkWell(onTap: () {}, child: CardMenuBig(Icons.share_location)),
+                      InkWell(onTap: () {}, child: CardMenuBig(Icons.connect_without_contact)),
                     ],
                   ),
                 ),
@@ -60,8 +62,8 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.people),
-                      CardMenuSmall(Icons.access_time_filled),
+                      CardMenuSmall(Icons.people, Test()),
+                      CardMenuSmall(Icons.access_time_filled, Test()),
                     ],
                   ),
                 ),

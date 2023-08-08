@@ -100,6 +100,9 @@ class ProfilePage extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(10, 50, 0, 0),
                   child: InkWell(
                     child: SizedBox(width: 40, height: 40, child: Image.asset('assets/left-arrow.png')),
+                    onTap: (){
+                      Navigator.of(context).pop();
+                    },
                   )
               ),
               Padding(
