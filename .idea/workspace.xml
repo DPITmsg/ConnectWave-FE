@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/darius_mock_models/post.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/activityhistory/Classes/activitydetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/activityhistory/Classes/activitydetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/activityhistory/Widgets/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/activityhistory/Widgets/activityhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/activityhistory/Widgets/containerhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/activityhistory/Widgets/containerhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
