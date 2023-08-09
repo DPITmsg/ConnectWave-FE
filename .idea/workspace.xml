@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="">
+=======
+    <list default="true" id="5b35439b-e80c-43c5-ac9d-2ba0008acf3f" name="Changes" comment="">
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
