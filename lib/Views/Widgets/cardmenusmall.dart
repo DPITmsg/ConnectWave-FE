@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class CardMenuSmall extends StatelessWidget {
   final IconData icon;
-
   CardMenuSmall(this.icon);
 
   @override
