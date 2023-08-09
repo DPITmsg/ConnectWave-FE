@@ -1,3 +1,10 @@
+import 'dart:convert';
+
+List<ActivityDetails> postFromJson(String str) => List<ActivityDetails>.from(json.decode(str).map((x) => ActivityDetails.fromJson(x)));
+
+String postToJson(List<ActivityDetails> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+
 class ActivityDetails{
   String _date = '';
   String _title = '';
@@ -18,6 +25,28 @@ class ActivityDetails{
     required address,
     required description
 }):_date = date, _title = title, _tags = tags, _nrParticipants = nrParticipants, _category = category, _avgUserRating = avgUserRating, _address = address, _description = description;
+
+  factory ActivityDetails.fromJson(Map<String, dynamic> json) => ActivityDetails(
+    date: json["date"],
+    title: json["title"],
+    tags: json["tags"],
+    nrParticipants: json["nrParticipants"],
+    category: json["category"],
+    avgUserRating: json["avgUserRating"],
+    address: json["address"],
+    description: json["description"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "date": date,
+    "title": title,
+    "tags": tags,
+    "nrParticipants": nrParticipants,
+    "category": category,
+    "avgUserRating": avgUserRating,
+    "address": address,
+    "description": description,
+  };
 
   String get description => _description;
 

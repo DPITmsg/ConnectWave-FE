@@ -59,6 +59,7 @@ class ContainerActivity extends StatelessWidget {
                   ],
                 ),
               ),
+              Tags(elementList),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -79,9 +80,7 @@ class ContainerActivity extends StatelessWidget {
                     ),
                   ),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Tags(elementList),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 5),
                         child: Row(
@@ -111,12 +110,12 @@ class ContainerActivity extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(address),
+                  Text(address, style: TextStyle(color: Colors.black.withOpacity(0.5)),),
                   Column(
                     children: [
-                      Text("Average rating received"),
+                      Text("Average rating received", style: TextStyle(fontWeight: FontWeight.bold),),
                       Stars(userRating),
                     ],
                   ),
