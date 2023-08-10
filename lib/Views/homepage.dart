@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/homepage/Widgets/cardmenuaddactivity.dart';
-import 'package:my_project/homepage/Widgets/cardmenubig.dart';
-import 'package:my_project/profilepage/Widgets/profilepage.dart';
-import 'cardmenusmall.dart';
-import 'foryou.dart';
-import 'searchbar.dart';
-import 'test.dart';
-import 'package:my_project/activityhistory/Widgets/activityhistory.dart';
+import 'Widgets/cardmenusmall.dart';
+import 'Widgets/cardmenuaddactivity.dart';
+import 'profilepage.dart';
+import 'Widgets/foryou.dart';
+import 'Widgets/cardmenubig.dart';
+import 'Widgets/test.dart';
+import 'package:my_project/Views/activityhistory.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
           ),
           Row(
             children: [
-              Expanded(flex: 8, child: SearchBarMenu()),
+              Expanded(flex: 8, child: Text('ConnectWave', style: TextStyle(color: Colors.blue),)),
               Expanded(flex: 1, child: Icon(Icons.settings)),
             ],
           ),

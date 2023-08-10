@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../Views/Classes/activitydetails.dart';
+import '../../Views/Widgets/tags.dart';
 import 'stars.dart';
-import '../Classes/activitydetails.dart';
-import 'tags.dart';
 
 class ContainerActivity extends StatelessWidget {
   final String date;

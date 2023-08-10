@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../Classes/activitydetails.dart';
+import 'Classes/activitydetails.dart';
 import 'package:my_project/darius_mock_models/post.dart';
 import 'package:my_project/darius_mock_models/remote_service.dart';
+import 'dart:developer' as developer;
 
 class ActivityHistoryPage extends StatefulWidget {
   ActivityHistoryPage({Key? key}) : super(key: key);
@@ -34,6 +35,7 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
 
   getData() async {
     posts = await RemoteService().getPosts();
+    developer.log(posts!.length.toString());
     if (posts != null) {
       setState(() {
         isLoaded = true;
@@ -50,38 +52,7 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
       ),
       body: Container(
         color: Color(0xffc9cfcf),
-        child: Visibility(
-          visible: isLoaded,
-          child: ListView.builder(
-            itemCount: posts?.length,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [ Text(
-                  posts![index].title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                  Text(
-                    posts![index].body ?? '',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ]
-              );
-            },
-          ),
-          replacement: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
+        child: Text(posts!.first.title, style: TextStyle(fontSize: 32),)
         ),
       );
   }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/profilepage/Widgets/profilepage.dart';
-import 'test.dart';
 
 class CardMenuSmall extends StatelessWidget {
   final IconData icon;
