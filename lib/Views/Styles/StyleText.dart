@@ -26,7 +26,7 @@ TextStyle Text_Trending_Category = TextStyle(
 );
 TextStyle Text_Trending_Stats = TextStyle(
   fontSize: 12,
-  color: Color(0xFF81dbe3),
+  color: Color_Light_Blue,
 );
 
 TextStyle Text_Widget_Buttons_Blue = TextStyle(

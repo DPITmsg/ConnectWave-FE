@@ -57,8 +57,7 @@ class detailed_activity_page extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-                Positioned(
-                  left: 25,
+                Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -192,7 +191,7 @@ class detailed_activity_page extends StatelessWidget {
                           Color_Light_Blue
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(25,15,25,15),
+                        padding: const EdgeInsets.fromLTRB(25,15,25,0),
                         child: Row(
                           children: <Widget>[
                             WidgetButton(
