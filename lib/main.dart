@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Views/activityhistory.dart';
-import 'Views/homepage.dart';
+import 'package:my_project/Views/detailed_activity_page.dart';
 
 void main() => runApp(MaterialApp(
-  home: HomePage(),
+  home: detailed_activity_page(),
 ));
 

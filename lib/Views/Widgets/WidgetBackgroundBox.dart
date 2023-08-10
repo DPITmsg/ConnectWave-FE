@@ -9,21 +9,19 @@ class WidgetBackgroundBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        SizedBox(
-          width: 530,
-          height: 250,
-        ),
+        Expanded(flex:2,child: SizedBox()),
         Expanded(
+          flex: 5,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
             ),
             child: Container(
-              width: 400,
-              height: 600,
+              width: screenWidth,
               decoration: BoxDecoration(
                 color: Color_Gray,
                 boxShadow: [
