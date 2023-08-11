@@ -1,6 +1,6 @@
 class User {
   String _name = '';
-  int _rating = 0;
+  double _rating = 0;
   int _activicompleted = 0;
   int _friends = 0;
   String _favcategory = '';
@@ -49,7 +49,7 @@ class User {
 
   int get activicompleted => _activicompleted;
 
- int get rating => _rating;
+ double get rating => _rating;
 
   set tags(List<String> value) {
     _tags = value;
@@ -75,7 +75,7 @@ class User {
     _activicompleted = value;
   }
 
-  set rating(int value) {
+  set rating(double value) {
     _rating = value;
   }
 

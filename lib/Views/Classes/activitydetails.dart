@@ -1,8 +1,17 @@
 import 'dart:convert';
 
-List<ActivityDetails> postFromJson(String str) =>
-    List<ActivityDetails>.from(
-        json.decode(str).map((x) => ActivityDetails.fromJson(x)));
+List<ActivityDetails> activityFromJson(String str) {
+  dynamic jsonData = json.decode(str);
+
+  if (jsonData is List) {
+    return jsonData.map((json) => ActivityDetails.fromJson(json)).toList();
+  } else if (jsonData is Map) {
+    return [ActivityDetails.fromJson(jsonData as Map<String, dynamic>)];
+  } else {
+    throw Exception("Invalid JSON data format");
+  }
+}
+
 
 String postToJson(List<ActivityDetails> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -41,7 +50,7 @@ class ActivityDetails {
       ActivityDetails(
         date: json["date"],
         title: json["title"],
-        tags: json["tags"],
+        tags: List<String>.from(json["tags"]),
         nrParticipants: json["nrParticipants"],
         category: json["category"],
         avgUserRating: json["avgUserRating"],

@@ -25,7 +25,6 @@ class ContainerActivity extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Container(
         width: screenWidth,
-        height: 200,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xffc9cfcf), Color(0xffeeeeee)],
@@ -122,7 +121,10 @@ class ContainerActivity extends StatelessWidget {
                 ],
               ),
               Align(alignment: Alignment.bottomLeft, child: Text("About", style: TextStyle(fontWeight: FontWeight.bold),)),
-              Text(description)
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(description),
+              )
             ],
           ),
         ),

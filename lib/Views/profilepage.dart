@@ -21,7 +21,7 @@ class ProfilePage extends StatelessWidget {
           'I also enjoy playing games, I would consider Assassins Creed to be my favorite',
       interests: ['sports', 'gaming', 'football', 'cinema', 'Xbox'],
       tags: ['friendly', 'proGamer', 'marvelFan', 'teen', 'yes', 'other'],
-      image: 'assets/profilepic2.png'
+      friends_list: [''],
   );
 
 
@@ -52,7 +52,7 @@ class ProfilePage extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
                       child: Text(user_details.name, style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xff1a1a1a))),
                     ),
-                    Stars(user_details.rating),
+                    Stars(user_details.rating as double),
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                       child: Row(
