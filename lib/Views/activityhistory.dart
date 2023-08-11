@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/containerhistory.dart';
 import 'Classes/activitydetails.dart';
-import 'package:my_project/darius_mock_models/post.dart';
 import 'package:my_project/darius_mock_models/remote_service.dart';
 import 'dart:developer' as developer;
 
