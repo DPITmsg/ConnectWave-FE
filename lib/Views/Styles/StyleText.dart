@@ -6,7 +6,7 @@ TextStyle Text_Detailed_Page_Regular = TextStyle(
   color: Color_White,
 );
 
-TextStyle Text_Detailed_Page_Bold= TextStyle(
+TextStyle Text_Detailed_Page_Bold = TextStyle(
   fontSize: 18.0,
   fontWeight: FontWeight.bold,
   color: Color_White,
@@ -40,17 +40,11 @@ TextStyle Text_Widget_Buttons_White = TextStyle(
   fontWeight: FontWeight.bold,
   color: Color_White,
 );
-TextStyle Text_Widget_Buttons_White_Small =TextStyle(
-    color: Color_White,
-    fontSize: 18,
-    fontWeight: FontWeight.bold
-);
+TextStyle Text_Widget_Buttons_White_Small =
+    TextStyle(color: Color_White, fontSize: 18, fontWeight: FontWeight.bold);
 
-TextStyle Text_Widget_SmallButton_Gray = TextStyle(
-color: Color_Gray,
-fontSize: 12.0,
-fontWeight: FontWeight.bold
-);
+TextStyle Text_Widget_SmallButton_Gray =
+    TextStyle(color: Color_Gray, fontSize: 12.0, fontWeight: FontWeight.bold);
 
 TextStyle Text_Title_Top = TextStyle(
   fontSize: 24.0,

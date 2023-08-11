@@ -44,7 +44,7 @@ class detailed_activity_page extends StatelessWidget {
                   Expanded(
                     flex: 7,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
                       child: Container(
                         child: Column(
                           children: [
@@ -121,6 +121,7 @@ class detailed_activity_page extends StatelessWidget {
                                   child: WidgetBox(
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Text(
                                               'Descriere: ',
@@ -154,6 +155,7 @@ class detailed_activity_page extends StatelessWidget {
                                           SizedBox(width: 10.0),
                                           Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Row(
                                                 children: [

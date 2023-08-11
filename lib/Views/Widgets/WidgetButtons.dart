@@ -18,7 +18,7 @@ class WidgetButton extends StatelessWidget {
           boxShadow: [Shadow_Widget_Box],
         ),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 10, 10,10),
+          padding: EdgeInsets.fromLTRB(15,15, 15,15),
             child: this.child
         ),
       ),
