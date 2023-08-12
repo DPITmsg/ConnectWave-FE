@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/Shadows.dart';
 
 class WidgetBackgroundBox extends StatelessWidget {
@@ -20,16 +19,28 @@ class WidgetBackgroundBox extends StatelessWidget {
               topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
             ),
-            child: Container(
-              width: screenWidth,
-              decoration: BoxDecoration(
-                color: Color_Gray,
-                boxShadow: [
-                  Shadow_Widget_Box
-                ],
-              ),
-              child:this.child,
-              )
+            child: Stack(
+
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('lib/Views/Styles/Backgrounds/Background_3.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Container(
+                  width: screenWidth,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      Shadow_Widget_Box
+                    ],
+                  ),
+                  child:this.child,
+                  ),
+              ],
+            )
             ),
           ),
       ],

@@ -41,14 +41,26 @@ TextStyle Text_Widget_Buttons_White = TextStyle(
   color: Color_White,
 );
 TextStyle Text_Widget_Buttons_White_Small =
-    TextStyle(color: Color_White, fontSize: 18, fontWeight: FontWeight.bold);
+TextStyle(color: Color_White, fontSize: 18, fontWeight: FontWeight.bold);
 
 TextStyle Text_Widget_SmallButton_Gray =
-    TextStyle(color: Color_Gray, fontSize: 12.0, fontWeight: FontWeight.bold);
+TextStyle(color: Color_Gray, fontSize: 12.0, fontWeight: FontWeight.bold);
 
-TextStyle Text_Title_Top = TextStyle(
+TextStyle Text_Widget_FriendName = TextStyle(
+  color: Color_White,
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold);
+
+  TextStyle Text_Title_Top = TextStyle(
   fontSize: 24.0,
   fontWeight: FontWeight.bold,
   decoration: TextDecoration.underline,
   color: Color_Dark_Gray,
+);
+
+TextStyle Text_Title_Top_FriendsList = TextStyle(
+  color: Color_Dark_Gray,
+  fontSize: 32.0,
+  fontWeight: FontWeight.bold,
+  decoration: TextDecoration.underline,
 );

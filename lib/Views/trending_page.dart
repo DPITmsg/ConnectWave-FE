@@ -57,67 +57,78 @@ class trending_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        color: Color_Gray,
-        child: Padding(
-            padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Trending',
-                  style: Text_Title_Top,
-                ),
-                Expanded(
-                  flex: 12,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                    child: Container(
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: trending.map((element) {
-                            return WidgetBoxSlice(element);
-                          }).toList(),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('lib/Views/Styles/Backgrounds/Background_2.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Trending',
+                      style: Text_Title_Top,
+                    ),
+                    Expanded(
+                      flex: 12,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                        child: Container(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: trending.map((element) {
+                                return WidgetBoxSlice(element);
+                              }).toList(),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
 
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Expanded(
-                        child: WidgetButton(
-                          Center(
-                            child: Text(
-                                "Close to me",
-                                style: Text_Widget_Buttons_Blue
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Expanded(
+                            child: WidgetButton(
+                              Center(
+                                child: Text(
+                                    "Close to me",
+                                    style: Text_Widget_Buttons_Blue
+                                ),
+                              ),
+                              Color_Dark_Gray,
                             ),
                           ),
-                          Color_Dark_Gray,
-                        ),
-                      ),
-                      SizedBox(width: 20,),
-                      Expanded(
-                        child: WidgetButton(
-                          Center(
-                            child: Text(
-                                "Explore more",
-                                style: Text_Widget_Buttons_Blue
+                          SizedBox(width: 20,),
+                          Expanded(
+                            child: WidgetButton(
+                              Center(
+                                child: Text(
+                                    "Explore more",
+                                    style: Text_Widget_Buttons_Blue
+                                ),
+                              ),
+                              Color_Dark_Gray,
                             ),
                           ),
-                          Color_Dark_Gray,
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ],
-            )),
+                    ),
+                  ],
+                )),
+          ),
+        ],
       ),
     );
   }

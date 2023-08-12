@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'Widgets/cardmenusmall.dart';
-import 'Widgets/cardmenuaddactivity.dart';
-import 'profilepage.dart';
-import 'Widgets/foryou.dart';
-import 'Widgets/cardmenubig.dart';
-import 'Widgets/test.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import 'package:my_project/Views/friends_list_page.dart';
+import 'package:my_project/Views/trending_page.dart';
+
+import 'Widgets/cardmenuaddactivity.dart';
+import 'Widgets/cardmenubig.dart';
+import 'Widgets/cardmenusmall.dart';
+import 'Widgets/foryou.dart';
+import 'profilepage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.star_rounded, Test()),
+                      CardMenuSmall(Icons.star_rounded, trending_page()),
                       CardMenuSmall(Icons.person_rounded, ProfilePage()),
                     ],
                   ),
@@ -62,7 +64,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.people, Test()),
+                      CardMenuSmall(Icons.people, friends_list_page()),
                       CardMenuSmall(Icons.access_time_filled, ActivityHistoryPage()),
                     ],
                   ),

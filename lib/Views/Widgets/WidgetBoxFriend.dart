@@ -6,73 +6,59 @@ import 'package:my_project/Views/Widgets/WidgetSmallButton.dart';
 import '../Styles/Shadows.dart';
 
 class WidgetBoxFriend extends StatelessWidget {
-
   final String text;
 
   const WidgetBoxFriend(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 80,
-          width: 360,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0,0,0,10),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [Color_Blue, Color_Light_Blue]
-            ),
-            borderRadius: BorderRadius.circular(25.0),
-            border: Border.all(color: Color_Dark_Gray),
-            boxShadow: [
-              Shadow_Widget_Box
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/yoda.pfp.jpg'),
-                  radius: 25.0,
+              colors: [Color_Blue, Color_Light_Blue]),
+          borderRadius: BorderRadius.circular(25.0),
+          border: Border.all(color: Color_Dark_Gray),
+          boxShadow: [Shadow_Widget_Box],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+          child: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/yoda.pfp.jpg'),
+                radius: 30,
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  child: Container(
+                      child: Text(this.text, style: Text_Widget_FriendName)),
                 ),
-                SizedBox(width: 15),
-                Container(
-                  width: 170,
-                  child: Text(
-                    this.text,
-                    style: TextStyle(
-                      color: Color_White,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                WidgetSmallButton(
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
+              ),
+              Expanded(
+                child: WidgetSmallButton(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
                           'Friends',
                           style: Text_Widget_SmallButton_Gray
-                        ),
-                        Icon(Icons.check, color: Color_Gray, size: 20,)
-                      ],
-                    ),
-                  )
+                      ),
+                      Icon(Icons.check, color: Color_Gray, size: 20,)
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              )
+            ],
           ),
         ),
-        SizedBox(height: 10.0),
-      ],
+      ),
     );
   }
 }
