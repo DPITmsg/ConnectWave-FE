@@ -43,11 +43,15 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
         title: Text("Activity History"),
         backgroundColor: Color(0xffc9cfcf),
       ),
-      body: ListView.builder(
-        itemCount: 1,
-          itemBuilder: (context, index){
-            return ContainerActivity(activities!.first.date, activities!.first.title, activities!.first.tags, activities!.first.nrParticipants, activities!.first.category, activities!.first.avgUserRating, activities!.first.address, activities!.first.description);
-          }
+      body: Visibility(
+        visible: isLoaded,
+        child: ListView.builder(
+          itemCount: 1,
+            itemBuilder: (context, index){
+              return ContainerActivity(activities!.first.date, activities!.first.title, activities!.first.tags, activities!.first.nrParticipants, activities!.first.category, activities!.first.avgUserRating, activities!.first.address, activities!.first.description);
+            }
+        ),
+        replacement: Center(child: const CircularProgressIndicator()),
       ),
     );
   }

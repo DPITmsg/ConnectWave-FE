@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Styles/Gradients.dart';
 
 class AwesomeGradient extends StatelessWidget {
   const AwesomeGradient({super.key});
@@ -13,7 +14,7 @@ class AwesomeGradient extends StatelessWidget {
       width: screenWidth,
       height: screenHeight*0.2,
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [Color(0xff25656B), Color(0xff45BAC4)], stops: [0, 0.7])
+          gradient: awesomeGradient,
       ),
     );
   }

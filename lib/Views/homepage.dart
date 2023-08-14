@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Classes/Trending.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
 import 'Widgets/cardmenusmall.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'profilepage.dart';
@@ -17,24 +18,30 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    var appBarHeight = AppBar().preferredSize.height;
 
     return Scaffold(
-      appBar: null,
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(preferredSize: const Size.fromHeight(0), child: AppBar(elevation: 0, backgroundColor: const Color(0x44000000),),),
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/background.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Row(
-            children: [
-              Expanded(flex: 8, child: Text('ConnectWave', style: TextStyle(color: Colors.blue),)),
-              Expanded(flex: 1, child: Icon(Icons.settings)),
-            ],
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, appBarHeight, 0, 0),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(flex: 10, child: Text('ConnectWave', style: TextStyle(color: Color_Blue, fontSize: 48, fontWeight: FontWeight.bold),)),
+                Expanded(flex: 1, child: Icon(Icons.settings)),
+              ],
+            ),
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(10, screenHeight*0.2, 10, 0),
@@ -45,7 +52,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.star_rounded, trending_page()),
+                      CardMenuSmall(Icons.star_rounded, const trending_page()),
                       CardMenuSmall(Icons.person_rounded, ProfilePage()),
                     ],
                   ),
@@ -65,13 +72,13 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.people, friends_list_page()),
+                      CardMenuSmall(Icons.people, const friends_list_page()),
                       CardMenuSmall(Icons.access_time_filled, ActivityHistoryPage()),
                     ],
                   ),
                 ),
-                Expanded(flex:1,child: CardMenuAddActivity()),
-                ForYou(),
+                const Expanded(flex:1,child: CardMenuAddActivity()),
+                const InkWell(child: ForYou(Test())),
               ],
             ),
           )

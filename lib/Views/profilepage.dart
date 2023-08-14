@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/activityhistory.dart';
 import 'Widgets/awesomegradient.dart';
 import 'Widgets/stars.dart';
 import 'Widgets/cardsprofilestats.dart';
@@ -7,6 +8,8 @@ import 'Classes/User.dart';
 import 'Widgets/avatarcontainer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../darius_mock_models/remote_service_user.dart';
+import 'Widgets/test.dart';
+import 'friends_list_page.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -47,13 +50,14 @@ class _ProfilePageState extends State<ProfilePage> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: null,
-      body: Container(
-        height: screenHeight,
-        decoration: BoxDecoration(color: Color(0xffc9cfcf)),
-        child: Visibility(
-          visible: isLoaded,
-          replacement: const CircularProgressIndicator(),
-          child: SingleChildScrollView(
+      body: Visibility(
+        visible: isLoaded,
+        replacement: const Center(child: CircularProgressIndicator(),),
+        child: Container(
+          height: screenHeight,
+          decoration: BoxDecoration(color: Color(0xffc9cfcf)),
+          child: isLoaded
+            ? SingleChildScrollView(
             child: Stack(
               children: [
                 Center(child: Icon(Icons.arrow_back_rounded)),
@@ -81,26 +85,20 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              InkWell(
-                                onTap: () {},
-                                child: CardProfile(
-                                  user!.first.activicompleted.toString(),
-                                  'Activities Completed',
-                                ),
+                              CardProfile(
+                                user!.first.activicompleted.toString(),
+                                'Activities Completed',
+                                ActivityHistoryPage(),
                               ),
-                              InkWell(
-                                onTap: () {},
-                                child: CardProfile(
-                                  user!.first.friends.toString(),
-                                  'Friends',
-                                ),
+                              CardProfile(
+                                user!.first.friends.toString(),
+                                'Friends',
+                                  friends_list_page()
                               ),
-                              InkWell(
-                                onTap: () {},
-                                child: CardProfile(
-                                  user!.first.favcategory,
-                                  'Favorite Category',
-                                ),
+                              CardProfile(
+                                user!.first.favcategory,
+                                'Favorite Category',
+                                Test(),
                               ),
                             ],
                           ),
@@ -196,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-          ),
+          ): const Center(child: CircularProgressIndicator()),
         ),
       ),
     );

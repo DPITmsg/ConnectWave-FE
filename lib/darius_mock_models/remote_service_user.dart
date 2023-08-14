@@ -10,7 +10,6 @@ class RemoteServiceUser {
     var response = await client.get(url);
     if (response.statusCode == 200) {
       var json = response.body;
-      print(json);
       return activityFromJson(json); // Use the correct parsing function
     } else {
       throw Exception('Failed to load activities');
