@@ -62,7 +62,8 @@ class trending_page extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/Views/Styles/Backgrounds/Background_2.png'),
+                image:
+                    AssetImage('lib/Views/Styles/Backgrounds/Background_2.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -73,11 +74,32 @@ class trending_page extends StatelessWidget {
             child: Padding(
                 padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Trending',
-                      style: Text_Title_Top,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: InkWell(
+                            child: SizedBox(
+                              child: Icon(
+                                Icons.arrow_back_ios_new,
+                                color: Color_Dark_Gray,
+                              ),
+                            ),
+                            onTap: (){
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child: Text(
+                            'Trending',
+                            style: Text_Title_Top,
+                          ),
+                        ),
+                      ],
                     ),
                     Expanded(
                       flex: 12,
@@ -94,7 +116,6 @@ class trending_page extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -102,22 +123,20 @@ class trending_page extends StatelessWidget {
                           Expanded(
                             child: WidgetButton(
                               Center(
-                                child: Text(
-                                    "Close to me",
-                                    style: Text_Widget_Buttons_Blue
-                                ),
+                                child: Text("Close to me",
+                                    style: Text_Widget_Buttons_Blue),
                               ),
                               Color_Dark_Gray,
                             ),
                           ),
-                          SizedBox(width: 20,),
+                          SizedBox(
+                            width: 20,
+                          ),
                           Expanded(
                             child: WidgetButton(
                               Center(
-                                child: Text(
-                                    "Explore more",
-                                    style: Text_Widget_Buttons_Blue
-                                ),
+                                child: Text("Explore more",
+                                    style: Text_Widget_Buttons_Blue),
                               ),
                               Color_Dark_Gray,
                             ),

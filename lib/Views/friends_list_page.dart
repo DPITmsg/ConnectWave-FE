@@ -41,21 +41,42 @@ class friends_list_page extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Friends list',
-                        style: Text_Title_Top_FriendsList,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              child: SizedBox(
+                                child: Icon(
+                                  Icons.arrow_back_ios_new,
+                                  color: Color_Dark_Gray,
+                                  size: 35,
+                                ),
+                              ),
+                              onTap: (){
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            flex: 8,
+                            child: Text(
+                              'Friends list',
+                              style: Text_Title_Top_FriendsList,
+                            ),
+                          ),
+
+                          Expanded(
+                            child: Icon(
+                              Icons.search,
+                              color: Color_Dark_Gray,
+                              size: 35,
+                            ),
+                          )
+
+                        ],
                       ),
-                      Icon(
-                        Icons.search,
-                        color: Color_Dark_Gray,
-                        size: 40,
-                      )
-                    ],
-                  ),
                   Expanded(
                     flex: 12,
                     child: Padding(

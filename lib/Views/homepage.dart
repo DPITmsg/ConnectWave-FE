@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import 'package:my_project/Views/add_activity_page.dart';
 import 'package:my_project/Views/friends_list_page.dart';
 import 'package:my_project/Views/trending_page.dart';
 
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(flex:1,child: CardMenuAddActivity()),
+                Expanded(flex:1,child: CardMenuAddActivity(add_activity_page())),
                 ForYou(),
               ],
             ),
