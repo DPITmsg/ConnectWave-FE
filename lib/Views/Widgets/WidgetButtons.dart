@@ -9,9 +9,7 @@ class WidgetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           color: this.color_primary,
           borderRadius: BorderRadius.circular(90),
@@ -21,7 +19,6 @@ class WidgetButton extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(15,15, 15,15),
             child: this.child
         ),
-      ),
     );
   }
 }
