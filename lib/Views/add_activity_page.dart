@@ -6,6 +6,12 @@ import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
 
+bool isDate(String str){
+  return true;
+  //need to add DateTime check :<
+}
+
+
 class add_activity_page extends StatefulWidget {
   const add_activity_page({super.key});
 
@@ -18,6 +24,7 @@ class _add_activity_pageState extends State<add_activity_page> {
   TextEditingController activity_title = TextEditingController();
   TextEditingController activity_location = TextEditingController();
   TextEditingController activity_date = TextEditingController();
+  TextEditingController activity_nr_participants = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +49,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                   child: Column(
                     children: [
                       Expanded(
-                        flex: 7,
+                        flex: 8,
                         child: Column(
                           children: [
                             TextFormField(
@@ -94,29 +101,74 @@ class _add_activity_pageState extends State<add_activity_page> {
                                   )
                               ),
                             ),
-                            TextFormField(
-                              controller: activity_date,
-                              validator: MultiValidator([
-                                MinLengthValidator(8, errorText: 'Use format dd.mm.yyyy')
-                              ]),
-                              style: Text_AddActivity_Small_Input,
-                              maxLength: 10,
-                              autocorrect: false,
-                              decoration: InputDecoration(
-                                  hintText: '+Date',
-                                  hintStyle: Text_AddActivty_Small,
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(Icons.calendar_today, color: Color_Dark_Gray,),
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      activity_date.clear();
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex:3,
+                                  child: TextFormField(
+                                    controller: activity_date,
+                                    validator: (value){
+                                      if(value!.isEmpty){
+                                        return 'Required';
+                                      }
+                                      if(isDate(value.toString()) == false)
+                                        return 'Not a valid date';
                                     },
-                                    icon: Icon(
-                                      Icons.clear,
-                                      color: Colors.red,
+                                    style: Text_AddActivity_Small_Input,
+                                    maxLength: 10,
+                                    autocorrect: false,
+                                    decoration: InputDecoration(
+                                        hintText: '+Date',
+                                        hintStyle: Text_AddActivty_Small,
+                                        border: InputBorder.none,
+                                        prefixIcon: Icon(Icons.calendar_today, color: Color_Dark_Gray,),
+                                        suffixIcon: IconButton(
+                                          onPressed: () {
+                                            activity_date.clear();
+                                          },
+                                          icon: Icon(
+                                            Icons.clear,
+                                            color: Colors.red,
+                                          ),
+                                        )
                                     ),
-                                  )
-                              ),
+                                  ),
+                                ),
+                                Expanded(child: SizedBox()),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex:3,
+                                  child: TextFormField(
+                                    controller: activity_nr_participants,
+                                    validator:MultiValidator([
+                                      MinLengthValidator(1, errorText: 'Required'),
+                                      RangeValidator(min: 2, max: 99, errorText: 'Between 2 and 99 participants')
+                                    ]),
+                                    style: Text_AddActivity_Small_Input,
+                                    autocorrect: false,
+                                    decoration: InputDecoration(
+                                        hintText: '+Nr. participants',
+                                        hintStyle: Text_AddActivty_Small,
+                                        border: InputBorder.none,
+                                        prefixIcon: Icon(Icons.person_rounded, color: Color_Dark_Gray,),
+                                        suffixIcon: IconButton(
+                                          onPressed: () {
+                                            activity_nr_participants.clear();
+                                          },
+                                          icon: Icon(
+                                            Icons.clear,
+                                            color: Colors.red,
+                                          ),
+                                        )
+                                    ),
+                                  ),
+                                ),
+
+                                Expanded(child: SizedBox()),
+                              ],
                             )
                           ],
                         ),

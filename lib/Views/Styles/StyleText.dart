@@ -42,7 +42,7 @@ TextStyle Text_AddActivty_Small = TextStyle(
     decoration: TextDecoration.none);
 
 TextStyle Text_AddActivity_Small_Input = TextStyle(
-  fontSize: 18.0,
+  fontSize: 20,
   fontWeight: FontWeight.bold,
   color: Color_Dark_Gray,
   decoration: TextDecoration.underline,
