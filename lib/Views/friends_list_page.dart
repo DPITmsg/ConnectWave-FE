@@ -9,7 +9,7 @@ import 'Classes/User.dart';
 
 User user = User(
     name: 'a',
-    rating: 1,
+    rating: 1.0,
     activicompleted: 1,
     friends: 1,
     favcategory: 's',

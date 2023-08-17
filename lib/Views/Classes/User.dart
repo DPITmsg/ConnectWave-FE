@@ -1,6 +1,26 @@
+import 'dart:convert';
+
+
+User userFromJson(Map<String, dynamic> jsonData) {
+  List<String> interests = List<String>.from(jsonData['interests']);
+  List<String> tags = List<String>.from(jsonData['tags']);
+  List<String> friendsList = List<String>.from(jsonData['friends_list']);
+
+  return User.fromJson({
+    ...jsonData,
+    'interests': interests,
+    'tags': tags,
+    'friends_list': friendsList,
+  });
+}
+
+
+String postToJson(List<User> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class User {
   String _name = '';
-  int _rating = 0;
+  double _rating = 0;
   int _activicompleted = 0;
   int _friends = 0;
   String _favcategory = '';
@@ -29,6 +49,32 @@ class User {
         _tags = tags,
         _friends_list = friends_list;
 
+  factory User.fromJson(Map<String, dynamic> json) =>
+      User(
+        name: json["name"],
+        rating: json["rating"],
+        activicompleted: json["activicompleted"],
+        friends: json["friends"],
+        favcategory: json["favcategory"],
+        about: json["about"],
+        interests: List<String>.from(json["interests"]),
+        tags: List<String>.from(json["tags"]),
+        friends_list: List<String>.from(json["friends_list"]),
+      );
+
+  Map<String, dynamic> toJson() =>
+      {
+        "name": name,
+        "rating": rating,
+        "activicompleted": activicompleted,
+        "friends": friends,
+        "favcategory": favcategory,
+        "about": about,
+        "interests": interests,
+        "tags": tags,
+        "friends_list": friends_list
+      };
+
   List<String> get friends_list => _friends_list;
 
   set friends_list(List<String> value) {
@@ -49,7 +95,7 @@ class User {
 
   int get activicompleted => _activicompleted;
 
- int get rating => _rating;
+ double get rating => _rating;
 
   set tags(List<String> value) {
     _tags = value;
@@ -75,7 +121,7 @@ class User {
     _activicompleted = value;
   }
 
-  set rating(int value) {
+  set rating(double value) {
     _rating = value;
   }
 

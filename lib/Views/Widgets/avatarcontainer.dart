@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../Styles/Colors.dart';
+import '../Styles/Shadows.dart';
 
 class AvatarContainer extends StatelessWidget {
 
@@ -11,15 +13,10 @@ class AvatarContainer extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         gradient: LinearGradient(
-          colors: [Color(0xff1a1a1a), Color(0xFFc9cfcf)], stops: [0.2, 1.0],
+          colors: [Color_Dark_Gray, Color_Gray], stops: [0.2, 1.0],
         ),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
+          Shadow_Widget_Box,
         ],
       ),
       child: CircleAvatar(

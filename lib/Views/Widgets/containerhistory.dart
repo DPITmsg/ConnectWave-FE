@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../Views/Classes/activitydetails.dart';
 import '../../Views/Widgets/tags.dart';
 import 'stars.dart';
+import '../Styles/Gradients.dart';
+import '../Styles/Shadows.dart';
 
 class ContainerActivity extends StatelessWidget {
   final String date;
@@ -15,7 +17,6 @@ class ContainerActivity extends StatelessWidget {
 
   ContainerActivity(this.date, this.title, this.tags, this.nrParticipants, this.category, this.userRating, this.address, this.description);
 
-  List<String> elementList = ["football", "fun"];
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,6 @@ class ContainerActivity extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Container(
         width: screenWidth,
-        height: 200,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xffc9cfcf), Color(0xffeeeeee)],
@@ -33,16 +33,11 @@ class ContainerActivity extends StatelessWidget {
             transform: GradientRotation(11),
           ),
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.4),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: Offset(0,3)
-            )
+            Shadow_Darius
           ]
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 5),
           child: Column(
             children: [
               Padding(
@@ -59,24 +54,25 @@ class ContainerActivity extends StatelessWidget {
                   ],
                 ),
               ),
-              Tags(elementList),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
+                child: Tags(tags),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(image: AssetImage('assets/mapimg.png')),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          offset: Offset(0, 3),
-                        )
-                      ]
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(image: AssetImage('assets/mapimg.png')),
+                        boxShadow: [
+                          Shadow_Darius
+                        ]
+                      ),
                     ),
                   ),
                   Column(
@@ -122,7 +118,10 @@ class ContainerActivity extends StatelessWidget {
                 ],
               ),
               Align(alignment: Alignment.bottomLeft, child: Text("About", style: TextStyle(fontWeight: FontWeight.bold),)),
-              Text(description)
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                child: Text(description),
+              )
             ],
           ),
         ),

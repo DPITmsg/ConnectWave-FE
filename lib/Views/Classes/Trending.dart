@@ -1,3 +1,21 @@
+import 'dart:convert';
+
+List<Trending> activityFromJson(String str) {
+  dynamic jsonData = json.decode(str);
+
+  if (jsonData is List) {
+    return jsonData.map((json) => Trending.fromJson(json)).toList();
+  } else if (jsonData is Map) {
+    return [Trending.fromJson(jsonData as Map<String, dynamic>)];
+  } else {
+    throw Exception("Invalid JSON data format");
+  }
+}
+
+
+String postToJson(List<Trending> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Trending {
   String _title = '';
   String _category = '';
@@ -19,6 +37,22 @@ class Trending {
         _category = category,
         _stats = stats,
         _image_url = image_url;
+
+  factory Trending.fromJson(Map<String, dynamic> json) =>
+      Trending(
+        title: json["title"],
+        category: json["category"],
+        stats: List<String>.from(json["stats"]),
+        image_url: json["image_url"],
+      );
+
+  Map<String, dynamic> toJson() =>
+      {
+        "title": title,
+        "category": category,
+        "stats": stats,
+        "image_url": image_url
+      };
 
   String get category => _category;
 
