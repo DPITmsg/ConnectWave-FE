@@ -24,17 +24,18 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
 
   getData() async {
     try {
-      activities = await RemoteService().getActivities();
-      if (activities != null) {
-        setState(() {
-          isLoaded = true;
-        });
-      }
+      final activityData = await fetchEventData();
+
+      ActivityDetails activityDetails = ActivityDetails.fromJson(activityData);
+
+      setState(() {
+        activities = [activityDetails];
+        isLoaded = true;
+      });
     } catch (error) {
-      print("Error fetching activities: $error");
+      print("Error fetching activity data: $error");
     }
   }
-
 
   @override
   Widget build(BuildContext context) {

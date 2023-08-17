@@ -6,8 +6,7 @@ import 'Widgets/cardsprofilestats.dart';
 import 'Widgets/interestsortags.dart';
 import 'Classes/User.dart';
 import 'Widgets/avatarcontainer.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../darius_mock_models/remote_service_user.dart';
+import '../darius_mock_models/remote_service.dart';
 import 'Widgets/test.dart';
 import 'friends_list_page.dart';
 
@@ -22,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   AssetImage profilePic = AssetImage('assets/profilepic2.png');
 
-  List<User>? user = [];
+  User? user;
   var isLoaded = false;
 
   @override
@@ -31,18 +30,21 @@ class _ProfilePageState extends State<ProfilePage> {
     getData();
   }
 
-  getData() async {
+  Future<void> getData() async {
     try {
-      user = await RemoteServiceUser().getUser();
-      if (user != null) {
-        setState(() {
-          isLoaded = true;
-        });
-      }
+      final userData = await fetchUserData();
+      user = User.fromJson(userData);
+
+      setState(() {
+        isLoaded = true;
+      });
     } catch (error) {
-      print("Error fetching activities: $error");
+      print('Error loading data: $error');
     }
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
                           child: Text(
-                            user!.first.name,
+                            user!.name,
                             style: TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
@@ -79,24 +81,24 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ),
-                        Stars(user!.first.rating),
+                        Stars(user!.rating),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               CardProfile(
-                                user!.first.activicompleted.toString(),
+                                user!.activicompleted.toString(),
                                 'Activities Completed',
                                 ActivityHistoryPage(),
                               ),
                               CardProfile(
-                                user!.first.friends.toString(),
+                                user!.friends.toString(),
                                 'Friends',
                                   friends_list_page()
                               ),
                               CardProfile(
-                                user!.first.favcategory,
+                                user!.favcategory,
                                 'Favorite Category',
                                 Test(),
                               ),
@@ -116,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     fontSize: 16,
                                   ),
                                 ),
-                                Text(user!.first.about),
+                                Text(user!.about),
                               ],
                             ),
                           ),
@@ -136,7 +138,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                          child: IntOrTags(user!.first.interests),
+                          child: IntOrTags(user!.interests),
                         ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -153,7 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                          child: IntOrTags(user!.first.tags),
+                          child: IntOrTags(user!.tags),
                         ),
                       ],
                     ),

@@ -1,30 +1,18 @@
 import 'dart:convert';
 
 
-List<User> activityFromJson(String str) {
-  dynamic jsonData = json.decode(str);
+User userFromJson(Map<String, dynamic> jsonData) {
+  List<String> interests = List<String>.from(jsonData['interests']);
+  List<String> tags = List<String>.from(jsonData['tags']);
+  List<String> friendsList = List<String>.from(jsonData['friends_list']);
 
-  if (jsonData is List) {
-    return jsonData.map((json) => User.fromJson(json)).toList();
-  } else if (jsonData is Map) {
-    // Cast the lists to the expected types
-    List<String> interests = List<String>.from(jsonData['interests']);
-    List<String> tags = List<String>.from(jsonData['tags']);
-    List<String> friendsList = List<String>.from(jsonData['friends_list']);
-
-    return [
-      User.fromJson({
-        ...jsonData,
-        'interests': interests,
-        'tags': tags,
-        'friends_list': friendsList,
-      })
-    ];
-  } else {
-    throw Exception("Invalid JSON data format");
-  }
+  return User.fromJson({
+    ...jsonData,
+    'interests': interests,
+    'tags': tags,
+    'friends_list': friendsList,
+  });
 }
-
 
 
 String postToJson(List<User> data) =>
@@ -69,9 +57,9 @@ class User {
         friends: json["friends"],
         favcategory: json["favcategory"],
         about: json["about"],
-        interests: json["interests"],
-        tags: json["tags"],
-        friends_list: json["friends_list"]
+        interests: List<String>.from(json["interests"]),
+        tags: List<String>.from(json["tags"]),
+        friends_list: List<String>.from(json["friends_list"]),
       );
 
   Map<String, dynamic> toJson() =>

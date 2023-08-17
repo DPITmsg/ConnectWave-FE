@@ -1,20 +1,37 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../Views/Classes/activitydetails.dart'; // Make sure to import the correct path to your ActivityDetails class
+import '../Views/Classes/activitydetails.dart';
 
-class RemoteService {
-  Future<List<ActivityDetails>?> getActivities() async {
-    var client = http.Client();
+Future<Map<String, dynamic>> fetchData(String url) async {
+  final response = await http.get(Uri.parse(url));
 
-    var url = Uri.parse('https://e6c57aac-176c-426a-97af-1ba80c7c39ad.mock.pstmn.io/activity');
-    var response = await client.get(url);
-    if (response.statusCode == 200) {
-      var json = response.body;
-      return activityFromJson(json); // Use the correct parsing function
-    } else {
-      throw Exception('Failed to load activities');
-    }
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body);
+    return data;
+  } else {
+    throw Exception('Failed to load data. Status code: ${response.statusCode}');
   }
 }
+
+Future<Map<String, dynamic>> fetchEventData() async {
+  final url = 'https://e6c57aac-176c-426a-97af-1ba80c7c39ad.mock.pstmn.io/activity';
+  return fetchData(url);
+}
+
+Future<Map<String, dynamic>> fetchUserData() async {
+  final url = 'https://8999a859-c8c7-432a-96a8-cd4f196275da.mock.pstmn.io/user';
+  return fetchData(url);
+}
+
+Future<Map<String, dynamic>> fetchAddressData() async {
+  final url = 'https://524667bc-2cfa-480b-9efa-69e31518f3e3.mock.pstmn.io/activity';
+  return fetchData(url);
+}
+
+Future<Map<String, dynamic>> fetchTrendingData() async {
+  final url = 'https://712408e2-acb4-4389-b34f-d41aaeca4a15.mock.pstmn.io/trending';
+  return fetchData(url);
+}
+
 
 
