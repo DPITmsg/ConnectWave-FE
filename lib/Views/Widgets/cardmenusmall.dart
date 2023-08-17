@@ -14,7 +14,7 @@ class CardMenuSmall extends StatelessWidget {
       },
       child: Icon(icon, size: 60, color: Color(0xff1a1a1a),),
       style: ElevatedButton.styleFrom(
-        shadowColor: Colors.grey,
+        shadowColor: Colors.black.withOpacity(0.4),
         shape: CircleBorder(),
         padding: EdgeInsets.all(24),
         backgroundColor: Color(0xff45bac4),
