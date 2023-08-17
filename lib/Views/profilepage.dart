@@ -5,7 +5,7 @@ import 'Widgets/awesomegradient.dart';
 import 'Widgets/stars.dart';
 import 'Widgets/cardsprofilestats.dart';
 import 'Widgets/interestsortags.dart';
-import 'Classes/user.dart';
+import 'Classes/User.dart';
 import 'Widgets/avatarcontainer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
