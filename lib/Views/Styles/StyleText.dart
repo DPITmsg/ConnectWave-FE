@@ -6,7 +6,7 @@ TextStyle Text_Detailed_Page_Regular = TextStyle(
   color: Color_White,
 );
 
-TextStyle Text_Detailed_Page_Bold= TextStyle(
+TextStyle Text_Detailed_Page_Bold = TextStyle(
   fontSize: 18.0,
   fontWeight: FontWeight.bold,
   color: Color_White,
@@ -29,8 +29,27 @@ TextStyle Text_Trending_Stats = TextStyle(
   color: Color_Light_Blue,
 );
 
+TextStyle Text_AddActivity_Title = TextStyle(
+    fontSize: 26,
+    color: Color_Dark_Gray,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none);
+
+TextStyle Text_AddActivty_Small = TextStyle(
+    fontSize: 22,
+    color: Color_Dark_Gray,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none);
+
+TextStyle Text_AddActivity_Small_Input = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+  color: Color_Dark_Gray,
+  decoration: TextDecoration.underline,
+);
+
 TextStyle Text_Widget_Buttons_Blue = TextStyle(
-  fontSize: 20.0,
+  fontSize: 18.0,
   fontWeight: FontWeight.bold,
   color: Color_Light_Blue,
 );
@@ -40,21 +59,25 @@ TextStyle Text_Widget_Buttons_White = TextStyle(
   fontWeight: FontWeight.bold,
   color: Color_White,
 );
-TextStyle Text_Widget_Buttons_White_Small =TextStyle(
-    color: Color_White,
-    fontSize: 18,
-    fontWeight: FontWeight.bold
-);
+TextStyle Text_Widget_Buttons_White_Small =
+    TextStyle(color: Color_White, fontSize: 18, fontWeight: FontWeight.bold);
 
-TextStyle Text_Widget_SmallButton_Gray = TextStyle(
-color: Color_Gray,
-fontSize: 12.0,
-fontWeight: FontWeight.bold
-);
+TextStyle Text_Widget_SmallButton_Gray =
+    TextStyle(color: Color_Gray, fontSize: 12.0, fontWeight: FontWeight.bold);
+
+TextStyle Text_Widget_FriendName =
+    TextStyle(color: Color_White, fontSize: 20.0, fontWeight: FontWeight.bold);
 
 TextStyle Text_Title_Top = TextStyle(
   fontSize: 24.0,
   fontWeight: FontWeight.bold,
   decoration: TextDecoration.underline,
   color: Color_Dark_Gray,
+);
+
+TextStyle Text_Title_Top_FriendsList = TextStyle(
+  color: Color_Dark_Gray,
+  fontSize: 32.0,
+  fontWeight: FontWeight.bold,
+  decoration: TextDecoration.underline,
 );

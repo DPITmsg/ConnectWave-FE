@@ -16,42 +16,21 @@ class WidgetBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(2, 0, 2, 0),
-      width: 344,
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: 0,
-            child: Center(
-              child: SizedBox(
-                width: 343,
-                height: 120,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [this.color_primary, this.color_secondary]
-                    ),
-                    boxShadow: [
-                      Shadow_Widget_Box
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(18, 14, 11, 10),
-                    child: this.child,
-                  ),
-                ),
-              ),
-            ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [this.color_primary, this.color_secondary]
           ),
-        ],
-      ),
+          boxShadow: [
+            Shadow_Widget_Box
+          ],
+        ),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(15, 20, 12, 20),
+          child: this.child,
+        ),
     );
   }
 }

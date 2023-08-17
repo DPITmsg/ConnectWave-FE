@@ -3,6 +3,7 @@ import 'package:my_project/Views/Classes/Trending.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'Widgets/cardmenusmall.dart';
 import 'Widgets/cardmenuaddactivity.dart';
+import 'add_activity_page.dart';
 import 'profilepage.dart';
 import 'Widgets/foryou.dart';
 import 'Widgets/cardmenubig.dart';
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Expanded(flex:1,child: CardMenuAddActivity()),
+                const Expanded(flex:1,child: CardMenuAddActivity(add_activity_page())),
                 const InkWell(child: ForYou(Test())),
               ],
             ),

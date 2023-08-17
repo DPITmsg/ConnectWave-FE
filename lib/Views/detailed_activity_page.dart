@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'Classes/Activity.dart';
-import 'Styles/Backgrounds/Background_1.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBackgroundBox.dart';
@@ -25,182 +24,190 @@ class detailed_activity_page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        //FRAME OF PHONE
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-          //LATER ADD MAP API INSTEAD OF IMAGE
-          Positioned(
-            top: 0,
-            child: SizedBox(
-              width: 530,
-              height: 450,
-              child: Image.asset('assets/map.png'),
+          Expanded(
+            child: Column(
+              children: [Image.asset('assets/map.png'), SizedBox()],
             ),
           ),
-          //"CARD" FRAME
-
           WidgetBackgroundBox(
-            Stack(
-              children: <Widget>[
-                Background_1(),
-                Positioned(
-                  left: 35,
-                  top: 25,
-                  child: Container(
-                    width: 343,
-                    child: Text(
-                      activity.title,
-                      softWrap: true,
-                      style: Text_Title_Top
-                    ),
-                  ),
-                ),
-                SizedBox(height: 30),
-                Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(height: 95),
-                      WidgetBox(
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(activity.title, softWrap: true, style: Text_Title_Top),
+
+                  Expanded(
+                    flex: 7,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                      child: Container(
+                        child: Column(
                           children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'Creat de:  ',
-                                  style: Text_Detailed_Page_Regular,
-                                ),
-                                Text(
-                                  activity.author,
-                                  style: Text_Detailed_Page_Bold
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Data: ',
-                                  style: Text_Detailed_Page_Regular
-                                ),
-                                Text(
-                                  activity.date,
-                                  style: Text_Detailed_Page_Bold
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Locatie: ',
-                                  style: Text_Detailed_Page_Regular
-                                ),
-                                Text(
-                                  activity.location,
-                                  softWrap: true,
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color_White,
+                            Expanded(
+                                child:WidgetBox(
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Creat de:  ',
+                                            style: Text_Detailed_Page_Regular,
+                                          ),
+                                          Text(
+                                              activity.author,
+                                              style: Text_Detailed_Page_Bold
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                              'Data: ',
+                                              style: Text_Detailed_Page_Regular
+                                          ),
+                                          Text(
+                                              activity.date,
+                                              style: Text_Detailed_Page_Bold
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                              'Locatie: ',
+                                              style: Text_Detailed_Page_Regular
+                                          ),
+                                          Text(
+                                            activity.location,
+                                            softWrap: true,
+                                            style: TextStyle(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color_White,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                              'Participanti necesari: ',
+                                              style: Text_Detailed_Page_Regular
+                                          ),
+                                          Text(
+                                              activity.number_participants
+                                                  .toString(),
+                                              style: Text_Detailed_Page_Bold
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
+                                  Color_Blue,
+                                  Color_Light_Blue,
                                 ),
-                              ],
+                              ),
+
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                                  child: WidgetBox(
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                              'Descriere: ',
+                                              style: Text_Detailed_Page_Bold
+                                          ),
+                                          Text(
+                                              activity.descrpition,
+                                              softWrap: true,
+                                              style: Text_Detailed_Page_Regular
+                                          ),
+                                        ],
+                                      ),
+                                      Color_Light_Blue,
+                                      Color_Blue
+                                  ),
+                              ),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Participanti necesari: ',
-                                  style: Text_Detailed_Page_Regular
-                                ),
-                                Text(
-                                  activity.number_participants
-                                      .toString(),
-                                  style: Text_Detailed_Page_Bold
-                                ),
-                              ],
+
+                            Expanded(
+                              child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                                  child: WidgetBox(
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage:
+                                            AssetImage('assets/yoda.pfp.jpg'),
+                                            radius: 45.0,
+                                          ),
+                                          SizedBox(width: 10.0),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                      'Nume: ',
+                                                      style: Text_Detailed_Page_Bold
+                                                  ),
+                                                  Text(
+                                                      activity.author,
+                                                      style: Text_Detailed_Page_Bold
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                      'Activitati completate: ',
+                                                      style: Text_Detailed_Page_Bold
+                                                  ),
+                                                  Text(
+                                                      'TBD',
+                                                      style: Text_Detailed_Page_Bold
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      Color_Blue,
+                                      Color_Light_Blue
+                                  ),
+                              ),
                             ),
                           ],
                         ),
-                        Color_Blue,
-                        Color_Light_Blue,
                       ),
-                      SizedBox(height: 10),
-                      WidgetBox(
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Descriere: ',
-                                style: Text_Detailed_Page_Bold
-                              ),
-                              Text(
-                                activity.descrpition,
-                                softWrap: true,
-                                style: Text_Detailed_Page_Regular
-                              ),
-                            ],
-                          ),
-                          Color_Light_Blue,
-                          Color_Blue
-                      ),
-                      SizedBox(height: 10),
-                      WidgetBox(
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/yoda.pfp.jpg'),
-                                radius: 45.0,
-                              ),
-                              SizedBox(width: 10.0),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Nume: ',
-                                        style: Text_Detailed_Page_Bold
-                                      ),
-                                      Text(
-                                        activity.author,
-                                        style: Text_Detailed_Page_Bold
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Activitati completate: ',
-                                        style: Text_Detailed_Page_Bold
-                                      ),
-                                      Text(
-                                        'TBD',
-                                        style: Text_Detailed_Page_Bold
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Color_Blue,
-                          Color_Light_Blue
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(25,15,25,0),
-                        child: Row(
-                          children: <Widget>[
-                            WidgetButton(
-                              Row(
+                    ),
+                  ),
+
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Expanded(
+                          child: WidgetButton(
+                            Center(
+                              child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Join ',
-                                    style: Text_Widget_Buttons_Blue
+                                      'Join ',
+                                      style: Text_Widget_Buttons_Blue
                                   ),
                                   Icon(
                                     Icons.add_circle,
@@ -208,25 +215,28 @@ class detailed_activity_page extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              Color_Dark_Gray,
                             ),
-                            SizedBox(width: 20.0),
-                            WidgetButton(
-                              Center(
-                                child: Text(
+                            Color_Dark_Gray,
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        Expanded(
+                          child: WidgetButton(
+                            Center(
+                              child: Text(
                                   "I'm interested",
                                   style: Text_Widget_Buttons_Blue
-                                ),
                               ),
-                              Color_Dark_Gray,
                             ),
-                          ],
+                            Color_Dark_Gray,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+
+                ],
+              ),
             ),
           ),
         ]),

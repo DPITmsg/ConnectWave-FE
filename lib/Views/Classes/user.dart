@@ -31,14 +31,14 @@ class User {
 
   User(
       {required name,
-      required rating,
-      required activicompleted,
-      required friends,
-      required favcategory,
-      required about,
-      required interests,
-      required tags,
-      required friends_list})
+        required rating,
+        required activicompleted,
+        required friends,
+        required favcategory,
+        required about,
+        required interests,
+        required tags,
+        required friends_list})
       : _name = name,
         _rating = rating,
         _activicompleted = activicompleted,
@@ -95,7 +95,7 @@ class User {
 
   int get activicompleted => _activicompleted;
 
- double get rating => _rating;
+  double get rating => _rating;
 
   set tags(List<String> value) {
     _tags = value;

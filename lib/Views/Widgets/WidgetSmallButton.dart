@@ -13,16 +13,17 @@ class WidgetSmallButton extends StatelessWidget {
     return InkWell(
       onTap: (){},
       child: Container(
-        width: 90,
-        height: 40,
         decoration: BoxDecoration(
           color: Color_Dark_Gray,
           border: Border.all(color: Color_Gray),
           boxShadow: [Shadow_Widget_Box],
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: Center(
-          child: this.widget,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: this.widget,
+          ),
         ),
       ),
     );
