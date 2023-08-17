@@ -133,6 +133,7 @@ class trending_page extends StatelessWidget {
                             width: 20,
                           ),
                           Expanded(
+                            flex: 1,
                             child: WidgetButton(
                               Center(
                                 child: Text("Explore more",

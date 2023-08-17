@@ -35,12 +35,13 @@ class WidgetBoxFriend extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                   child: Container(
                       child: Text(this.text, style: Text_Widget_FriendName)),
                 ),
               ),
               Expanded(
+                flex: 1,
                 child: WidgetSmallButton(
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,7 +51,7 @@ class WidgetBoxFriend extends StatelessWidget {
                           'Friends',
                           style: Text_Widget_SmallButton_Gray
                       ),
-                      Icon(Icons.check, color: Color_Gray, size: 20,)
+                      Expanded(child: Icon(Icons.check, color: Color_Gray))
                     ],
                   ),
                 ),

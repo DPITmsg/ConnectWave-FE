@@ -49,7 +49,7 @@ TextStyle Text_AddActivity_Small_Input = TextStyle(
 );
 
 TextStyle Text_Widget_Buttons_Blue = TextStyle(
-  fontSize: 20.0,
+  fontSize: 18.0,
   fontWeight: FontWeight.bold,
   color: Color_Light_Blue,
 );
