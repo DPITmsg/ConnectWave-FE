@@ -54,18 +54,17 @@ class _add_activity_pageState extends State<add_activity_page> {
   }
 
   void selectTime() {
-    showTimePicker(context: context,
-        builder: (context, child) => Theme(
-          data:ThemeData().copyWith(
-            colorScheme: ColorScheme.dark(
-                primary: Color_Blue,
-                surface: Color_Gray,
-                onSurface: Color_Dark_Gray
-            )
-          ),
-          child: child!,
-        ),
-         initialTime: TimeOfDay.now())
+    showTimePicker(
+            context: context,
+            builder: (context, child) => Theme(
+                  data: ThemeData().copyWith(
+                      colorScheme: ColorScheme.dark(
+                          primary: Color_Blue,
+                          surface: Color_Gray,
+                          onSurface: Color_Dark_Gray)),
+                  child: child!,
+                ),
+            initialTime: TimeOfDay.now())
         .then((pickedTime) {
       if (pickedTime == null) {
         return;
@@ -90,14 +89,11 @@ class _add_activity_pageState extends State<add_activity_page> {
             height: MediaQuery.of(context).size.height,
             child: Stack(
               children: [
-                Expanded(
-                  child: Column(
+                Column(
                     children: [Image.asset('assets/map.png'), SizedBox()],
                   ),
-                ),
                 WidgetBackgroundBox(Padding(
                   padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
-                  child: Expanded(
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -161,7 +157,6 @@ class _add_activity_pageState extends State<add_activity_page> {
                                   Row(
                                     children: [
                                       Expanded(
-                                        flex: 3,
                                         child: TextFormField(
                                           onTap: selectDate,
                                           validator: MinLengthValidator(1,
@@ -177,51 +172,28 @@ class _add_activity_pageState extends State<add_activity_page> {
                                                 Icons.calendar_today,
                                                 color: Color_Dark_Gray,
                                               ),
-                                              suffixIcon: IconButton(
-                                                onPressed: () {
-                                                  activity_date.clear();
-                                                },
-                                                icon: Icon(
-                                                  Icons.clear,
-                                                  color: Colors.red,
-                                                ),
-                                              )),
-                                        ),
-                                      ),
-                                      Expanded(child: SizedBox()),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 3,
-                                        child: TextFormField(
-                                          onTap: selectTime,
-                                          validator: MinLengthValidator(1,
-                                              errorText: 'Required'),
-                                          readOnly: true,
-                                          controller: activity_time,
-                                          style: Text_AddActivity_Small_Input,
-                                          decoration: InputDecoration(
-                                              hintText: '+Time',
-                                              hintStyle: Text_AddActivty_Small,
-                                              border: InputBorder.none,
-                                              prefixIcon: Icon(
-                                                Icons.access_time_filled,
-                                                color: Color_Dark_Gray,
                                               ),
-                                              suffixIcon: IconButton(
-                                                onPressed: () {
-                                                  activity_time.clear();
-                                                },
-                                                icon: Icon(
-                                                  Icons.clear,
-                                                  color: Colors.red,
-                                                ),
-                                              )),
                                         ),
                                       ),
-                                      Expanded(child: SizedBox()),
+                                      Expanded(
+                                      child: TextFormField(
+                                        onTap: selectTime,
+                                        validator: MinLengthValidator(1,
+                                            errorText: 'Required'),
+                                        readOnly: true,
+                                        controller: activity_time,
+                                        style: Text_AddActivity_Small_Input,
+                                        decoration: InputDecoration(
+                                          hintText: '+Time',
+                                          hintStyle: Text_AddActivty_Small,
+                                          border: InputBorder.none,
+                                          prefixIcon: Icon(
+                                            Icons.access_time_filled,
+                                            color: Color_Dark_Gray,
+                                          ),
+                                        ),
+                                      ),
+                                      )
                                     ],
                                   ),
                                   Row(
@@ -250,22 +222,17 @@ class _add_activity_pageState extends State<add_activity_page> {
                                                 Icons.person_rounded,
                                                 color: Color_Dark_Gray,
                                               ),
-                                              suffixIcon: IconButton(
-                                                onPressed: () {
-                                                  activity_nr_participants
-                                                      .clear();
-                                                },
-                                                icon: Icon(
-                                                  Icons.clear,
-                                                  color: Colors.red,
-                                                ),
-                                              )),
+                                             ),
                                         ),
                                       ),
                                       Expanded(child: SizedBox()),
                                     ],
                                   ),
-                                  Container(width: 40, height: 400, color: Colors.blueGrey,)
+                                  Container(
+                                    width: 40,
+                                    height: 400,
+                                    color: Colors.blueGrey,
+                                  )
                                 ],
                               ),
                             ),
@@ -331,7 +298,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                       ),
                     ),
                   ),
-                )),
+                ),
               ],
             ),
           )),
