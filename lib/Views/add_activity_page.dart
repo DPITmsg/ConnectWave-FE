@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
+
+import 'package:textfield_tags/textfield_tags.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 import 'Styles/Colors.dart';
@@ -26,6 +28,8 @@ class _add_activity_pageState extends State<add_activity_page> {
   TextEditingController activity_date = TextEditingController();
   TextEditingController activity_time = TextEditingController();
   TextEditingController activity_nr_participants = TextEditingController();
+  TextEditingController activity_description = TextEditingController();
+  List<String> activity_tags = [];
 
   void selectDate() {
     showDatePicker(
@@ -48,7 +52,7 @@ class _add_activity_pageState extends State<add_activity_page> {
         return;
       }
       setState(() {
-        activity_date.text = DateFormat.yMMMd().format(pickedDate);
+        activity_date.text = DateFormat("dd.MM.yyyy").format(pickedDate);
       });
     });
   }
@@ -123,7 +127,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           },
                                           icon: Icon(
                                             Icons.clear,
-                                            color: Colors.red,
+                                            color: Color_Blue,
                                           ),
                                         )),
                                   ),
@@ -150,7 +154,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           },
                                           icon: Icon(
                                             Icons.clear,
-                                            color: Colors.red,
+                                            color: Color_Blue,
                                           ),
                                         )),
                                   ),
@@ -169,7 +173,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               hintStyle: Text_AddActivty_Small,
                                               border: InputBorder.none,
                                               prefixIcon: Icon(
-                                                Icons.calendar_today,
+                                                Icons.calendar_month_rounded,
                                                 color: Color_Dark_Gray,
                                               ),
                                               ),
@@ -228,11 +232,66 @@ class _add_activity_pageState extends State<add_activity_page> {
                                       Expanded(child: SizedBox()),
                                     ],
                                   ),
-                                  Container(
-                                    width: 40,
-                                    height: 400,
-                                    color: Colors.blueGrey,
-                                  )
+
+                                  TextFormField(
+                                    controller: activity_description,
+                                    validator: MultiValidator([
+                                      MinLengthValidator(60, errorText: 'Make description longer'),
+                                    ]),
+                                    maxLength: 300,
+                                    maxLines: 7,
+                                    autocorrect: false,
+                                    style: Text_AddActivity_Small_Description,
+                                    decoration: InputDecoration(
+                                      hintText: '+Description',
+                                      hintStyle: Text_AddActivty_Small,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(35),
+                                      ),
+                                        suffixIcon: IconButton(
+                                          onPressed: () {
+                                            activity_description.clear();
+                                          },
+                                          icon: Icon(
+                                            Icons.clear,
+                                            color: Color_Blue,
+                                          ),
+                                        )
+                                    ),
+                                  ),
+
+                                  TextFieldTags(
+                                    textSeparators: [' ',','],
+                                    initialTags: activity_tags,
+                                    onTag: (tag){
+                                      activity_tags.add(tag);
+                                    },
+                                    onDelete: (tag){
+                                      activity_tags.remove(tag);
+                                    },
+                                    validator: (tag){
+                                      if(activity_tags.contains(tag))
+                                        return 'Tag cannot be entered twice';
+                                      else if(tag.length < 3)
+                                        return 'Tag has to be at least 3 charac. long';
+                                      return null;
+                                    },
+                                    tagsStyler: TagsStyler(
+                                        tagTextPadding: EdgeInsets.all(1.3),//evil gang >; )
+                                        tagTextStyle: TextStyle(fontWeight: FontWeight.bold),
+                                        tagDecoration: BoxDecoration(color: Color_Light_Blue, borderRadius: BorderRadius.circular(6), ),
+                                        tagCancelIcon: Icon(Icons.clear, color: Color_Blue),
+                                        tagPadding: EdgeInsets.all(6.66)//evil gang >:{ )
+                                    ),
+                                    textFieldStyler: TextFieldStyler(
+                                      hintText: '+Got tags ?',
+                                        hintStyle: Text_AddActivty_Small,
+                                        textFieldBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(13)//evil gang >: )
+                                        )
+                                    ),
+                                  ),
+
                                 ],
                               ),
                             ),
