@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 import 'package:intl/intl.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 
-import 'package:textfield_tags/textfield_tags.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
 
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
-
-bool isDate(String str) {
-  return true;
-  //need to add DateTime check :<
-}
 
 class add_activity_page extends StatefulWidget {
   const add_activity_page({super.key});
@@ -30,13 +26,16 @@ class _add_activity_pageState extends State<add_activity_page> {
   TextEditingController activity_nr_participants = TextEditingController();
   TextEditingController activity_description = TextEditingController();
   List<String> activity_tags = [];
+  bool isVisible = false;
+
+  final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
 
   void selectDate() {
     showDatePicker(
             context: context,
             builder: (context, child) => Theme(
                   data: ThemeData().copyWith(
-                      colorScheme: ColorScheme.dark(
+                      colorScheme: const ColorScheme.dark(
                           primary: Color_Blue,
                           onPrimary: Color_White,
                           surface: Color_Blue,
@@ -46,7 +45,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                 ),
             initialDate: DateTime.now(),
             firstDate: DateTime.now(),
-            lastDate: DateTime.now().add(Duration(days: 365)))
+            lastDate: DateTime.now().add(const Duration(days: 365)))
         .then((pickedDate) {
       if (pickedDate == null) {
         return;
@@ -62,7 +61,7 @@ class _add_activity_pageState extends State<add_activity_page> {
             context: context,
             builder: (context, child) => Theme(
                   data: ThemeData().copyWith(
-                      colorScheme: ColorScheme.dark(
+                      colorScheme: const ColorScheme.dark(
                           primary: Color_Blue,
                           surface: Color_Gray,
                           onSurface: Color_Dark_Gray)),
@@ -74,7 +73,7 @@ class _add_activity_pageState extends State<add_activity_page> {
         return;
       }
       setState(() {
-        final now = new DateTime.now();
+        final now = DateTime.now();
         DateTime aux = DateTime(
             now.year, now.month, now.day, pickedTime.hour, pickedTime.minute);
         activity_time.text = DateFormat.Hm().format(aux);
@@ -94,10 +93,11 @@ class _add_activity_pageState extends State<add_activity_page> {
             child: Stack(
               children: [
                 Column(
-                    children: [Image.asset('assets/map.png'), SizedBox()],
-                  ),
-                WidgetBackgroundBox(Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
+                  children: [Image.asset('assets/map.png'), const SizedBox()],
+                ),
+                WidgetBackgroundBox(
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -125,7 +125,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           onPressed: () {
                                             activity_title.clear();
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.clear,
                                             color: Color_Blue,
                                           ),
@@ -144,7 +144,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                         hintText: '+Adress',
                                         hintStyle: Text_AddActivty_Small,
                                         border: InputBorder.none,
-                                        prefixIcon: Icon(
+                                        prefixIcon: const Icon(
                                           Icons.location_pin,
                                           color: Color_Dark_Gray,
                                         ),
@@ -152,7 +152,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           onPressed: () {
                                             activity_location.clear();
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.clear,
                                             color: Color_Blue,
                                           ),
@@ -169,34 +169,34 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           controller: activity_date,
                                           style: Text_AddActivity_Small_Input,
                                           decoration: InputDecoration(
-                                              hintText: '+Date',
-                                              hintStyle: Text_AddActivty_Small,
-                                              border: InputBorder.none,
-                                              prefixIcon: Icon(
-                                                Icons.calendar_month_rounded,
-                                                color: Color_Dark_Gray,
-                                              ),
-                                              ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                      child: TextFormField(
-                                        onTap: selectTime,
-                                        validator: MinLengthValidator(1,
-                                            errorText: 'Required'),
-                                        readOnly: true,
-                                        controller: activity_time,
-                                        style: Text_AddActivity_Small_Input,
-                                        decoration: InputDecoration(
-                                          hintText: '+Time',
-                                          hintStyle: Text_AddActivty_Small,
-                                          border: InputBorder.none,
-                                          prefixIcon: Icon(
-                                            Icons.access_time_filled,
-                                            color: Color_Dark_Gray,
+                                            hintText: '+Date',
+                                            hintStyle: Text_AddActivty_Small,
+                                            border: InputBorder.none,
+                                            prefixIcon: const Icon(
+                                              Icons.calendar_month_rounded,
+                                              color: Color_Dark_Gray,
+                                            ),
                                           ),
                                         ),
                                       ),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onTap: selectTime,
+                                          validator: MinLengthValidator(1,
+                                              errorText: 'Required'),
+                                          readOnly: true,
+                                          controller: activity_time,
+                                          style: Text_AddActivity_Small_Input,
+                                          decoration: InputDecoration(
+                                            hintText: '+Time',
+                                            hintStyle: Text_AddActivty_Small,
+                                            border: InputBorder.none,
+                                            prefixIcon: const Icon(
+                                              Icons.access_time_filled,
+                                              color: Color_Dark_Gray,
+                                            ),
+                                          ),
+                                        ),
                                       )
                                     ],
                                   ),
@@ -219,79 +219,115 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           style: Text_AddActivity_Small_Input,
                                           autocorrect: false,
                                           decoration: InputDecoration(
-                                              hintText: '+Nr. participants',
-                                              hintStyle: Text_AddActivty_Small,
-                                              border: InputBorder.none,
-                                              prefixIcon: Icon(
-                                                Icons.person_rounded,
-                                                color: Color_Dark_Gray,
-                                              ),
-                                             ),
+                                            hintText: '+Nr. participants',
+                                            hintStyle: Text_AddActivty_Small,
+                                            border: InputBorder.none,
+                                            prefixIcon: const Icon(
+                                              Icons.person_rounded,
+                                              color: Color_Dark_Gray,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                      Expanded(child: SizedBox()),
+                                      const Expanded(child: SizedBox()),
                                     ],
                                   ),
-
                                   TextFormField(
                                     controller: activity_description,
                                     validator: MultiValidator([
-                                      MinLengthValidator(60, errorText: 'Make description longer'),
+                                      MinLengthValidator(60,
+                                          errorText: 'Make description longer'),
                                     ]),
                                     maxLength: 300,
                                     maxLines: 7,
                                     autocorrect: false,
                                     style: Text_AddActivity_Small_Description,
                                     decoration: InputDecoration(
-                                      hintText: '+Description',
-                                      hintStyle: Text_AddActivty_Small,
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(35),
-                                      ),
+                                        hintText: '+Description',
+                                        hintStyle: Text_AddActivty_Small,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(35),
+                                        ),
                                         suffixIcon: IconButton(
                                           onPressed: () {
                                             activity_description.clear();
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.clear,
                                             color: Color_Blue,
                                           ),
-                                        )
-                                    ),
+                                        )),
                                   ),
-
-                                  TextFieldTags(
-                                    textSeparators: [' ',','],
-                                    initialTags: activity_tags,
-                                    onTag: (tag){
-                                      activity_tags.add(tag);
-                                    },
-                                    onDelete: (tag){
-                                      activity_tags.remove(tag);
-                                    },
-                                    validator: (tag){
-                                      if(activity_tags.contains(tag))
-                                        return 'Tag cannot be entered twice';
-                                      else if(tag.length < 3)
-                                        return 'Tag has to be at least 3 charac. long';
-                                      return null;
-                                    },
-                                    tagsStyler: TagsStyler(
-                                        tagTextPadding: EdgeInsets.all(1.3),//evil gang >; )
-                                        tagTextStyle: TextStyle(fontWeight: FontWeight.bold),
-                                        tagDecoration: BoxDecoration(color: Color_Light_Blue, borderRadius: BorderRadius.circular(6), ),
-                                        tagCancelIcon: Icon(Icons.clear, color: Color_Blue),
-                                        tagPadding: EdgeInsets.all(6.66)//evil gang >:{ )
-                                    ),
-                                    textFieldStyler: TextFieldStyler(
-                                      hintText: '+Got tags ?',
-                                        hintStyle: Text_AddActivty_Small,
-                                        textFieldBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(13)//evil gang >: )
-                                        )
-                                    ),
+                                  Tags(
+                                    key: _tagStateKey,
+                                    textField: TagsTextField(
+                                        autofocus: false,
+                                        width: 1000,
+                                        hintText: '+Tags',
+                                        hintTextColor: Color_Dark_Gray,
+                                        inputDecoration: InputDecoration(
+                                          hintStyle: Text_AddActivty_Small,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(35),
+                                          ),
+                                        ),
+                                        textStyle: Text_AddActivty_Small,
+                                        onSubmitted: (String str) {
+                                          setState(() {
+                                            if(str.length < 3) {
+                                              return;
+                                            } else if (!activity_tags.contains(str)) {
+                                              activity_tags.add(str);
+                                            }
+                                          });
+                                        }),
                                   ),
-
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Visibility(
+                                        visible: isVisible,
+                                        child: Text(
+                                          'Add at least one tag',
+                                          style: TextStyle(
+                                              color: Colors.red[700],
+                                              fontSize: 12),
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    height: 11,
+                                  ),
+                                  Wrap(
+                                    direction: Axis.horizontal,
+                                    alignment: WrapAlignment.start,
+                                    spacing: 8,
+                                    runSpacing: 8,
+                                    children: activity_tags.map((tag) {
+                                      return IntrinsicWidth(
+                                        child: WidgetTagsBox(Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              tag,
+                                              style: Text_Tag_Widget
+                                            ),
+                                            IconButton(
+                                              onPressed: () {
+                                                activity_tags.remove(tag);
+                                                setState(() {});
+                                              },
+                                              icon: const Icon(Icons.clear, color: Color_Dark_Gray,),
+                                            )
+                                          ],
+                                        )),
+                                      );
+                                    }).toList(),
+                                  ),
+                                  const SizedBox(height: 200)
                                 ],
                               ),
                             ),
@@ -303,10 +339,17 @@ class _add_activity_pageState extends State<add_activity_page> {
                                 Expanded(
                                   child: InkWell(
                                     onTap: () {
+                                      setState(() {
+                                        if (activity_tags.isEmpty) {
+                                          isVisible = true;
+                                        } else {
+                                          isVisible = false;
+                                        }
+                                      });
                                       if (_formKey.currentState!.validate()) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          SnackBar(
+                                          const SnackBar(
                                             backgroundColor: Colors.white,
                                             content: Text(
                                               'Validation Successful',
@@ -327,7 +370,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Text('Create',
                                                 style:
                                                     Text_Widget_Buttons_Blue),
-                                            Icon(
+                                            const Icon(
                                               Icons.add_circle,
                                               color: Color_Light_Blue,
                                             )
@@ -338,7 +381,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 20,
                                 ),
                                 Expanded(
