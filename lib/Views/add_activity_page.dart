@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
 
 import 'Styles/Colors.dart';
@@ -19,16 +20,22 @@ class add_activity_page extends StatefulWidget {
 
 class _add_activity_pageState extends State<add_activity_page> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
+
   TextEditingController activity_title = TextEditingController();
   TextEditingController activity_location = TextEditingController();
   TextEditingController activity_date = TextEditingController();
   TextEditingController activity_time = TextEditingController();
   TextEditingController activity_nr_participants = TextEditingController();
   TextEditingController activity_description = TextEditingController();
+  String activity_category = '';
   List<String> activity_tags = [];
-  bool isVisible = false;
 
-  final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
+  List<String> categories = ['Sport', 'Gaming', 'Services', 'a', 'a','a','a'];
+
+  bool error_tags = false;
+  bool error_category = false;
+
 
   void selectDate() {
     showDatePicker(
@@ -259,6 +266,35 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           ),
                                         )),
                                   ),
+                                  DropdownMenu(
+                                    inputDecorationTheme: InputDecorationTheme(
+                                      border: OutlineInputBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(35),
+                                      ),
+                                      hintStyle: Text_AddActivty_Small,
+                                    ),
+                                    menuStyle: MenuStyle(
+                                      backgroundColor: MaterialStateProperty.all<Color>(Color_Gray),
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width - 50,
+                                    hintText: '+Category',
+                                    textStyle: Text_AddActivty_Small,
+                                    dropdownMenuEntries: categories
+                                        .map<DropdownMenuEntry<String>>(
+                                            (String value) {
+                                      return DropdownMenuEntry<String>(
+                                          value: value, label: value);
+                                    }).toList(),
+                                    onSelected: (String? value) {
+                                      setState(() {
+                                        activity_category = value!;
+                                      });
+                                    },
+                                  ),
+                                  WidgetErrorTextSmall('Select a category', error_category),
+                                  const SizedBox(height:15),
                                   Tags(
                                     key: _tagStateKey,
                                     textField: TagsTextField(
@@ -276,56 +312,50 @@ class _add_activity_pageState extends State<add_activity_page> {
                                         textStyle: Text_AddActivty_Small,
                                         onSubmitted: (String str) {
                                           setState(() {
-                                            if(str.length < 3) {
+                                            if (str.length < 3) {
                                               return;
-                                            } else if (!activity_tags.contains(str)) {
+                                            } else if (!activity_tags
+                                                .contains(str)) {
                                               activity_tags.add(str);
                                             }
                                           });
                                         }),
                                   ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Visibility(
-                                        visible: isVisible,
-                                        child: Text(
-                                          'Add at least one tag',
-                                          style: TextStyle(
-                                              color: Colors.red[700],
-                                              fontSize: 12),
-                                        )),
-                                  ),
+                                  WidgetErrorTextSmall('Add at least one tag', error_tags),
                                   const SizedBox(
                                     height: 11,
                                   ),
-                                  Wrap(
-                                    direction: Axis.horizontal,
-                                    alignment: WrapAlignment.start,
-                                    spacing: 8,
-                                    runSpacing: 8,
-                                    children: activity_tags.map((tag) {
-                                      return IntrinsicWidth(
-                                        child: WidgetTagsBox(Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              tag,
-                                              style: Text_Tag_Widget
-                                            ),
-                                            IconButton(
-                                              onPressed: () {
-                                                activity_tags.remove(tag);
-                                                setState(() {});
-                                              },
-                                              icon: const Icon(Icons.clear, color: Color_Dark_Gray,),
-                                            )
-                                          ],
-                                        )),
-                                      );
-                                    }).toList(),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Wrap(
+                                      direction: Axis.horizontal,
+                                      alignment: WrapAlignment.start,
+                                      spacing: 8,
+                                      runSpacing: 8,
+                                      children: activity_tags.map((tag) {
+                                        return IntrinsicWidth(
+                                          child: WidgetTagsBox(Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Text(tag, style: Text_Tag_Widget),
+                                              IconButton(
+                                                onPressed: () {
+                                                  activity_tags.remove(tag);
+                                                  setState(() {});
+                                                },
+                                                icon: const Icon(
+                                                  Icons.clear,
+                                                  color: Color_Dark_Gray,
+                                                ),
+                                              )
+                                            ],
+                                          )),
+                                        );
+                                      }).toList(),
+                                    ),
                                   ),
                                   const SizedBox(height: 200)
                                 ],
@@ -341,24 +371,33 @@ class _add_activity_pageState extends State<add_activity_page> {
                                     onTap: () {
                                       setState(() {
                                         if (activity_tags.isEmpty) {
-                                          isVisible = true;
+                                          error_tags = true;
                                         } else {
-                                          isVisible = false;
+                                          error_tags = false;
                                         }
                                       });
-                                      if (_formKey.currentState!.validate()) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            backgroundColor: Colors.white,
-                                            content: Text(
-                                              'Validation Successful',
-                                              style: TextStyle(
-                                                color: Colors.black,
+                                      setState(() {
+                                        if(activity_category.isEmpty){
+                                          error_category = true;
+                                        } else{
+                                          error_category = false;
+                                        }
+                                      });
+                                      if(error_tags != true && error_category != true){
+                                        if (_formKey.currentState!.validate() ) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              backgroundColor: Colors.white,
+                                              content: Text(
+                                                'Validation Successful',
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
+                                          );
+                                        }
                                       }
                                     },
                                     child: WidgetButton(
