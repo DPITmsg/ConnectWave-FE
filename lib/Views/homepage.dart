@@ -11,6 +11,7 @@ import 'Widgets/test.dart';
 import 'package:my_project/Views/activityhistory.dart';
 import 'friends_list_page.dart';
 import 'trending_page.dart';
+import 'search_activity_map.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -63,8 +64,8 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      InkWell(onTap: () {}, child: CardMenuBig(Icons.share_location)),
-                      InkWell(onTap: () {}, child: CardMenuBig(Icons.connect_without_contact)),
+                      CardMenuBig(Icons.share_location, SearchActivityMap()),
+                      CardMenuBig(Icons.connect_without_contact, Test()),
                     ],
                   ),
                 ),

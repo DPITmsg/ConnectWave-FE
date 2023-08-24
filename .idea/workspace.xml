@@ -4,23 +4,59 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="">
-=======
-    <list default="true" id="5b35439b-e80c-43c5-ac9d-2ba0008acf3f" name="Changes" comment="">
->>>>>>> Stashed changes
+      <change afterPath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/darius_mock_models/location_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_singular_object.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ConnectWave-FE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ConnectWave-FE.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/Address.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/Address.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/cardmenubig.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/cardmenubig.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activityhistory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/darius_mock_models/remote_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/android/app/build.gradle">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/lib/homepage/Widgets/cardmenuaddactivity.dart" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

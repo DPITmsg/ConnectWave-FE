@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Widgets/awesomegradient.dart';
 import 'Widgets/stars.dart';
 import 'Widgets/cardsprofilestats.dart';
 import 'Widgets/interestsortags.dart';
 import 'Classes/User.dart';
 import 'Widgets/avatarcontainer.dart';
-import '../darius_mock_models/remote_service.dart';
+import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Widgets/test.dart';
 import 'friends_list_page.dart';
 
