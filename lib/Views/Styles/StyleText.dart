@@ -81,3 +81,15 @@ TextStyle Text_Title_Top_FriendsList = TextStyle(
   fontWeight: FontWeight.bold,
   decoration: TextDecoration.underline,
 );
+
+TextStyle Text_Ongoing_Activities_v1 = TextStyle(
+  color: Color_Dark_Gray,
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle Text_Ongoing_Activities_v2 = TextStyle(
+  color: Color_Blue,
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+);

@@ -12,6 +12,7 @@ import 'package:my_project/Views/activityhistory.dart';
 import 'friends_list_page.dart';
 import 'trending_page.dart';
 import 'search_activity_map.dart';
+import 'ongoing_activities.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -75,7 +76,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       CardMenuSmall(Icons.people, const friends_list_page()),
-                      CardMenuSmall(Icons.access_time_filled, ActivityHistoryPage()),
+                      CardMenuSmall(Icons.access_time_filled, OngoingActivities()),
                     ],
                   ),
                 ),
