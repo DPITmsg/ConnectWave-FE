@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'Colors.dart';
 
-TextStyle Text_Detailed_Page_Regular = const TextStyle(
+TextStyle Text_Detailed_Page_Regular_White = const TextStyle(
   fontSize: 16.0,
   color: Color_White,
 );
 
-TextStyle Text_Detailed_Page_Bold = const TextStyle(
-  fontSize: 18.0,
+TextStyle Text_Detailed_Page_Bold_Black = const TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  color: Color_Dark_Gray,
+);
+
+TextStyle Text_Detailed_Page_Bold_White = const TextStyle(
+  fontSize: 16.0,
   fontWeight: FontWeight.bold,
   color: Color_White,
+);
+
+TextStyle Text_Detailed_Page_Regular_Medium_Black = const TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.normal,
+  color: Color_Dark_Gray,
 );
 
 TextStyle Text_Trending_Title = const TextStyle(

@@ -15,7 +15,7 @@ class WidgetTagsBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(360)
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(15, 0, 5, 0),
+        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
         child: this.child
       ),
     );
