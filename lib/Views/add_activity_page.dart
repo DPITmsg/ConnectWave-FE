@@ -31,11 +31,10 @@ class _add_activity_pageState extends State<add_activity_page> {
   String activity_category = '';
   List<String> activity_tags = [];
 
-  List<String> categories = ['Sport', 'Gaming', 'Services', 'a', 'a','a','a'];
+  List<String> categories = ['Sport', 'Gaming', 'Services', 'a', 'a', 'a', 'a'];
 
   bool error_tags = false;
   bool error_category = false;
-
 
   void selectDate() {
     showDatePicker(
@@ -269,13 +268,14 @@ class _add_activity_pageState extends State<add_activity_page> {
                                   DropdownMenu(
                                     inputDecorationTheme: InputDecorationTheme(
                                       border: OutlineInputBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(35),
+                                        borderRadius: BorderRadius.circular(35),
                                       ),
                                       hintStyle: Text_AddActivty_Small,
                                     ),
                                     menuStyle: MenuStyle(
-                                      backgroundColor: MaterialStateProperty.all<Color>(Color_Gray),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Color_Gray),
                                     ),
                                     width:
                                         MediaQuery.of(context).size.width - 50,
@@ -293,8 +293,9 @@ class _add_activity_pageState extends State<add_activity_page> {
                                       });
                                     },
                                   ),
-                                  WidgetErrorTextSmall('Select a category', error_category),
-                                  const SizedBox(height:15),
+                                  WidgetErrorTextSmall(
+                                      'Select a category', error_category),
+                                  const SizedBox(height: 15),
                                   Tags(
                                     key: _tagStateKey,
                                     textField: TagsTextField(
@@ -321,7 +322,8 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           });
                                         }),
                                   ),
-                                  WidgetErrorTextSmall('Add at least one tag', error_tags),
+                                  WidgetErrorTextSmall(
+                                      'Add at least one tag', error_tags),
                                   const SizedBox(
                                     height: 11,
                                   ),
@@ -341,12 +343,12 @@ class _add_activity_pageState extends State<add_activity_page> {
                                                 MainAxisAlignment.end,
                                             children: [
                                               Text(tag, style: Text_Tag_Widget),
-                                              IconButton(
-                                                onPressed: () {
+                                              InkWell(
+                                                onTap: () {
                                                   activity_tags.remove(tag);
                                                   setState(() {});
                                                 },
-                                                icon: const Icon(
+                                                child: const Icon(
                                                   Icons.clear,
                                                   color: Color_Dark_Gray,
                                                 ),
@@ -377,14 +379,15 @@ class _add_activity_pageState extends State<add_activity_page> {
                                         }
                                       });
                                       setState(() {
-                                        if(activity_category.isEmpty){
+                                        if (activity_category.isEmpty) {
                                           error_category = true;
-                                        } else{
+                                        } else {
                                           error_category = false;
                                         }
                                       });
-                                      if(error_tags != true && error_category != true){
-                                        if (_formKey.currentState!.validate() ) {
+                                      if (error_tags != true &&
+                                          error_category != true) {
+                                        if (_formKey.currentState!.validate()) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             const SnackBar(
