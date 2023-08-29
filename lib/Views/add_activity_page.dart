@@ -19,7 +19,7 @@ class add_activity_page extends StatefulWidget {
 }
 
 class _add_activity_pageState extends State<add_activity_page> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
 
   TextEditingController activity_title = TextEditingController();
@@ -37,6 +37,10 @@ class _add_activity_pageState extends State<add_activity_page> {
   bool error_tags = false;
   bool error_category = false;
   bool error_dates = false;
+
+  DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now();
+
 
   void selectDate() {
     showDatePicker(
@@ -59,6 +63,7 @@ class _add_activity_pageState extends State<add_activity_page> {
         return;
       }
       setState(() {
+        startDate = pickedDate;
         activity_date.text = DateFormat("dd.MM.yyyy").format(pickedDate);
       });
     });
@@ -85,6 +90,7 @@ class _add_activity_pageState extends State<add_activity_page> {
         return;
       }
       setState(() {
+        endDate = pickedDate;
         activity_end_date.text = DateFormat("dd.MM.yyyy").format(pickedDate);
       });
     });
@@ -121,7 +127,7 @@ class _add_activity_pageState extends State<add_activity_page> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
           resizeToAvoidBottomInset: false,
-          body: Container(
+          body: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Stack(
@@ -434,12 +440,10 @@ class _add_activity_pageState extends State<add_activity_page> {
                                       });
 
                                       setState(() {
-                                        if(activity_date.text.isNotEmpty && activity_end_date.text.isNotEmpty){
-                                          if(DateTime.parse(activity_date.text).isAfter(DateTime.parse(activity_end_date.text))) {
-                                            error_dates = true;
-                                          } else {
-                                            error_dates = false;
-                                          }
+                                        if(startDate.isAfter(endDate)){
+                                          error_dates = true;
+                                        }else{
+                                          error_dates = false;
                                         }
                                       });
 
