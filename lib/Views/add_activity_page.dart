@@ -25,6 +25,7 @@ class _add_activity_pageState extends State<add_activity_page> {
   TextEditingController activity_title = TextEditingController();
   TextEditingController activity_location = TextEditingController();
   TextEditingController activity_date = TextEditingController();
+  TextEditingController activity_end_date = TextEditingController();
   TextEditingController activity_time = TextEditingController();
   TextEditingController activity_nr_participants = TextEditingController();
   TextEditingController activity_description = TextEditingController();
@@ -35,6 +36,7 @@ class _add_activity_pageState extends State<add_activity_page> {
 
   bool error_tags = false;
   bool error_category = false;
+  bool error_dates = false;
 
   void selectDate() {
     showDatePicker(
@@ -58,6 +60,32 @@ class _add_activity_pageState extends State<add_activity_page> {
       }
       setState(() {
         activity_date.text = DateFormat("dd.MM.yyyy").format(pickedDate);
+      });
+    });
+  }
+
+  void selectEndDate() {
+    showDatePicker(
+            context: context,
+            builder: (context, child) => Theme(
+                  data: ThemeData().copyWith(
+                      colorScheme: const ColorScheme.dark(
+                          primary: Color_Blue,
+                          onPrimary: Color_White,
+                          surface: Color_Blue,
+                          onSurface: Color_Dark_Gray),
+                      dialogBackgroundColor: Color_Gray),
+                  child: child!,
+                ),
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime.now().add(const Duration(days: 365)))
+        .then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        activity_end_date.text = DateFormat("dd.MM.yyyy").format(pickedDate);
       });
     });
   }
@@ -187,24 +215,43 @@ class _add_activity_pageState extends State<add_activity_page> {
                                       ),
                                       Expanded(
                                         child: TextFormField(
-                                          onTap: selectTime,
+                                          onTap: selectEndDate,
                                           validator: MinLengthValidator(1,
                                               errorText: 'Required'),
                                           readOnly: true,
-                                          controller: activity_time,
+                                          controller: activity_end_date,
                                           style: Text_AddActivity_Small_Input,
                                           decoration: InputDecoration(
-                                            hintText: '+Time',
+                                            hintText: '+End date',
                                             hintStyle: Text_AddActivty_Small,
                                             border: InputBorder.none,
                                             prefixIcon: const Icon(
-                                              Icons.access_time_filled,
+                                              Icons.calendar_today,
                                               color: Color_Dark_Gray,
                                             ),
                                           ),
                                         ),
                                       )
                                     ],
+                                  ),
+                                  WidgetErrorTextSmall(
+                                      'End date cannot be before Start date', error_dates),
+                                  TextFormField(
+                                    onTap: selectTime,
+                                    validator: MinLengthValidator(1,
+                                        errorText: 'Required'),
+                                    readOnly: true,
+                                    controller: activity_time,
+                                    style: Text_AddActivity_Small_Input,
+                                    decoration: InputDecoration(
+                                      hintText: '+Time',
+                                      hintStyle: Text_AddActivty_Small,
+                                      border: InputBorder.none,
+                                      prefixIcon: const Icon(
+                                        Icons.access_time_filled,
+                                        color: Color_Dark_Gray,
+                                      ),
+                                    ),
                                   ),
                                   Row(
                                     children: [
@@ -385,9 +432,20 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           error_category = false;
                                         }
                                       });
-                                      if (error_tags != true &&
-                                          error_category != true) {
-                                        if (_formKey.currentState!.validate()) {
+
+                                      setState(() {
+                                        if(activity_date.text.isNotEmpty && activity_end_date.text.isNotEmpty){
+                                          if(DateTime.parse(activity_date.text).isAfter(DateTime.parse(activity_end_date.text))) {
+                                            error_dates = true;
+                                          } else {
+                                            error_dates = false;
+                                          }
+                                        }
+                                      });
+
+                                      if (_formKey.currentState!.validate()) {
+                                        if(error_tags != true && error_category != true){
+
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             const SnackBar(
