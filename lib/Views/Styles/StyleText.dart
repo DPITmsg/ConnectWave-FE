@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Colors.dart';
+import 'Shadows.dart';
 
 TextStyle Text_Detailed_Page_Regular_White = const TextStyle(
   fontSize: 16.0,
@@ -106,3 +107,24 @@ TextStyle Text_Tag_Widget = const TextStyle(
     fontWeight: FontWeight.bold,
     color: Color_Dark_Gray
 );
+
+TextStyle Text_Welcome_Big_Black = TextStyle(
+    fontSize: 42,
+    fontWeight: FontWeight.bold,
+    color: Color_Dark_Gray,
+    shadows: [Shadow_Widget_Box]
+);
+
+TextStyle Text_Welcome_Big_Blue = TextStyle(
+    fontSize: 42,
+    fontWeight: FontWeight.bold,
+    color: Color_Blue,
+    shadows: [Shadow_Widget_Box]
+);
+
+TextStyle Text_Welcome_Medium_Black = const TextStyle(
+  fontSize: 26,
+  fontWeight: FontWeight.bold,
+  color: Color_Dark_Gray,
+);
+

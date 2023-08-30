@@ -60,7 +60,7 @@ class trending_page extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image:
                     AssetImage('lib/Views/Styles/Backgrounds/Background_2.png'),
@@ -68,7 +68,7 @@ class trending_page extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Padding(
@@ -81,13 +81,13 @@ class trending_page extends StatelessWidget {
                       children: [
                         Expanded(
                           child: InkWell(
-                            child: SizedBox(
+                            child: const SizedBox(
                               child: Icon(
                                 Icons.arrow_back_ios_new,
                                 color: Color_Dark_Gray,
                               ),
                             ),
-                            onTap: (){
+                            onTap: () {
                               Navigator.of(context).pop();
                             },
                           ),
@@ -104,14 +104,12 @@ class trending_page extends StatelessWidget {
                     Expanded(
                       flex: 12,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                        child: Container(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: trending.map((element) {
-                                return WidgetBoxSlice(element);
-                              }).toList(),
-                            ),
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: trending.map((element) {
+                              return WidgetBoxSlice(element);
+                            }).toList(),
                           ),
                         ),
                       ),
@@ -129,7 +127,7 @@ class trending_page extends StatelessWidget {
                               Color_Dark_Gray,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Expanded(
