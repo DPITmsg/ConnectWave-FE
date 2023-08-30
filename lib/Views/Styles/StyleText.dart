@@ -74,10 +74,10 @@ TextStyle Text_Widget_Buttons_Blue = const TextStyle(
   color: Color_Light_Blue,
 );
 
-TextStyle Text_Widget_Buttons_White = const TextStyle(
-  fontSize: 20.0,
+TextStyle Text_Widget_Buttons_Black = const TextStyle(
+  fontSize: 16.0,
   fontWeight: FontWeight.bold,
-  color: Color_White,
+  color: Color_Dark_Gray,
 );
 TextStyle Text_Widget_Buttons_White_Small = const TextStyle(
     color: Color_White, fontSize: 18, fontWeight: FontWeight.bold);
@@ -126,5 +126,23 @@ TextStyle Text_Welcome_Medium_Black = const TextStyle(
   fontSize: 26,
   fontWeight: FontWeight.bold,
   color: Color_Dark_Gray,
+);
+
+TextStyle Text_Sign_In_Small_Blue = const TextStyle(
+    color: Color_Light_Blue,
+    decoration: TextDecoration.underline,
+    fontSize: 14
+);
+
+TextStyle Text_Input_SignIn_Login_White = const TextStyle(
+  fontSize: 17,
+color: Color_White,
+decoration: TextDecoration.underline
+);
+
+TextStyle Text_Hint_SignIn_Login_Blue = const TextStyle(
+    fontSize: 18,
+    color: Color_Blue,
+    decoration: TextDecoration.none
 );
 

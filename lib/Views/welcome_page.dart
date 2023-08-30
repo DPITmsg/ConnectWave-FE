@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:my_project/Views/log_in_page.dart';
 import 'package:my_project/Views/sign_up_page.dart';
 
 import 'Styles/StyleText.dart';
@@ -67,7 +68,7 @@ class welcome_page extends StatelessWidget {
                         Expanded(
                           child: InkWell(
                             onTap: (){
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const sign_in_page()));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const log_in_page()));
                             },
                             child: WidgetButton(
                               Center(

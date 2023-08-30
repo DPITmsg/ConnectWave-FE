@@ -21,15 +21,15 @@ class WidgetBox extends StatelessWidget {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [this.color_primary, this.color_secondary]
+              colors: [color_primary, color_secondary]
           ),
           boxShadow: [
             Shadow_Widget_Box
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(15, 20, 12, 20),
-          child: this.child,
+          padding: const EdgeInsets.fromLTRB(20, 20, 12, 20),
+          child: child,
         ),
     );
   }
