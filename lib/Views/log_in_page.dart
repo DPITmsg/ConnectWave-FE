@@ -48,7 +48,7 @@ class _log_in_pageState extends State<log_in_page> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(50, 170, 50, 210),
+              padding: const EdgeInsets.fromLTRB(50, 250, 50, 300),
               child: WidgetBox(
                   SizedBox(
                     child: Form(
@@ -56,7 +56,7 @@ class _log_in_pageState extends State<log_in_page> {
                       child: Column(
                         children: [
                           Expanded(
-                            flex: 12,
+                            flex: 7,
                             child: Column(
                               children: [
                                 TextFormField(
