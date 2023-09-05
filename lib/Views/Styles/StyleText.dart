@@ -146,3 +146,16 @@ TextStyle Text_Hint_SignIn_Login_Blue = const TextStyle(
     decoration: TextDecoration.none
 );
 
+TextStyle Text_FindFriends_Search_Black = const TextStyle(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  decoration: TextDecoration.none,
+  color: Color_Dark_Gray,
+);
+
+TextStyle Text_FindFriends_Search_Black_Hint = const TextStyle(
+    fontSize: 23,
+    color: Color_Dark_Gray,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none);
+

@@ -4,6 +4,7 @@ import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetButtons.dart';
 
 import 'Widgets/WidgetBoxFriend.dart';
+import 'find_friends.dart';
 
 List<String> friends_list = [
   'Darius Coman',
@@ -27,14 +28,14 @@ class friends_list_page extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('lib/Views/Styles/Backgrounds/Background_1.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Padding(
@@ -47,7 +48,7 @@ class friends_list_page extends StatelessWidget {
                     children: [
                       Expanded(
                         child: InkWell(
-                          child: SizedBox(
+                          child: const SizedBox(
                             child: Icon(
                               Icons.arrow_back_ios_new,
                               color: Color_Dark_Gray,
@@ -66,28 +67,17 @@ class friends_list_page extends StatelessWidget {
                           style: Text_Title_Top_FriendsList,
                         ),
                       ),
-
-                      Expanded(
-                        child: Icon(
-                          Icons.search,
-                          color: Color_Dark_Gray,
-                          size: 35,
-                        ),
-                      )
-
                     ],
                   ),
                   Expanded(
                     flex: 12,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
-                      child: Container(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: friends_list.map((element) {
-                              return WidgetBoxFriend(element);
-                            }).toList(),
-                          ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: friends_list.map((element) {
+                            return WidgetBoxFriend(element);
+                          }).toList(),
                         ),
                       ),
                     ),
@@ -97,15 +87,20 @@ class friends_list_page extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Text("Find more",
-                                  style: Text_Widget_Buttons_Blue),
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const find_friends()));
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Text("Find more",
+                                    style: Text_Widget_Buttons_Blue),
+                              ),
+                              Color_Dark_Gray,
                             ),
-                            Color_Dark_Gray,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         Expanded(
@@ -116,7 +111,7 @@ class friends_list_page extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text('Share', style: Text_Widget_Buttons_Blue),
-                                  Icon(
+                                  const Icon(
                                       Icons.share,
                                       color: Color_Light_Blue
                                   )
