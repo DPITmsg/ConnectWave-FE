@@ -23,7 +23,6 @@ import 'Widgets/WidgetButtons.dart';
 //     time: '10:00');
 
 class detailed_activity_page extends StatelessWidget {
-
   final Activity activity;
 
   const detailed_activity_page(this.activity, {super.key});
@@ -35,9 +34,9 @@ class detailed_activity_page extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-           Column(
-              children: [Image.asset('assets/map.png'), const SizedBox()],
-            ),
+          Column(
+            children: [Image.asset('assets/map.png'), const SizedBox()],
+          ),
           WidgetBackgroundBox(
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
@@ -53,13 +52,15 @@ class detailed_activity_page extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                const Icon(Icons.location_pin),
-                                Text(activity.location,
-                                    softWrap: true,
-                                    style: Text_Detailed_Page_Bold_Black),
-                              ],
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.location_pin),
+                                  Text(activity.location,
+                                      style: Text_Detailed_Page_Bold_Black),
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               height: 15,
@@ -159,36 +160,34 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const CircleAvatar(
                                       backgroundImage:
-                                      AssetImage('assets/yoda.pfp.jpg'),
+                                          AssetImage('assets/yoda.pfp.jpg'),
                                       radius: 45.0,
                                     ),
                                     const SizedBox(width: 10.0),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           children: [
-                                            Text(
-                                                'Name: ',
-                                                style: Text_Detailed_Page_Bold_White
-                                            ),
-                                            Text(
-                                                activity.author,
-                                                style: Text_Detailed_Page_Bold_White
-                                            ),
+                                            Text('Name: ',
+                                                style:
+                                                    Text_Detailed_Page_Bold_White),
+                                            Text(activity.author,
+                                                style:
+                                                    Text_Detailed_Page_Bold_White),
                                           ],
                                         ),
                                         Row(
                                           children: [
-                                            Text(
-                                                'Activities completed: ',
-                                                style: Text_Detailed_Page_Bold_White
-                                            ),
-                                            Text(
-                                                'TBD',
-                                                style: Text_Detailed_Page_Bold_White
-                                            ),
+                                            Text('Activities completed: ',
+                                                style:
+                                                    Text_Detailed_Page_Bold_White),
+                                            Text('TBD',
+                                                style:
+                                                    Text_Detailed_Page_Bold_White),
                                           ],
                                         ),
                                       ],
@@ -196,8 +195,7 @@ class detailed_activity_page extends StatelessWidget {
                                   ],
                                 ),
                                 Color_Blue,
-                                Color_Light_Blue
-                            ),
+                                Color_Light_Blue),
                           ],
                         ),
                       ),

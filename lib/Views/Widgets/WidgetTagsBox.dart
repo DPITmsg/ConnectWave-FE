@@ -15,8 +15,8 @@ class WidgetTagsBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(360)
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-        child: this.child
+        padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+        child: SingleChildScrollView(scrollDirection:Axis.horizontal,child: child)
       ),
     );
   }

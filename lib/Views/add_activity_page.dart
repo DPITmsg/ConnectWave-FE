@@ -470,19 +470,28 @@ class _add_activity_pageState extends State<add_activity_page> {
 
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            const SnackBar(
-                                              backgroundColor: Colors.white,
-                                              content: Text(
-                                                'Validation Successful',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
+                                             SnackBar(
+                                              backgroundColor: Colors.green[600],
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                              content:  const Row(
+                                                children: [
+                                                  Text(
+                                                    'Validation Successful',
+                                                    style: TextStyle(
+                                                      color: Color_White,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 16
+                                                    ),
+                                                  ),
+                                                  Icon(Icons.check, color:Color_White)
+                                                ],
                                               ),
                                             ),
                                           );
                                           final response =
                                               await createActivty(activity);
                                           if (response.body == 'true') {
+                                            Navigator.of(context).pop();
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
