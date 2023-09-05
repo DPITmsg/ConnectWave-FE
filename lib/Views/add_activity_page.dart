@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:intl/intl.dart';
-import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
-
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:intl/intl.dart';
+import 'package:my_project/Service/activity_service.dart';
+import 'package:my_project/Views/Classes/Activity.dart';
+import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'package:my_project/Views/detailed_activity_page.dart';
 
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
@@ -40,7 +42,6 @@ class _add_activity_pageState extends State<add_activity_page> {
 
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now();
-
 
   void selectDate() {
     showDatePicker(
@@ -181,7 +182,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                     maxLength: 50,
                                     autocorrect: false,
                                     decoration: InputDecoration(
-                                        hintText: '+Adress',
+                                        hintText: '+Address',
                                         hintStyle: Text_AddActivty_Small,
                                         border: InputBorder.none,
                                         prefixIcon: const Icon(
@@ -241,7 +242,8 @@ class _add_activity_pageState extends State<add_activity_page> {
                                     ],
                                   ),
                                   WidgetErrorTextSmall(
-                                      'End date cannot be before Start date', error_dates),
+                                      'End date cannot be before Start date',
+                                      error_dates),
                                   TextFormField(
                                     onTap: selectTime,
                                     validator: MinLengthValidator(1,
@@ -423,7 +425,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                               children: <Widget>[
                                 Expanded(
                                   child: InkWell(
-                                    onTap: () {
+                                    onTap: () async {
                                       setState(() {
                                         if (activity_tags.isEmpty) {
                                           error_tags = true;
@@ -440,15 +442,31 @@ class _add_activity_pageState extends State<add_activity_page> {
                                       });
 
                                       setState(() {
-                                        if(startDate.isAfter(endDate)){
+                                        if (startDate.isAfter(endDate)) {
                                           error_dates = true;
-                                        }else{
+                                        } else {
                                           error_dates = false;
                                         }
                                       });
 
                                       if (_formKey.currentState!.validate()) {
-                                        if(error_tags != true && error_category != true){
+                                        if (error_tags != true &&
+                                            error_category != true) {
+                                          Activity activity = Activity(
+                                              title: activity_title.text,
+                                              author: 'Zdroba Petru',
+                                              date: activity_date.text,
+                                              end_date: activity_end_date.text,
+                                              location: activity_location.text,
+                                              number_participants: int.parse(
+                                                  activity_nr_participants
+                                                      .text),
+                                              descrpition:
+                                                  activity_description.text,
+                                              author_id: 'X-Man',
+                                              tags: activity_tags,
+                                              category: activity_category,
+                                              time: activity_time.text);
 
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -462,6 +480,15 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               ),
                                             ),
                                           );
+                                          final response =
+                                              await createActivty(activity);
+                                          if (response.body == 'true') {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        detailed_activity_page(
+                                                            activity)));
+                                          }
                                         }
                                       }
                                     },

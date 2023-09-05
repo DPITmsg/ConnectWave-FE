@@ -8,34 +8,36 @@ import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
 
-Activity activity = Activity(
-    title: 'Football la Baza Sportiva Gheorgheni',
-    author: 'Zdroba Petru',
-    date: '26.07.2023',
-    location: 'Str. Alexandru Vaida Voievod nr. 24',
-    number_participants: 14,
-    descrpition:
-        'Caut oameni din zona Gheorgheni cu care sa ies la un footbal, nu conteaza daca esti bun, numai sa fii sociabil',
-    creator_id: 666,
-    tags: ['Football', 'Messi', 'Ronaldo', 'fun', 'chill'],
-    category: 'Sport',
-    time: '10:00');
+// Activity activity = Activity(
+//     title: 'Football la Baza Sportiva Gheorgheni',
+//     author: 'Zdroba Petru',
+//     date: '26.07.2023',
+//     end_date: '26.07.2023',
+//     location: 'Str. Alexandru Vaida Voievod nr. 24',
+//     number_participants: 14,
+//     descrpition:
+//         'Caut oameni din zona Gheorgheni cu care sa ies la un footbal, nu conteaza daca esti bun, numai sa fii sociabil',
+//     author_id: ' ',
+//     tags: ['Football', 'Messi', 'Ronaldo', 'fun', 'chill'],
+//     category: 'Sport',
+//     time: '10:00');
 
 class detailed_activity_page extends StatelessWidget {
-  const detailed_activity_page({super.key});
+
+  final Activity activity;
+
+  const detailed_activity_page(this.activity, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-          Expanded(
-            child: Column(
-              children: [Image.asset('assets/map.png'), SizedBox()],
+           Column(
+              children: [Image.asset('assets/map.png'), const SizedBox()],
             ),
-          ),
           WidgetBackgroundBox(
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
@@ -67,7 +69,7 @@ class detailed_activity_page extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(Icons.calendar_month_rounded),
+                                    const Icon(Icons.calendar_month_rounded),
                                     Text(
                                       activity.date,
                                       style: Text_Detailed_Page_Bold_Black,
@@ -76,7 +78,7 @@ class detailed_activity_page extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(Icons.access_time_filled),
+                                    const Icon(Icons.access_time_filled),
                                     Text(
                                       activity.time,
                                       style: Text_Detailed_Page_Bold_Black,
@@ -93,7 +95,7 @@ class detailed_activity_page extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(Icons.category_sharp),
+                                    const Icon(Icons.category_sharp),
                                     Text(
                                       activity.category,
                                       style: Text_Detailed_Page_Bold_Black,
@@ -102,7 +104,7 @@ class detailed_activity_page extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(Icons.person_rounded),
+                                    const Icon(Icons.person_rounded),
                                     Text(
                                       activity.number_participants.toString(),
                                       style: Text_Detailed_Page_Bold_Black,
@@ -115,7 +117,7 @@ class detailed_activity_page extends StatelessWidget {
                               height: 15,
                             ),
                             Text(
-                              'Descriere:',
+                              'Description:',
                               style: Text_Detailed_Page_Bold_Black,
                             ),
                             Padding(
@@ -168,7 +170,7 @@ class detailed_activity_page extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                                'Nume: ',
+                                                'Name: ',
                                                 style: Text_Detailed_Page_Bold_White
                                             ),
                                             Text(
@@ -180,7 +182,7 @@ class detailed_activity_page extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                                'Activitati completate: ',
+                                                'Activities completed: ',
                                                 style: Text_Detailed_Page_Bold_White
                                             ),
                                             Text(
