@@ -72,7 +72,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.calendar_month_rounded),
                                     Text(
-                                      activity.date,
+                                      activity.date == activity.end_date ? activity.date : '${activity.date}-${activity.end_date}',
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],

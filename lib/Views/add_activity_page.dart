@@ -451,7 +451,7 @@ class _add_activity_pageState extends State<add_activity_page> {
 
                                       if (_formKey.currentState!.validate()) {
                                         if (error_tags != true &&
-                                            error_category != true) {
+                                            error_category != true && error_dates != true) {
                                           Activity activity = Activity(
                                               title: activity_title.text,
                                               author: 'Zdroba Petru',
