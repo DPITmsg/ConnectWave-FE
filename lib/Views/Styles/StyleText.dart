@@ -93,3 +93,9 @@ TextStyle Text_Ongoing_Activities_v2 = TextStyle(
   fontSize: 24.0,
   fontWeight: FontWeight.bold,
 );
+
+TextStyle Text_Rate_Event = TextStyle(
+  color: Color_Blue,
+  fontSize: 16.0,
+);
+
