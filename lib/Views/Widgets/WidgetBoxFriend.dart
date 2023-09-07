@@ -5,10 +5,11 @@ import 'package:my_project/Views/Styles/StyleText.dart';
 import '../Styles/Shadows.dart';
 
 class WidgetBoxFriend extends StatelessWidget {
-  final String text;
+  final String name;
+  final String pfp;
   final Widget smallButton;
 
-  const WidgetBoxFriend(this.text,this.smallButton, {super.key});
+  const WidgetBoxFriend(this.name, this.pfp,this.smallButton, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +29,15 @@ class WidgetBoxFriend extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Row(
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage('assets/yoda.pfp.jpg'),
+               CircleAvatar(
+                backgroundImage: NetworkImage(pfp),
                 radius: 30,
               ),
               Expanded(
                 flex: 2,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text(text, style: Text_Widget_FriendName),
+                  child: Text(name, style: Text_Widget_FriendName),
                 ),
               ),
               Expanded(

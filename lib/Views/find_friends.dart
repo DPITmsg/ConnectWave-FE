@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/Views/Widgets/WidgetBoxFriend.dart';
-import 'package:my_project/Views/Widgets/WidgetSmallButton.dart';
 
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
@@ -114,12 +112,12 @@ class _find_friendsState extends State<find_friends> {
                             ),
                           )),
                     ),
-                    Expanded(
+                    /*Expanded(
                       child: ListView.builder(
                           shrinkWrap: true,
                           itemCount: user_list.length,
                           itemBuilder: (context, index) {
-                            return WidgetBoxFriend(
+                            return Text('a');*//*WidgetBoxFriend(
                               user_list[index],
                               WidgetSmallButton(
                                 Row(
@@ -139,8 +137,8 @@ class _find_friendsState extends State<find_friends> {
                                 ),
                               ),
                             );
-                          }),
-                    )
+                          }),*//*
+                    )*/
                   ],
                 ),
               ),

@@ -3,25 +3,17 @@ import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetButtons.dart';
 
+import 'Classes/Friend.dart';
 import 'Widgets/WidgetBoxFriend.dart';
 import 'Widgets/WidgetSmallButton.dart';
 import 'find_friends.dart';
 
-List<String> friends_list = [
-  'Darius Command',
-  'Vlad Popes',
-  'Bianca Danilov',
-  'Alex Dudes cu',
-  'Rpa Tudor',
-  'Vld Darius',
-  'a',
-  'b',
-  'c',
-  'd'
-];
 
 class friends_list_page extends StatelessWidget {
-  const friends_list_page({super.key});
+
+  final List<Friend> friends_list;
+
+  const friends_list_page(this.friends_list,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +71,8 @@ class friends_list_page extends StatelessWidget {
                         child: Column(
                           children: friends_list.map((element) {
                             return WidgetBoxFriend(
-                              element,
+                              element.name,
+                              element.pfp,
                               WidgetSmallButton(
                                 Row(
                                   mainAxisAlignment:

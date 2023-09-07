@@ -147,7 +147,6 @@ class _log_in_pageState extends State<log_in_page> {
                               )),
                           Expanded(
                               child: InkWell(
-
                             onTap: () {
                               Navigator.of(context).pop();
                               Navigator.of(context).push(MaterialPageRoute(
