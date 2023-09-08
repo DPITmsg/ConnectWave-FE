@@ -43,7 +43,7 @@ class _find_friendsState extends State<find_friends> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      'lib/Views/Styles/Backgrounds/Background_1.png'),
+                      'lib/Views/Styles/Backgrounds/Background_3.png'),
                   fit: BoxFit.cover,
                 ),
               ),

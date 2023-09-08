@@ -29,11 +29,24 @@ class WidgetBoxFriend extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Row(
             children: [
-               CircleAvatar(
-                backgroundImage: NetworkImage(pfp),
-                backgroundColor: Colors.transparent,
-                radius: 30,
+               Stack(
+                 children: [
+                   Container(
+                     width: 60,
+                     height: 60,
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(360),
+                       color: Color_Gray
+                     ),
+                     child: Icon(Icons.person, color: Color_Blue,),
+                   ),
+                   CircleAvatar(
+                    backgroundImage: NetworkImage(pfp),
+                    backgroundColor: Colors.transparent,
+                    radius: 30,
               ),
+                 ],
+               ),
               Expanded(
                 flex: 2,
                 child: Padding(

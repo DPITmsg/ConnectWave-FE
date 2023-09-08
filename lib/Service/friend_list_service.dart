@@ -17,3 +17,12 @@ Future<http.Response> getUserList() {
     },
   );
 }
+
+Future<http.Response> getRequestList() {
+  return http.get(
+    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/request'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+}
