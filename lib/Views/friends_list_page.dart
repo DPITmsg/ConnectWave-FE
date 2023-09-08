@@ -83,9 +83,14 @@ class _friends_list_pageState extends State<friends_list_page> {
                                     user.name,
                                     user.pfp,
                                     InkWell(
-                                      onTap: () {
-                                        widget.friends_list.remove(user);
-                                        setState(() {});
+                                        onTap: () async {
+                                          final response =
+                                              await removeFriend(
+                                              user.name);
+                                          if(response.body == 'true'){
+                                            widget.friends_list.remove(user);
+                                            setState(() {});
+                                          }
                                       },
                                       child: WidgetSmallButton(
                                         Row(
