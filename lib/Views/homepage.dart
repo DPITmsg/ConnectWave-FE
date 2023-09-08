@@ -99,26 +99,21 @@ class HomePage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () async {
                           final response = await getFriendList();
-
-                          print(jsonDecode(response.body));
-
                           List<Friend> friends_list = (jsonDecode(response.body) as List).map((e) => Friend.fromJson(e)).toList();
-
-
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
                                   friends_list_page(friends_list)));
                         },
-                        child: Icon(
+                        style: ElevatedButton.styleFrom(
+                          shadowColor: Colors.black.withOpacity(0.4),
+                          shape: const CircleBorder(),
+                          padding: const EdgeInsets.all(24),
+                          backgroundColor: const Color(0xff45bac4),
+                        ),
+                        child: const Icon(
                           Icons.people,
                           size: 60,
                           color: Color(0xff1a1a1a),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          shadowColor: Colors.black.withOpacity(0.4),
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(24),
-                          backgroundColor: Color(0xff45bac4),
                         ),
                       ),
                       CardMenuSmall(

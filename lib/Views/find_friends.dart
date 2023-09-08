@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'Classes/Friend.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
+import 'Widgets/WidgetBoxFriend.dart';
+import 'Widgets/WidgetSmallButton.dart';
 
-List<String> user_list_2 = [
-  'Darius Command',
-  'Vlad Popes',
-  'Bianca Danilov',
-  'Alex Dudes cu',
-  'Rpa Tudor',
-  'Vld Darius',
-  'a',
-  'b',
-  'c',
-  'd'
-];
-
-List<String> user_list = [];
+List<Friend> user_list = [];
 
 class find_friends extends StatefulWidget {
-  const find_friends({super.key});
+  final List<Friend> user_list_2;
+
+  const find_friends(this.user_list_2,{super.key});
 
   @override
   State<find_friends> createState() => _find_friendsState();
@@ -28,10 +20,13 @@ class find_friends extends StatefulWidget {
 class _find_friendsState extends State<find_friends> {
   TextEditingController input_search = TextEditingController();
 
+  List<Friend> get get_user_list => widget.user_list_2;
+
   void filterSearchResults(String query) {
     setState(() {
-      user_list = user_list_2
-          .where((user) => user.toLowerCase().contains(query.toLowerCase()))
+      user_list = get_user_list
+          .where(
+              (user) => user.name.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -112,21 +107,25 @@ class _find_friendsState extends State<find_friends> {
                             ),
                           )),
                     ),
-                    /*Expanded(
+                    Expanded(
                       child: ListView.builder(
                           shrinkWrap: true,
                           itemCount: user_list.length,
                           itemBuilder: (context, index) {
-                            return Text('a');*//*WidgetBoxFriend(
-                              user_list[index],
+                            return WidgetBoxFriend(
+                              user_list[index].name,
+                              user_list[index].pfp,
                               WidgetSmallButton(
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text('Add',
-                                        style: Text_Widget_SmallButton_Gray),
+                                    Expanded(
+                                      flex:2,
+                                      child: Text('Add',
+                                          style: Text_Widget_SmallButton_Gray),
+                                    ),
                                     const Expanded(
                                         child: Icon(
                                       Icons.add,
@@ -137,8 +136,8 @@ class _find_friendsState extends State<find_friends> {
                                 ),
                               ),
                             );
-                          }),*//*
-                    )*/
+                          }),
+                    )
                   ],
                 ),
               ),

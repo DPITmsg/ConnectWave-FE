@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/friend_list_service.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetButtons.dart';
@@ -6,6 +9,7 @@ import 'package:my_project/Views/Widgets/WidgetButtons.dart';
 import 'Classes/Friend.dart';
 import 'Widgets/WidgetBoxFriend.dart';
 import 'Widgets/WidgetSmallButton.dart';
+
 import 'find_friends.dart';
 
 
@@ -102,9 +106,11 @@ class friends_list_page extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: InkWell(
-                            onTap: () {
+                            onTap: () async {
+                              final response = await getUserList();
+                              List<Friend> user_list = (jsonDecode(response.body) as List).map((e) => Friend.fromJson(e)).toList();
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const find_friends()));
+                                  builder: (context) =>  find_friends(user_list)));
                             },
                             child: WidgetButton(
                               Center(

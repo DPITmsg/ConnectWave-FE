@@ -31,6 +31,7 @@ class WidgetBoxFriend extends StatelessWidget {
             children: [
                CircleAvatar(
                 backgroundImage: NetworkImage(pfp),
+                backgroundColor: Colors.transparent,
                 radius: 30,
               ),
               Expanded(
