@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/friend_list_service.dart';
 
 import 'Classes/Friend.dart';
 import 'Styles/Colors.dart';
@@ -116,11 +117,13 @@ class _find_friendsState extends State<find_friends> {
                               user_list[index].name,
                               user_list[index].pfp,
                               InkWell(
-                                onTap: () {
-                                  widget.user_list_2
-                                      .remove(widget.user_list_2[index]);
-                                  user_list.remove(user_list[index]);
-                                  setState(() {});
+                                onTap: () async {
+                                  final response = await sendFriendRquest(user_list[index].name);
+                                  if(response.body =='true'){
+                                    widget.user_list_2.remove(user_list[index]);
+                                    user_list.remove(user_list[index]);
+                                    setState(() {});
+                                  }
                                 },
                                 child: WidgetSmallButton(
                                   Row(

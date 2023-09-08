@@ -40,3 +40,15 @@ Future<http.Response> responseFriendRequest(String name) {
     }),
   );
 }
+
+Future<http.Response> sendFriendRquest(String name) {
+  return http.post(
+    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/send_friend_request'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'name': name,
+    }),
+  );
+}
