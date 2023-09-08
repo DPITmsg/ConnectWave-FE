@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 Future<http.Response> getFriendList() {
@@ -24,5 +26,17 @@ Future<http.Response> getRequestList() {
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
+  );
+}
+
+Future<http.Response> responseFriendRequest(String name) {
+  return http.post(
+      Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/accept_or_deny'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    body: jsonEncode(<String, String>{
+      'name': name,
+    }),
   );
 }

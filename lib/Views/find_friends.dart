@@ -11,7 +11,7 @@ List<Friend> user_list = [];
 class find_friends extends StatefulWidget {
   final List<Friend> user_list_2;
 
-  const find_friends(this.user_list_2,{super.key});
+  const find_friends(this.user_list_2, {super.key});
 
   @override
   State<find_friends> createState() => _find_friendsState();
@@ -115,24 +115,34 @@ class _find_friendsState extends State<find_friends> {
                             return WidgetBoxFriend(
                               user_list[index].name,
                               user_list[index].pfp,
-                              WidgetSmallButton(
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      flex:2,
-                                      child: Text('Add',
-                                          style: Text_Widget_SmallButton_Gray),
-                                    ),
-                                    const Expanded(
-                                        child: Icon(
-                                      Icons.add,
-                                      color: Color_Gray,
-                                      size: 20,
-                                    ))
-                                  ],
+                              InkWell(
+                                onTap: () {
+                                  widget.user_list_2
+                                      .remove(widget.user_list_2[index]);
+                                  user_list.remove(user_list[index]);
+                                  setState(() {});
+                                },
+                                child: WidgetSmallButton(
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        flex: 2,
+                                        child: Text('Add',
+                                            style:
+                                                Text_Widget_SmallButton_Gray),
+                                      ),
+                                      const Expanded(
+                                          child: Icon(
+                                        Icons.add,
+                                        color: Color_Gray,
+                                        size: 20,
+                                      ))
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
