@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/activityhistory.dart';
 
 import '../Service/friend_list_service.dart';
+import 'Classes/Trending.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
@@ -71,7 +73,30 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      CardMenuSmall(Icons.star_rounded, const trending_page()),
+                      /*CardMenuSmall(Icons.star_rounded, const trending_page()),*/
+                      ElevatedButton(
+                        onPressed: () async {
+                          final response = await getTrendingList();
+                          List<Trending> trending_list =
+                              (jsonDecode(response.body) as List)
+                                  .map((e) => Trending.fromJson(e))
+                                  .toList();
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  trending_page(trending_list)));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shadowColor: Colors.black.withOpacity(0.4),
+                          shape: const CircleBorder(),
+                          padding: const EdgeInsets.all(24),
+                          backgroundColor: const Color(0xff45bac4),
+                        ),
+                        child: const Icon(
+                          Icons.star_rounded,
+                          size: 60,
+                          color: Color(0xff1a1a1a),
+                        ),
+                      ),
                       CardMenuSmall(Icons.person_rounded, ProfilePage()),
                     ],
                   ),
@@ -99,7 +124,10 @@ class HomePage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () async {
                           final response = await getFriendList();
-                          List<Friend> friends_list = (jsonDecode(response.body) as List).map((e) => Friend.fromJson(e)).toList();
+                          List<Friend> friends_list =
+                              (jsonDecode(response.body) as List)
+                                  .map((e) => Friend.fromJson(e))
+                                  .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
                                   friends_list_page(friends_list)));
