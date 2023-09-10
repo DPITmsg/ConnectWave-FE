@@ -26,16 +26,14 @@ class WidgetBoxSlice extends StatelessWidget {
             children: [
               Expanded(
                   flex: 6,
-                  child: Container(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
-                      child: WidgetTextTrending(activity),
-                    ),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
+                    child: WidgetTextTrending(activity),
                   )),
               Expanded(
                 flex: 5,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -43,7 +41,7 @@ class WidgetBoxSlice extends StatelessWidget {
                     )
                   ),
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Image.network(activity.image_url),
                   ),
                 ),

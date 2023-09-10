@@ -8,20 +8,6 @@ import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
 
-// Activity activity = Activity(
-//     title: 'Football la Baza Sportiva Gheorgheni',
-//     author: 'Zdroba Petru',
-//     date: '26.07.2023',
-//     end_date: '26.07.2023',
-//     location: 'Str. Alexandru Vaida Voievod nr. 24',
-//     number_participants: 14,
-//     descrpition:
-//         'Caut oameni din zona Gheorgheni cu care sa ies la un footbal, nu conteaza daca esti bun, numai sa fii sociabil',
-//     author_id: ' ',
-//     tags: ['Football', 'Messi', 'Ronaldo', 'fun', 'chill'],
-//     category: 'Sport',
-//     time: '10:00');
-
 class detailed_activity_page extends StatelessWidget {
   final Activity activity;
 

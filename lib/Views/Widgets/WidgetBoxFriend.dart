@@ -38,7 +38,7 @@ class WidgetBoxFriend extends StatelessWidget {
                        borderRadius: BorderRadius.circular(360),
                        color: Color_Gray
                      ),
-                     child: Icon(Icons.person, color: Color_Blue,),
+                     child: const Icon(Icons.person, color: Color_Blue,),
                    ),
                    CircleAvatar(
                     backgroundImage: NetworkImage(pfp),
