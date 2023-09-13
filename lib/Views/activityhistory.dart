@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/containerhistory.dart';
+import 'package:my_project/darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/activitydetails.dart';
-import 'package:my_project/darius_mock_models/remote_service.dart';
+import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
 import 'dart:developer' as developer;
+import 'rate_activity.dart';
+import 'Classes/User.dart';
 
 class ActivityHistoryPage extends StatefulWidget {
   ActivityHistoryPage({Key? key}) : super(key: key);
@@ -12,8 +17,12 @@ class ActivityHistoryPage extends StatefulWidget {
 }
 
 class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
-
   List<ActivityDetails>? activities = [];
+  List<User> mock_user_list = [
+    User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
+    User(name: "Darius Andei", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
+    User(name: "Ramin Djwawadi", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
+  ];
   var isLoaded = false;
 
   @override
@@ -23,18 +32,12 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
   }
 
   getData() async {
-    try {
-      final activityData = await fetchEventData();
+    final activityData = await fetchEventData();
 
-      ActivityDetails activityDetails = ActivityDetails.fromJson(activityData);
-
-      setState(() {
-        activities = [activityDetails];
-        isLoaded = true;
-      });
-    } catch (error) {
-      print("Error fetching activity data: $error");
-    }
+    setState(() {
+      activities = activityFromJson(json.encode(activityData));
+      isLoaded = true;
+    });
   }
 
   @override
@@ -46,14 +49,27 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
       ),
       body: Visibility(
         visible: isLoaded,
-        child: ListView.builder(
-          itemCount: 1,
-            itemBuilder: (context, index){
-              return ContainerActivity(activities!.first.date, activities!.first.title, activities!.first.tags, activities!.first.nrParticipants, activities!.first.category, activities!.first.avgUserRating, activities!.first.address, activities!.first.description);
-            }
-        ),
         replacement: Center(child: const CircularProgressIndicator()),
+        child: ListView.builder(
+          itemCount: activities?.length ?? 0,
+          itemBuilder: (context, index) {
+            final activity = activities![index];
+            return ContainerActivity(
+              activity.date,
+              activity.title,
+              activity.tags,
+              activity.nrParticipants,
+              activity.category,
+              activity.avgUserRating,
+              activity.address,
+              activity.description,
+              RateActivity(activity, mock_user_list),
+              activity.location
+            );
+          },
+        ),
       ),
     );
   }
 }
+

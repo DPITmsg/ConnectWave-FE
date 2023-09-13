@@ -4,6 +4,8 @@ import '../../Views/Widgets/tags.dart';
 import 'stars.dart';
 import '../Styles/Gradients.dart';
 import '../Styles/Shadows.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'googlemapforhistory.dart';
 
 class ContainerActivity extends StatelessWidget {
   final String date;
@@ -14,8 +16,10 @@ class ContainerActivity extends StatelessWidget {
   final double userRating;
   final String address;
   final String description;
+  Widget? child;
+  final LatLng location;
 
-  ContainerActivity(this.date, this.title, this.tags, this.nrParticipants, this.category, this.userRating, this.address, this.description);
+  ContainerActivity(this.date, this.title, this.tags, this.nrParticipants, this.category, this.userRating, this.address, this.description, this.child, this.location);
 
 
   @override
@@ -55,7 +59,7 @@ class ContainerActivity extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                 child: Tags(tags),
               ),
               Row(
@@ -63,15 +67,27 @@ class ContainerActivity extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(image: AssetImage('assets/mapimg.png')),
-                        boxShadow: [
-                          Shadow_Darius
-                        ]
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(32)),
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        child: GoogleMap(
+                          rotateGesturesEnabled: false,
+                          scrollGesturesEnabled: false,
+                          zoomControlsEnabled: false,
+                          zoomGesturesEnabled: false,
+                          initialCameraPosition: CameraPosition(
+                            zoom: 15,
+                            target: location,
+                          ),
+                          markers: {
+                            Marker(
+                              markerId: MarkerId("activity"),
+                              position: location,
+                            ),
+                          },
+                        ),
                       ),
                     ),
                   ),
@@ -121,6 +137,12 @@ class ContainerActivity extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                 child: Text(description),
+              ),
+              TextButton(
+                  onPressed: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => child!));
+                  },
+                child: Text("Rate event & participants"),
               )
             ],
           ),
