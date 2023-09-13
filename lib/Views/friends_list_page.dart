@@ -1,40 +1,43 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/friend_list_service.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetButtons.dart';
+import 'package:my_project/Views/friend_request_page.dart';
 
+import 'Classes/Friend.dart';
 import 'Widgets/WidgetBoxFriend.dart';
+import 'Widgets/WidgetSmallButton.dart';
 
-List<String> friends_list = [
-  'Darius Coman',
-  'Vlad Popescu',
-  'Bianca Danilov',
-  'Alex Dudescu',
-  'Rpa Tudor',
-  'Vld Darius',
-  'a',
-  'b',
-  'c',
-  'd'
-];
+import 'find_friends.dart';
 
-class friends_list_page extends StatelessWidget {
-  const friends_list_page({super.key});
+class friends_list_page extends StatefulWidget {
+  final List<Friend> friends_list;
 
+  const friends_list_page(this.friends_list, {super.key});
+
+  @override
+  State<friends_list_page> createState() => _friends_list_pageState();
+}
+
+class _friends_list_pageState extends State<friends_list_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/Views/Styles/Backgrounds/Background_1.png'),
+                image:
+                    AssetImage('lib/Views/Styles/Backgrounds/Background_1.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Padding(
@@ -47,14 +50,14 @@ class friends_list_page extends StatelessWidget {
                     children: [
                       Expanded(
                         child: InkWell(
-                          child: SizedBox(
+                          child: const SizedBox(
                             child: Icon(
                               Icons.arrow_back_ios_new,
                               color: Color_Dark_Gray,
                               size: 35,
                             ),
                           ),
-                          onTap: (){
+                          onTap: () {
                             Navigator.of(context).pop();
                           },
                         ),
@@ -66,29 +69,53 @@ class friends_list_page extends StatelessWidget {
                           style: Text_Title_Top_FriendsList,
                         ),
                       ),
-
-                      Expanded(
-                        child: Icon(
-                          Icons.search,
-                          color: Color_Dark_Gray,
-                          size: 35,
-                        ),
-                      )
-
                     ],
                   ),
                   Expanded(
                     flex: 12,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
-                      child: Container(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: friends_list.map((element) {
-                              return WidgetBoxFriend(element);
-                            }).toList(),
-                          ),
-                        ),
+                      child: SingleChildScrollView(
+                        child: widget.friends_list.isNotEmpty
+                            ? Column(
+                                children: widget.friends_list.map((user) {
+                                  return WidgetBoxFriend(
+                                    user.name,
+                                    user.pfp,
+                                    InkWell(
+                                        onTap: () async {
+                                          final response =
+                                              await removeFriend(
+                                              user.name);
+                                          if(response.body == 'true'){
+                                            widget.friends_list.remove(user);
+                                            setState(() {});
+                                          }
+                                      },
+                                      child: WidgetSmallButton(
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text('Friends',
+                                                style:
+                                                    Text_Widget_SmallButton_Gray),
+                                            const Expanded(
+                                                child: Icon(
+                                              Icons.check,
+                                              color: Color_Gray,
+                                              size: 20,
+                                            ))
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                              )
+                            : const Text('You have no friends'),
                       ),
                     ),
                   ),
@@ -97,33 +124,48 @@ class friends_list_page extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Text("Find more",
-                                  style: Text_Widget_Buttons_Blue),
+                          child: InkWell(
+                            onTap: () async {
+                              final response = await getUserList();
+                              List<Friend> user_list =
+                                  (jsonDecode(response.body) as List)
+                                      .map((e) => Friend.fromJson(e))
+                                      .toList();
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      find_friends(user_list)));
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Text("Find more",
+                                    style: Text_Widget_Buttons_Blue),
+                              ),
+                              Color_Dark_Gray,
                             ),
-                            Color_Dark_Gray,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text('Share', style: Text_Widget_Buttons_Blue),
-                                  Icon(
-                                      Icons.share,
-                                      color: Color_Light_Blue
-                                  )
-                                ],
+                          child: InkWell(
+                            onTap: () async {
+                              final response = await getRequestList();
+                              List<Friend> request_list =
+                                  (jsonDecode(response.body) as List)
+                                      .map((e) => Friend.fromJson(e))
+                                      .toList();
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      friend_request_page(request_list)));
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Text('Requests',
+                                    style: Text_Widget_Buttons_Blue),
                               ),
+                              Color_Dark_Gray,
                             ),
-                            Color_Dark_Gray,
                           ),
                         ),
                       ],

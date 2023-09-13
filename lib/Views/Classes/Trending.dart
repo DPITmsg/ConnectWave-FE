@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-List<Trending> activityFromJson(String str) {
+/*List<Trending> activityFromJson(String str) {
   dynamic jsonData = json.decode(str);
 
   if (jsonData is List) {
@@ -10,6 +10,15 @@ List<Trending> activityFromJson(String str) {
   } else {
     throw Exception("Invalid JSON data format");
   }
+}*/
+
+Trending trendingFromJson(Map<String, dynamic> jsonData){
+  List<String> stats = List<String>.from(jsonData['stats']);
+
+  return Trending.fromJson({
+    ...jsonData,
+    'stats':stats,
+  });
 }
 
 
@@ -38,14 +47,6 @@ class Trending {
         _stats = stats,
         _image_url = image_url;
 
-  factory Trending.fromJson(Map<String, dynamic> json) =>
-      Trending(
-        title: json["title"],
-        category: json["category"],
-        stats: List<String>.from(json["stats"]),
-        image_url: json["image_url"],
-      );
-
   Map<String, dynamic> toJson() =>
       {
         "title": title,
@@ -72,4 +73,12 @@ class Trending {
   set category(String value) {
     _category = value;
   }
+
+  factory Trending.fromJson(Map<String, dynamic> json) =>
+      Trending(
+        title: json["title"],
+        category: json["category"],
+        stats: List<String>.from(json["stats"]),
+        image_url: json["image_url"],
+      );
 }

@@ -11,11 +11,11 @@ class WidgetBackgroundBox extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Expanded(flex:2,child: SizedBox()),
+        const Expanded(flex:2,child: SizedBox()),
         Expanded(
           flex: 5,
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
             ),
@@ -23,7 +23,7 @@ class WidgetBackgroundBox extends StatelessWidget {
 
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('lib/Views/Styles/Backgrounds/Background_3.png'),
                       fit: BoxFit.cover,
@@ -37,7 +37,7 @@ class WidgetBackgroundBox extends StatelessWidget {
                       Shadow_Widget_Box
                     ],
                   ),
-                  child:this.child,
+                  child:child,
                   ),
               ],
             )
