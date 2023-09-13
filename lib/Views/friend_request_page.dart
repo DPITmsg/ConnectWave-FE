@@ -89,7 +89,7 @@ class _friend_request_pageState extends State<friend_request_page> {
                                               onTap: () async {
                                                 final response =
                                                     await responseFriendRequest(
-                                                        "-1");
+                                                        user.name, 'false');
                                                 if(response.body == 'true'){
                                                   widget.request_list
                                                       .remove(user);
@@ -104,7 +104,7 @@ class _friend_request_pageState extends State<friend_request_page> {
                                               onTap: () async {
                                                 final response =
                                                 await responseFriendRequest(
-                                                    user.name);
+                                                    user.name, 'true');
                                                 if(response.body == 'true'){
                                                   widget.request_list
                                                       .remove(user);

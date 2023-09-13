@@ -29,7 +29,7 @@ Future<http.Response> getRequestList() {
   );
 }
 
-Future<http.Response> responseFriendRequest(String name) {
+Future<http.Response> responseFriendRequest(String name, String response) {
   return http.post(
       Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/accept_or_deny'),
       headers: <String, String>{
@@ -37,6 +37,7 @@ Future<http.Response> responseFriendRequest(String name) {
       },
     body: jsonEncode(<String, String>{
       'name': name,
+      'response':response
     }),
   );
 }
