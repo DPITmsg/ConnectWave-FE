@@ -11,13 +11,13 @@ class WidgetButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: this.color_primary,
+          color: color_primary,
           borderRadius: BorderRadius.circular(90),
           boxShadow: [Shadow_Widget_Box],
         ),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(15,15, 15,15),
-            child: this.child
+          padding: const EdgeInsets.fromLTRB(15,15, 15,15),
+            child: child
         ),
     );
   }

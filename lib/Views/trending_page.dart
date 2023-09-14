@@ -6,53 +6,56 @@ import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBoxSlice.dart';
 import 'Widgets/WidgetButtons.dart';
 
-List<Trending> trending = [
-  Trending(
-      title: 'Most popular this week',
-      category: 'Basketball',
-      stats: ['3 people liked this', '5 friends searched this'],
-      image_url:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp6pmKGcuA2oxkee0DfbjCtGmndjt6T9hoMQ&usqp=CAU'),
-  Trending(
-      title: 'Old people liked',
-      category: 'Gardening',
-      stats: [
-        '300 people went',
-        '1k searches this month',
-        'avg. rating of 4.5'
-      ],
-      image_url:
-          'https://ca-times.brightspotcdn.com/dims4/default/c8f0d3e/2147483647/strip/true/crop/1800x1013+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg'),
-  Trending(
-      title: 'Most popular this week',
-      category: 'Basketball',
-      stats: ['3 people liked this', '5 friends searched this'],
-      image_url:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp6pmKGcuA2oxkee0DfbjCtGmndjt6T9hoMQ&usqp=CAU'),
-  Trending(
-      title: 'Old people liked',
-      category: 'Gardening',
-      stats: ['300 people went', '1k searches this month'],
-      image_url:
-          'https://ca-times.brightspotcdn.com/dims4/default/c8f0d3e/2147483647/strip/true/crop/1800x1013+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg'),
-  Trending(
-      title: 'Most popular this week',
-      category: 'Basketball',
-      stats: ['3 people liked this', '5 friends searched this'],
-      image_url:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp6pmKGcuA2oxkee0DfbjCtGmndjt6T9hoMQ&usqp=CAU'),
-  Trending(
-      title: 'Old people liked',
-      category: 'Gardening',
-      stats: [
-        '300 people went',
-      ],
-      image_url:
-          'https://ca-times.brightspotcdn.com/dims4/default/c8f0d3e/2147483647/strip/true/crop/1800x1013+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg')
-];
+// List<Trending> trending = [
+//   Trending(
+//       title: 'Most popular this week',
+//       category: 'Basketball',
+//       stats: ['3 people liked this', '5 friends searched this'],
+//       image_url:
+//           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp6pmKGcuA2oxkee0DfbjCtGmndjt6T9hoMQ&usqp=CAU'),
+//   Trending(
+//       title: 'Old people liked',
+//       category: 'Gardening',
+//       stats: [
+//         '300 people went',
+//         '1k searches this month',
+//         'avg. rating of 4.5'
+//       ],
+//       image_url:
+//           'https://ca-times.brightspotcdn.com/dims4/default/c8f0d3e/2147483647/strip/true/crop/1800x1013+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg'),
+//   Trending(
+//       title: 'Most popular this week',
+//       category: 'Basketball',
+//       stats: ['3 people liked this', '5 friends searched this'],
+//       image_url:
+//           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp6pmKGcuA2oxkee0DfbjCtGmndjt6T9hoMQ&usqp=CAU'),
+//   Trending(
+//       title: 'Old people liked',
+//       category: 'Gardening',
+//       stats: ['300 people went', '1k searches this month'],
+//       image_url:
+//           'https://ca-times.brightspotcdn.com/dims4/default/c8f0d3e/2147483647/strip/true/crop/1800x1013+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg'),
+//   Trending(
+//       title: 'Most popular this week',
+//       category: 'Basketball',
+//       stats: ['3 people liked this', '5 friends searched this'],
+//       image_url:
+//           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp6pmKGcuA2oxkee0DfbjCtGmndjt6T9hoMQ&usqp=CAU'),
+//   Trending(
+//       title: 'Old people liked',
+//       category: 'Gardening',
+//       stats: [
+//         '300 people went',
+//       ],
+//       image_url:
+//           'https://ca-times.brightspotcdn.com/dims4/default/c8f0d3e/2147483647/strip/true/crop/1800x1013+0+0/resize/1200x675!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg')
+// ];
 
 class trending_page extends StatelessWidget {
-  const trending_page({super.key});
+
+  final List<Trending> trending;
+
+  const trending_page(this.trending,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +63,7 @@ class trending_page extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image:
                     AssetImage('lib/Views/Styles/Backgrounds/Background_2.png'),
@@ -68,7 +71,7 @@ class trending_page extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Padding(
@@ -81,13 +84,13 @@ class trending_page extends StatelessWidget {
                       children: [
                         Expanded(
                           child: InkWell(
-                            child: SizedBox(
+                            child: const SizedBox(
                               child: Icon(
                                 Icons.arrow_back_ios_new,
                                 color: Color_Dark_Gray,
                               ),
                             ),
-                            onTap: (){
+                            onTap: () {
                               Navigator.of(context).pop();
                             },
                           ),
@@ -104,14 +107,12 @@ class trending_page extends StatelessWidget {
                     Expanded(
                       flex: 12,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-                        child: Container(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: trending.map((element) {
-                                return WidgetBoxSlice(element);
-                              }).toList(),
-                            ),
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: trending.map((element) {
+                              return WidgetBoxSlice(element);
+                            }).toList(),
                           ),
                         ),
                       ),
@@ -129,7 +130,7 @@ class trending_page extends StatelessWidget {
                               Color_Dark_Gray,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Expanded(

@@ -5,7 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/Classes/Friend.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/Styles/Backgrounds/Background_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetErrorTextSmall.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetTagsBox.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/find_friends.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/friend_request_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/log_in_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/welcome_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/Activity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/Activity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/Trending.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/Trending.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBackgroundBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBackgroundBox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBoxFriend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBoxFriend.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBoxSlice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBoxSlice.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetButtons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetButtons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetSmallButton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetSmallButton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/tags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/tags.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/friends_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/friends_list_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/trending_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/trending_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
