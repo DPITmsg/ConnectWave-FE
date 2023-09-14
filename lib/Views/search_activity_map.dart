@@ -56,12 +56,22 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
 
   Widget buildMainScreen() {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(preferredSize: const Size.fromHeight(0), child: AppBar(elevation: 0, backgroundColor: const Color(0x44000000),),),
       body: Column(
         children: [
           Row(
             children: [
-              Expanded(child: TextFormField(
+              Expanded(
+                flex: 1,
+                child: InkWell(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(Icons.arrow_back),
+                ),
+              ),
+              Expanded(flex: 8, child: TextFormField(
                 controller: _searchController,
                 textCapitalization: TextCapitalization.words,
                 decoration: InputDecoration(
@@ -71,12 +81,15 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
                   print(value);
                 },
               )),
-              IconButton(
-                onPressed: () async {
-                    var userInput = _searchController.text;
-                    searchAndDisplayMarkers(userInput);
-                    },
-                icon: Icon(Icons.search),
+              Expanded(
+                flex: 1,
+                child: IconButton(
+                  onPressed: () async {
+                      var userInput = _searchController.text;
+                      searchAndDisplayMarkers(userInput);
+                      },
+                  icon: Icon(Icons.search),
+                ),
               ),
 
             ],

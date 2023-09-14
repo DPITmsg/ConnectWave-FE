@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
 import 'Widgets/containerongoingactivities.dart';
 import 'Classes/activitydetails.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
@@ -37,7 +38,7 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
+      appBar: AppBar(centerTitle: true, title: Text("Current Activities"), backgroundColor: Color_Gray),
       body: Visibility(
         visible: isLoaded,
         replacement: Center(child: const CircularProgressIndicator()),
