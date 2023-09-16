@@ -19,6 +19,7 @@ import 'add_activity_page.dart';
 import 'friends_list_page.dart';
 import 'profilepage.dart';
 import 'trending_page.dart';
+import 'search_activity_online.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -113,7 +114,7 @@ class HomePage extends StatelessWidget {
                           child: CardMenuBig(Icons.share_location, SearchActivityMap())),
                       InkWell(
                           onTap: () {},
-                          child: CardMenuBig(Icons.connect_without_contact, Test())),
+                          child: CardMenuBig(Icons.connect_without_contact, SearchActivityOnlinePage())),
                     ],
                   ),
                 ),
@@ -153,7 +154,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const Expanded(
                     flex: 1, child: CardMenuAddActivity(add_activity_page())),
-                const InkWell(child: ForYou(Test())),
+                const InkWell(child: ForYou(null)),
               ],
             ),
           )

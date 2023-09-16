@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
+import 'package:map_location_picker/map_location_picker.dart';
 import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
 import 'Widgets/test.dart';
+import 'Widgets/maplocationpicker.dart';
 import 'detailed_activity_page.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
 
@@ -35,6 +37,7 @@ class _add_activity_pageState extends State<add_activity_page> {
   TextEditingController activity_description = TextEditingController();
   String activity_category = '';
   List<String> activity_tags = [];
+  String selectedAddress = '';
 
   List<String> categories = ['Sport', 'Gaming', 'Services', 'a', 'a', 'a', 'a'];
 
@@ -124,6 +127,13 @@ class _add_activity_pageState extends State<add_activity_page> {
     });
   }
 
+  void updateSelectedAddress(String address) {
+    setState(() {
+      selectedAddress = address;
+    });
+    print('Selected address: $selectedAddress');
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -174,32 +184,25 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           ),
                                         )),
                                   ),
-                                  TextFormField(
-                                    controller: activity_location,
-                                    validator: MultiValidator([
-                                      MinLengthValidator(13,
-                                          errorText: 'Include Str. and nr.'),
-                                    ]),
-                                    style: Text_AddActivity_Small_Input,
-                                    maxLength: 50,
-                                    autocorrect: false,
-                                    decoration: InputDecoration(
-                                        hintText: '+Address',
-                                        hintStyle: Text_AddActivty_Small,
-                                        border: InputBorder.none,
-                                        prefixIcon: const Icon(
-                                          Icons.location_pin,
-                                          color: Color_Dark_Gray,
-                                        ),
-                                        suffixIcon: IconButton(
-                                          onPressed: () {
-                                            activity_location.clear();
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Row(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) => LocationPickerPage(
+                                                  onLocationConfirmed: updateSelectedAddress,
+                                                ),
+                                              ),
+                                            );
                                           },
-                                          icon: const Icon(
-                                            Icons.clear,
-                                            color: Color_Blue,
-                                          ),
-                                        )),
+                                          child: Icon(Icons.location_on),
+                                        ),
+                                        Flexible(child: Text(selectedAddress, overflow: TextOverflow.ellipsis, maxLines: 3,)),
+                                      ],
+                                    ),
                                   ),
                                   Row(
                                     children: [
