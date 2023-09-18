@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:page_transition/page_transition.dart';
 
-class ForYou extends StatefulWidget {
-  final Widget? child;
+import '../../Service/activity_service.dart';
+import '../for_you_page.dart';
 
-  const ForYou(this.child);
+class ForYou extends StatefulWidget {
+  const ForYou();
 
   @override
   _ForYouState createState() => _ForYouState();
@@ -18,10 +22,17 @@ class _ForYouState extends State<ForYou> {
     _startY = details.localPosition.dy;
   }
 
-  void _onVerticalDragUpdate(DragUpdateDetails details) {
+  Future<void> _onVerticalDragUpdate(DragUpdateDetails details) async {
     double deltaY = details.localPosition.dy - _startY;
-    if (deltaY.abs() >= _swipeThreshold) {
-      Navigator.push(context, PageTransition(child: widget.child!, type: PageTransitionType.bottomToTop));
+    if (deltaY.abs() >= _swipeThreshold)  {
+
+      final response = await getForYouList();
+      List<RecommendedActivity> for_you_list =
+      (jsonDecode(response.body) as List)
+          .map((e) => RecommendedActivity.fromJson(e))
+          .toList();
+
+      Navigator.push(context, PageTransition(child: for_you_page(for_you_list), type: PageTransitionType.bottomToTop));
       _startY = details.localPosition.dy; // Reset the start position
     }
   }

@@ -1,16 +1,20 @@
-
-
 class RecommendedActivity {
   String _title = '';
   String _author = '';
   String _address = '';
+  int _nr_participants = 0;
   int _id = 0;
 
   RecommendedActivity(
-      {required title, required author, required address, required id})
+      {required title,
+      required author,
+      required address,
+      required nr_participants,
+      required id})
       : _title = title,
         _author = author,
         _address = address,
+        _nr_participants = nr_participants,
         _id = id;
 
   int get id => _id;
@@ -36,4 +40,18 @@ class RecommendedActivity {
   set title(String value) {
     _title = value;
   }
+
+  int get nr_participants => _nr_participants;
+
+  set nr_participants(int value) {
+    _nr_participants = value;
+  }
+
+  factory RecommendedActivity.fromJson(Map<String, dynamic> json) =>
+      RecommendedActivity(
+          title: json["title"],
+          author: json["author"],
+          address: json["address"],
+          nr_participants: json["nr_participants"],
+          id: json['id']);
 }

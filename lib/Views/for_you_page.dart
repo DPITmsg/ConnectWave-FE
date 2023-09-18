@@ -6,7 +6,10 @@ import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 
 class for_you_page extends StatefulWidget {
-  const for_you_page({super.key});
+
+  final List<RecommendedActivity> activity_list;
+
+  const for_you_page(this.activity_list, {super.key});
 
   @override
   State<for_you_page> createState() => _for_you_pageState();
@@ -64,9 +67,9 @@ class _for_you_pageState extends State<for_you_page> {
                   ),
                   SingleChildScrollView(
                     child: Column(
-                      children: [
-                        WidgetBoxForYou(RecommendedActivity(title: 'a',author: 'a',address:'a',id:2))
-                      ],
+                      children: widget.activity_list.map((e) {
+                        return WidgetBoxForYou(e);
+                      }).toList(),
                     ),
                   )
                 ],

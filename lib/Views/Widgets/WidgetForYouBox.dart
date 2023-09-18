@@ -6,7 +6,8 @@ import '../Styles/StyleText.dart';
 
 class WidgetBoxForYou extends StatelessWidget {
   final RecommendedActivity activity;
-  const WidgetBoxForYou(this.activity,{super.key});
+
+  const WidgetBoxForYou(this.activity, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,52 @@ class WidgetBoxForYou extends StatelessWidget {
                               colors: [Color_Dark_Gray, Colors.transparent])),
                       child: Column(
                         children: [
-
+                          Expanded(
+                              flex: 2,
+                              child: SizedBox(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 10,bottom: 5),
+                                  child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Text(activity.address, style: Text_Widget_ForYou_Normal_Blue,),
+                                  ),
+                                ),
+                              )),
+                          Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 15, right: 10, bottom: 2),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(activity.title,
+                                            style:
+                                                Text_Widget_ForYou_Bold_White),
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.person,
+                                              color: Color_White,
+                                            ),
+                                            Text(
+                                                activity.nr_participants
+                                                    .toString(),
+                                                style:
+                                                    Text_Widget_ForYou_Normal_White),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Text(activity.author,
+                                        style: Text_Widget_ForYou_Normal_White)
+                                  ],
+                                ),
+                              ))
                         ],
                       ),
                     ),

@@ -4,55 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66c4df15-06f3-4c16-918b-a28cc9b396db" name="Changes" comment="started working on for you page, but stopped cus i need activity details">
-      <change afterPath="$PROJECT_DIR$/lib/Views/Classes/RecommendedActivity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/containerongoingactivities.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/filters_search_activity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/fliters_search_activity_slider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/googlemapforhistory.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/interactive_stars.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/maplocationpicker.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/rate_activity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/darius_mock_models/location_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_singular_object.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ConnectWave-FE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ConnectWave-FE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="66c4df15-06f3-4c16-918b-a28cc9b396db" name="Changes" comment="pulled DARIUSBACKUP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/Address.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/Address.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Service/activity_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/RecommendedActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/RecommendedActivity.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/cardmenubig.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/cardmenubig.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/containerhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/containerhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activityhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/foryou.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/foryou.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/for_you_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/for_you_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/darius_mock_models/remote_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +92,14 @@
       <option name="presentableId" value="Default" />
       <updated>1690805374000</updated>
     </task>
+    <task id="LOCAL-00001" summary="pulled DARIUSBACKUP">
+      <created>1695055530196</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695055530196</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +115,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="started working on for you page, but stopped cus i need activity details" />
-    <option name="LAST_COMMIT_MESSAGE" value="started working on for you page, but stopped cus i need activity details" />
+    <MESSAGE value="pulled DARIUSBACKUP" />
+    <option name="LAST_COMMIT_MESSAGE" value="pulled DARIUSBACKUP" />
   </component>
 </project>

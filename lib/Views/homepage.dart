@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
-import 'package:my_project/Views/activityhistory.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
 
@@ -14,13 +13,11 @@ import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
 import 'Widgets/foryou.dart';
-import 'Widgets/test.dart';
 import 'add_activity_page.dart';
-import 'for_you_page.dart';
 import 'friends_list_page.dart';
 import 'profilepage.dart';
-import 'trending_page.dart';
 import 'search_activity_online.dart';
+import 'trending_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -155,7 +152,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const Expanded(
                     flex: 1, child: CardMenuAddActivity(add_activity_page())),
-                const InkWell(child: ForYou(for_you_page())),
+                const InkWell(child: ForYou()),
               ],
             ),
           )
