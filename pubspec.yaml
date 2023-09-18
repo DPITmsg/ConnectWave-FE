@@ -39,8 +39,17 @@ dependencies:
   http: ^1.1.0
   form_field_validator: ^1.1.0
   page_transition: ^2.0.9
+  google_maps_flutter: ^2.4.0
+  image_picker: ^1.0.2
+  permission_handler: ^10.2.0
   intl: ^0.17.0
   flutter_tags: "^1.0.0-nullsafety.1"
+  map_location_picker: ^1.0.1
+  form_builder_extra_fields: ^10.0.0-dev.1
+
+dependency_overrides:
+  google_maps_flutter_web: ^0.4.0+1
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

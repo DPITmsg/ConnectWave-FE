@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:my_project/Views/Widgets/WidgetForYouBox.dart';
 
 import 'Styles/Colors.dart';
@@ -64,7 +65,7 @@ class _for_you_pageState extends State<for_you_page> {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-
+                        WidgetBoxForYou(RecommendedActivity(title: 'a',author: 'a',address:'a',id:2))
                       ],
                     ),
                   )

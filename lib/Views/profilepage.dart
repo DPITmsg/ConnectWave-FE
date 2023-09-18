@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/activityhistory.dart';
-
-import '../darius_mock_models/remote_service.dart';
-import 'Classes/User.dart';
-import 'Widgets/avatarcontainer.dart';
+import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Widgets/awesomegradient.dart';
+import 'Widgets/stars.dart';
 import 'Widgets/cardsprofilestats.dart';
 import 'Widgets/interestsortags.dart';
-import 'Widgets/stars.dart';
+import 'Classes/User.dart';
+import 'Widgets/avatarcontainer.dart';
 import 'Widgets/test.dart';
+import 'friends_list_page.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -20,6 +21,10 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
 
   AssetImage profilePic = AssetImage('assets/profilepic2.png');
+
+  List<Friend> friends = [
+    Friend(name: "Darius", pfp: "yeah")
+  ];
 
   User? user;
   var isLoaded = false;
@@ -95,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               CardProfile(
                                 user!.friends.toString(),
                                 'Friends',
-                                ActivityHistoryPage(),//TO ADD
+                                  friends_list_page(friends),
                               ),
                               CardProfile(
                                 user!.favcategory,

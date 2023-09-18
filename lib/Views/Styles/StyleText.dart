@@ -159,6 +159,54 @@ TextStyle Text_FindFriends_Search_Black_Hint = const TextStyle(
     fontWeight: FontWeight.normal,
     decoration: TextDecoration.none);
 
+TextStyle Text_Detailed_Page_Regular = TextStyle(
+  fontSize: 16.0,
+  color: Color_White,
+);
+
+TextStyle Text_Detailed_Page_Bold = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.bold,
+  color: Color_White,
+);
+
+
+TextStyle Text_Widget_Buttons_White = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+  color: Color_White,
+);
+
+TextStyle Text_Ongoing_Activities_v1 = TextStyle(
+  color: Color_Dark_Gray,
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle Text_Ongoing_Activities_v2 = TextStyle(
+  color: Color_Blue,
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle Text_Search_Activity_v1 = TextStyle(
+  color: Color_Blue,
+  fontSize: 18.0,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle Text_Search_Activity_v2 = TextStyle(
+  color: Color_Dark_Gray,
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+);
+
+
+TextStyle Text_Rate_Event = TextStyle(
+  color: Color_Blue,
+  fontSize: 16.0,
+);
+
 TextStyle Text_Join_ForYou = const TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/Views/Classes/activitydetails.dart';
+import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 
 import '../Styles/StyleText.dart';
 
 class WidgetBoxForYou extends StatelessWidget {
-  final ActivityDetails activity;
+  final RecommendedActivity activity;
   const WidgetBoxForYou(this.activity,{super.key});
 
   @override
@@ -37,6 +37,11 @@ class WidgetBoxForYou extends StatelessWidget {
                               end: Alignment.topCenter,
                               stops: [0.35, 1.0],
                               colors: [Color_Dark_Gray, Colors.transparent])),
+                      child: Column(
+                        children: [
+
+                        ],
+                      ),
                     ),
                   )),
               Expanded(

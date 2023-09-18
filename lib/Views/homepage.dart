@@ -5,6 +5,8 @@ import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import 'package:my_project/Views/ongoing_activities.dart';
+import 'package:my_project/Views/search_activity_map.dart';
 
 import '../Service/friend_list_service.dart';
 import 'Classes/Trending.dart';
@@ -12,11 +14,13 @@ import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
 import 'Widgets/foryou.dart';
+import 'Widgets/test.dart';
 import 'add_activity_page.dart';
 import 'for_you_page.dart';
 import 'friends_list_page.dart';
 import 'profilepage.dart';
 import 'trending_page.dart';
+import 'search_activity_online.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -108,10 +112,10 @@ class HomePage extends StatelessWidget {
                     children: <Widget>[
                       InkWell(
                           onTap: () {},
-                          child: CardMenuBig(Icons.share_location)),
+                          child: CardMenuBig(Icons.share_location, SearchActivityMap())),
                       InkWell(
                           onTap: () {},
-                          child: CardMenuBig(Icons.connect_without_contact)),
+                          child: CardMenuBig(Icons.connect_without_contact, SearchActivityOnlinePage())),
                     ],
                   ),
                 ),
@@ -145,7 +149,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       CardMenuSmall(
-                          Icons.access_time_filled, ActivityHistoryPage()),
+                          Icons.access_time_filled, OngoingActivities()),
                     ],
                   ),
                 ),
