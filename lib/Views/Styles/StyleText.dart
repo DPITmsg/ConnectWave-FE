@@ -159,3 +159,8 @@ TextStyle Text_FindFriends_Search_Black_Hint = const TextStyle(
     fontWeight: FontWeight.normal,
     decoration: TextDecoration.none);
 
+TextStyle Text_Join_ForYou = const TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Color_Light_Blue
+);
