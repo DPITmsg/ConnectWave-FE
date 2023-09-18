@@ -27,7 +27,7 @@ class _FilterPressActionSliderState extends State<FilterPressSliderAction> {
   @override
   void initState() {
     super.initState();
-    updateSelectedRange(widget.values);
+    selectedRange = widget.displayTo;
   }
 
   void updateSelectedRange(RangeValues newRange) {

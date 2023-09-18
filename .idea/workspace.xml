@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/filters_search_activity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/fliters_search_activity_slider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/maplocationpicker.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/fliters_search_activity_slider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/fliters_search_activity_slider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

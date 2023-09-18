@@ -9,6 +9,7 @@ import 'Classes/activitydetails.dart';
 import 'Widgets/containersearchactivity.dart';
 import 'Widgets/fliters_search_activity_slider.dart';
 
+
 class SearchActivityOnlinePage extends StatefulWidget {
   const SearchActivityOnlinePage({super.key});
 
@@ -40,8 +41,9 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
   }
 
   List<String> categories = ['Sports', 'Gaming', 'Services', 'Other'];
-  List<String> nrParticipants = [];
+  List<String> dates = ["tomorrow", "in the next three days", "in the next 7 days", "in the next 30 days", "all"];
 
+  String dateSelected = '';
   String categorySelected = '';
   RangeValues nrParticipantsSelected = RangeValues(0.0, 50.0);
 
@@ -57,6 +59,65 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     });
   }
 
+  void _onDateSelected(String selectedDate){
+    setState(() {
+      dateSelected = selectedDate;
+    });
+  }
+
+
+  DateTime parseDate(String input){
+    try {
+      String day, month, year;
+      List<String> list = [];
+      int index = 0;
+
+      for (var i = 0; i < input.length; i++){
+        if(i == input.length - 1){
+          list.add(input.substring(index, i + 1));
+          break;
+        }
+        else if (input[i] == '-'){
+          list.add(input.substring(index, i));
+          index = i + 1;
+        }
+      }
+
+      for (var i = 0; i < list.length; i++) {
+        print(list[i]);
+      }
+
+      String newString = list[2] + '-' + list[1] + '-' + list[0];
+      print(newString);
+
+      return DateTime.parse(newString);
+    } catch (e) {
+      return DateTime(0, 0, 0);
+    }
+  }
+
+
+  DateTime dateConversion(String input){
+    DateTime today = DateTime.now();
+
+    if (input == "tomorrow"){
+      return today.add(Duration(days:1));
+    }
+    else if(input == "in the next three days"){
+      return today.add(Duration(days:3));
+    }
+    else if(input == "in the next 7 days"){
+      return today.add(Duration(days:7));
+    }
+    else if(input == "in the next 30 days"){
+      return today.add(Duration(days: 30));
+    }
+    else{
+      return DateTime(2006, 08, 07);
+    }
+  }
+
+
 
 
   List<ActivityDetails> getFilteredActivities() {
@@ -65,13 +126,22 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     (categorySelected.isEmpty || activity.category == categorySelected))
         .toList();
 
-    final filteredByNrParticipants = filteredByCategory.where((activity) => activity.nrParticipants.toInt() > nrParticipantsSelected.start.toInt() && activity.nrParticipants.toInt() < nrParticipantsSelected.end.toInt());
+    final filteredByNrParticipants = filteredByCategory.where((activity) =>
+    activity.nrParticipants.toInt() >= nrParticipantsSelected.start.toInt() &&
+        activity.nrParticipants.toInt() <= nrParticipantsSelected.end.toInt());
 
-    final filteredBySearch = filteredByNrParticipants
+    DateTime targetDate = dateConversion(dateSelected);
+
+    final filteredByDate = filteredByNrParticipants.where((activity) {
+      DateTime activityDate = parseDate(activity.date);
+      print("$activityDate + $targetDate");
+      return activityDate.isBefore(targetDate) || targetDate == DateTime(2006, 08, 07);
+    }).toList();
+
+
+    final filteredBySearch = filteredByDate
         .where((activity) =>
-        activity.title
-            .toLowerCase()
-            .contains(_searchController.text.toLowerCase()))
+        activity.title.toLowerCase().contains(_searchController.text.toLowerCase()))
         .toList();
 
     return filteredBySearch;
@@ -107,7 +177,8 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
             Row(
               children: [
                 FilterPressAction(categorySelected, categories, _onCategorySelected, "Categories"),
-                FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Number of Participants")
+                FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Number of Participants"),
+                FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in')
               ],
             ),
             Expanded(
