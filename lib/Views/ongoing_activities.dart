@@ -45,7 +45,7 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
             itemCount: activities.length,
             itemBuilder: (context, index){
               final activity = activities[index];
-              return ContainerOngoing(activity.title, activity.date, activity.author, activity.address, activity.nrParticipants, DetailedActivityPage(activity: activity,));
+              return ContainerOngoing(activity.title, activity.date, activity.author, activity.address, activity.nrParticipants, detailed_activity_page(activity,));
             },
         ),
       )
