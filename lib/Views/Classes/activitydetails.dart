@@ -14,6 +14,8 @@ String postToJson(List<ActivityDetails> data) =>
 class ActivityDetails {
   int _id = 0;
   String _date = '';
+  String _endDate = '';
+  String _time = '';
   String _author = '';
   String _title = '';
   List<String> _tags = [];
@@ -27,6 +29,8 @@ class ActivityDetails {
   ActivityDetails({
     required id,
     required date,
+    required endDate,
+    required time,
     required author,
     required title,
     required tags,
@@ -39,6 +43,8 @@ class ActivityDetails {
   })
       :_id = id,
         _date = date,
+        _endDate = endDate,
+        _time = time,
         _author = author,
         _title = title,
         _tags = tags,
@@ -53,6 +59,8 @@ class ActivityDetails {
       ActivityDetails(
         id: json["id"],
         date: json["date"],
+        endDate: json["endDate"],
+        time: json["time"],
         author: json["author"],
         title: json["title"],
         tags: List<String>.from(json["tags"]),
@@ -77,6 +85,8 @@ class ActivityDetails {
       {
         "id": id,
         "date": date,
+        "endDate": endDate,
+        "time": time,
         "author": author,
         "title": title,
         "tags": tags,
@@ -90,6 +100,12 @@ class ActivityDetails {
           "longitude": location.longitude,
         },
       };
+
+  String get endDate => _endDate;
+
+  set endDate(String value) {
+    _endDate = value;
+  }
 
   String get author => _author;
 
@@ -149,5 +165,11 @@ class ActivityDetails {
 
   set date(String value) {
     _date = value;
+  }
+
+  String get time => _time;
+
+  set time(String value) {
+    _time = value;
   }
 }
