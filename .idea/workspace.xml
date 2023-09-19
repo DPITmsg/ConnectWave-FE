@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66c4df15-06f3-4c16-918b-a28cc9b396db" name="Changes" comment="pulled DARIUSBACKUP">
+    <list default="true" id="66c4df15-06f3-4c16-918b-a28cc9b396db" name="Changes" comment="eu is miezu, for_you_page works and also connected to postman via get for you">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/activity_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/RecommendedActivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/RecommendedActivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/foryou.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/foryou.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/for_you_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/for_you_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,19 +40,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "settings.editor.selected.configurable": "dart.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Darius\github\ConnectWave-FE\lib\Views" />
@@ -86,7 +79,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="" />
+      <changelist id="66c4df15-06f3-4c16-918b-a28cc9b396db" name="Changes" comment="eu is miezu, for_you_page works and also connected to postman via get for you" />
       <created>1690805374000</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -99,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695055530196</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="eu is miezu, for_you_page works and also connected to postman via get for you">
+      <created>1695058026483</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695058026483</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +116,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="started working on for you page, but stopped cus i need activity details" />
     <MESSAGE value="pulled DARIUSBACKUP" />
-    <option name="LAST_COMMIT_MESSAGE" value="pulled DARIUSBACKUP" />
+    <MESSAGE value="eu is miezu, for_you_page works and also connected to postman via get for you" />
+    <option name="LAST_COMMIT_MESSAGE" value="eu is miezu, for_you_page works and also connected to postman via get for you" />
   </component>
 </project>

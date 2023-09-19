@@ -17,23 +17,35 @@ class ForYou extends StatefulWidget {
 class _ForYouState extends State<ForYou> {
   final double _swipeThreshold = 100.0;
   double _startY = 0.0;
+  bool _isPageTransitionInProgress = false; // Flag to prevent multiple transitions
 
   void _onVerticalDragStart(DragStartDetails details) {
     _startY = details.localPosition.dy;
   }
 
   Future<void> _onVerticalDragUpdate(DragUpdateDetails details) async {
+    if (_isPageTransitionInProgress) {
+      return; // Ignore if a transition is already in progress
+    }
+
     double deltaY = details.localPosition.dy - _startY;
     if (deltaY.abs() >= _swipeThreshold)  {
+      setState(() {
+        _isPageTransitionInProgress = true;
+      });
 
       final response = await getForYouList();
-      List<RecommendedActivity> for_you_list =
+      List<RecommendedActivity> forYouList =
       (jsonDecode(response.body) as List)
           .map((e) => RecommendedActivity.fromJson(e))
           .toList();
 
-      Navigator.push(context, PageTransition(child: for_you_page(for_you_list), type: PageTransitionType.bottomToTop));
-      _startY = details.localPosition.dy; // Reset the start position
+      Navigator.push(context, PageTransition(child: for_you_page(forYouList), type: PageTransitionType.bottomToTop)).then((value) {
+        // Reset the flag when the transition is completed.
+        setState(() {
+          _isPageTransitionInProgress = false;
+        });
+      });
     }
   }
 
