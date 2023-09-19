@@ -1,21 +1,26 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 class RecommendedActivity {
   String _title = '';
   String _author = '';
   String _address = '';
   int _nr_participants = 0;
   int _id = 0;
+  LatLng _location = LatLng(0, 0);
 
   RecommendedActivity(
       {required title,
       required author,
       required address,
       required nr_participants,
-      required id})
+      required id,
+      required location})
       : _title = title,
         _author = author,
         _address = address,
         _nr_participants = nr_participants,
-        _id = id;
+        _id = id,
+        _location = location;
 
   int get id => _id;
 
@@ -35,6 +40,12 @@ class RecommendedActivity {
     _author = value;
   }
 
+  LatLng get location => _location;
+
+  set location(LatLng value) {
+    _location = value;
+  }
+
   String get title => _title;
 
   set title(String value) {
@@ -49,9 +60,14 @@ class RecommendedActivity {
 
   factory RecommendedActivity.fromJson(Map<String, dynamic> json) =>
       RecommendedActivity(
-          title: json["title"],
-          author: json["author"],
-          address: json["address"],
-          nr_participants: json["nr_participants"],
-          id: json['id']);
+        title: json["title"],
+        author: json["author"],
+        address: json["address"],
+        nr_participants: json["nr_participants"],
+        id: json['id'],
+        location: LatLng(
+          json["location"]["latitude"].toDouble(),
+          json["location"]["longitude"].toDouble(),
+        ),
+      );
 }
