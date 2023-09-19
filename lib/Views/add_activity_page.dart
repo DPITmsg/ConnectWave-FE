@@ -12,6 +12,8 @@ import 'Widgets/test.dart';
 import 'Widgets/maplocationpicker.dart';
 import 'detailed_activity_page.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
@@ -134,6 +136,8 @@ class _add_activity_pageState extends State<add_activity_page> {
     print('Selected address: $selectedAddress');
   }
 
+  final LatLng currentLocation = LatLng(46.7712, 23.6236);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -145,9 +149,18 @@ class _add_activity_pageState extends State<add_activity_page> {
             height: MediaQuery.of(context).size.height,
             child: Stack(
               children: [
-                Column(
-                  children: [Image.asset('assets/map.png'), const SizedBox()],
-                ),
+                Container(height: MediaQuery.of(context).size.height*0.35,
+                    child: GoogleMap(
+                      zoomGesturesEnabled: false,
+                        zoomControlsEnabled: false,
+                        rotateGesturesEnabled: false,
+                        scrollGesturesEnabled: false,
+                        initialCameraPosition: CameraPosition(target: currentLocation, zoom: 14),
+                      markers: {
+                        Marker(markerId: MarkerId('1'), position: currentLocation)
+                      },
+                    ),
+                    ),
                 WidgetBackgroundBox(
                   Padding(
                     padding: const EdgeInsets.fromLTRB(25, 30, 25, 10),
@@ -529,12 +542,17 @@ class _add_activity_pageState extends State<add_activity_page> {
                                   width: 20,
                                 ),
                                 Expanded(
-                                  child: WidgetButton(
-                                    Center(
-                                      child: Text("Invite",
-                                          style: Text_Widget_Buttons_Blue),
+                                  child: InkWell(
+                                    onTap: (){
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: WidgetButton(
+                                      Center(
+                                        child: Text("Cancel",
+                                            style: Text_Widget_Buttons_Blue),
+                                      ),
+                                      Color_Dark_Gray,
                                     ),
-                                    Color_Dark_Gray,
                                   ),
                                 ),
                               ],
