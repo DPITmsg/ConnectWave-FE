@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Styles/StyleText.dart';
 
@@ -24,14 +25,29 @@ class WidgetBoxForYou extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                  flex: 5,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.amberAccent,
-                        image: DecorationImage(
-                            image: AssetImage('assets/map.png'),
-                            fit: BoxFit.fill)),
-                    child: Container(
+                flex: 5,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.36,
+                      child: GoogleMap(
+                        zoomGesturesEnabled: false,
+                        zoomControlsEnabled: false,
+                        rotateGesturesEnabled: false,
+                        scrollGesturesEnabled: false,
+                        initialCameraPosition: CameraPosition(
+                            target: LatLng(activity.location.latitude,
+                                activity.location.longitude),
+                            zoom: 14),
+                        markers: {
+                          Marker(
+                              markerId: const MarkerId('1'),
+                              position: LatLng(activity.location.latitude,
+                                  activity.location.longitude))
+                        },
+                      ),
+                    ),
+                    Container(
                       decoration: const BoxDecoration(
                           gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
@@ -44,10 +60,14 @@ class WidgetBoxForYou extends StatelessWidget {
                               flex: 2,
                               child: SizedBox(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(right: 10,bottom: 5),
+                                  padding: const EdgeInsets.only(
+                                      right: 10, bottom: 5),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
-                                    child: Text(activity.address, style: Text_Widget_ForYou_Normal_Blue,),
+                                    child: Text(
+                                      activity.address,
+                                      style: Text_Widget_ForYou_Normal_Blue,
+                                    ),
                                   ),
                                 ),
                               )),
@@ -89,24 +109,31 @@ class WidgetBoxForYou extends StatelessWidget {
                         ],
                       ),
                     ),
-                  )),
+                  ],
+                ),
+              ),
               Expanded(
-                  child: Container(
+                  child: InkWell(
+                    onTap: (){
+                      //need to add join activity method
+                    },
+                    child: Container(
                 decoration: BoxDecoration(
-                    color: Color_Dark_Gray,
-                    borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(35),
-                        bottomRight: Radius.circular(35)),
-                    border: Border.all(color: Color_Light_Blue, width: 1)),
+                      color: Color_Dark_Gray,
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(35),
+                          bottomRight: Radius.circular(35)),
+                      border: Border.all(color: Color_Light_Blue, width: 1)),
                 child: Center(
-                    child: Transform.rotate(
-                  angle: -90 * (3.14159265359 / 180),
-                  child: Text(
-                    'Join',
-                    style: Text_Join_ForYou,
-                  ),
+                      child: Transform.rotate(
+                    angle: -90 * (3.14159265359 / 180),
+                    child: Text(
+                      'Join',
+                      style: Text_Join_ForYou,
+                    ),
                 )),
-              ))
+              ),
+                  ))
             ],
           ),
         ),

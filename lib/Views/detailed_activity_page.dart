@@ -21,7 +21,7 @@ class detailed_activity_page extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-          Container(height: MediaQuery.of(context).size.height*0.35,
+          SizedBox(height: MediaQuery.of(context).size.height*0.35,
             child: GoogleMap(
               zoomGesturesEnabled: false,
               zoomControlsEnabled: false,
