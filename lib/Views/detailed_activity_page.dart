@@ -7,6 +7,7 @@ import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class detailed_activity_page extends StatelessWidget {
   final ActivityDetails activity;
@@ -20,8 +21,17 @@ class detailed_activity_page extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-          Column(
-            children: [Image.asset('assets/map.png'), const SizedBox()],
+          Container(height: MediaQuery.of(context).size.height*0.35,
+            child: GoogleMap(
+              zoomGesturesEnabled: false,
+              zoomControlsEnabled: false,
+              rotateGesturesEnabled: false,
+              scrollGesturesEnabled: false,
+              initialCameraPosition: CameraPosition(target: LatLng(activity.location.latitude, activity.location.longitude), zoom: 14),
+              markers: {
+                Marker(markerId: const MarkerId('1'), position: LatLng(activity.location.latitude, activity.location.longitude))
+              },
+            ),
           ),
           WidgetBackgroundBox(
             Padding(
@@ -58,20 +68,12 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.calendar_month_rounded),
                                     Text(
-                                      activity.date == activity.endDate ? activity.date : '${activity.date}-${activity.endDate}',
+                                      activity.date == activity.endDate ? activity.date : '${activity.date}     ${activity.endDate}',
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    const Icon(Icons.access_time_filled),
-                                    Text(
-                                      activity.time,
-                                      style: Text_Detailed_Page_Bold_Black,
-                                    ),
-                                  ],
-                                )
+
                               ],
                             ),
                             const SizedBox(
@@ -80,6 +82,17 @@ class detailed_activity_page extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
+
+                                Row(
+                                  children: [
+                                    const Icon(Icons.access_time_filled),
+                                    Text(
+                                      activity.time,
+                                      style: Text_Detailed_Page_Bold_Black,
+                                    ),
+                                  ],
+                                ),
+
                                 Row(
                                   children: [
                                     const Icon(Icons.category_sharp),
