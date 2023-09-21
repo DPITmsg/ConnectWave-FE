@@ -8,6 +8,7 @@ import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
 import 'dart:developer' as developer;
 import 'rate_activity.dart';
 import 'Classes/User.dart';
+import 'Classes/ActivityHistory.dart';
 
 class ActivityHistoryPage extends StatefulWidget {
   ActivityHistoryPage({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class ActivityHistoryPage extends StatefulWidget {
 }
 
 class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
-  List<ActivityDetails>? activities = [];
+  List<ActivityHistory>? activities = [];
   List<User> mock_user_list = [
     User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
     User(name: "Darius Andei", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
@@ -32,10 +33,10 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
   }
 
   getData() async {
-    final activityData = await fetchEventData();
+    final activityData = await fetchEventHistoryData();
 
     setState(() {
-      activities = activityFromJson(json.encode(activityData));
+      activities = activityHistoryFromJson(json.encode(activityData));
       isLoaded = true;
     });
   }

@@ -36,16 +36,11 @@ class _LocationPickerPageState extends State<LocationPickerPage> {
           children: [
             MapLocationPicker(
               apiKey: 'AIzaSyBRFiip8ji8vQQpDmui1Rc1ln3I5h9SJfo',
+              currentLatLng: LatLng(0,-160),
               onNext: (GeocodingResult? result) {
                 handleLocationSelected(result?.formattedAddress);
                 Navigator.of(context).pop();
               },
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Confirm Location'),
             ),
           ],
         ),
