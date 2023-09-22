@@ -7,8 +7,8 @@ List<ActivityDetails> activityFromJson(String str) {
   return jsonData.map((json) => ActivityDetails.fromJson(json)).toList();
 }
 
-String postToJson(List<ActivityDetails> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+// String postToJson(List<ActivityDetails> data) =>
+//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 
 class ActivityDetails {
@@ -21,7 +21,6 @@ class ActivityDetails {
   List<String> _tags = [];
   int _nrParticipants = 0;
   String _category = '';
-  double _avgUserRating = 0;
   String _address = '';
   String _description = '';
   LatLng _location = LatLng(0, 0);
@@ -36,7 +35,6 @@ class ActivityDetails {
     required tags,
     required nrParticipants,
     required category,
-    required avgUserRating,
     required address,
     required description,
     required location
@@ -50,7 +48,6 @@ class ActivityDetails {
         _tags = tags,
         _nrParticipants = nrParticipants,
         _category = category,
-        _avgUserRating = avgUserRating,
         _address = address,
         _description = description,
         _location = location;
@@ -66,7 +63,6 @@ class ActivityDetails {
         tags: List<String>.from(json["tags"]),
         nrParticipants: json["nrParticipants"],
         category: json["category"],
-        avgUserRating: json["avgUserRating"],
         address: json["address"],
         description: json["description"],
         location: LatLng(
@@ -92,7 +88,6 @@ class ActivityDetails {
         "tags": tags,
         "nrParticipants": nrParticipants,
         "category": category,
-        "avgUserRating": avgUserRating,
         "address": address,
         "description": description,
         "location": {
@@ -129,12 +124,6 @@ class ActivityDetails {
 
   set address(String value) {
     _address = value;
-  }
-
-  double get avgUserRating => _avgUserRating;
-
-  set avgUserRating(double value) {
-    _avgUserRating = value;
   }
 
   String get category => _category;

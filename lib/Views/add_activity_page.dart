@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:map_location_picker/map_location_picker.dart';
 import 'package:my_project/Service/activity_service.dart';
-import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
-import 'Widgets/test.dart';
-import 'Widgets/maplocationpicker.dart';
-import 'detailed_activity_page.dart';
-import 'package:my_project/Views/detailed_activity_page.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
+import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
+import 'Widgets/maplocationpicker.dart';
+import 'Widgets/test.dart';
 
 class add_activity_page extends StatefulWidget {
   const add_activity_page({super.key});
@@ -40,6 +38,7 @@ class _add_activity_pageState extends State<add_activity_page> {
   String activity_category = '';
   List<String> activity_tags = [];
   String selectedAddress = '';
+  late GoogleMapController _controller;
 
   List<String> categories = ['Sport', 'Gaming', 'Services', 'a', 'a', 'a', 'a'];
 
@@ -129,14 +128,34 @@ class _add_activity_pageState extends State<add_activity_page> {
     });
   }
 
-  void updateSelectedAddress(String address) {
-    setState(() {
-      selectedAddress = address;
-    });
-    print('Selected address: $selectedAddress');
+
+  LatLng currentLocation = LatLng(0.0, -160.0);
+
+  Future<LatLng> getAddressLatLng(String address) async {
+    List<geocoding.Location> locations = await geocoding.locationFromAddress(address);
+    if (locations.isNotEmpty) {
+      final LatLng latLng = LatLng(locations[0].latitude, locations[0].longitude);
+      return latLng;
+    } else {
+      throw Exception('Address not found');
+    }
   }
 
-  final LatLng currentLocation = LatLng(46.7712, 23.6236);
+  void updateSelectedAddress(String address) {
+    getAddressLatLng(address).then((newLocation) {
+      setState(() {
+        selectedAddress = address;
+        currentLocation = newLocation;
+      });
+      _controller.animateCamera(
+        CameraUpdate.newLatLng(newLocation),
+      );
+      print('Selected address: $selectedAddress');
+    }).catchError((error) {
+      print('Error: $error');
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -150,15 +169,22 @@ class _add_activity_pageState extends State<add_activity_page> {
             child: Stack(
               children: [
                 Container(height: MediaQuery.of(context).size.height*0.35,
-                    child: GoogleMap(
-                      zoomGesturesEnabled: false,
-                        zoomControlsEnabled: false,
-                        rotateGesturesEnabled: false,
-                        scrollGesturesEnabled: false,
-                        initialCameraPosition: CameraPosition(target: currentLocation, zoom: 14),
-                      markers: {
-                        Marker(markerId: MarkerId('1'), position: currentLocation)
-                      },
+                    child: Builder(
+                      builder: (context) {
+                        return GoogleMap(
+                          zoomGesturesEnabled: false,
+                            zoomControlsEnabled: false,
+                            rotateGesturesEnabled: false,
+                            scrollGesturesEnabled: false,
+                            initialCameraPosition: CameraPosition(target: currentLocation, zoom: 14),
+                          markers: {
+                            Marker(markerId: MarkerId('1'), position: currentLocation)
+                          },
+                          onMapCreated: (GoogleMapController controller){
+                            _controller = controller;
+                          },
+                        );
+                      }
                     ),
                     ),
                 WidgetBackgroundBox(
@@ -466,25 +492,10 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           error_dates = false;
                                         }
                                       });
-
                                       if (_formKey.currentState!.validate()) {
                                         if (error_tags != true &&
                                             error_category != true && error_dates != true) {
-                                          Activity activity = Activity(
-                                              title: activity_title.text,
-                                              author: 'Zdroba Petru',
-                                              date: activity_date.text,
-                                              end_date: activity_end_date.text,
-                                              location: activity_location.text,
-                                              number_participants: int.parse(
-                                                  activity_nr_participants
-                                                      .text),
-                                              descrpition:
-                                                  activity_description.text,
-                                              author_id: 'X-Man',
-                                              tags: activity_tags,
-                                              category: activity_category,
-                                              time: activity_time.text);
+                                          LatLng location = await getAddressLatLng(selectedAddress);
 
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -506,6 +517,24 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               ),
                                             ),
                                           );
+
+                                          ActivityDetails activity = ActivityDetails(
+                                              id: 1,
+                                              title: activity_title.text,
+                                              author: 'Zdroba Petru',
+                                              date: activity_date.text,
+                                              endDate: activity_end_date.text,
+                                              address: selectedAddress,
+                                              nrParticipants: int.parse(
+                                                  activity_nr_participants
+                                                      .text),
+                                              description:
+                                              activity_description.text,
+                                              tags: activity_tags,
+                                              category: activity_category,
+                                              time: activity_time.text,
+                                              location: location);
+
                                           final response =
                                               await createActivty(activity);
                                           if (response.body == 'true') {
@@ -517,6 +546,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           }
                                         }
                                       }
+
                                     },
                                     child: WidgetButton(
                                       Center(

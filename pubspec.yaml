@@ -46,6 +46,7 @@ dependencies:
   flutter_tags: "^1.0.0-nullsafety.1"
   map_location_picker: ^1.0.1
   form_builder_extra_fields: ^10.0.0-dev.1
+  geocoding: ^2.0.2
 
 dependency_overrides:
   google_maps_flutter_web: ^0.4.0+1
