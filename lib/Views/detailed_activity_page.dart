@@ -29,7 +29,7 @@ class detailed_activity_page extends StatelessWidget {
               scrollGesturesEnabled: false,
               initialCameraPosition: CameraPosition(target: LatLng(activity.location.latitude, activity.location.longitude), zoom: 14),
               markers: {
-                Marker(markerId: const MarkerId('1'), position: LatLng(activity.location.latitude, activity.location.longitude))
+                Marker(markerId: const MarkerId('xman-zdroba'), position: LatLng(activity.location.latitude, activity.location.longitude))
               },
             ),
           ),
