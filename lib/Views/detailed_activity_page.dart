@@ -8,6 +8,7 @@ import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'search_activity_map.dart';
 
 class detailed_activity_page extends StatelessWidget {
   final ActivityDetails activity;
@@ -21,16 +22,21 @@ class detailed_activity_page extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-          SizedBox(height: MediaQuery.of(context).size.height*0.35,
-            child: GoogleMap(
-              zoomGesturesEnabled: false,
-              zoomControlsEnabled: false,
-              rotateGesturesEnabled: false,
-              scrollGesturesEnabled: false,
-              initialCameraPosition: CameraPosition(target: LatLng(activity.location.latitude, activity.location.longitude), zoom: 14),
-              markers: {
-                Marker(markerId: const MarkerId('1'), position: LatLng(activity.location.latitude, activity.location.longitude))
-              },
+          InkWell(
+            onDoubleTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: activity.location, zoomLevel: 16,)));
+            },
+            child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
+              child: GoogleMap(
+                zoomGesturesEnabled: false,
+                zoomControlsEnabled: false,
+                rotateGesturesEnabled: false,
+                scrollGesturesEnabled: false,
+                initialCameraPosition: CameraPosition(target: LatLng(activity.location.latitude, activity.location.longitude), zoom: 14),
+                markers: {
+                  Marker(markerId: const MarkerId('1'), position: LatLng(activity.location.latitude, activity.location.longitude))
+                },
+              ),
             ),
           ),
           WidgetBackgroundBox(

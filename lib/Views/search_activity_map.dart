@@ -10,12 +10,14 @@ import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 
 
-final LatLng currentLocation = LatLng(46.7712, 23.6236);
-final List<LatLng> markerLocation = [LatLng(46.7712, 23.6236), LatLng(46.7702, 23.6236)];
 int cnt = 0;
 
 class SearchActivityMap extends StatefulWidget {
-  const SearchActivityMap({Key? key}) : super(key: key);
+  LatLng locationTarget;
+  double zoomLevel;
+
+  SearchActivityMap({Key? key, required this.locationTarget, required this.zoomLevel})
+      : super(key: key);
 
   @override
   State<SearchActivityMap> createState() => _SearchActivityMapState();
@@ -56,37 +58,15 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   Widget buildMainScreen() {
     return Scaffold(
       appBar: PreferredSize(preferredSize: const Size.fromHeight(0), child: AppBar(elevation: 0, backgroundColor: const Color(0x44000000),),),
-      body: Column(
+      body: Stack(
         children: [
-          Row(
-            children: [
-              Expanded(child: TextFormField(
-                controller: _searchController,
-                textCapitalization: TextCapitalization.words,
-                decoration: InputDecoration(
-                    hintText: ('Search Activity')
-                ),
-                onChanged: (value){
-                  print(value);
-                },
-              )),
-              IconButton(
-                onPressed: () async {
-                    var userInput = _searchController.text;
-                    searchAndDisplayMarkers(userInput);
-                    },
-                icon: Icon(Icons.search),
-              ),
-
-            ],
-          ),
           Expanded(
             flex: 7,
             child: GoogleMap(
               mapType: MapType.normal,
               initialCameraPosition: CameraPosition(
-                target: currentLocation,
-                zoom: 14,
+                target: widget.locationTarget,
+                zoom: widget.zoomLevel,
               ),
               onMapCreated: (GoogleMapController controller) {
                 if (!_controller.isCompleted) {
@@ -97,22 +77,44 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
               markers: _markers.values.toSet(),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)), color: Color_Blue),
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activities[0])));
-                },
-                child: Center(
-                    child: Text(_searchController.text,
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    )
+          Row(
+            children: [
+              Expanded(child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                  child: TextFormField(
+                    controller: _searchController,
+                    textCapitalization: TextCapitalization.words,
+                    decoration: InputDecoration(
+                        hintText: ('Search Activity'),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                    ),
+                    onChanged: (value){
+                      print(value);
+                    },
+                  ),
+                ),
+              )),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                child: CircleAvatar(
+                  child: IconButton(
+                    onPressed: () async {
+                      var userInput = _searchController.text;
+                      searchAndDisplayMarkers(userInput);
+                    },
+                    icon: Icon(Icons.search),
+                  ),
                 ),
               ),
-            ),
-          )
+            ],
+          ),
         ],
       ),
     );

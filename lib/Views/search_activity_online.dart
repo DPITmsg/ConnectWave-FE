@@ -165,13 +165,19 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
         width: screenWidth,
         child: Column(
           children: [
-            TextField(
-              controller: _searchController,
-              onChanged: (_) {
-                setState(() {});
-              },
-              decoration: InputDecoration(
-                hintText: 'Search by title',
+            Padding(
+              padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+              child: TextField(
+                controller: _searchController,
+                onChanged: (_) {
+                  setState(() {});
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search by title',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )
+                ),
               ),
             ),
             Row(

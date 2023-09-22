@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
@@ -25,6 +26,7 @@ import 'trending_page.dart';
 import 'search_activity_online.dart';
 
 class HomePage extends StatelessWidget {
+
   const HomePage({super.key});
 
   @override
@@ -114,7 +116,7 @@ class HomePage extends StatelessWidget {
                     children: <Widget>[
                       InkWell(
                           onTap: () {},
-                          child: CardMenuBig(Icons.share_location, SearchActivityMap())),
+                          child: CardMenuBig(Icons.share_location, SearchActivityMap(locationTarget: LatLng(46.7712, 23.6323), zoomLevel: 14,))),
                       InkWell(
                           onTap: () {},
                           child: CardMenuBig(Icons.connect_without_contact, SearchActivityOnlinePage())),

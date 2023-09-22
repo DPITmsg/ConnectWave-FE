@@ -540,9 +540,8 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               ),
                                             ),
                                           );
-                                          /*
                                           final response =
-                                              await createActivty(mock_activity);
+                                              await createActivty(activity);
                                           if (response.body == 'true') {
                                             Navigator.of(context).pop();
                                             Navigator.of(context).push(
@@ -550,7 +549,6 @@ class _add_activity_pageState extends State<add_activity_page> {
                                                     builder: (context) =>
                                                         Test()));
                                           }
-                                          */
                                         }
                                       }
 
