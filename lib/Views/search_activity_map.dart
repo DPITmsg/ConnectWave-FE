@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:my_project/Views/detailed_activity_page.dart';
 
-import 'Styles/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_project/Views/detailed_activity_page.dart';
+
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/activitydetails.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'Widgets/test.dart';
+import 'Styles/Colors.dart';
 
 
 final LatLng currentLocation = LatLng(46.7712, 23.6236);
@@ -104,7 +103,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
               decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)), color: Color_Blue),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailedActivityPage(activity: activities[0])));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activities[0])));
                 },
                 child: Center(
                     child: Text(_searchController.text,
@@ -157,7 +156,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   }
 
   void _onMarkerTapped(ActivityDetails activity) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailedActivityPage(activity: activity)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity)));
   }
 
   List<ActivityDetails> searchActivity(List<ActivityDetails> list, String userInput){

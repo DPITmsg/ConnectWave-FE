@@ -103,24 +103,19 @@ TextStyle Text_Title_Top_FriendsList = const TextStyle(
 );
 
 TextStyle Text_Tag_Widget = const TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-    color: Color_Dark_Gray
-);
+    fontSize: 15, fontWeight: FontWeight.bold, color: Color_Dark_Gray);
 
 TextStyle Text_Welcome_Big_Black = TextStyle(
     fontSize: 42,
     fontWeight: FontWeight.bold,
     color: Color_Dark_Gray,
-    shadows: [Shadow_Widget_Box]
-);
+    shadows: [Shadow_Widget_Box]);
 
 TextStyle Text_Welcome_Big_Blue = TextStyle(
     fontSize: 42,
     fontWeight: FontWeight.bold,
     color: Color_Blue,
-    shadows: [Shadow_Widget_Box]
-);
+    shadows: [Shadow_Widget_Box]);
 
 TextStyle Text_Welcome_Medium_Black = const TextStyle(
   fontSize: 26,
@@ -131,20 +126,13 @@ TextStyle Text_Welcome_Medium_Black = const TextStyle(
 TextStyle Text_Sign_In_Small_Blue = const TextStyle(
     color: Color_Light_Blue,
     decoration: TextDecoration.underline,
-    fontSize: 14
-);
+    fontSize: 14);
 
 TextStyle Text_Input_SignIn_Login_White = const TextStyle(
-  fontSize: 17,
-color: Color_White,
-decoration: TextDecoration.underline
-);
+    fontSize: 17, color: Color_White, decoration: TextDecoration.underline);
 
 TextStyle Text_Hint_SignIn_Login_Blue = const TextStyle(
-    fontSize: 18,
-    color: Color_Blue,
-    decoration: TextDecoration.none
-);
+    fontSize: 18, color: Color_Blue, decoration: TextDecoration.none);
 
 TextStyle Text_FindFriends_Search_Black = const TextStyle(
   fontSize: 22.0,
@@ -169,7 +157,6 @@ TextStyle Text_Detailed_Page_Bold = TextStyle(
   fontWeight: FontWeight.bold,
   color: Color_White,
 );
-
 
 TextStyle Text_Widget_Buttons_White = TextStyle(
   fontSize: 20.0,
@@ -201,8 +188,28 @@ TextStyle Text_Search_Activity_v2 = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-
 TextStyle Text_Rate_Event = TextStyle(
   color: Color_Blue,
   fontSize: 16.0,
 );
+
+TextStyle Text_Join_ForYou = const TextStyle(
+    fontSize: 18, fontWeight: FontWeight.bold, color: Color_Light_Blue);
+
+TextStyle Text_Widget_ForYou_Bold_White = const TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+  color: Color_White,
+);
+
+TextStyle Text_Widget_ForYou_Normal_White = const TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.normal,
+  color: Color_White,
+);
+TextStyle Text_Widget_ForYou_Normal_Blue = const TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.normal,
+  color: Color_Blue,
+);
+

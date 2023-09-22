@@ -7,6 +7,8 @@ import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/activityhistory.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
+import 'package:my_project/Views/ongoing_activities.dart';
+import 'package:my_project/Views/search_activity_map.dart';
 
 import '../Service/friend_list_service.dart';
 import 'Classes/Trending.dart';
@@ -18,6 +20,7 @@ import 'Widgets/test.dart';
 import 'add_activity_page.dart';
 import 'friends_list_page.dart';
 import 'profilepage.dart';
+import 'search_activity_online.dart';
 import 'trending_page.dart';
 import 'search_activity_online.dart';
 
@@ -154,7 +157,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const Expanded(
                     flex: 1, child: CardMenuAddActivity(add_activity_page())),
-                const InkWell(child: ForYou(null)),
+                const InkWell(child: ForYou()),
               ],
             ),
           )
