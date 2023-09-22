@@ -9,13 +9,13 @@ import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'package:my_project/Views/detailed_activity_page.dart';
 
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
 import 'Widgets/maplocationpicker.dart';
-import 'Widgets/test.dart';
 
 class add_activity_page extends StatefulWidget {
   const add_activity_page({super.key});
@@ -542,7 +542,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        Test()));
+                                                        detailed_activity_page(activity)));
                                           }
                                         }
                                       }
