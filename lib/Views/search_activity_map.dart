@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
-
+import 'Styles/Colors.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
@@ -63,6 +63,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
           Expanded(
             flex: 7,
             child: GoogleMap(
+              zoomControlsEnabled: false,
               mapType: MapType.normal,
               initialCameraPosition: CameraPosition(
                 target: widget.locationTarget,
@@ -104,7 +105,9 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
                 child: CircleAvatar(
+                  backgroundColor: Color_Blue,
                   child: IconButton(
+                    color: Color_White,
                     onPressed: () async {
                       var userInput = _searchController.text;
                       searchAndDisplayMarkers(userInput);

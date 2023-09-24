@@ -183,7 +183,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
             Row(
               children: [
                 FilterPressAction(categorySelected, categories, _onCategorySelected, "Categories"),
-                FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Number of Participants"),
+                FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Nr Participants"),
                 FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in')
               ],
             ),

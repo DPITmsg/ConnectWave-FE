@@ -7,6 +7,7 @@ import '../Classes/activitydetails.dart';
 import '../detailed_activity_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../search_activity_map.dart';
+import '../Styles/Gradients.dart';
 
 class ContainerActivityForSearch extends StatelessWidget {
   ActivityDetails activity;
@@ -27,7 +28,7 @@ class ContainerActivityForSearch extends StatelessWidget {
           width: screenWidth,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
-            color: Color_White,
+            gradient: Gradient_Search_Activity,
             boxShadow: [
               Shadow_Darius
             ]

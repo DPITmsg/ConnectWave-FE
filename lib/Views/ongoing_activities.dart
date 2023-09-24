@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,8 @@ import 'Widgets/containerongoingactivities.dart';
 import 'Classes/activitydetails.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'detailed_activity_page.dart';
+import 'Widgets/containersearchactivity.dart';
+import 'Styles/Colors.dart';
 
 class OngoingActivities extends StatefulWidget {
   const OngoingActivities({super.key});
@@ -37,18 +40,23 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
-      body: Visibility(
+      appBar: AppBar(title: Text("Ongoing Activities"), backgroundColor: Color_Blue, centerTitle: true,),
+      body: Container(
+        color: Color_Gray,
+        child: Visibility(
         visible: isLoaded,
         replacement: Center(child: const CircularProgressIndicator()),
         child: ListView.builder(
             itemCount: activities.length,
             itemBuilder: (context, index){
               final activity = activities[index];
-              return ContainerOngoing(activity.title, activity.date, activity.author, activity.address, activity.nrParticipants, detailed_activity_page(activity,));
+              return ContainerActivityForSearch(activity);
             },
         ),
+      )
       )
     );
   }
 }
+
+

@@ -36,12 +36,14 @@ class _FilterPressActionState extends State<FilterPressAction> {
                   itemCount: widget.options.length,
                   itemBuilder: (context, index) {
                     String textSelect = widget.options[index];
-                    return TextButton(
-                        onPressed: () {
-                          widget.onCategorySelected(textSelect);
-                          Navigator.pop(context);
-                        },
-                        child: Text(textSelect));
+                    return Container(
+                      child: TextButton(
+                          onPressed: () {
+                            widget.onCategorySelected(textSelect);
+                            Navigator.pop(context);
+                          },
+                          child: Center(child: Text(textSelect))),
+                    );
                   },
                 ),
               );
