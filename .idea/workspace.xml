@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activityhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

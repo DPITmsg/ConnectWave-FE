@@ -12,6 +12,7 @@ import 'Widgets/avatarcontainer.dart';
 import 'Widgets/test.dart';
 import 'friends_list_page.dart';
 import 'Classes/activitydetails.dart';
+import 'activities_created_page.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -78,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         AvatarContainer(profilePic),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0, 30, 0, 8),
+                          padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                           child: Text(
                             user!.name,
                             style: TextStyle(
@@ -88,6 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ),
+                        Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 8), child: Text(user!.username),),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
                           child: Stars(user!.rating),
@@ -109,9 +111,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   friends_list_page(friends),
                               ),
                               CardProfile(
-                                user!.favcategory,
-                                'Favorite Category',
-                                Test(),
+                                user!.activities_created.length.toString(),
+                                'Activities Created',
+                                ActivitiesCreatedPage(activities_created: user!.activities_created),
                               ),
                             ],
                           ),
