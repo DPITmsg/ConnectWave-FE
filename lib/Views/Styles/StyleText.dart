@@ -184,7 +184,7 @@ TextStyle Text_Search_Activity_v1 = TextStyle(
 
 TextStyle Text_Search_Activity_v2 = TextStyle(
   color: Color_Dark_Gray,
-  fontSize: 16.0,
+  fontSize: 14.0,
   fontWeight: FontWeight.bold,
 );
 

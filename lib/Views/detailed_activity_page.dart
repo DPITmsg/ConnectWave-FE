@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'package:my_project/Views/search_activity_map.dart';
 
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
@@ -26,16 +27,21 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
-          SizedBox(height: MediaQuery.of(context).size.height*0.35,
-            child: GoogleMap(
-              zoomGesturesEnabled: false,
-              zoomControlsEnabled: false,
-              rotateGesturesEnabled: false,
-              scrollGesturesEnabled: false,
-              initialCameraPosition: CameraPosition(target: LatLng(widget.activity.location.latitude, widget.activity.location.longitude), zoom: 14),
-              markers: {
-                Marker(markerId: const MarkerId('xman-zdroba'), position: LatLng(widget.activity.location.latitude, widget.activity.location.longitude))
-              },
+          InkWell(
+            onDoubleTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: widget.activity.location, zoomLevel: 16,)));
+            },
+            child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
+              child: GoogleMap(
+                zoomGesturesEnabled: false,
+                zoomControlsEnabled: false,
+                rotateGesturesEnabled: false,
+                scrollGesturesEnabled: false,
+                initialCameraPosition: CameraPosition(target: LatLng(widget.activity.location.latitude, widget.activity.location.longitude), zoom: 14),
+                markers: {
+                  Marker(markerId: const MarkerId('1'), position: LatLng(widget.activity.location.latitude, widget.activity.location.longitude))
+                },
+              ),
             ),
           ),
           WidgetBackgroundBox(

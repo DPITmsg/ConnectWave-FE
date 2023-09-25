@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'activitydetails.dart';
 
 
 User userFromJson(Map<String, dynamic> jsonData) {
@@ -6,11 +7,22 @@ User userFromJson(Map<String, dynamic> jsonData) {
   List<String> tags = List<String>.from(jsonData['tags']);
   List<String> friendsList = List<String>.from(jsonData['friends_list']);
 
+  List<ActivityDetails> activities_created = (jsonData['activities_created'] != null)
+      ? activityFromJson(jsonData['activities_created'])
+      : [];
+
+  List<ActivityDetails> activities_enrolled = (jsonData['activities_enrolled'] != null)
+      ? activityFromJson(jsonData['activities_enrolled'])
+      : [];
+
+
   return User.fromJson({
     ...jsonData,
     'interests': interests,
     'tags': tags,
     'friends_list': friendsList,
+    'activities_created': activities_created,
+    'activities_enrolled': activities_enrolled
   });
 }
 
@@ -20,6 +32,7 @@ String postToJson(List<User> data) =>
 
 class User {
   String _name = '';
+  String _username = '';
   double _rating = 0;
   int _activicompleted = 0;
   int _friends = 0;
@@ -28,9 +41,13 @@ class User {
   List<String> _interests = [];
   List<String> _tags = [];
   List<String> _friends_list = [];
+  int _age = 0;
+  List<ActivityDetails> _activities_created = [];
+  List<ActivityDetails> _activities_enrolled = [];
 
   User(
       {required name,
+        required username,
         required rating,
         required activicompleted,
         required friends,
@@ -38,8 +55,12 @@ class User {
         required about,
         required interests,
         required tags,
-        required friends_list})
+        required friends_list,
+        required age,
+        required activities_created,
+        required activities_enrolled})
       : _name = name,
+        _username = username,
         _rating = rating,
         _activicompleted = activicompleted,
         _friends = friends,
@@ -47,11 +68,15 @@ class User {
         _about = about,
         _interests = interests,
         _tags = tags,
-        _friends_list = friends_list;
+        _friends_list = friends_list,
+        _age = age,
+        _activities_created = activities_created,
+        _activities_enrolled = activities_enrolled;
 
   factory User.fromJson(Map<String, dynamic> json) =>
       User(
         name: json["name"],
+        username: json["username"],
         rating: json["rating"],
         activicompleted: json["activicompleted"],
         friends: json["friends"],
@@ -60,11 +85,19 @@ class User {
         interests: List<String>.from(json["interests"]),
         tags: List<String>.from(json["tags"]),
         friends_list: List<String>.from(json["friends_list"]),
+        age: json["age"],
+        activities_created: (json["activities_created"] as List<dynamic>)
+            .map((activity) => ActivityDetails.fromJson(activity))
+            .toList(),
+        activities_enrolled: (json["activities_enrolled"] as List<dynamic>)
+            .map((activity) => ActivityDetails.fromJson(activity))
+            .toList(),
       );
 
   Map<String, dynamic> toJson() =>
       {
         "name": name,
+        "username": username,
         "rating": rating,
         "activicompleted": activicompleted,
         "friends": friends,
@@ -72,8 +105,29 @@ class User {
         "about": about,
         "interests": interests,
         "tags": tags,
-        "friends_list": friends_list
+        "friends_list": friends_list,
+        "age": age,
+        "activities_created": activities_created,
+        "activities_enrolled": activities_enrolled,
       };
+
+  List<ActivityDetails> get activities_created => _activities_created;
+
+  set activities_created(List<ActivityDetails> value) {
+    _activities_created = value;
+  }
+
+  String get username => _username;
+
+  set username(String value) {
+    _username = value;
+  }
+
+  int get age => _age;
+
+  set age(int value) {
+    _age = value;
+  }
 
   List<String> get friends_list => _friends_list;
 
@@ -127,5 +181,11 @@ class User {
 
   set name(String value) {
     _name = value;
+  }
+
+  List<ActivityDetails> get activities_enrolled => _activities_enrolled;
+
+  set activities_enrolled(List<ActivityDetails> value) {
+    _activities_enrolled = value;
   }
 }

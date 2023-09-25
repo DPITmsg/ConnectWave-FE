@@ -1,11 +1,11 @@
-import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Widgets/containerongoingactivities.dart';
-import 'Classes/activitydetails.dart';
-import '../darius_mock_models/remote_service_list_objects.dart';
-import 'detailed_activity_page.dart';
+
+import '../darius_mock_models/remote_service_singular_object.dart';
+import 'Classes/User.dart';
+import 'Styles/Colors.dart';
+import 'Widgets/containersearchactivity.dart';
+import 'Widgets/loadingscreen.dart';
 
 class OngoingActivities extends StatefulWidget {
   const OngoingActivities({super.key});
@@ -15,9 +15,8 @@ class OngoingActivities extends StatefulWidget {
 }
 
 class _OngoingActivitiesState extends State<OngoingActivities> {
-
-  List<ActivityDetails> activities = [];
-  bool isLoaded = false;
+  User? user;
+  var isLoaded = false;
 
   @override
   void initState() {
@@ -25,30 +24,63 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     getData();
   }
 
-  getData() async {
-    final activityData = await fetchEventData();
+  Future<void> getData() async {
+    try {
+      final userData = await fetchUserData();
+      user = User.fromJson(userData);
 
-    setState(() {
-      activities = activityFromJson(json.encode(activityData));
-      isLoaded = true;
-    });
+      setState(() {
+        isLoaded = true;
+      });
+    } catch (error) {
+      print('Error loading data: $error');
+    }
+  }
+
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
-      body: Visibility(
-        visible: isLoaded,
-        replacement: Center(child: const CircularProgressIndicator()),
-        child: ListView.builder(
-            itemCount: activities.length,
-            itemBuilder: (context, index){
-              final activity = activities[index];
-              return ContainerOngoing(activity.title, activity.date, activity.author, activity.address, activity.nrParticipants, detailed_activity_page(activity,));
-            },
+      appBar: AppBar(
+        title: Text("Ongoing Activities"),
+        backgroundColor: Color_Blue,
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            _onBackPressed();
+          },
         ),
-      )
+      ),
+      body: Container(
+        color: Color_Gray,
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Visibility(
+                visible: isLoaded,
+                replacement: Center(child: const CircularProgressIndicator()),
+                child: ListView.builder(
+                  itemCount: user?.activities_enrolled?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final activity = user?.activities_enrolled[index];
+                    return ContainerActivityForSearch(activity!);
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
+
+
+
+
+

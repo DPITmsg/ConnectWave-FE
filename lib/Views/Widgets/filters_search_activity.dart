@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
 import '../Classes/activitydetails.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FilterPressAction extends StatefulWidget {
   String text;
@@ -35,19 +37,21 @@ class _FilterPressActionState extends State<FilterPressAction> {
                   itemCount: widget.options.length,
                   itemBuilder: (context, index) {
                     String textSelect = widget.options[index];
-                    return TextButton(
-                        onPressed: () {
-                          widget.onCategorySelected(textSelect);
-                          Navigator.pop(context);
-                        },
-                        child: Text(textSelect));
+                    return Container(
+                      child: TextButton(
+                          onPressed: () {
+                            widget.onCategorySelected(textSelect);
+                            Navigator.pop(context);
+                          },
+                          child: Text(textSelect, style: TextStyle(color: Color_Blue),)),
+                    );
                   },
                 ),
               );
             },
           );
         },
-        child: Text(getDisplayText()),
+        child: Text(getDisplayText(), style: TextStyle(color: Color_Blue),),
       ),
     );
   }
