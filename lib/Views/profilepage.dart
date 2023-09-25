@@ -11,6 +11,7 @@ import 'Classes/User.dart';
 import 'Widgets/avatarcontainer.dart';
 import 'Widgets/test.dart';
 import 'friends_list_page.dart';
+import 'Classes/activitydetails.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/containerhistory.dart';
 import 'package:my_project/darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/activitydetails.dart';
@@ -10,6 +11,7 @@ import 'Widgets/loadingscreen.dart';
 import 'rate_activity.dart';
 import 'Classes/User.dart';
 import 'Classes/ActivityHistory.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ActivityHistoryPage extends StatefulWidget {
   ActivityHistoryPage({Key? key}) : super(key: key);
@@ -20,10 +22,9 @@ class ActivityHistoryPage extends StatefulWidget {
 
 class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
   List<ActivityHistory>? activities = [];
+  ActivityDetails mock_activity = ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0));
   List<User> mock_user_list = [
-    User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 12),
-    User(name: "Darius Andei", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 13),
-    User(name: "Ramin Djwawadi", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 21),
+    User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 12, activities_created: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], activities_enrolled: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], username: "f"),
   ];
   var isLoaded = false;
 

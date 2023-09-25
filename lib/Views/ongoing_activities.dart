@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../darius_mock_models/remote_service_singular_object.dart';
+import 'Classes/User.dart';
 import 'Widgets/containerongoingactivities.dart';
 import 'Classes/activitydetails.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
@@ -19,8 +21,8 @@ class OngoingActivities extends StatefulWidget {
 }
 
 class _OngoingActivitiesState extends State<OngoingActivities> {
-  List<ActivityDetails> activities = [];
-  bool isLoaded = false;
+  User? user;
+  var isLoaded = false;
 
   @override
   void initState() {
@@ -28,13 +30,17 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     getData();
   }
 
-  getData() async {
-    final activityData = await fetchEventData();
+  Future<void> getData() async {
+    try {
+      final userData = await fetchUserData();
+      user = User.fromJson(userData);
 
-    setState(() {
-      activities = activityFromJson(json.encode(activityData));
-      isLoaded = true;
-    });
+      setState(() {
+        isLoaded = true;
+      });
+    } catch (error) {
+      print('Error loading data: $error');
+    }
   }
 
   void _onBackPressed() {
@@ -65,10 +71,10 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
                 visible: isLoaded,
                 replacement: Center(child: const CircularProgressIndicator()),
                 child: ListView.builder(
-                  itemCount: activities.length,
+                  itemCount: user?.activities_enrolled?.length ?? 0,
                   itemBuilder: (context, index) {
-                    final activity = activities[index];
-                    return ContainerActivityForSearch(activity);
+                    final activity = user?.activities_enrolled[index];
+                    return ContainerActivityForSearch(activity!);
                   },
                 ),
               ),
@@ -79,6 +85,8 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     );
   }
 }
+
+
 
 
 
