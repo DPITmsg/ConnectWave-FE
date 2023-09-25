@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
 import '../Classes/activitydetails.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -42,7 +43,7 @@ class _FilterPressActionState extends State<FilterPressAction> {
                             widget.onCategorySelected(textSelect);
                             Navigator.pop(context);
                           },
-                          child: Center(child: Text(textSelect))),
+                          child: Text(textSelect, style: TextStyle(color: Color_Blue),)),
                     );
                   },
                 ),
@@ -50,7 +51,7 @@ class _FilterPressActionState extends State<FilterPressAction> {
             },
           );
         },
-        child: Text(getDisplayText()),
+        child: Text(getDisplayText(), style: TextStyle(color: Color_Blue),),
       ),
     );
   }

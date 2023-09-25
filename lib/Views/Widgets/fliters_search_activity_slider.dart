@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../Styles/Colors.dart';
+
 class FilterPressSliderAction extends StatefulWidget {
   late RangeValues values;
   final double lower;
@@ -53,10 +55,13 @@ class _FilterPressActionSliderState extends State<FilterPressSliderAction> {
               return StatefulBuilder(
                 builder: (BuildContext context, StateSetter setState) {
                   return Container(
-                    height: screenHeight / 2,
+                    height: screenHeight / 3,
                     child: Column(
                       children: [
-                        Text('Select a Range'),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('Select a Range'),
+                        ),
                         RangeSlider(
                           values: widget.values,
                           onChanged: (RangeValues newRange) {
@@ -73,15 +78,6 @@ class _FilterPressActionSliderState extends State<FilterPressSliderAction> {
                             '${widget.values.end}',
                           ),
                         ),
-                        ElevatedButton(
-                          onPressed: () {
-                            // Apply the selected range and dismiss the sheet
-                            widget.onRangeSelected(widget.values);
-                            Navigator.pop(context);
-                          },
-                          child: Text('Apply'),
-                        ),
-                        Text(getDisplayText()), // Display selected range
                       ],
                     ),
                   );
@@ -90,7 +86,7 @@ class _FilterPressActionSliderState extends State<FilterPressSliderAction> {
             },
           );
         },
-        child: Text(selectedRange),
+        child: Text(selectedRange, style: TextStyle(color: Color_Blue),),
       ),
     );
   }

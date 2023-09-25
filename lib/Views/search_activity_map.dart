@@ -8,6 +8,7 @@ import 'Styles/Colors.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
+import 'Widgets/loadingscreen.dart';
 
 
 int cnt = 0;
@@ -32,6 +33,11 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   Future<void> getData() async {
     final activityData = await fetchEventData();
     activities = activityFromJson(json.encode(activityData));
+  }
+
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
   Widget build(BuildContext context) {
@@ -80,6 +86,21 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
           ),
           Row(
             children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: InkWell(
+                  onTap: (){
+                    _onBackPressed();
+                    },
+                  child: CircleAvatar(
+                    backgroundColor: Color_Blue,
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Color_White,
+                    ),
+                  ),
+                ),
+              ),
               Expanded(child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -122,6 +143,8 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
       ),
     );
   }
+
+
 
 
   Future<void> _goToPlace(Map<String, dynamic> place) async {

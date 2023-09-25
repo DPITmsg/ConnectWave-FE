@@ -6,6 +6,7 @@ import 'package:my_project/darius_mock_models/remote_service_singular_object.dar
 import 'Classes/activitydetails.dart';
 import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
 import 'dart:developer' as developer;
+import 'Widgets/loadingscreen.dart';
 import 'rate_activity.dart';
 import 'Classes/User.dart';
 import 'Classes/ActivityHistory.dart';
@@ -20,9 +21,9 @@ class ActivityHistoryPage extends StatefulWidget {
 class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
   List<ActivityHistory>? activities = [];
   List<User> mock_user_list = [
-    User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
-    User(name: "Darius Andei", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
-    User(name: "Ramin Djwawadi", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: ['']),
+    User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 12),
+    User(name: "Darius Andei", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 13),
+    User(name: "Ramin Djwawadi", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 21),
   ];
   var isLoaded = false;
 
@@ -41,12 +42,23 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
     });
   }
 
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Activity History"),
         backgroundColor: Color(0xffc9cfcf),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: (){
+            _onBackPressed();
+          },
+        ),
       ),
       body: Visibility(
         visible: isLoaded,

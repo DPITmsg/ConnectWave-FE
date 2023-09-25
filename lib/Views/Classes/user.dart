@@ -28,6 +28,7 @@ class User {
   List<String> _interests = [];
   List<String> _tags = [];
   List<String> _friends_list = [];
+  int _age = 0;
 
   User(
       {required name,
@@ -38,7 +39,8 @@ class User {
         required about,
         required interests,
         required tags,
-        required friends_list})
+        required friends_list,
+        required age})
       : _name = name,
         _rating = rating,
         _activicompleted = activicompleted,
@@ -47,7 +49,8 @@ class User {
         _about = about,
         _interests = interests,
         _tags = tags,
-        _friends_list = friends_list;
+        _friends_list = friends_list,
+        _age = age;
 
   factory User.fromJson(Map<String, dynamic> json) =>
       User(
@@ -60,6 +63,7 @@ class User {
         interests: List<String>.from(json["interests"]),
         tags: List<String>.from(json["tags"]),
         friends_list: List<String>.from(json["friends_list"]),
+        age: json["age"]
       );
 
   Map<String, dynamic> toJson() =>
@@ -72,8 +76,15 @@ class User {
         "about": about,
         "interests": interests,
         "tags": tags,
-        "friends_list": friends_list
+        "friends_list": friends_list,
+        "age": age,
       };
+
+  int get age => _age;
+
+  set age(int value) {
+    _age = value;
+  }
 
   List<String> get friends_list => _friends_list;
 

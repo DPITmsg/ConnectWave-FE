@@ -8,6 +8,7 @@ import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'Widgets/loadingscreen.dart';
 import 'Widgets/test.dart';
 import 'Widgets/maplocationpicker.dart';
 import 'detailed_activity_page.dart';
@@ -160,12 +161,28 @@ class _add_activity_pageState extends State<add_activity_page> {
     });
   }
 
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Create Activity"),
+          centerTitle: true,
+          backgroundColor: Color_Blue,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: (){
+              _onBackPressed();
+            },
+          ),
+        ),
           resizeToAvoidBottomInset: false,
           body: SizedBox(
             width: MediaQuery.of(context).size.width,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/activityhistory.dart';
 import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Widgets/awesomegradient.dart';
@@ -76,17 +77,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         AvatarContainer(profilePic),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
+                          padding: EdgeInsets.fromLTRB(0, 30, 0, 8),
                           child: Text(
                             user!.name,
                             style: TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff1a1a1a),
+                              color: Color_Dark_Gray,
                             ),
                           ),
                         ),
-                        Stars(user!.rating),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+                          child: Stars(user!.rating),
+                        ),
+                        Text('Age: ${user!.age.toString()}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color_Dark_Gray),),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                           child: Row(

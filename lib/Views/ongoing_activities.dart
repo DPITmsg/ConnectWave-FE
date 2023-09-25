@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'Widgets/containerongoingactivities.dart';
 import 'Classes/activitydetails.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
+import 'Widgets/loadingscreen.dart';
 import 'detailed_activity_page.dart';
 import 'Widgets/containersearchactivity.dart';
 import 'Styles/Colors.dart';
@@ -18,7 +19,6 @@ class OngoingActivities extends StatefulWidget {
 }
 
 class _OngoingActivitiesState extends State<OngoingActivities> {
-
   List<ActivityDetails> activities = [];
   bool isLoaded = false;
 
@@ -37,26 +37,48 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     });
   }
 
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Ongoing Activities"), backgroundColor: Color_Blue, centerTitle: true,),
+      appBar: AppBar(
+        title: Text("Ongoing Activities"),
+        backgroundColor: Color_Blue,
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            _onBackPressed();
+          },
+        ),
+      ),
       body: Container(
         color: Color_Gray,
-        child: Visibility(
-        visible: isLoaded,
-        replacement: Center(child: const CircularProgressIndicator()),
-        child: ListView.builder(
-            itemCount: activities.length,
-            itemBuilder: (context, index){
-              final activity = activities[index];
-              return ContainerActivityForSearch(activity);
-            },
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Visibility(
+                visible: isLoaded,
+                replacement: Center(child: const CircularProgressIndicator()),
+                child: ListView.builder(
+                  itemCount: activities.length,
+                  itemBuilder: (context, index) {
+                    final activity = activities[index];
+                    return ContainerActivityForSearch(activity);
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
-      )
-      )
+      ),
     );
   }
 }
+
 
 

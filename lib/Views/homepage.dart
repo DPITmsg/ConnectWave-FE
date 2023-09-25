@@ -37,13 +37,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(0),
-        child: AppBar(
-          elevation: 0,
-          backgroundColor: const Color(0x44000000),
-        ),
-      ),
+        appBar: null,
       body: Stack(
         children: <Widget>[
           Container(
@@ -59,16 +53,14 @@ class HomePage extends StatelessWidget {
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(
-                    flex: 10,
-                    child: Text(
-                      'ConnectWave',
-                      style: TextStyle(
-                          color: Color_Blue,
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold),
-                    )),
-                Expanded(flex: 1, child: Icon(Icons.settings)),
+                Text(
+                  'ConnectWave',
+                  style: TextStyle(
+                      color: Color_Blue,
+                      fontSize: 38,
+                      fontWeight: FontWeight.bold),
+                ),
+                Image(image: AssetImage('assets/logo_nobg.png'), width: 80, height: 80,),
               ],
             ),
           ),
@@ -86,9 +78,9 @@ class HomePage extends StatelessWidget {
                         onPressed: () async {
                           final response = await getTrendingList();
                           List<Trending> trending_list =
-                              (jsonDecode(response.body) as List)
-                                  .map((e) => Trending.fromJson(e))
-                                  .toList();
+                          (jsonDecode(response.body) as List)
+                              .map((e) => Trending.fromJson(e))
+                              .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
                                   trending_page(trending_list)));
@@ -128,14 +120,14 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      /*CardMenuSmall(Icons.people, const friends_list_page()),*/
+
                       ElevatedButton(
                         onPressed: () async {
                           final response = await getFriendList();
                           List<Friend> friends_list =
-                              (jsonDecode(response.body) as List)
-                                  .map((e) => Friend.fromJson(e))
-                                  .toList();
+                          (jsonDecode(response.body) as List)
+                              .map((e) => Friend.fromJson(e))
+                              .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
                                   friends_list_page(friends_list)));

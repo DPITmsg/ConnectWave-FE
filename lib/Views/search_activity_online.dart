@@ -8,6 +8,7 @@ import 'Widgets/filters_search_activity.dart';
 import 'Classes/activitydetails.dart';
 import 'Widgets/containersearchactivity.dart';
 import 'Widgets/fliters_search_activity_slider.dart';
+import 'Widgets/loadingscreen.dart';
 
 
 class SearchActivityOnlinePage extends StatefulWidget {
@@ -38,6 +39,11 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
       activities = activityFromJson(json.encode(activityData));
       isLoaded = true;
     });
+  }
+
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
   List<String> categories = ['Sports', 'Gaming', 'Services', 'Other'];
@@ -117,9 +123,6 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     }
   }
 
-
-
-
   List<ActivityDetails> getFilteredActivities() {
     final filteredByCategory = activities!
         .where((activity) =>
@@ -153,10 +156,15 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(40, 40),
-        child: AppBar(
-          title: Text('SearchActivity'),
+      appBar: AppBar(
+        backgroundColor: Color_Blue,
+        title: Text('Search Activity'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: (){
+            _onBackPressed();
+          },
         ),
       ),
       body: Container(
@@ -181,6 +189,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FilterPressAction(categorySelected, categories, _onCategorySelected, "Categories"),
                 FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Nr Participants"),
@@ -188,13 +197,17 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
               ],
             ),
             Expanded(
-              child: ListView.separated(
-                itemCount: getFilteredActivities().length,
-                separatorBuilder: (context, index) => Divider(),
-                itemBuilder: (context, index) {
-                  ActivityDetails activity = getFilteredActivities()[index];
-                  return ContainerActivityForSearch(activity);
-                },
+              child: Visibility(
+                visible: isLoaded,
+                replacement: Center(child: CircularProgressIndicator(),),
+                child: ListView.separated(
+                  itemCount: getFilteredActivities().length,
+                  separatorBuilder: (context, index) => Divider(),
+                  itemBuilder: (context, index) {
+                    ActivityDetails activity = getFilteredActivities()[index];
+                    return ContainerActivityForSearch(activity);
+                  },
+                ),
               ),
             ),
           ],
