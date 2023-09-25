@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Styles/StyleText.dart';
 
@@ -124,7 +124,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
               Expanded(
                   child: InkWell(
                     onTap: () async {
-                      final response = await joinActivity(widget.activity.id, widget.username);
+                      final response = await joinActivity(widget.activity.id,widget.username);
                       if(response.body == 'true'){
                         didJoin = true;
                       }
