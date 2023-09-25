@@ -12,36 +12,21 @@ import 'rate_activity.dart';
 import 'Classes/User.dart';
 import 'Classes/ActivityHistory.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'Classes/Friend.dart';
 
 class ActivityHistoryPage extends StatefulWidget {
-  ActivityHistoryPage({Key? key}) : super(key: key);
+  final List<ActivityHistory>? activities;
+
+  ActivityHistoryPage({Key? key, required this.activities}) : super(key: key);
 
   @override
   _ActivityHistoryPageState createState() => _ActivityHistoryPageState();
 }
 
 class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
-  List<ActivityHistory>? activities = [];
-  ActivityDetails mock_activity = ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0));
   List<User> mock_user_list = [
-    User(name: "Darius Coman", rating: 4.0, activicompleted: 12, friends: 0, favcategory: "Sport", about: 'about', interests: [''], tags: [''], friends_list: [''], age: 12, activities_created: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], activities_enrolled: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], username: "f"),
+    User(name: "Darius Coman", rating: 4.0, about: 'about', interests: [''], tags: [''], age: 12, activities_created: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], activities_enrolled: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], activities_completed: [ActivityHistory(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0), avgUserRating: 0.5)], username: "f", friends: []),
   ];
-  var isLoaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  getData() async {
-    final activityData = await fetchEventHistoryData();
-
-    setState(() {
-      activities = activityHistoryFromJson(json.encode(activityData));
-      isLoaded = true;
-    });
-  }
 
   void _onBackPressed() {
     Navigator.of(context).pop();
@@ -61,27 +46,23 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
           },
         ),
       ),
-      body: Visibility(
-        visible: isLoaded,
-        replacement: Center(child: const CircularProgressIndicator()),
-        child: ListView.builder(
-          itemCount: activities?.length ?? 0,
-          itemBuilder: (context, index) {
-            final activity = activities![index];
-            return ContainerActivity(
-              activity.date,
-              activity.title,
-              activity.tags,
-              activity.nrParticipants,
-              activity.category,
-              activity.avgUserRating,
-              activity.address,
-              activity.description,
-              RateActivity(activity, mock_user_list),
-              activity.location
-            );
-          },
-        ),
+      body: ListView.builder(
+        itemCount: widget.activities?.length ?? 0,
+        itemBuilder: (context, index) {
+          final activity = widget.activities![index];
+          return ContainerActivity(
+            activity.date,
+            activity.title,
+            activity.tags,
+            activity.nrParticipants,
+            activity.category,
+            activity.avgUserRating,
+            activity.address,
+            activity.description,
+            RateActivity(activity, mock_user_list),
+            activity.location
+          );
+        },
       ),
     );
   }

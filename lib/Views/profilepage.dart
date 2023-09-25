@@ -101,14 +101,14 @@ class _ProfilePageState extends State<ProfilePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               CardProfile(
-                                user!.activicompleted.toString(),
+                                user!.activities_completed.length.toString(),
                                 'Activities Completed',
-                                ActivityHistoryPage(),
+                                ActivityHistoryPage(activities: user!.activities_completed),
                               ),
                               CardProfile(
-                                user!.friends.toString(),
+                                user!.friends.length.toString(),
                                 'Friends',
-                                  friends_list_page(friends),
+                                  friends_list_page(user!.friends),
                               ),
                               CardProfile(
                                 user!.activities_created.length.toString(),
