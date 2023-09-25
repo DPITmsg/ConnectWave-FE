@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Styles/StyleText.dart';
 
-class WidgetBoxForYou extends StatelessWidget {
+bool didJoin = false;
+
+class WidgetBoxForYou extends StatefulWidget {
   final RecommendedActivity activity;
+  final String username;
 
-  const WidgetBoxForYou(this.activity, {super.key});
+  const WidgetBoxForYou(this.activity, this.username, {super.key});
 
+  @override
+  State<WidgetBoxForYou> createState() => _WidgetBoxForYouState();
+}
+
+class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,14 +45,14 @@ class WidgetBoxForYou extends StatelessWidget {
                         rotateGesturesEnabled: false,
                         scrollGesturesEnabled: false,
                         initialCameraPosition: CameraPosition(
-                            target: LatLng(activity.location.latitude,
-                                activity.location.longitude),
+                            target: LatLng(widget.activity.location.latitude,
+                                widget.activity.location.longitude),
                             zoom: 14),
                         markers: {
                           Marker(
                               markerId: const MarkerId('1'),
-                              position: LatLng(activity.location.latitude,
-                                  activity.location.longitude))
+                              position: LatLng(widget.activity.location.latitude,
+                                  widget.activity.location.longitude))
                         },
                       ),
                     ),
@@ -65,7 +74,7 @@ class WidgetBoxForYou extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: Text(
-                                      activity.address,
+                                      widget.activity.address,
                                       style: Text_Widget_ForYou_Normal_Blue,
                                     ),
                                   ),
@@ -83,7 +92,7 @@ class WidgetBoxForYou extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(activity.title,
+                                        Text(widget.activity.title,
                                             style:
                                                 Text_Widget_ForYou_Bold_White),
                                         Row(
@@ -93,7 +102,7 @@ class WidgetBoxForYou extends StatelessWidget {
                                               color: Color_White,
                                             ),
                                             Text(
-                                                activity.nr_participants
+                                                widget.activity.nr_participants
                                                     .toString(),
                                                 style:
                                                     Text_Widget_ForYou_Normal_White),
@@ -101,7 +110,7 @@ class WidgetBoxForYou extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Text(activity.author,
+                                    Text(widget.activity.author,
                                         style: Text_Widget_ForYou_Normal_White)
                                   ],
                                 ),
@@ -114,8 +123,12 @@ class WidgetBoxForYou extends StatelessWidget {
               ),
               Expanded(
                   child: InkWell(
-                    onTap: (){
-                      //need to add join activity method
+                    onTap: () async {
+                      final response = await joinActivity(widget.activity.id, widget.username);
+                      if(response.body == 'true'){
+                        didJoin = true;
+                      }
+                      setState(() {});
                     },
                     child: Container(
                 decoration: BoxDecoration(
@@ -123,13 +136,13 @@ class WidgetBoxForYou extends StatelessWidget {
                       borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(35),
                           bottomRight: Radius.circular(35)),
-                      border: Border.all(color: Color_Light_Blue, width: 1)),
+                      border: Border.all(color: didJoin== false ?Color_Light_Blue: Colors.green, width: 1)),
                 child: Center(
                       child: Transform.rotate(
                     angle: -90 * (3.14159265359 / 180),
                     child: Text(
-                      'Join',
-                      style: Text_Join_ForYou,
+                      didJoin == false ?'Join': 'Joined',
+                      style: didJoin == false ?Text_Join_ForYou: Text_Join_ForYou_Green,
                     ),
                 )),
               ),

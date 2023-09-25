@@ -67,8 +67,8 @@ class _for_you_pageState extends State<for_you_page> {
                   ),
                   SingleChildScrollView(
                     child: Column(
-                      children: widget.activity_list.map((e) {
-                        return WidgetBoxForYou(e);
+                      children: widget.activity_list.map((activity) {
+                        return WidgetBoxForYou(activity,'xman');
                       }).toList(),
                     ),
                   )

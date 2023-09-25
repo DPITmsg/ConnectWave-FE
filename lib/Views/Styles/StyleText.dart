@@ -196,6 +196,9 @@ TextStyle Text_Rate_Event = TextStyle(
 TextStyle Text_Join_ForYou = const TextStyle(
     fontSize: 18, fontWeight: FontWeight.bold, color: Color_Light_Blue);
 
+TextStyle Text_Join_ForYou_Green = const TextStyle(
+    fontSize: 16, fontWeight: FontWeight.bold, color: Colors.green);
+
 TextStyle Text_Widget_ForYou_Bold_White = const TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.bold,
