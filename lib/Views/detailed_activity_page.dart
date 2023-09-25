@@ -9,11 +9,16 @@ import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class detailed_activity_page extends StatelessWidget {
+class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
 
   const detailed_activity_page(this.activity, {super.key});
 
+  @override
+  State<detailed_activity_page> createState() => _detailed_activity_pageState();
+}
+
+class _detailed_activity_pageState extends State<detailed_activity_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +32,9 @@ class detailed_activity_page extends StatelessWidget {
               zoomControlsEnabled: false,
               rotateGesturesEnabled: false,
               scrollGesturesEnabled: false,
-              initialCameraPosition: CameraPosition(target: LatLng(activity.location.latitude, activity.location.longitude), zoom: 14),
+              initialCameraPosition: CameraPosition(target: LatLng(widget.activity.location.latitude, widget.activity.location.longitude), zoom: 14),
               markers: {
-                Marker(markerId: const MarkerId('xman-zdroba'), position: LatLng(activity.location.latitude, activity.location.longitude))
+                Marker(markerId: const MarkerId('xman-zdroba'), position: LatLng(widget.activity.location.latitude, widget.activity.location.longitude))
               },
             ),
           ),
@@ -39,7 +44,7 @@ class detailed_activity_page extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(activity.title, softWrap: true, style: Text_Title_Top),
+                  Text(widget.activity.title, softWrap: true, style: Text_Title_Top),
                   Expanded(
                     flex: 7,
                     child: SingleChildScrollView(
@@ -53,7 +58,7 @@ class detailed_activity_page extends StatelessWidget {
                               child: Row(
                                 children: [
                                   const Icon(Icons.location_pin),
-                                  Text(activity.address,
+                                  Text(widget.activity.address,
                                       style: Text_Detailed_Page_Bold_Black),
                                 ],
                               ),
@@ -68,7 +73,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.calendar_month_rounded),
                                     Text(
-                                      activity.date == activity.endDate ? activity.date : '${activity.date}     ${activity.endDate}',
+                                      widget.activity.date == widget.activity.endDate ? widget.activity.date : '${widget.activity.date}     ${widget.activity.endDate}',
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
@@ -87,7 +92,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.access_time_filled),
                                     Text(
-                                      activity.time,
+                                      widget.activity.time,
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
@@ -97,7 +102,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.category_sharp),
                                     Text(
-                                      activity.category,
+                                      widget.activity.category,
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
@@ -106,7 +111,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.person_rounded),
                                     Text(
-                                      activity.nrParticipants.toString(),
+                                      widget.activity.nrParticipants.toString(),
                                       style: Text_Detailed_Page_Bold_Black,
                                     )
                                   ],
@@ -123,7 +128,7 @@ class detailed_activity_page extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 5, right: 5),
                               child: Text(
-                                activity.description,
+                                widget.activity.description,
                                 softWrap: true,
                                 style: Text_Detailed_Page_Regular_Medium_Black,
                               ),
@@ -135,7 +140,7 @@ class detailed_activity_page extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               child: Wrap(
                                 spacing: 8,
-                                children: activity.tags.map((tag) {
+                                children: widget.activity.tags.map((tag) {
                                   return WidgetTagsBox(Text(
                                     tag,
                                     style: Text_Tag_Widget,
@@ -174,7 +179,7 @@ class detailed_activity_page extends StatelessWidget {
                                             Text('Name: ',
                                                 style:
                                                 Text_Detailed_Page_Bold_White),
-                                            Text(activity.author,
+                                            Text(widget.activity.author,
                                                 style:
                                                 Text_Detailed_Page_Bold_White),
                                           ],
@@ -225,14 +230,8 @@ class detailed_activity_page extends StatelessWidget {
                         const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Text("I'm interested",
-                                  style: Text_Widget_Buttons_Blue),
-                            ),
-                            Color_Dark_Gray,
-                          ),
+                        const Expanded(
+                          child: SizedBox()
                         ),
                       ],
                     ),
