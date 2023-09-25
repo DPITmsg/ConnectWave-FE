@@ -67,11 +67,14 @@ class _for_you_pageState extends State<for_you_page> {
                       ),
                     ],
                   ),
-                  SingleChildScrollView(
-                    child: Column(
-                      children: widget.activity_list.map((activity) {
-                        return WidgetBoxForYou(activity,'xman');
-                      }).toList(),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: widget.activity_list.map((activity) {
+                          return WidgetBoxForYou(activity,widget.username);
+                        }).toList(),
+                      ),
                     ),
                   )
                 ],

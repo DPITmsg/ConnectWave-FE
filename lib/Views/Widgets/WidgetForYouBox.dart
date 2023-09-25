@@ -22,7 +22,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
+      padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(35),
         child: Container(
