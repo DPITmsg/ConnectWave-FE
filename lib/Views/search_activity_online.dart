@@ -9,10 +9,13 @@ import 'Classes/activitydetails.dart';
 import 'Widgets/containersearchactivity.dart';
 import 'Widgets/fliters_search_activity_slider.dart';
 import 'Widgets/loadingscreen.dart';
+import 'Classes/User.dart';
 
 
 class SearchActivityOnlinePage extends StatefulWidget {
-  const SearchActivityOnlinePage({super.key});
+  final User user;
+
+  const SearchActivityOnlinePage({super.key, required this.user});
 
   @override
   State<SearchActivityOnlinePage> createState() =>
@@ -130,8 +133,8 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
         .toList();
 
     final filteredByNrParticipants = filteredByCategory.where((activity) =>
-    activity.nrParticipants.toInt() >= nrParticipantsSelected.start.toInt() &&
-        activity.nrParticipants.toInt() <= nrParticipantsSelected.end.toInt());
+    activity.participants.length.toInt() >= nrParticipantsSelected.start.toInt() &&
+        activity.participants.length.toInt() <= nrParticipantsSelected.end.toInt());
 
     DateTime targetDate = dateConversion(dateSelected);
 
@@ -205,7 +208,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                   separatorBuilder: (context, index) => Divider(),
                   itemBuilder: (context, index) {
                     ActivityDetails activity = getFilteredActivities()[index];
-                    return ContainerActivityForSearch(activity);
+                    return ContainerActivityForSearch(activity, widget.user);
                   },
                 ),
               ),

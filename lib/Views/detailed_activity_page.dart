@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
 
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
@@ -12,8 +13,8 @@ import 'search_activity_map.dart';
 
 class detailed_activity_page extends StatelessWidget {
   final ActivityDetails activity;
-
-  const detailed_activity_page(this.activity, {super.key});
+  final User user;
+  const detailed_activity_page(this.activity, this.user, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class detailed_activity_page extends StatelessWidget {
         child: Stack(children: <Widget>[
           InkWell(
             onDoubleTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: activity.location, zoomLevel: 16,)));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: activity.location, zoomLevel: 16, user: user)));
             },
             child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
               child: GoogleMap(
@@ -110,9 +111,11 @@ class detailed_activity_page extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    const Icon(Icons.person_rounded),
+                                    InkWell(
+                                        child: const Icon(Icons.person_rounded)
+                                    ),
                                     Text(
-                                      activity.nrParticipants.toString(),
+                                      activity.participants.length.toString(),
                                       style: Text_Detailed_Page_Bold_Black,
                                     )
                                   ],

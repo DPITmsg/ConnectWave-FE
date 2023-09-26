@@ -14,34 +14,15 @@ import 'Widgets/containersearchactivity.dart';
 import 'Styles/Colors.dart';
 
 class OngoingActivities extends StatefulWidget {
-  const OngoingActivities({super.key});
+  final User? user;
+
+  const OngoingActivities({super.key, required this.user});
 
   @override
   State<OngoingActivities> createState() => _OngoingActivitiesState();
 }
 
 class _OngoingActivitiesState extends State<OngoingActivities> {
-  User? user;
-  var isLoaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future<void> getData() async {
-    try {
-      final userData = await fetchUserData();
-      user = User.fromJson(userData);
-
-      setState(() {
-        isLoaded = true;
-      });
-    } catch (error) {
-      print('Error loading data: $error');
-    }
-  }
 
   void _onBackPressed() {
     Navigator.of(context).pop();
@@ -67,16 +48,12 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
         child: Column(
           children: <Widget>[
             Expanded(
-              child: Visibility(
-                visible: isLoaded,
-                replacement: Center(child: const CircularProgressIndicator()),
-                child: ListView.builder(
-                  itemCount: user?.activities_enrolled?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final activity = user?.activities_enrolled[index];
-                    return ContainerActivityForSearch(activity!);
-                  },
-                ),
+              child: ListView.builder(
+                itemCount: widget.user?.activities_enrolled?.length ?? 0,
+                itemBuilder: (context, index) {
+                  final activity = widget.user?.activities_enrolled[index];
+                  return ContainerActivityForSearch(activity!, widget.user!);
+                },
               ),
             ),
           ],

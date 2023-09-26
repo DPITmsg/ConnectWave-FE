@@ -9,15 +9,16 @@ import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Widgets/loadingscreen.dart';
-
+import 'Classes/User.dart';
 
 int cnt = 0;
 
 class SearchActivityMap extends StatefulWidget {
   LatLng locationTarget;
   double zoomLevel;
+  User user;
 
-  SearchActivityMap({Key? key, required this.locationTarget, required this.zoomLevel})
+  SearchActivityMap({Key? key, required this.locationTarget, required this.zoomLevel, required this.user})
       : super(key: key);
 
   @override
@@ -30,6 +31,10 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   List<ActivityDetails> activities = [];
   Completer<GoogleMapController> _controller = Completer();
   TextEditingController _searchController = TextEditingController();
+  BitmapDescriptor customIcon = BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue);
+  BitmapDescriptor defaultIcon = BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
+
+
   Future<void> getData() async {
     final activityData = await fetchEventData();
     activities = activityFromJson(json.encode(activityData));
@@ -47,15 +52,15 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
             appBar: PreferredSize(preferredSize: const Size.fromHeight(0), child: AppBar(elevation: 0, backgroundColor: const Color(0x44000000),),),
-            body: Center(child: CircularProgressIndicator()), // Show loading indicator
+            body: Center(child: CircularProgressIndicator()),
           );
         } else if (snapshot.hasError) {
           return Scaffold(
             appBar: PreferredSize(preferredSize: const Size.fromHeight(0), child: AppBar(elevation: 0, backgroundColor: const Color(0x44000000),),),
-            body: Center(child: Text("Error loading data")), // Show error message
+            body: Center(child: Text("Error loading data")),
           );
         } else {
-          return buildMainScreen(); // Build the main UI
+          return buildMainScreen();
         }
       },
     );
@@ -66,23 +71,20 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
       appBar: PreferredSize(preferredSize: const Size.fromHeight(0), child: AppBar(elevation: 0, backgroundColor: const Color(0x44000000),),),
       body: Stack(
         children: [
-          Expanded(
-            flex: 7,
-            child: GoogleMap(
-              zoomControlsEnabled: false,
-              mapType: MapType.normal,
-              initialCameraPosition: CameraPosition(
-                target: widget.locationTarget,
-                zoom: widget.zoomLevel,
-              ),
-              onMapCreated: (GoogleMapController controller) {
-                if (!_controller.isCompleted) {
-                  _controller.complete(controller);
-                  addMarker(activities, controller);
-                }
-              },
-              markers: _markers.values.toSet(),
+          GoogleMap(
+            zoomControlsEnabled: false,
+            mapType: MapType.normal,
+            initialCameraPosition: CameraPosition(
+              target: widget.locationTarget,
+              zoom: widget.zoomLevel,
             ),
+            onMapCreated: (GoogleMapController controller) {
+              if (!_controller.isCompleted) {
+                _controller.complete(controller);
+                addMarker(activities, controller);
+              }
+            },
+            markers: _markers.values.toSet(),
           ),
           Row(
             children: [
@@ -144,6 +146,18 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
     );
   }
 
+  List<ActivityDetails> detectFriend(){
+    List<ActivityDetails> toReturn = [];
+
+    for (var i = 0; i < activities.length; i++){
+      if (widget.user.friends.contains(activities[i].author)){
+        toReturn.add(activities[i]);
+      }
+    }
+
+    return toReturn;
+  }
+
 
 
 
@@ -162,9 +176,18 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
     if (activities.isNotEmpty) {
 
       for (var i = 0; i < activities.length; i++){
+        var activity = activityList[i];
+        BitmapDescriptor markerIcon = defaultIcon;
+        String authorName = activity.author;
+
+        if (widget.user.friends.any((friend) => friend.name == authorName)) {
+          markerIcon = customIcon;
+        }
+
         var marker = Marker(
           markerId: MarkerId(cnt.toString()),
           position: activityList[i].location,
+          icon: markerIcon,
           infoWindow: InfoWindow(
             title: activityList[i].title,
             snippet: activityList[i].address,
@@ -184,7 +207,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   }
 
   void _onMarkerTapped(ActivityDetails activity) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, widget.user)));
   }
 
   List<ActivityDetails> searchActivity(List<ActivityDetails> list, String userInput){
