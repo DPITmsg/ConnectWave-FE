@@ -6,19 +6,27 @@ import 'package:my_project/Views/Styles/Colors.dart';
 
 import '../Styles/StyleText.dart';
 
-bool didJoin = false;
 
 class WidgetBoxForYou extends StatefulWidget {
   final RecommendedActivity activity;
   final String username;
+  bool _didJoin = false;
 
-  const WidgetBoxForYou(this.activity, this.username, {super.key});
+  bool get didJoin => _didJoin;
 
+  setDidJoin(bool value) {
+    _didJoin = value;
+  }
+
+  WidgetBoxForYou(this.activity, this.username, {super.key});
   @override
   State<WidgetBoxForYou> createState() => _WidgetBoxForYouState();
 }
 
 class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
+  get didJoin => widget.didJoin;
+  
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -126,7 +134,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
                     onTap: () async {
                       final response = await joinActivity(widget.activity.id,widget.username);
                       if(response.body == 'true'){
-                        didJoin = true;
+                        widget.setDidJoin(true);
                       }
                       setState(() {});
                     },
