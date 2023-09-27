@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> getData() async {
     try {
-      final userData = await fetchUserData();
+      final userData = await fetchUserData('1278403');
       user = User.fromJson(userData);
 
       setState(() {
