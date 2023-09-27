@@ -265,7 +265,18 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                           width: 20,
                         ),
                         Expanded(
-                          child: SizedBox()
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.of(context).pop();
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Text("Cancel",
+                                    style: Text_Widget_Buttons_Blue),
+                              ),
+                              Color_Dark_Gray,
+                            ),
+                          ),
                         ),
                       ],
                     ),

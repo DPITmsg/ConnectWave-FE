@@ -4,30 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="pull prepare">
-      <change afterPath="$PROJECT_DIR$/Assets/logo_gifv2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/DisplayParticipants.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/loadingscreennopop.dart" afterDir="false" />
+    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/logo_gif.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/logo_gifv2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/ActivityHistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/ActivityHistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/loadingscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/loadingscreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activityhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695818724717</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username">
+      <created>1695822631186</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695822631186</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +161,7 @@
     <MESSAGE value="pulled darius backup" />
     <MESSAGE value="pulled DARIUSBACKUP" />
     <MESSAGE value="fixed bugs in for you page" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs in for you page" />
+    <MESSAGE value="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username" />
+    <option name="LAST_COMMIT_MESSAGE" value="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username" />
   </component>
 </project>
