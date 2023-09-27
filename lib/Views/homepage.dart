@@ -9,20 +9,50 @@ import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
 
 import '../Service/friend_list_service.dart';
+import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/Trending.dart';
+import 'Classes/User.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
 import 'Widgets/foryou.dart';
+import 'Widgets/loadingscreennopop.dart';
 import 'add_activity_page.dart';
 import 'friends_list_page.dart';
 import 'profilepage.dart';
 import 'search_activity_online.dart';
 import 'trending_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-  const HomePage({super.key});
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  bool isLoaded = false;
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    try {
+      final userData = await fetchUserData();
+      user = User.fromJson(userData);
+
+      setState(() {
+        isLoaded = true;
+      });
+    } catch (error) {
+      print('Error loading data: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +60,9 @@ class HomePage extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     var appBarHeight = AppBar().preferredSize.height;
 
-    return Scaffold(
+    return isLoaded ? Scaffold(
       extendBodyBehindAppBar: true,
-        appBar: null,
+      appBar: null,
       body: Stack(
         children: <Widget>[
           Container(
@@ -55,7 +85,11 @@ class HomePage extends StatelessWidget {
                       fontSize: 38,
                       fontWeight: FontWeight.bold),
                 ),
-                Image(image: AssetImage('assets/logo_nobg.png'), width: 80, height: 80,),
+                Image(
+                  image: AssetImage('assets/logo_nobg.png'),
+                  width: 80,
+                  height: 80,
+                ),
               ],
             ),
           ),
@@ -92,7 +126,8 @@ class HomePage extends StatelessWidget {
                           color: Color(0xff1a1a1a),
                         ),
                       ),
-                      CardMenuSmall(Icons.person_rounded, ProfilePage()),
+                      CardMenuSmall(
+                          Icons.person_rounded, ProfilePage(user: user!)),
                     ],
                   ),
                 ),
@@ -103,10 +138,18 @@ class HomePage extends StatelessWidget {
                     children: <Widget>[
                       InkWell(
                           onTap: () {},
-                          child: CardMenuBig(Icons.share_location, SearchActivityMap(locationTarget: LatLng(46.7712, 23.6323), zoomLevel: 14,))),
+                          child: CardMenuBig(
+                              Icons.share_location,
+                              SearchActivityMap(
+                                  locationTarget: LatLng(46.7712, 23.6323),
+                                  zoomLevel: 14,
+                                  user: user!
+                              ))),
                       InkWell(
                           onTap: () {},
-                          child: CardMenuBig(Icons.connect_without_contact, SearchActivityOnlinePage())),
+                          child: CardMenuBig(
+                              Icons.connect_without_contact,
+                              SearchActivityOnlinePage(user: user!))),
                     ],
                   ),
                 ),
@@ -115,7 +158,6 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-
                       ElevatedButton(
                         onPressed: () async {
                           final response = await getFriendList();
@@ -140,18 +182,21 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       CardMenuSmall(
-                          Icons.access_time_filled, OngoingActivities()),
+                          Icons.access_time_filled,
+                          OngoingActivities(user: user!)),
                     ],
                   ),
                 ),
                 const Expanded(
-                    flex: 1, child: CardMenuAddActivity(add_activity_page())),
+                    flex: 1,
+                    child: CardMenuAddActivity(
+                        add_activity_page())),
                 const InkWell(child: ForYou()),
               ],
             ),
           )
         ],
       ),
-    );
+    ): const LoadingScreenPageNoPop();
   }
 }

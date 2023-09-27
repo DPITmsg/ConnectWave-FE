@@ -20,11 +20,12 @@ class ActivityHistory extends ActivityDetails{
     required author,
     required title,
     required tags,
-    required nrParticipants,
+    required participants,
     required category,
     required address,
     required description,
     required location,
+    required maxParticipants,
     required avgUserRating,
   }) : super(
     id: id,
@@ -34,11 +35,12 @@ class ActivityHistory extends ActivityDetails{
     author: author,
     title: title,
     tags: tags,
-    nrParticipants: nrParticipants,
+    participants: participants,
     category: category,
     address: address,
     description: description,
     location: location,
+    maxParticipants: maxParticipants
   ) {
     _avgUserRating = avgUserRating;
   }
@@ -67,11 +69,12 @@ class ActivityHistory extends ActivityDetails{
       author: activityDetails.author,
       title: activityDetails.title,
       tags: activityDetails.tags,
-      nrParticipants: activityDetails.nrParticipants,
+      participants: activityDetails.participants,
       category: activityDetails.category,
       address: activityDetails.address,
       description: activityDetails.description,
       location: activityDetails.location,
+      maxParticipants: activityDetails.maxParticipants,
       avgUserRating: json["avgUserRating"],
     );
   }

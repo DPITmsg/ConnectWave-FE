@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Styles/Shadows.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 
+import '../Classes/User.dart';
 import '../Classes/activitydetails.dart';
 import '../Styles/Gradients.dart';
 import '../detailed_activity_page.dart';
@@ -10,18 +11,20 @@ import '../search_activity_map.dart';
 
 class ContainerActivityForSearch extends StatelessWidget {
   ActivityDetails activity;
+  User user;
 
-  ContainerActivityForSearch(this.activity);
+  ContainerActivityForSearch(this.activity, this.user);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    bool isFriend = user.friends.any((friend) => friend.name == activity.author);
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
       child: InkWell(
         onTap: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, user)));
         },
         child: Container(
           width: screenWidth,
@@ -37,7 +40,19 @@ class ContainerActivityForSearch extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(activity.title, style: Text_Search_Activity_v1,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                  Text(activity.title, style: Text_Search_Activity_v1,),
+                  if (isFriend)
+                    Positioned(
+                        child: CircleAvatar(
+                          backgroundColor: Color(0xff2222AA),
+                          radius: 8,
+                        )
+                    ),
+                  ]
+                ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                   child: Row(
@@ -48,7 +63,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                             child: InkWell(
                               onDoubleTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: activity.location, zoomLevel: 16)));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: activity.location, zoomLevel: 16, user: user)));
                               },
                               child: Container(
                                 width: 150,
@@ -75,11 +90,12 @@ class ContainerActivityForSearch extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8, 0, 0 ,0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Category: ${activity.category}', style: Text_Search_Activity_v2),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text('Nr. of participants: ${activity.nrParticipants.toString()}', style: Text_Search_Activity_v2),
+                              child: Text('Nr. of participants: ${activity.participants.length.toString()}', style: Text_Search_Activity_v2),
                             ),
                             Text('${activity.date} - ${activity.endDate}', style: Text_Search_Activity_v2),
                           ],

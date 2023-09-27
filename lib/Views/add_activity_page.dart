@@ -9,13 +9,14 @@ import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
-import 'package:my_project/Views/detailed_activity_page.dart';
 
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
+import 'Widgets/loadingscreen.dart';
 import 'Widgets/maplocationpicker.dart';
+import 'Widgets/test.dart';
 
 class add_activity_page extends StatefulWidget {
   const add_activity_page({super.key});
@@ -156,12 +157,28 @@ class _add_activity_pageState extends State<add_activity_page> {
     });
   }
 
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Create Activity"),
+          centerTitle: true,
+          backgroundColor: Color_Blue,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: (){
+              _onBackPressed();
+            },
+          ),
+        ),
           resizeToAvoidBottomInset: false,
           body: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -496,6 +513,24 @@ class _add_activity_pageState extends State<add_activity_page> {
                                         if (error_tags != true &&
                                             error_category != true && error_dates != true) {
                                           LatLng location = await getAddressLatLng(selectedAddress);
+                                          ActivityDetails activity = ActivityDetails(
+                                            id: 1,
+                                              title: activity_title.text,
+                                              author: 'Zdroba Petru',
+                                              date: activity_date.text,
+                                              endDate: activity_end_date.text,
+                                              address: selectedAddress,
+                                              participants: [],
+                                              maxParticipants: activity_nr_participants.text,
+                                              description:
+                                                  activity_description.text,
+                                              tags: activity_tags,
+                                              category: activity_category,
+                                              time: activity_time.text,
+                                              location: location);
+
+                                          print(activity.location);
+                                          print(activity.address);
 
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -517,24 +552,6 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               ),
                                             ),
                                           );
-
-                                          ActivityDetails activity = ActivityDetails(
-                                              id: 1,
-                                              title: activity_title.text,
-                                              author: 'Zdroba Petru',
-                                              date: activity_date.text,
-                                              endDate: activity_end_date.text,
-                                              address: selectedAddress,
-                                              nrParticipants: int.parse(
-                                                  activity_nr_participants
-                                                      .text),
-                                              description:
-                                              activity_description.text,
-                                              tags: activity_tags,
-                                              category: activity_category,
-                                              time: activity_time.text,
-                                              location: location);
-
                                           final response =
                                               await createActivty(activity);
                                           if (response.body == 'true') {
@@ -542,7 +559,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        detailed_activity_page(activity)));
+                                                        Test()));
                                           }
                                         }
                                       }

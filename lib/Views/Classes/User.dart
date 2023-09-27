@@ -50,6 +50,7 @@ class User {
   List<String> _interests = [];
   List<String> _tags = [];
   int _age = 0;
+  String _pfp = '';
   List<ActivityDetails> _activities_created = [];
   List<ActivityDetails> _activities_enrolled = [];
   List<ActivityHistory> _activities_completed = [];
@@ -66,7 +67,8 @@ class User {
         required activities_created,
         required activities_enrolled,
         required activities_completed,
-        required friends})
+        required friends,
+        required pfp})
       : _name = name,
         _username = username,
         _rating = rating,
@@ -77,7 +79,8 @@ class User {
         _activities_created = activities_created,
         _activities_enrolled = activities_enrolled,
         _activities_completed = activities_completed,
-        _friends = friends;
+        _friends = friends,
+        _pfp = pfp;
 
   factory User.fromJson(Map<String, dynamic> json) =>
       User(
@@ -88,6 +91,7 @@ class User {
         interests: List<String>.from(json["interests"]),
         tags: List<String>.from(json["tags"]),
         age: json["age"],
+        pfp: json["pfp"],
         activities_created: (json["activities_created"] as List<dynamic>)
             .map((activity) => ActivityDetails.fromJson(activity))
             .toList(),
@@ -111,11 +115,18 @@ class User {
         "interests": interests,
         "tags": tags,
         "age": age,
+        "pfp": pfp,
         "activities_created": activities_created,
         "activities_enrolled": activities_enrolled,
         "activities_completed": activities_completed,
         "friends": friends
       };
+
+  String get pfp => _pfp;
+
+  set pfp(String value) {
+    _pfp = value;
+  }
 
   List<ActivityDetails> get activities_created => _activities_created;
 

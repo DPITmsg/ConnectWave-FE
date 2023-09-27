@@ -1,18 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/containerhistory.dart';
-import 'package:my_project/darius_mock_models/remote_service_singular_object.dart';
+
+import 'Classes/ActivityHistory.dart';
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
-import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
-import 'dart:developer' as developer;
 import 'Widgets/loadingscreen.dart';
 import 'rate_activity.dart';
-import 'Classes/User.dart';
-import 'Classes/ActivityHistory.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'Classes/Friend.dart';
 
 class ActivityHistoryPage extends StatefulWidget {
   final List<ActivityHistory>? activities;
@@ -25,7 +19,7 @@ class ActivityHistoryPage extends StatefulWidget {
 
 class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
   List<User> mock_user_list = [
-    User(name: "Darius Coman", rating: 4.0, about: 'about', interests: [''], tags: [''], age: 12, activities_created: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], activities_enrolled: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0))], activities_completed: [ActivityHistory(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], nrParticipants: 12, category: 'dwas', address: 'dwasd', description: 'description', location: LatLng(12.0, 12.0), avgUserRating: 0.5)], username: "f", friends: []),
+    User(name: "Darius Coman", rating: 4.0, about: 'about', interests: [''], tags: [''], pfp: '', age: 12, activities_created: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], participants: [], category: 'dwas', address: 'dwasd', description: 'description', maxParticipants: 10, location: LatLng(12.0, 12.0))], activities_enrolled: [ActivityDetails(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], participants: [], category: 'dwas', address: 'dwasd', description: 'description', maxParticipants: 10, location: LatLng(12.0, 12.0))], activities_completed: [ActivityHistory(id: 1, date: '24-02-2022', endDate: '23-02-2023', time: '14:00', author: 'es', title: 'da', tags: ['tes'], participants: [], category: 'dwas', address: 'dwasd', description: 'description', maxParticipants: 10, location: LatLng(12.0, 12.0), avgUserRating: 0.5)], username: "f", friends: []),
   ];
 
   void _onBackPressed() {
@@ -54,7 +48,7 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
             activity.date,
             activity.title,
             activity.tags,
-            activity.nrParticipants,
+            activity.participants.length,
             activity.category,
             activity.avgUserRating,
             activity.address,

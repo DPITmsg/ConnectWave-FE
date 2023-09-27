@@ -19,11 +19,12 @@ class ActivityDetails {
   String _author = '';
   String _title = '';
   List<String> _tags = [];
-  int _nrParticipants = 0;
   String _category = '';
   String _address = '';
   String _description = '';
   LatLng _location = LatLng(0, 0);
+  List<String> _participants = [];
+  int _maxParticipants = 0;
 
   ActivityDetails({
     required id,
@@ -33,11 +34,12 @@ class ActivityDetails {
     required author,
     required title,
     required tags,
-    required nrParticipants,
     required category,
     required address,
     required description,
-    required location
+    required location,
+    required participants,
+    required maxParticipants,
   })
       :_id = id,
         _date = date,
@@ -46,11 +48,12 @@ class ActivityDetails {
         _author = author,
         _title = title,
         _tags = tags,
-        _nrParticipants = nrParticipants,
         _category = category,
         _address = address,
         _description = description,
-        _location = location;
+        _location = location,
+        _participants = participants,
+        _maxParticipants = maxParticipants;
 
   factory ActivityDetails.fromJson(Map<String, dynamic> json) =>
       ActivityDetails(
@@ -61,7 +64,6 @@ class ActivityDetails {
         author: json["author"],
         title: json["title"],
         tags: List<String>.from(json["tags"]),
-        nrParticipants: json["nrParticipants"],
         category: json["category"],
         address: json["address"],
         description: json["description"],
@@ -69,6 +71,8 @@ class ActivityDetails {
           json["location"]["latitude"].toDouble(),
           json["location"]["longitude"].toDouble(),
         ),
+        participants: List<String>.from(json["participants"]),
+        maxParticipants: json["maxParticipants"]
       );
 
   int get id => _id;
@@ -86,7 +90,6 @@ class ActivityDetails {
         "author": author,
         "title": title,
         "tags": tags,
-        "nrParticipants": nrParticipants,
         "category": category,
         "address": address,
         "description": description,
@@ -94,7 +97,21 @@ class ActivityDetails {
           "latitude": location.latitude,
           "longitude": location.longitude,
         },
+        "participants": participants,
+        "maxParticipants": maxParticipants
       };
+
+  int get maxParticipants => _maxParticipants;
+
+  set maxParticipants(int value) {
+    _maxParticipants = value;
+  }
+
+  List<String> get participants => _participants;
+
+  set participants(List<String> value) {
+    _participants = value;
+  }
 
   String get endDate => _endDate;
 
@@ -130,12 +147,6 @@ class ActivityDetails {
 
   set category(String value) {
     _category = value;
-  }
-
-  int get nrParticipants => _nrParticipants;
-
-  set nrParticipants(int value) {
-    _nrParticipants = value;
   }
 
   List<String> get tags => _tags;

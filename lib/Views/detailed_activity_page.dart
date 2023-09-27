@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_project/Views/Widgets/DisplayParticipants.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
-import 'package:my_project/Views/search_activity_map.dart';
 
+import '../Service/activity_service.dart';
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'search_activity_map.dart';
 
 class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
+  final User user;
 
-  const detailed_activity_page(this.activity, {super.key});
+  bool _didJoin = false;
+
+  bool get didJoin => _didJoin;
+
+  setDidJoin(bool value) {
+    _didJoin = value;
+  }
+
+  detailed_activity_page(this.activity, this.user, {super.key});
 
   @override
   State<detailed_activity_page> createState() => _detailed_activity_pageState();
 }
 
 class _detailed_activity_pageState extends State<detailed_activity_page> {
+  get didJoin => widget.didJoin;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +42,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
         child: Stack(children: <Widget>[
           InkWell(
             onDoubleTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: widget.activity.location, zoomLevel: 16,)));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: widget.activity.location, zoomLevel: 16, user: widget.user)));
             },
             child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
               child: GoogleMap(
@@ -115,9 +128,14 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                 ),
                                 Row(
                                   children: [
-                                    const Icon(Icons.person_rounded),
+                                    InkWell(
+                                        onTap: (){
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: widget.activity.participants,)));
+                                        },
+                                        child: const Icon(Icons.person_rounded)
+                                    ),
                                     Text(
-                                      widget.activity.nrParticipants.toString(),
+                                      widget.activity.participants.length.toString(),
                                       style: Text_Detailed_Page_Bold_Black,
                                     )
                                   ],
@@ -216,27 +234,37 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Join ',
-                                      style: Text_Widget_Buttons_Blue),
-                                  const Icon(
-                                    Icons.add_circle,
-                                    color: Color_Light_Blue,
-                                  )
-                                ],
+                          child: InkWell(
+                            onTap: () async {
+                              final response = await joinActivity(
+                                  widget.activity.id, widget.user.username);
+                              if (response.body == 'true') {
+                                widget.setDidJoin(true);
+                              }
+                              setState(() {});
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(didJoin == false ?'Join ': 'Joined',
+                                        style: didJoin == false ?Text_Widget_Buttons_Blue : Text_Widget_Buttons_Green),
+                                    Icon(
+                                      didJoin == false ?Icons.add_circle: Icons.check_circle,
+                                      color: didJoin == false ?Color_Light_Blue: Colors.green,
+                                    )
+                                  ],
+                                ),
                               ),
+                              Color_Dark_Gray,
                             ),
-                            Color_Dark_Gray,
                           ),
                         ),
                         const SizedBox(
                           width: 20,
                         ),
-                        const Expanded(
+                        Expanded(
                           child: SizedBox()
                         ),
                       ],

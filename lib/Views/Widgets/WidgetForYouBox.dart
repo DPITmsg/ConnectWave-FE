@@ -7,14 +7,18 @@ import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
 
+import '../../darius_mock_models/remote_service_singular_object.dart';
+import '../Classes/User.dart';
 import '../Classes/activitydetails.dart';
 import '../Styles/StyleText.dart';
+
 
 
 class WidgetBoxForYou extends StatefulWidget {
   final RecommendedActivity activity;
   final String username;
   bool _didJoin = false;
+
 
   bool get didJoin => _didJoin;
 
@@ -56,12 +60,21 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
                 flex: 5,
                 child: InkWell(
                   onTap: () async {
+
+                    final userData = await fetchUserData();
+                    User user = User.fromJson(userData);
+
                     final response = await postIdGetActivity(widget.activity.id);
-                    final Map<String, dynamic> jsonResponse = json.decode(response);
-                    final ActivityDetails activity = ActivityDetails.fromJson(jsonResponse);
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => detailed_activity_page(activity),
-                    ));
+                    if (response.statusCode == 200) {
+                      final Map<String, dynamic> jsonResponse = json.decode(response.body);
+                      final ActivityDetails activity = ActivityDetails.fromJson(jsonResponse);
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => detailed_activity_page(activity, user),
+                      ));
+                    } else {
+                      // Handle the case where the request didn't return a 200 status code
+                      print('Request failed with status code: ${response.statusCode}');
+                    }
                   },
                   child: Stack(
                     children: [

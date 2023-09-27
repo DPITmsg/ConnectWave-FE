@@ -1,18 +1,21 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../darius_mock_models/remote_service_list_objects.dart';
-import 'Styles/Colors.dart';
-import 'Widgets/filters_search_activity.dart';
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
+import 'Styles/Colors.dart';
 import 'Widgets/containersearchactivity.dart';
+import 'Widgets/filters_search_activity.dart';
 import 'Widgets/fliters_search_activity_slider.dart';
 import 'Widgets/loadingscreen.dart';
 
 
 class SearchActivityOnlinePage extends StatefulWidget {
-  const SearchActivityOnlinePage({super.key});
+  final User user;
+
+  const SearchActivityOnlinePage({super.key, required this.user});
 
   @override
   State<SearchActivityOnlinePage> createState() =>
@@ -49,9 +52,11 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
   List<String> categories = ['Sports', 'Gaming', 'Services', 'Other'];
   List<String> dates = ["tomorrow", "in the next three days", "in the next 7 days", "in the next 30 days", "all"];
 
+
   String dateSelected = '';
   String categorySelected = '';
   RangeValues nrParticipantsSelected = RangeValues(0.0, 50.0);
+
 
   void _onCategorySelected(String selectedCategory) {
     setState(() {
@@ -70,7 +75,6 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
       dateSelected = selectedDate;
     });
   }
-
 
   DateTime parseDate(String input){
     try {
@@ -130,8 +134,8 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
         .toList();
 
     final filteredByNrParticipants = filteredByCategory.where((activity) =>
-    activity.nrParticipants.toInt() >= nrParticipantsSelected.start.toInt() &&
-        activity.nrParticipants.toInt() <= nrParticipantsSelected.end.toInt());
+    activity.participants.length.toInt() >= nrParticipantsSelected.start.toInt() &&
+        activity.participants.length.toInt() <= nrParticipantsSelected.end.toInt());
 
     DateTime targetDate = dateConversion(dateSelected);
 
@@ -193,7 +197,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
               children: [
                 FilterPressAction(categorySelected, categories, _onCategorySelected, "Categories"),
                 FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Nr Participants"),
-                FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in')
+                FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in'),
               ],
             ),
             Expanded(
@@ -205,7 +209,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                   separatorBuilder: (context, index) => Divider(),
                   itemBuilder: (context, index) {
                     ActivityDetails activity = getFilteredActivities()[index];
-                    return ContainerActivityForSearch(activity);
+                    return ContainerActivityForSearch(activity, widget.user);
                   },
                 ),
               ),
