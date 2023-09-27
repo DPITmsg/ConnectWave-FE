@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Widgets/DisplayParticipants.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'package:my_project/Views/Widgets/loadingscreen.dart';
 
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
@@ -112,6 +114,9 @@ class detailed_activity_page extends StatelessWidget {
                                 Row(
                                   children: [
                                     InkWell(
+                                        onTap: (){
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: activity.participants,)));
+                                        },
                                         child: const Icon(Icons.person_rounded)
                                     ),
                                     Text(

@@ -24,6 +24,7 @@ class ActivityDetails {
   String _description = '';
   LatLng _location = LatLng(0, 0);
   List<String> _participants = [];
+  int _maxParticipants = 0;
 
   ActivityDetails({
     required id,
@@ -37,7 +38,8 @@ class ActivityDetails {
     required address,
     required description,
     required location,
-    required participants
+    required participants,
+    required maxParticipants,
   })
       :_id = id,
         _date = date,
@@ -50,7 +52,8 @@ class ActivityDetails {
         _address = address,
         _description = description,
         _location = location,
-        _participants = participants;
+        _participants = participants,
+        _maxParticipants = maxParticipants;
 
   factory ActivityDetails.fromJson(Map<String, dynamic> json) =>
       ActivityDetails(
@@ -68,7 +71,8 @@ class ActivityDetails {
           json["location"]["latitude"].toDouble(),
           json["location"]["longitude"].toDouble(),
         ),
-        participants: List<String>.from(json["participants"])
+        participants: List<String>.from(json["participants"]),
+        maxParticipants: json["maxParticipants"]
       );
 
   int get id => _id;
@@ -94,7 +98,14 @@ class ActivityDetails {
           "longitude": location.longitude,
         },
         "participants": participants,
+        "maxParticipants": maxParticipants
       };
+
+  int get maxParticipants => _maxParticipants;
+
+  set maxParticipants(int value) {
+    _maxParticipants = value;
+  }
 
   List<String> get participants => _participants;
 

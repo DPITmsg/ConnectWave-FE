@@ -52,9 +52,11 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
   List<String> categories = ['Sports', 'Gaming', 'Services', 'Other'];
   List<String> dates = ["tomorrow", "in the next three days", "in the next 7 days", "in the next 30 days", "all"];
 
+
   String dateSelected = '';
   String categorySelected = '';
   RangeValues nrParticipantsSelected = RangeValues(0.0, 50.0);
+
 
   void _onCategorySelected(String selectedCategory) {
     setState(() {
@@ -73,7 +75,6 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
       dateSelected = selectedDate;
     });
   }
-
 
   DateTime parseDate(String input){
     try {
@@ -196,7 +197,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
               children: [
                 FilterPressAction(categorySelected, categories, _onCategorySelected, "Categories"),
                 FilterPressSliderAction(nrParticipantsSelected, 0.0, 50.0, _onNrParticipantsSelected, "Nr Participants"),
-                FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in')
+                FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in'),
               ],
             ),
             Expanded(

@@ -6,17 +6,18 @@ Future<List<Map<String, dynamic>>> fetchData(String url) async {
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
-    final data = json.decode(response.body);
+    final dynamic data = json.decode(response.body);
 
     if (data is List) {
       return data.cast<Map<String, dynamic>>();
     } else {
-      throw Exception("Invalid data format: Expected a List.");
+      throw FormatException("Invalid data format: Expected a List.");
     }
   } else {
     throw Exception('Failed to load data. Status code: ${response.statusCode}');
   }
 }
+
 
 Future<List<Map<String, dynamic>>> fetchEventHistoryData() async{
   final url = 'https://2c2c5089-4702-46c0-8b73-f9af56f0c23e.mock.pstmn.io/activityhistory';

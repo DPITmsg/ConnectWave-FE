@@ -91,6 +91,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8, 0, 0 ,0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Category: ${activity.category}', style: Text_Search_Activity_v2),
                             Padding(
