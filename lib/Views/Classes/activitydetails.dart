@@ -7,8 +7,8 @@ List<ActivityDetails> activityFromJson(String str) {
   return jsonData.map((json) => ActivityDetails.fromJson(json)).toList();
 }
 
-String postToJson(List<ActivityDetails> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+// String postToJson(List<ActivityDetails> data) =>
+//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 
 class ActivityDetails {

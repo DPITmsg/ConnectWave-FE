@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:map_location_picker/map_location_picker.dart';
 import 'package:my_project/Service/activity_service.dart';
-import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
-import 'Widgets/loadingscreen.dart';
-import 'Widgets/test.dart';
-import 'Widgets/maplocationpicker.dart';
-import 'detailed_activity_page.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
+
 import 'Classes/activitydetails.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geocoding/geocoding.dart' as geocoding;
-
-
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
+import 'Widgets/maplocationpicker.dart';
 
 class add_activity_page extends StatefulWidget {
   const add_activity_page({super.key});
@@ -161,28 +156,12 @@ class _add_activity_pageState extends State<add_activity_page> {
     });
   }
 
-  void _onBackPressed() {
-    Navigator.of(context).pop();
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Create Activity"),
-          centerTitle: true,
-          backgroundColor: Color_Blue,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: (){
-              _onBackPressed();
-            },
-          ),
-        ),
           resizeToAvoidBottomInset: false,
           body: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -517,8 +496,30 @@ class _add_activity_pageState extends State<add_activity_page> {
                                         if (error_tags != true &&
                                             error_category != true && error_dates != true) {
                                           LatLng location = await getAddressLatLng(selectedAddress);
+
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                             SnackBar(
+                                              backgroundColor: Colors.green[600],
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                              content:  const Row(
+                                                children: [
+                                                  Text(
+                                                    'Validation Successful',
+                                                    style: TextStyle(
+                                                      color: Color_White,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 16
+                                                    ),
+                                                  ),
+                                                  Icon(Icons.check, color:Color_White)
+                                                ],
+                                              ),
+                                            ),
+                                          );
+
                                           ActivityDetails activity = ActivityDetails(
-                                            id: 1,
+                                              id: 1,
                                               title: activity_title.text,
                                               author: 'Zdroba Petru',
                                               date: activity_date.text,
@@ -563,7 +564,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        Test()));
+                                                        detailed_activity_page(activity)));
                                           }
                                         }
                                       }

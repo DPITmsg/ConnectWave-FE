@@ -239,14 +239,8 @@ class detailed_activity_page extends StatelessWidget {
                         const SizedBox(
                           width: 20,
                         ),
-                        Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Text("I'm interested",
-                                  style: Text_Widget_Buttons_Blue),
-                            ),
-                            Color_Dark_Gray,
-                          ),
+                        const Expanded(
+                          child: SizedBox()
                         ),
                       ],
                     ),

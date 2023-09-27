@@ -5,11 +5,13 @@ import 'package:my_project/Views/Widgets/WidgetForYouBox.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 
+
 class for_you_page extends StatefulWidget {
 
   final List<RecommendedActivity> activity_list;
+  final String username;
 
-  const for_you_page(this.activity_list, {super.key});
+  const for_you_page(this.activity_list, this.username, {super.key});
 
   @override
   State<for_you_page> createState() => _for_you_pageState();
@@ -65,11 +67,14 @@ class _for_you_pageState extends State<for_you_page> {
                       ),
                     ],
                   ),
-                  SingleChildScrollView(
-                    child: Column(
-                      children: widget.activity_list.map((e) {
-                        return WidgetBoxForYou(e);
-                      }).toList(),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: widget.activity_list.map((activity) {
+                          return WidgetBoxForYou(activity,widget.username);
+                        }).toList(),
+                      ),
                     ),
                   )
                 ],

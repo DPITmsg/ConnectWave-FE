@@ -1,6 +1,6 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-import '../Views/Classes/activitydetails.dart';
 
 Future<List<Map<String, dynamic>>> fetchData(String url) async {
   final response = await http.get(Uri.parse(url));

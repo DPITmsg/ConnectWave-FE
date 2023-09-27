@@ -1,17 +1,11 @@
 
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/User.dart';
-import 'Widgets/containerongoingactivities.dart';
-import 'Classes/activitydetails.dart';
-import '../darius_mock_models/remote_service_list_objects.dart';
-import 'Widgets/loadingscreen.dart';
-import 'detailed_activity_page.dart';
-import 'Widgets/containersearchactivity.dart';
 import 'Styles/Colors.dart';
+import 'Widgets/containersearchactivity.dart';
+import 'Widgets/loadingscreen.dart';
 
 class OngoingActivities extends StatefulWidget {
   final User? user;

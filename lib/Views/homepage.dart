@@ -162,6 +162,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+
                       ElevatedButton(
                         onPressed: () async {
                           final response = await getFriendList();
