@@ -25,6 +25,7 @@ class ActivityHistory extends ActivityDetails{
     required address,
     required description,
     required location,
+    required maxParticipants,
     required avgUserRating,
   }) : super(
     id: id,
@@ -39,6 +40,7 @@ class ActivityHistory extends ActivityDetails{
     address: address,
     description: description,
     location: location,
+    maxParticipants: maxParticipants
   ) {
     _avgUserRating = avgUserRating;
   }
@@ -72,6 +74,7 @@ class ActivityHistory extends ActivityDetails{
       address: activityDetails.address,
       description: activityDetails.description,
       location: activityDetails.location,
+      maxParticipants: activityDetails.maxParticipants,
       avgUserRating: json["avgUserRating"],
     );
   }

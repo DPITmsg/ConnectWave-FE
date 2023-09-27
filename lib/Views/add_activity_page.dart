@@ -525,6 +525,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               endDate: activity_end_date.text,
                                               address: selectedAddress,
                                               participants: [],
+                                              maxParticipants: activity_nr_participants.text,
                                               description:
                                                   activity_description.text,
                                               tags: activity_tags,
