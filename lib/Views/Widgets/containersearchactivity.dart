@@ -46,11 +46,9 @@ class ContainerActivityForSearch extends StatelessWidget {
                   children: [
                   Text(activity.title, style: Text_Search_Activity_v1,),
                   if (isFriend)
-                    Positioned(
-                        child: CircleAvatar(
-                          backgroundColor: Color(0xff2222AA),
-                          radius: 8,
-                        )
+                    CircleAvatar(
+                      backgroundColor: Color(0xff2222AA),
+                      radius: 8,
                     ),
                   ]
                 ),

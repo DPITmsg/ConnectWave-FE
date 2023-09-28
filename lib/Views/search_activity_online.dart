@@ -39,7 +39,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     final activityData = await fetchEventData();
 
     setState(() {
-      activities = activityFromJson(json.encode(activityData));
+      activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now())).toList();
       isLoaded = true;
     });
   }
