@@ -1,8 +1,12 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
+import '../darius_mock_models/remote_service_list_objects.dart';
 import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/User.dart';
+import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Widgets/containersearchactivity.dart';
 import 'Widgets/loadingscreen.dart';
@@ -17,6 +21,24 @@ class OngoingActivities extends StatefulWidget {
 }
 
 class _OngoingActivitiesState extends State<OngoingActivities> {
+
+  bool isLoaded = false;
+  List<ActivityDetails> activitiesCurrent = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    final activityData = await fetchEventData();
+
+    setState(() {
+      activitiesCurrent = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_enrolled.contains(activity.id)).toList();
+      isLoaded = true;
+    });
+  }
 
   void _onBackPressed() {
     Navigator.of(context).pop();
@@ -43,10 +65,10 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
           children: <Widget>[
             Expanded(
               child: ListView.builder(
-                itemCount: widget.user?.activities_enrolled?.length ?? 0,
+                itemCount: activitiesCurrent.length ?? 0,
                 itemBuilder: (context, index) {
-                  final activity = widget.user?.activities_enrolled[index];
-                  return ContainerActivityForSearch(activity!, widget.user!);
+                  final activity = activitiesCurrent[index];
+                  return ContainerActivityForSearch(activity, widget.user!);
                 },
               ),
             ),

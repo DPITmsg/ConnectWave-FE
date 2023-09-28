@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:my_project/Views/Widgets/loadingscreen.dart';
+import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import '../darius_mock_models/remote_service_list_objects.dart';
 import '../darius_mock_models/remote_service_singular_object.dart';
+import 'Classes/ActivityHistory.dart';
 import 'Widgets/awesomegradient.dart';
 import 'Widgets/stars.dart';
 import 'Widgets/cardsprofilestats.dart';
@@ -25,6 +31,26 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
 
+  List<ActivityDetails> activitiesCreated = [];
+  List<ActivityHistory> activitiesCompleted = [];
+  bool isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    final activityData = await fetchEventData();
+
+    setState(() {
+      activitiesCreated = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_created.contains(activity.id)).toList();
+      activitiesCompleted = activityHistoryFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_completed.contains(activity.id)).toList();
+      isLoaded = true;
+    });
+  }
+
   AssetImage profilePic = AssetImage('assets/profilepic2.png');
 
 
@@ -32,7 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
+    return isLoaded ? Scaffold(
       appBar: null,
       body: Container(
         height: screenHeight,
@@ -50,13 +76,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       AvatarContainer(profilePic),
                       Padding(
                         padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Text(
-                          widget.user!.name,
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Color_Dark_Gray,
-                          ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              child: Text(
+                                widget.user!.name,
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color_Dark_Gray,
+                                ),
+                              ),
+                            ),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.edit))
+                          ],
                         ),
                       ),
                       Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 8), child: Text(widget.user!.username),),
@@ -73,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             CardProfile(
                               widget.user!.activities_completed.length.toString(),
                               'Activities Completed',
-                              ActivityHistoryPage(activities: widget.user!.activities_completed),
+                              ActivityHistoryPage(activities: activitiesCompleted, user: widget.user!),
                             ),
                             CardProfile(
                               widget.user!.friends.length.toString(),
@@ -83,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             CardProfile(
                               widget.user!.activities_created.length.toString(),
                               'Activities Created',
-                              ActivitiesCreatedPage(activities_created: widget.user!.activities_created, user: widget.user!),
+                              ActivitiesCreatedPage(activities_created: activitiesCreated, user: widget.user!),
                             ),
                           ],
                         ),
@@ -94,12 +128,17 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'About',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'About',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  IconButton(onPressed: (){}, icon: Icon(Icons.edit))
+                                ],
                               ),
                               Text(widget.user!.about),
                             ],
@@ -121,7 +160,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: IntOrTags(widget.user!.interests),
+                        child: Wrap(
+                          children: [
+                            IntOrTags(widget.user!.interests),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.add))
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -138,7 +182,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: IntOrTags(widget.user!.tags),
+                        child: Wrap(
+                          children: [
+                            IntOrTags(widget.user!.tags),
+                            IconButton(onPressed: (){}, icon: Icon(Icons.add))
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -181,6 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         )
       ),
-    );
+    ): LoadingScreenPageNoPop();
   }
 }
+

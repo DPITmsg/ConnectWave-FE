@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c97dcba0-844a-4666-82c0-e0577915b49b" name="Changes" comment="">
+    <list default="true" id="ef32b86c-1ecc-49b1-9fa3-32536ef63f9d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/ActivityHistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/ActivityHistory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/containerhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/containerhistory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/foryou.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/foryou.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activityhistory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +86,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c97dcba0-844a-4666-82c0-e0577915b49b" name="Changes" comment="" />
+      <changelist id="ef32b86c-1ecc-49b1-9fa3-32536ef63f9d" name="Changes" comment="" />
       <created>1690805374000</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

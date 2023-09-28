@@ -6,6 +6,7 @@ import 'package:my_project/Views/Styles/StyleText.dart';
 import '../Classes/User.dart';
 
 import '../Classes/activitydetails.dart';
+import '../Styles/Gradients.dart';
 import '../detailed_activity_page.dart';
 import '../search_activity_map.dart';
 

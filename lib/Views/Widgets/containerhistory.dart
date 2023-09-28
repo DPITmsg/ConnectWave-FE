@@ -45,21 +45,26 @@ class ContainerActivity extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(date),
-                    Text(title, style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(date),
+                        Text(title, style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 16),
                 child: Tags(tags),
               ),
               Row(

@@ -11,14 +11,17 @@ import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
 
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
+import 'Widgets/loadingscreen.dart';
 import 'Widgets/maplocationpicker.dart';
 
 class add_activity_page extends StatefulWidget {
-  const add_activity_page({super.key});
+  final User user;
+  const add_activity_page({super.key, required this.user});
 
   @override
   State<add_activity_page> createState() => _add_activity_pageState();
@@ -156,6 +159,10 @@ class _add_activity_pageState extends State<add_activity_page> {
     });
   }
 
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -564,7 +571,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        detailed_activity_page(activity)));
+                                                        detailed_activity_page(activity, widget.user)));
                                           }
                                         }
                                       }
@@ -596,7 +603,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                 Expanded(
                                   child: InkWell(
                                     onTap: (){
-                                      Navigator.of(context).pop();
+                                      _onBackPressed();
                                     },
                                     child: WidgetButton(
                                       Center(
