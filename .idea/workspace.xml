@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username">
+    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="added cancel button to detailed activity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695822631186</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added cancel button to detailed activity">
+      <created>1695824142873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695824142873</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +168,7 @@
     <MESSAGE value="pulled DARIUSBACKUP" />
     <MESSAGE value="fixed bugs in for you page" />
     <MESSAGE value="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username" />
-    <option name="LAST_COMMIT_MESSAGE" value="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username" />
+    <MESSAGE value="added cancel button to detailed activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="added cancel button to detailed activity" />
   </component>
 </project>
