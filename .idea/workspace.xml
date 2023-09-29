@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef32b86c-1ecc-49b1-9fa3-32536ef63f9d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/containeractivityHARDCODED.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/profilepageHARDCODED.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/maplocationpicker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/maplocationpicker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/activityhistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activityhistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
