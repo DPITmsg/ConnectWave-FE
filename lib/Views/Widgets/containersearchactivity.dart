@@ -17,6 +17,10 @@ class ContainerActivityForSearch extends StatelessWidget {
 
   ContainerActivityForSearch(this.activity, this.user, this.isOnline);
 
+  bool _isOnline(ActivityDetails activity){
+    return activity.address != "online";
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -26,7 +30,7 @@ class ContainerActivityForSearch extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       child: InkWell(
         onTap: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, user)));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, user, _isOnline(activity))));
         },
         child: Container(
           width: screenWidth,

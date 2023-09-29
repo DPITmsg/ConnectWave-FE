@@ -45,6 +45,10 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
+  bool _isOnline(ActivityDetails activity){
+    return activity.address != "online";
+  }
+
   DateTime parseDate(String input){
     try {
       List<String> list = [];
@@ -236,7 +240,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   }
 
   void _onMarkerTapped(ActivityDetails activity) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, widget.user)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, widget.user, _isOnline(activity))));
   }
 
   List<ActivityDetails> searchActivity(List<ActivityDetails> list, String userInput){

@@ -172,6 +172,10 @@ class _add_activity_pageState extends State<add_activity_page> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
+  bool _isOnline(ActivityDetails activity){
+    return activity.address != "online";
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -579,7 +583,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        detailed_activity_page(activity, widget.user)));
+                                                        detailed_activity_page(activity, widget.user, _isOnline(activity))));
                                           }
                                         }
                                       }
