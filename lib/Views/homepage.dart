@@ -5,27 +5,23 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
-import 'package:my_project/Views/Widgets/loadingscreen.dart';
-import 'package:my_project/Views/activityhistory.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
-import 'package:my_project/Views/ongoing_activities.dart';
-import 'package:my_project/Views/search_activity_map.dart';
+
 import '../Service/friend_list_service.dart';
 import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/Trending.dart';
+import 'Classes/User.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
 import 'Widgets/foryou.dart';
-import 'Widgets/test.dart';
+import 'Widgets/loadingscreennopop.dart';
 import 'add_activity_page.dart';
 import 'friends_list_page.dart';
 import 'profilepage.dart';
 import 'search_activity_online.dart';
 import 'trending_page.dart';
-import 'Widgets/loadingscreennopop.dart';
-import 'Classes/User.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

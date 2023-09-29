@@ -1,19 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/containeractivityHARDCODED.dart';
 import 'package:my_project/Views/Widgets/containerhistory.dart';
-import 'package:my_project/darius_mock_models/remote_service_singular_object.dart';
-import 'Classes/activitydetails.dart';
-import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
-import 'dart:developer' as developer;
+
+import 'Classes/ActivityHistory.dart';
+import 'Classes/User.dart';
 import 'Widgets/loadingscreen.dart';
 import 'rate_activity.dart';
-import 'Classes/User.dart';
-import 'Classes/ActivityHistory.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'Classes/Friend.dart';
 
 class ActivityHistoryPage extends StatefulWidget {
   final List<ActivityHistory>? activities;

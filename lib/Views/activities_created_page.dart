@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Classes/User.dart';
+
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
-import 'Widgets/containerongoingactivities.dart';
 import 'Widgets/containersearchactivity.dart';
 import 'Widgets/loadingscreen.dart';
-import 'Classes/User.dart';
 
 class ActivitiesCreatedPage extends StatefulWidget {
   final List<ActivityDetails> activities_created;

@@ -4,12 +4,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
-import 'Styles/Colors.dart';
+
 import '../darius_mock_models/remote_service_list_objects.dart';
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Widgets/loadingscreen.dart';
-import 'Classes/User.dart';
 
 int cnt = 0;
 
