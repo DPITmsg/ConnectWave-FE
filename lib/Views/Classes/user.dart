@@ -1,25 +1,14 @@
 import 'dart:convert';
+
 import 'Friend.dart';
-import 'activitydetails.dart';
-import 'ActivityHistory.dart';
 
 
 User userFromJson(Map<String, dynamic> jsonData) {
   List<String> interests = List<String>.from(jsonData['interests']);
   List<String> tags = List<String>.from(jsonData['tags']);
-  List<String> friendsList = List<String>.from(jsonData['friends_list']);
-
-  List<ActivityDetails> activities_created = (jsonData['activities_created'] != null)
-      ? activityFromJson(jsonData['activities_created'])
-      : [];
-
-  List<ActivityDetails> activities_enrolled = (jsonData['activities_enrolled'] != null)
-      ? activityFromJson(jsonData['activities_enrolled'])
-      : [];
-
-  List<ActivityHistory> activities_completed = (jsonData['activities_enrolled'] != null)
-      ? activityHistoryFromJson(jsonData['activities_enrolled'])
-      : [];
+  List<int> activities_created = List<int>.from(jsonData['activities_created']);
+  List<int> activities_enrolled = List<int>.from(jsonData['activities_enrolled']);
+  List<int> activities_completed = List<int>.from(jsonData['activities_completed']);
 
   List<Friend> friends_list = (jsonData['friends'] != null)
       ? friendFromJson(jsonData['friends'])
@@ -30,7 +19,6 @@ User userFromJson(Map<String, dynamic> jsonData) {
     ...jsonData,
     'interests': interests,
     'tags': tags,
-    'friends_list': friendsList,
     'activities_created': activities_created,
     'activities_enrolled': activities_enrolled,
     'activities_completed': activities_completed,
@@ -51,9 +39,9 @@ class User {
   List<String> _tags = [];
   int _age = 0;
   String _pfp = '';
-  List<ActivityDetails> _activities_created = [];
-  List<ActivityDetails> _activities_enrolled = [];
-  List<ActivityHistory> _activities_completed = [];
+  List<int> _activities_created = [];
+  List<int> _activities_enrolled = [];
+  List<int> _activities_completed = [];
   List<Friend> _friends = [];
 
   User(
@@ -92,15 +80,9 @@ class User {
         tags: List<String>.from(json["tags"]),
         age: json["age"],
         pfp: json["pfp"],
-        activities_created: (json["activities_created"] as List<dynamic>)
-            .map((activity) => ActivityDetails.fromJson(activity))
-            .toList(),
-        activities_enrolled: (json["activities_enrolled"] as List<dynamic>)
-            .map((activity) => ActivityDetails.fromJson(activity))
-            .toList(),
-        activities_completed: (json["activities_completed"] as List<dynamic>)
-          .map((activity) => ActivityHistory.fromJson(activity))
-          .toList(),
+        activities_created: List<int>.from(json["activities_created"]),
+        activities_enrolled: List<int>.from(json["activities_enrolled"]),
+        activities_completed: List<int>.from(json["activities_completed"]),
         friends: (json["friends"] as List<dynamic>)
           .map((friend) => Friend.fromJson(friend))
           .toList()
@@ -128,9 +110,9 @@ class User {
     _pfp = value;
   }
 
-  List<ActivityDetails> get activities_created => _activities_created;
+  List<int> get activities_created => _activities_created;
 
-  set activities_created(List<ActivityDetails> value) {
+  set activities_created(List<int> value) {
     _activities_created = value;
   }
 
@@ -152,9 +134,9 @@ class User {
     _age = value;
   }
 
-  List<ActivityHistory> get activities_completed => _activities_completed;
+  List<int> get activities_completed => _activities_completed;
 
-  set activities_completed(List<ActivityHistory> value) {
+  set activities_completed(List<int> value) {
     _activities_completed = value;
   }
 
@@ -189,9 +171,9 @@ class User {
     _name = value;
   }
 
-  List<ActivityDetails> get activities_enrolled => _activities_enrolled;
+  List<int> get activities_enrolled => _activities_enrolled;
 
-  set activities_enrolled(List<ActivityDetails> value) {
+  set activities_enrolled(List<int> value) {
     _activities_enrolled = value;
   }
 }

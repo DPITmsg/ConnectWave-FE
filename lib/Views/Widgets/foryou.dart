@@ -42,7 +42,7 @@ class _ForYouState extends State<ForYou> {
           .map((e) => RecommendedActivity.fromJson(e))
           .toList();
 
-      final userData = await fetchUserData();
+      final userData = await fetchUserData('yes');
       User user = User.fromJson(userData);
 
       Navigator.push(context, PageTransition(child: for_you_page(forYouList, user.username), type: PageTransitionType.bottomToTop)).then((value) {

@@ -28,7 +28,7 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ongoing Activities"),
+        title: Text("Created Activities"),
         backgroundColor: Color_Blue,
         centerTitle: true,
         leading: IconButton(

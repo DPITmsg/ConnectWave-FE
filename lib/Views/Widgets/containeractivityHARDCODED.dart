@@ -5,7 +5,7 @@ import '../../Views/Widgets/tags.dart';
 import '../Styles/Shadows.dart';
 import 'stars.dart';
 
-class ContainerActivity extends StatelessWidget {
+class ContainerActivityHardCoded extends StatelessWidget {
   final String date;
   final String title;
   final List<String> tags;
@@ -14,10 +14,9 @@ class ContainerActivity extends StatelessWidget {
   final double userRating;
   final String address;
   final String description;
-  Widget? child;
   final LatLng location;
 
-  ContainerActivity(this.date, this.title, this.tags, this.nrParticipants, this.category, this.userRating, this.address, this.description, this.child, this.location);
+  ContainerActivityHardCoded(this.date, this.title, this.tags, this.nrParticipants, this.category, this.userRating, this.address, this.description, this.location);
 
 
   @override
@@ -29,14 +28,14 @@ class ContainerActivity extends StatelessWidget {
       child: Container(
         width: screenWidth,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xffc9cfcf), Color(0xffeeeeee)],
-            stops: [0.3, 0.6],
-            transform: GradientRotation(11),
-          ),
-          boxShadow: [
-            Shadow_Darius
-          ]
+            gradient: LinearGradient(
+              colors: [Color(0xffc9cfcf), Color(0xffeeeeee)],
+              stops: [0.3, 0.6],
+              transform: GradientRotation(11),
+            ),
+            boxShadow: [
+              Shadow_Darius
+            ]
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
@@ -54,7 +53,7 @@ class ContainerActivity extends StatelessWidget {
                         Text(title, style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          ),
+                        ),
                         ),
                       ],
                     ),
@@ -99,13 +98,13 @@ class ContainerActivity extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 5),
                         child: Row(
-                          children: [
-                            Text("Participants", style: TextStyle(color: Color(0xff45bac4), fontWeight: FontWeight.bold, fontSize: 16),),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                              child: Text(nrParticipants.toString(), style: TextStyle(fontSize: 16),),
-                            ),
-                          ]
+                            children: [
+                              Text("Participants", style: TextStyle(color: Color(0xff45bac4), fontWeight: FontWeight.bold, fontSize: 16),),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                child: Text(nrParticipants.toString(), style: TextStyle(fontSize: 16),),
+                              ),
+                            ]
                         ),
                       ),
                       Padding(
@@ -141,12 +140,6 @@ class ContainerActivity extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                 child: Text(description),
               ),
-              TextButton(
-                  onPressed: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => child!));
-                  },
-                child: Text("Rate event & participants"),
-              )
             ],
           ),
         ),

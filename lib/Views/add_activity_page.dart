@@ -9,17 +9,19 @@ import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Widgets/WidgetBackgroundBox.dart';
 import 'package:my_project/Views/Widgets/WidgetErrorTextSmall.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'package:my_project/Views/detailed_activity_page.dart';
 
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetButtons.dart';
 import 'Widgets/loadingscreen.dart';
 import 'Widgets/maplocationpicker.dart';
-import 'Widgets/test.dart';
 
 class add_activity_page extends StatefulWidget {
-  const add_activity_page({super.key});
+  final User user;
+  const add_activity_page({super.key, required this.user});
 
   @override
   State<add_activity_page> createState() => _add_activity_pageState();
@@ -133,6 +135,9 @@ class _add_activity_pageState extends State<add_activity_page> {
   LatLng currentLocation = LatLng(0.0, -160.0);
 
   Future<LatLng> getAddressLatLng(String address) async {
+    if (address == "online"){
+      return LatLng(0, -160);
+    }
     List<geocoding.Location> locations = await geocoding.locationFromAddress(address);
     if (locations.isNotEmpty) {
       final LatLng latLng = LatLng(locations[0].latitude, locations[0].longitude);
@@ -145,8 +150,13 @@ class _add_activity_pageState extends State<add_activity_page> {
   void updateSelectedAddress(String address) {
     getAddressLatLng(address).then((newLocation) {
       setState(() {
-        selectedAddress = address;
-        currentLocation = newLocation;
+        if(address == "63G22222+22"){
+          selectedAddress = "online";
+        }
+        else {
+          selectedAddress = address;
+          currentLocation = newLocation;
+        }
       });
       _controller.animateCamera(
         CameraUpdate.newLatLng(newLocation),
@@ -162,23 +172,11 @@ class _add_activity_pageState extends State<add_activity_page> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Create Activity"),
-          centerTitle: true,
-          backgroundColor: Color_Blue,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: (){
-              _onBackPressed();
-            },
-          ),
-        ),
           resizeToAvoidBottomInset: false,
           body: SizedBox(
             width: MediaQuery.of(context).size.width,
@@ -341,7 +339,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           style: Text_AddActivity_Small_Input,
                                           autocorrect: false,
                                           decoration: InputDecoration(
-                                            hintText: '+Nr. participants',
+                                            hintText: '+Max nr. participants',
                                             hintStyle: Text_AddActivty_Small,
                                             border: InputBorder.none,
                                             prefixIcon: const Icon(
@@ -513,15 +511,37 @@ class _add_activity_pageState extends State<add_activity_page> {
                                         if (error_tags != true &&
                                             error_category != true && error_dates != true) {
                                           LatLng location = await getAddressLatLng(selectedAddress);
+
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                             SnackBar(
+                                              backgroundColor: Colors.green[600],
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                              content:  const Row(
+                                                children: [
+                                                  Text(
+                                                    'Validation Successful',
+                                                    style: TextStyle(
+                                                      color: Color_White,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 16
+                                                    ),
+                                                  ),
+                                                  Icon(Icons.check, color:Color_White)
+                                                ],
+                                              ),
+                                            ),
+                                          );
+
                                           ActivityDetails activity = ActivityDetails(
-                                            id: 1,
+                                              id: 1,
                                               title: activity_title.text,
                                               author: 'Zdroba Petru',
                                               date: activity_date.text,
                                               endDate: activity_end_date.text,
                                               address: selectedAddress,
-                                              participants: [],
-                                              maxParticipants: activity_nr_participants.text,
+                                              participants: ['Zdroba Petru'],
+                                              maxParticipants: int.parse(activity_nr_participants.text),
                                               description:
                                                   activity_description.text,
                                               tags: activity_tags,
@@ -559,7 +579,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        Test()));
+                                                        detailed_activity_page(activity, widget.user)));
                                           }
                                         }
                                       }
@@ -591,7 +611,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                 Expanded(
                                   child: InkWell(
                                     onTap: (){
-                                      Navigator.of(context).pop();
+                                      _onBackPressed();
                                     },
                                     child: WidgetButton(
                                       Center(

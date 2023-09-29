@@ -61,7 +61,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
                 child: InkWell(
                   onTap: () async {
 
-                    final userData = await fetchUserData();
+                    final userData = await fetchUserData('1278403');
                     User user = User.fromJson(userData);
 
                     final response = await postIdGetActivity(widget.activity.id);
