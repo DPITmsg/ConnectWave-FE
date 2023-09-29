@@ -175,6 +175,10 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     return filteredByType;
   }
 
+  bool _isOnline(ActivityDetails activity){
+    return activity.address != "online";
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -252,7 +256,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                   separatorBuilder: (context, index) => Divider(),
                   itemBuilder: (context, index) {
                     ActivityDetails activity = getFilteredActivities()[index];
-                    return ContainerActivityForSearch(activity, widget.user);
+                    return ContainerActivityForSearch(activity, widget.user, _isOnline(activity));
                   },
                 ),
               ),

@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3f4e822-58f8-4513-8b71-0e634ba19578" name="Changes" comment="replaced join with icon">
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
+    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2TKx3HSMHAD8m60dsf4DIxRzDte" />
   <component name="ProjectViewState">
@@ -46,14 +43,14 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Darius\github\ConnectWave-FE\lib\Views" />
       <recent name="D:\Documents\GitHub\ConnectWave-FE\assets" />
+      <recent name="C:\Darius\github\ConnectWave-FE\lib\Views" />
       <recent name="D:\Documents\GitHub\ConnectWave-FE\lib" />
     </key>
   </component>
@@ -76,97 +73,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b3f4e822-58f8-4513-8b71-0e634ba19578" name="Changes" comment="fixed small errors" />
+      <changelist id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="" />
       <created>1690805374000</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690805374000</updated>
     </task>
-    <task id="LOCAL-00001" summary="added post with activity details, hope it works">
-      <created>1695384568812</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1695384568812</updated>
-    </task>
-    <task id="LOCAL-00002" summary="fixed post with activity details">
-      <created>1695385296712</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1695385296712</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added friend list to profile page">
-      <created>1695388817037</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1695388817037</updated>
-    </task>
-    <task id="LOCAL-00004" summary="removed button from detailed activity page">
-      <created>1695638344618</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1695638344618</updated>
-    </task>
-    <task id="LOCAL-00005" summary="pulled darius backup">
-      <created>1695642081625</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1695642081625</updated>
-    </task>
-    <task id="LOCAL-00006" summary="pulled DARIUSBACKUP">
-      <created>1695645309004</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1695645309004</updated>
-    </task>
-    <task id="LOCAL-00007" summary="fixed bugs in for you page">
-      <created>1695818724717</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1695818724717</updated>
-    </task>
-    <task id="LOCAL-00008" summary="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username">
-      <created>1695822631186</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1695822631186</updated>
-    </task>
-    <task id="LOCAL-00009" summary="added cancel button to detailed activity">
-      <created>1695824142873</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1695824142873</updated>
-    </task>
-    <task id="LOCAL-00010" summary="pulled DARIUSBACKUP">
-      <created>1695993293843</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1695993293843</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fixed small errors">
-      <created>1695993421422</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1695993421422</updated>
-    </task>
-    <task id="LOCAL-00012" summary="replaced join with icon">
-      <created>1695997759096</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1695997759096</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,19 +91,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="added post with activity details, hope it works" />
-    <MESSAGE value="fixed post with activity details" />
-    <MESSAGE value="added friend list to profile page" />
-    <MESSAGE value="removed button from detailed activity page" />
-    <MESSAGE value="pulled darius backup" />
-    <MESSAGE value="fixed bugs in for you page" />
-    <MESSAGE value="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username" />
-    <MESSAGE value="added cancel button to detailed activity" />
-    <MESSAGE value="pulled DARIUSBACKUP" />
-    <MESSAGE value="fixed small errors" />
-    <MESSAGE value="replaced join with icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="replaced join with icon" />
   </component>
 </project>

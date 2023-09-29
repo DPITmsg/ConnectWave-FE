@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/DisplayParticipants.dart';
@@ -11,11 +12,13 @@ import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
+import 'Widgets/loadingscreen.dart';
 import 'search_activity_map.dart';
 
 class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
   final User user;
+  bool _isOnline;
 
   bool _didJoin = false;
 
@@ -25,14 +28,21 @@ class detailed_activity_page extends StatefulWidget {
     _didJoin = value;
   }
 
-  detailed_activity_page(this.activity, this.user, {super.key});
+  detailed_activity_page(this.activity, this.user, this._isOnline, {super.key});
 
   @override
   State<detailed_activity_page> createState() => _detailed_activity_pageState();
 }
 
 class _detailed_activity_pageState extends State<detailed_activity_page> {
+
   get didJoin => widget.didJoin;
+
+  void _onBackPressed() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +55,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: widget.activity.location, zoomLevel: 16, user: widget.user)));
             },
             child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
-              child: GoogleMap(
+              child: widget._isOnline ? GoogleMap(
                 zoomGesturesEnabled: false,
                 zoomControlsEnabled: false,
                 rotateGesturesEnabled: false,
@@ -54,7 +64,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                 markers: {
                   Marker(markerId: const MarkerId('1'), position: LatLng(widget.activity.location.latitude, widget.activity.location.longitude))
                 },
-              ),
+              ): Container(color: Color_Blue,),
             ),
           ),
           WidgetBackgroundBox(
