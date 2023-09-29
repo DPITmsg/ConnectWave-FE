@@ -46,6 +46,10 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
+  bool _isOnline(ActivityDetails activity){
+    return activity.address != "online";
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoaded ? Scaffold(
@@ -69,7 +73,7 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
                 itemCount: activitiesCurrent.length ?? 0,
                 itemBuilder: (context, index) {
                   final activity = activitiesCurrent[index];
-                  return ContainerActivityForSearch(activity, widget.user!);
+                  return ContainerActivityForSearch(activity, widget.user!, _isOnline(activity));
                 },
               ),
             ),

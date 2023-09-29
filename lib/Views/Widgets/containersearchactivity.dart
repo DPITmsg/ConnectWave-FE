@@ -13,8 +13,9 @@ import '../search_activity_map.dart';
 class ContainerActivityForSearch extends StatelessWidget {
   ActivityDetails activity;
   User user;
+  bool isOnline;
 
-  ContainerActivityForSearch(this.activity, this.user);
+  ContainerActivityForSearch(this.activity, this.user, this.isOnline);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class ContainerActivityForSearch extends StatelessWidget {
     bool isFriend = user.friends.any((friend) => friend.name == activity.author);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       child: InkWell(
         onTap: (){
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, user)));
@@ -67,7 +68,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                               child: Container(
                                 width: 150,
                                 height: 150,
-                                child: GoogleMap(
+                                child: isOnline ? GoogleMap(
                                   rotateGesturesEnabled: false,
                                   scrollGesturesEnabled: false,
                                   zoomControlsEnabled: false,
@@ -79,7 +80,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                                       position: activity.location,
                                     )
                                   },
-                                ),
+                                ): Container(width: 150, height: 150, child: Image(image: AssetImage('assets/online.png'),),),
                               ),
                             ),
                           ),
