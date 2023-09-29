@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="added cancel button to detailed activity">
+    <list default="true" id="b3f4e822-58f8-4513-8b71-0e634ba19578" name="Changes" comment="fixed small errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1695824142873</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="pulled DARIUSBACKUP">
+      <created>1695993293843</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1695993293843</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed small errors">
+      <created>1695993421422</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1695993421422</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,10 +180,11 @@
     <MESSAGE value="added friend list to profile page" />
     <MESSAGE value="removed button from detailed activity page" />
     <MESSAGE value="pulled darius backup" />
-    <MESSAGE value="pulled DARIUSBACKUP" />
     <MESSAGE value="fixed bugs in for you page" />
     <MESSAGE value="pulled DARIUSBACKUP and added post method for id with for you page and added join button that sends activity id and current username" />
     <MESSAGE value="added cancel button to detailed activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="added cancel button to detailed activity" />
+    <MESSAGE value="pulled DARIUSBACKUP" />
+    <MESSAGE value="fixed small errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed small errors" />
   </component>
 </project>
