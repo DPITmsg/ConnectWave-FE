@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/DisplayParticipants.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
-import 'package:my_project/Views/Widgets/loadingscreen.dart';
 
+import '../Service/activity_service.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
@@ -10,14 +11,28 @@ import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBackgroundBox.dart';
 import 'Widgets/WidgetBox.dart';
 import 'Widgets/WidgetButtons.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'search_activity_map.dart';
 
-class detailed_activity_page extends StatelessWidget {
+class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
   final User user;
-  const detailed_activity_page(this.activity, this.user, {super.key});
 
+  bool _didJoin = false;
+
+  bool get didJoin => _didJoin;
+
+  setDidJoin(bool value) {
+    _didJoin = value;
+  }
+
+  detailed_activity_page(this.activity, this.user, {super.key});
+
+  @override
+  State<detailed_activity_page> createState() => _detailed_activity_pageState();
+}
+
+class _detailed_activity_pageState extends State<detailed_activity_page> {
+  get didJoin => widget.didJoin;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +42,7 @@ class detailed_activity_page extends StatelessWidget {
         child: Stack(children: <Widget>[
           InkWell(
             onDoubleTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: activity.location, zoomLevel: 16, user: user)));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: widget.activity.location, zoomLevel: 16, user: widget.user)));
             },
             child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
               child: GoogleMap(
@@ -35,9 +50,9 @@ class detailed_activity_page extends StatelessWidget {
                 zoomControlsEnabled: false,
                 rotateGesturesEnabled: false,
                 scrollGesturesEnabled: false,
-                initialCameraPosition: CameraPosition(target: LatLng(activity.location.latitude, activity.location.longitude), zoom: 14),
+                initialCameraPosition: CameraPosition(target: LatLng(widget.activity.location.latitude, widget.activity.location.longitude), zoom: 14),
                 markers: {
-                  Marker(markerId: const MarkerId('1'), position: LatLng(activity.location.latitude, activity.location.longitude))
+                  Marker(markerId: const MarkerId('1'), position: LatLng(widget.activity.location.latitude, widget.activity.location.longitude))
                 },
               ),
             ),
@@ -48,7 +63,7 @@ class detailed_activity_page extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(activity.title, softWrap: true, style: Text_Title_Top),
+                  Text(widget.activity.title, softWrap: true, style: Text_Title_Top),
                   Expanded(
                     flex: 7,
                     child: SingleChildScrollView(
@@ -62,7 +77,7 @@ class detailed_activity_page extends StatelessWidget {
                               child: Row(
                                 children: [
                                   const Icon(Icons.location_pin),
-                                  Text(activity.address,
+                                  Text(widget.activity.address,
                                       style: Text_Detailed_Page_Bold_Black),
                                 ],
                               ),
@@ -77,7 +92,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.calendar_month_rounded),
                                     Text(
-                                      activity.date == activity.endDate ? activity.date : '${activity.date}     ${activity.endDate}',
+                                      widget.activity.date == widget.activity.endDate ? widget.activity.date : '${widget.activity.date}     ${widget.activity.endDate}',
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
@@ -96,7 +111,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.access_time_filled),
                                     Text(
-                                      activity.time,
+                                      widget.activity.time,
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
@@ -106,7 +121,7 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.category_sharp),
                                     Text(
-                                      activity.category,
+                                      widget.activity.category,
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
@@ -115,12 +130,12 @@ class detailed_activity_page extends StatelessWidget {
                                   children: [
                                     InkWell(
                                         onTap: (){
-                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: activity.participants,)));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: widget.activity.participants,)));
                                         },
                                         child: const Icon(Icons.person_rounded)
                                     ),
                                     Text(
-                                      activity.participants.length.toString(),
+                                      widget.activity.participants.length.toString(),
                                       style: Text_Detailed_Page_Bold_Black,
                                     )
                                   ],
@@ -137,7 +152,7 @@ class detailed_activity_page extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 5, right: 5),
                               child: Text(
-                                activity.description,
+                                widget.activity.description,
                                 softWrap: true,
                                 style: Text_Detailed_Page_Regular_Medium_Black,
                               ),
@@ -149,7 +164,7 @@ class detailed_activity_page extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               child: Wrap(
                                 spacing: 8,
-                                children: activity.tags.map((tag) {
+                                children: widget.activity.tags.map((tag) {
                                   return WidgetTagsBox(Text(
                                     tag,
                                     style: Text_Tag_Widget,
@@ -188,7 +203,7 @@ class detailed_activity_page extends StatelessWidget {
                                             Text('Name: ',
                                                 style:
                                                 Text_Detailed_Page_Bold_White),
-                                            Text(activity.author,
+                                            Text(widget.activity.author,
                                                 style:
                                                 Text_Detailed_Page_Bold_White),
                                           ],
@@ -219,28 +234,52 @@ class detailed_activity_page extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Expanded(
-                          child: WidgetButton(
-                            Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Join ',
-                                      style: Text_Widget_Buttons_Blue),
-                                  const Icon(
-                                    Icons.add_circle,
-                                    color: Color_Light_Blue,
-                                  )
-                                ],
+                          child: InkWell(
+                            onTap: () async {
+                              if(didJoin == false )
+                                {
+                                  final response = await joinActivity(
+                                      widget.activity.id, widget.user.username);
+                                  if (response.body == 'true') {
+                                    widget.setDidJoin(true);
+                                  }
+                                  setState(() {});
+                                }
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(didJoin == false ?'Join ': 'Joined',
+                                        style: didJoin == false ?Text_Widget_Buttons_Blue : Text_Widget_Buttons_Green),
+                                    Icon(
+                                      didJoin == false ?Icons.add_circle: Icons.check_circle,
+                                      color: didJoin == false ?Color_Light_Blue: Colors.green,
+                                    )
+                                  ],
+                                ),
                               ),
+                              Color_Dark_Gray,
                             ),
-                            Color_Dark_Gray,
                           ),
                         ),
                         const SizedBox(
                           width: 20,
                         ),
-                        const Expanded(
-                          child: SizedBox()
+                        Expanded(
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.of(context).pop();
+                            },
+                            child: WidgetButton(
+                              Center(
+                                child: Text("Cancel",
+                                    style: Text_Widget_Buttons_Blue),
+                              ),
+                              Color_Dark_Gray,
+                            ),
+                          ),
                         ),
                       ],
                     ),

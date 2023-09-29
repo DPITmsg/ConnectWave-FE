@@ -1,16 +1,15 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_project/Views/Styles/Shadows.dart';
+
 import '../darius_mock_models/remote_service_list_objects.dart';
-import 'Styles/Colors.dart';
-import 'Widgets/filters_search_activity.dart';
+import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
+import 'Styles/Colors.dart';
 import 'Widgets/containersearchactivity.dart';
+import 'Widgets/filters_search_activity.dart';
 import 'Widgets/fliters_search_activity_slider.dart';
 import 'Widgets/loadingscreen.dart';
-import 'Classes/User.dart';
 
 
 class SearchActivityOnlinePage extends StatefulWidget {

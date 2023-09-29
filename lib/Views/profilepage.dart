@@ -1,24 +1,21 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
-import 'package:my_project/Views/Widgets/loadingscreen.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 import 'package:my_project/Views/activityhistory.dart';
+
 import '../darius_mock_models/remote_service_list_objects.dart';
-import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/ActivityHistory.dart';
+import 'Classes/User.dart';
+import 'Classes/activitydetails.dart';
+import 'Widgets/avatarcontainer.dart';
 import 'Widgets/awesomegradient.dart';
-import 'Widgets/stars.dart';
 import 'Widgets/cardsprofilestats.dart';
 import 'Widgets/interestsortags.dart';
-import 'Classes/User.dart';
-import 'Widgets/avatarcontainer.dart';
-import 'Widgets/test.dart';
-import 'friends_list_page.dart';
-import 'Classes/activitydetails.dart';
+import 'Widgets/stars.dart';
 import 'activities_created_page.dart';
+import 'friends_list_page.dart';
 
 class ProfilePage extends StatefulWidget {
   User? user;

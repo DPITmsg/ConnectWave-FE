@@ -1,7 +1,6 @@
 import 'dart:convert';
+
 import 'Friend.dart';
-import 'activitydetails.dart';
-import 'ActivityHistory.dart';
 
 
 User userFromJson(Map<String, dynamic> jsonData) {

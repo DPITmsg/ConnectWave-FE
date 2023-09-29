@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../Views/Classes/activitydetails.dart';
-import '../../Views/Widgets/tags.dart';
-import 'stars.dart';
-import '../Styles/Gradients.dart';
-import '../Styles/Shadows.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'googlemapforhistory.dart';
+
+import '../../Views/Widgets/tags.dart';
+import '../Styles/Shadows.dart';
+import 'stars.dart';
 
 class ContainerActivity extends StatelessWidget {
   final String date;

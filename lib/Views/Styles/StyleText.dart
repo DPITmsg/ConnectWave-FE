@@ -74,6 +74,12 @@ TextStyle Text_Widget_Buttons_Blue = const TextStyle(
   color: Color_Light_Blue,
 );
 
+TextStyle Text_Widget_Buttons_Green = const TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.green,
+);
+
 TextStyle Text_Widget_Buttons_Black = const TextStyle(
   fontSize: 16.0,
   fontWeight: FontWeight.bold,

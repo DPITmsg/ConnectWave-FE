@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 
 import '../darius_mock_models/remote_service_list_objects.dart';
-import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
