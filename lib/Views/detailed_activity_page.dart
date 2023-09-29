@@ -236,12 +236,15 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              final response = await joinActivity(
-                                  widget.activity.id, widget.user.username);
-                              if (response.body == 'true') {
-                                widget.setDidJoin(true);
-                              }
-                              setState(() {});
+                              if(didJoin == false )
+                                {
+                                  final response = await joinActivity(
+                                      widget.activity.id, widget.user.username);
+                                  if (response.body == 'true') {
+                                    widget.setDidJoin(true);
+                                  }
+                                  setState(() {});
+                                }
                             },
                             child: WidgetButton(
                               Center(

@@ -172,12 +172,15 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
               Expanded(
                   child: InkWell(
                     onTap: () async {
-                      final response = await joinActivity(
-                          widget.activity.id, widget.username);
-                      if (response.body == 'true') {
-                        widget.setDidJoin(true);
-                      }
-                      setState(() {});
+                      if(didJoin == false)
+                        {
+                          final response = await joinActivity(
+                              widget.activity.id, widget.username);
+                          if (response.body == 'true') {
+                            widget.setDidJoin(true);
+                          }
+                          setState(() {});
+                        }
                     },
                     child: Container(
                       decoration: BoxDecoration(
