@@ -89,7 +89,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                             ),
-                            IconButton(onPressed: (){}, icon: Icon(Icons.edit))
                           ],
                         ),
                       ),
@@ -107,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             CardProfile(
                               widget.user!.activities_completed.length.toString(),
                               'Activities Completed',
-                              ActivityHistoryPage(activities: activitiesCompleted, user: widget.user!),
+                              ActivityHistoryPage(activities: activitiesCompleted, user: widget.user!, isUser: true,),
                             ),
                             CardProfile(
                               widget.user!.friends.length.toString(),
@@ -128,17 +127,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'About',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  IconButton(onPressed: (){}, icon: Icon(Icons.edit))
-                                ],
+                              Text(
+                                'About',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                               Text(widget.user!.about),
                             ],
@@ -160,12 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Wrap(
-                          children: [
-                            IntOrTags(widget.user!.interests),
-                            IconButton(onPressed: (){}, icon: Icon(Icons.add))
-                          ],
-                        ),
+                        child: IntOrTags(widget.user!.interests),
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -182,12 +171,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Wrap(
-                          children: [
-                            IntOrTags(widget.user!.tags),
-                            IconButton(onPressed: (){}, icon: Icon(Icons.add))
-                          ],
-                        ),
+                        child: IntOrTags(widget.user!.tags),
                       ),
                     ],
                   ),

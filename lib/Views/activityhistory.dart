@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:my_project/Views/Widgets/containeractivityHARDCODED.dart';
 import 'package:my_project/Views/Widgets/containerhistory.dart';
 import 'package:my_project/darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/activitydetails.dart';
@@ -17,8 +18,9 @@ import 'Classes/Friend.dart';
 class ActivityHistoryPage extends StatefulWidget {
   final List<ActivityHistory>? activities;
   final User? user;
+  final bool isUser;
 
-  ActivityHistoryPage({Key? key, required this.activities, required this.user}) : super(key: key);
+  ActivityHistoryPage({Key? key, required this.activities, required this.user, required this.isUser}) : super(key: key);
 
   @override
   _ActivityHistoryPageState createState() => _ActivityHistoryPageState();
@@ -50,18 +52,32 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
         itemBuilder: (context, index) {
           final activity = widget.activities![index];
           print(activity.id);
-          return ContainerActivity(
-            activity.date,
-            activity.title,
-            activity.tags,
-            activity.participants.length,
-            activity.category,
-            activity.avgUserRating,
-            activity.address,
-            activity.description,
-            RateActivity(activity, users),
-            activity.location
-          );
+          if (widget.isUser) {
+            return ContainerActivity(
+                activity.date,
+                activity.title,
+                activity.tags,
+                activity.participants.length,
+                activity.category,
+                activity.avgUserRating,
+                activity.address,
+                activity.description,
+                RateActivity(activity, users),
+                activity.location
+            );
+          }
+          else{
+            return ContainerActivityHardCoded(
+                activity.date,
+                activity.title,
+                activity.tags,
+                activity.participants.length,
+                activity.category,
+                activity.avgUserRating,
+                activity.address,
+                activity.description,
+                activity.location);
+          }
         },
       ),
     );

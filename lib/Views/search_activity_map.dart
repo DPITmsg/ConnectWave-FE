@@ -37,8 +37,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
 
   Future<void> getData() async {
     final activityData = await fetchEventData();
-    activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now())).toList();
-
+    activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now()) && activity.address != "online").toList();
   }
 
   void _onBackPressed() {
@@ -48,7 +47,6 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
 
   DateTime parseDate(String input){
     try {
-      String day, month, year;
       List<String> list = [];
       int index = 0;
 

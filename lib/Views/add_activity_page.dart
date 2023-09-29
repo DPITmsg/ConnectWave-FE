@@ -135,6 +135,9 @@ class _add_activity_pageState extends State<add_activity_page> {
   LatLng currentLocation = LatLng(0.0, -160.0);
 
   Future<LatLng> getAddressLatLng(String address) async {
+    if (address == "online"){
+      return LatLng(0, -160);
+    }
     List<geocoding.Location> locations = await geocoding.locationFromAddress(address);
     if (locations.isNotEmpty) {
       final LatLng latLng = LatLng(locations[0].latitude, locations[0].longitude);
@@ -147,8 +150,13 @@ class _add_activity_pageState extends State<add_activity_page> {
   void updateSelectedAddress(String address) {
     getAddressLatLng(address).then((newLocation) {
       setState(() {
-        selectedAddress = address;
-        currentLocation = newLocation;
+        if(address == "63G22222+22"){
+          selectedAddress = "online";
+        }
+        else {
+          selectedAddress = address;
+          currentLocation = newLocation;
+        }
       });
       _controller.animateCamera(
         CameraUpdate.newLatLng(newLocation),
@@ -331,7 +339,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           style: Text_AddActivity_Small_Input,
                                           autocorrect: false,
                                           decoration: InputDecoration(
-                                            hintText: '+Nr. participants',
+                                            hintText: '+Max nr. participants',
                                             hintStyle: Text_AddActivty_Small,
                                             border: InputBorder.none,
                                             prefixIcon: const Icon(
