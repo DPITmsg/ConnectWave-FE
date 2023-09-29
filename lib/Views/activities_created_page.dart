@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Classes/User.dart';
 
 import 'Classes/activitydetails.dart';
@@ -21,6 +22,10 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
   void _onBackPressed() {
     Navigator.of(context).pop();
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+  }
+
+  bool _isOnline(ActivityDetails activity){
+    return activity.address != "online";
   }
 
 
@@ -47,7 +52,7 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
                 itemCount: widget.activities_created.length,
                 itemBuilder: (context, index) {
                   final activity = widget.activities_created[index];
-                  return ContainerActivityForSearch(activity!, widget.user);
+                  return ContainerActivityForSearch(activity!, widget.user, _isOnline(activity));
                 },
               ),
             ),
