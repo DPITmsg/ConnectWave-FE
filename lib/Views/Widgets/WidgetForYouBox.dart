@@ -193,15 +193,14 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
                             ? Color_Light_Blue
                             : Colors.green, width: 1)),
                     child: Center(
-                        child: Transform.rotate(
+                        child: didJoin == false ?Transform.rotate(
                           angle: -90 * (3.14159265359 / 180),
-                          child:  didJoin == false ?Text(
+                          child:  Text(
                               'Join',
                               style:
                               Text_Join_ForYou
-
-                          ): Icon(Icons.check_circle, color: Colors.green,)
-                    )),
+                          )
+                    ): Icon(Icons.check_circle, color: Colors.green,)),
               ),
             ))
         ],

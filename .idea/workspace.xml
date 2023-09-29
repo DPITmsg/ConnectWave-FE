@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3f4e822-58f8-4513-8b71-0e634ba19578" name="Changes" comment="fixed small errors">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b3f4e822-58f8-4513-8b71-0e634ba19578" name="Changes" comment="replaced join with icon">
       <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +76,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b26ad61c-7c84-40cc-8c6d-2f9288095b45" name="Changes" comment="" />
+      <changelist id="b3f4e822-58f8-4513-8b71-0e634ba19578" name="Changes" comment="fixed small errors" />
       <created>1690805374000</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -160,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695993421422</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="replaced join with icon">
+      <created>1695997759096</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1695997759096</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +191,7 @@
     <MESSAGE value="added cancel button to detailed activity" />
     <MESSAGE value="pulled DARIUSBACKUP" />
     <MESSAGE value="fixed small errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed small errors" />
+    <MESSAGE value="replaced join with icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="replaced join with icon" />
   </component>
 </project>
