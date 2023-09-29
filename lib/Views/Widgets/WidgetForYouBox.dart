@@ -70,7 +70,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
                         jsonResponse);
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
-                          detailed_activity_page(activity, user),
+                          detailed_activity_page(activity, user, true),
                     ));
                   } else {
                     // Handle the case where the request didn't return a 200 status code
