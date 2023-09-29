@@ -75,7 +75,7 @@ class ActivityHistory extends ActivityDetails{
       description: activityDetails.description,
       location: activityDetails.location,
       maxParticipants: activityDetails.maxParticipants,
-      avgUserRating: json["avgUserRating"],
+      avgUserRating: json["avgUserRating"] ?? 0.0,
     );
   }
 }

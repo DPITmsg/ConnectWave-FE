@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Styles/Shadows.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import '../Classes/User.dart';
+
 import '../Classes/activitydetails.dart';
-import '../detailed_activity_page.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../search_activity_map.dart';
 import '../Styles/Gradients.dart';
+import '../detailed_activity_page.dart';
+import '../search_activity_map.dart';
 
 class ContainerActivityForSearch extends StatelessWidget {
   ActivityDetails activity;
@@ -46,11 +46,9 @@ class ContainerActivityForSearch extends StatelessWidget {
                   children: [
                   Text(activity.title, style: Text_Search_Activity_v1,),
                   if (isFriend)
-                    Positioned(
-                        child: CircleAvatar(
-                          backgroundColor: Color(0xff2222AA),
-                          radius: 8,
-                        )
+                    CircleAvatar(
+                      backgroundColor: Color(0xff2222AA),
+                      radius: 8,
                     ),
                   ]
                 ),

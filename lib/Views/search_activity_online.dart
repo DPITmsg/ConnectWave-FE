@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Styles/Shadows.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Styles/Colors.dart';
 import 'Widgets/filters_search_activity.dart';
@@ -39,7 +40,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     final activityData = await fetchEventData();
 
     setState(() {
-      activities = activityFromJson(json.encode(activityData));
+      activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now())).toList();
       isLoaded = true;
     });
   }
@@ -51,11 +52,13 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
 
   List<String> categories = ['Sports', 'Gaming', 'Services', 'Other'];
   List<String> dates = ["tomorrow", "in the next three days", "in the next 7 days", "in the next 30 days", "all"];
+  List<String> typeArray = ["all", "online", "offline"];
 
 
   String dateSelected = '';
   String categorySelected = '';
   RangeValues nrParticipantsSelected = RangeValues(0.0, 50.0);
+  int currentIndex = 0;
 
 
   void _onCategorySelected(String selectedCategory) {
@@ -76,9 +79,14 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     });
   }
 
+  void _onTypeButtonClicked(){
+    setState(() {
+      currentIndex = (currentIndex + 1) % typeArray.length;
+    });
+  }
+
   DateTime parseDate(String input){
     try {
-      String day, month, year;
       List<String> list = [];
       int index = 0;
 
@@ -127,6 +135,19 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     }
   }
 
+  List<ActivityDetails> _filteredByType(List<ActivityDetails> activitiesWithSomeFiltering){
+    if (typeArray[currentIndex] == "all"){
+      return activitiesWithSomeFiltering;
+    }
+    else if (typeArray[currentIndex] == "offline"){
+      return activitiesWithSomeFiltering.where((activity) => activity.address != "online").toList();
+    }
+    else if (typeArray[currentIndex] == "online"){
+      return activitiesWithSomeFiltering.where((activity) => activity.address == "online").toList();
+    }
+    return activitiesWithSomeFiltering;
+  }
+
   List<ActivityDetails> getFilteredActivities() {
     final filteredByCategory = activities!
         .where((activity) =>
@@ -145,13 +166,14 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
       return activityDate.isBefore(targetDate) || targetDate == DateTime(2006, 08, 07);
     }).toList();
 
-
     final filteredBySearch = filteredByDate
         .where((activity) =>
         activity.title.toLowerCase().contains(_searchController.text.toLowerCase()))
         .toList();
 
-    return filteredBySearch;
+    final filteredByType = _filteredByType(filteredBySearch);
+
+    return filteredByType;
   }
 
   @override
@@ -179,17 +201,39 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-              child: TextField(
-                controller: _searchController,
-                onChanged: (_) {
-                  setState(() {});
-                },
-                decoration: InputDecoration(
-                  hintText: 'Search by title',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+              child: Stack(
+                children: [
+                  TextField(
+                    controller: _searchController,
+                    onChanged: (_) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Search by title',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 5, 5, 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color_Blue,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: TextButton(
+                          onPressed: (){
+                            _onTypeButtonClicked();
+                          },
+                          child: Text(typeArray[currentIndex], style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),),
+                        ),
+                      ),
+                    ),
                   )
-                ),
+                ],
               ),
             ),
             Row(

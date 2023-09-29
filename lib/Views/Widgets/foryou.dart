@@ -5,6 +5,8 @@ import 'package:my_project/Views/Classes/RecommendedActivity.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../Service/activity_service.dart';
+import '../../darius_mock_models/remote_service_singular_object.dart';
+import '../Classes/User.dart';
 import '../for_you_page.dart';
 
 class ForYou extends StatefulWidget {
@@ -40,7 +42,10 @@ class _ForYouState extends State<ForYou> {
           .map((e) => RecommendedActivity.fromJson(e))
           .toList();
 
-      Navigator.push(context, PageTransition(child: for_you_page(forYouList), type: PageTransitionType.bottomToTop)).then((value) {
+      final userData = await fetchUserData('yes');
+      User user = User.fromJson(userData);
+
+      Navigator.push(context, PageTransition(child: for_you_page(forYouList, user.username), type: PageTransitionType.bottomToTop)).then((value) {
         // Reset the flag when the transition is completed.
         setState(() {
           _isPageTransitionInProgress = false;

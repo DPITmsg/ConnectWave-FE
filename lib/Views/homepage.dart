@@ -162,6 +162,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+
                       ElevatedButton(
                         onPressed: () async {
                           final response = await getFriendList();
@@ -191,10 +192,10 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                const Expanded(
+                Expanded(
                     flex: 1,
                     child: CardMenuAddActivity(
-                        add_activity_page())),
+                        add_activity_page(user: user!))),
                 const InkWell(child: ForYou()),
               ],
             ),
