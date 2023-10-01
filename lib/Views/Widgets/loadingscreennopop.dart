@@ -17,7 +17,7 @@ class _LoadingScreenPageStateNoPop extends State<LoadingScreenPageNoPop> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffffffff),
+      color: Color(0xfffbfbfb),
       child: Center(child: Image(image: AssetImage('assets/logo_gifv2.gif'), height: 250, width: 250,)),
     );
   }
