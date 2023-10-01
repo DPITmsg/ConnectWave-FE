@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Widgets/container_ongoing_activities.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 
 import '../darius_mock_models/remote_service_list_objects.dart';
@@ -45,6 +46,12 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
+  void _removeActivity(ActivityDetails activity) {
+    activitiesCurrent.remove(activity);
+    setState(() {
+    });
+  }
+
   bool _isOnline(ActivityDetails activity){
     return activity.address != "online";
   }
@@ -72,7 +79,7 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
                 itemCount: activitiesCurrent.length ?? 0,
                 itemBuilder: (context, index) {
                   final activity = activitiesCurrent[index];
-                  return ContainerActivityForSearch(activity, widget.user!, _isOnline(activity));
+                  return ContainerOngoingActivity(activity, widget.user!, _isOnline(activity), (){_removeActivity(activity);});
                 },
               ),
             ),

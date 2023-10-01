@@ -11,12 +11,13 @@ import '../Styles/Gradients.dart';
 import '../detailed_activity_page.dart';
 import '../search_activity_map.dart';
 
-class ContainerActivityForSearch extends StatelessWidget {
+class ContainerOngoingActivity extends StatelessWidget {
   ActivityDetails activity;
   User user;
   bool isOnline;
+  final VoidCallback removeActivity;
 
-  ContainerActivityForSearch(this.activity, this.user, this.isOnline);
+  ContainerOngoingActivity(this.activity, this.user, this.isOnline, this.removeActivity);
 
   bool _isOnline(ActivityDetails activity){
     return activity.address != "online";
@@ -56,7 +57,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                   ]
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                   child: Row(
                     children: [
                       Column(
@@ -106,6 +107,23 @@ class ContainerActivityForSearch extends StatelessWidget {
                     ],
                   ),
                 ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: (){
+                      removeActivity();
+                    },
+                    child: Container(
+                      height: 42,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Color_Light_Blue,
+                      ),
+                      child: Center(child: Text("Leave activity", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),)),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

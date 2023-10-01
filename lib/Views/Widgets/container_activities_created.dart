@@ -11,12 +11,18 @@ import '../Styles/Gradients.dart';
 import '../detailed_activity_page.dart';
 import '../search_activity_map.dart';
 
-class ContainerActivityForSearch extends StatelessWidget {
-  ActivityDetails activity;
-  User user;
-  bool isOnline;
+class ContainerCreatedActivity extends StatelessWidget {
+  final ActivityDetails activity;
+  final User user;
+  final bool isOnline;
+  final VoidCallback removeActivity;
 
-  ContainerActivityForSearch(this.activity, this.user, this.isOnline);
+  ContainerCreatedActivity({
+    required this.activity,
+    required this.user,
+    required this.isOnline,
+    required this.removeActivity
+  });
 
   bool _isOnline(ActivityDetails activity){
     return activity.address != "online";
@@ -36,11 +42,11 @@ class ContainerActivityForSearch extends StatelessWidget {
         child: Container(
           width: screenWidth,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
-            gradient: Gradient_Search_Activity,
-            boxShadow: [
-              Shadow_Darius
-            ]
+              borderRadius: BorderRadius.circular(14),
+              gradient: Gradient_Search_Activity,
+              boxShadow: [
+                Shadow_Darius
+              ]
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -48,15 +54,15 @@ class ContainerActivityForSearch extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  Text(activity.title, style: Text_Search_Activity_v1,),
-                  if (isFriend)
-                    Icon(Icons.people, color: Color_Blue),
-                  ]
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(activity.title, style: Text_Search_Activity_v1,),
+                      if (isFriend)
+                        Icon(Icons.people, color: Color_Blue),
+                    ]
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                   child: Row(
                     children: [
                       Column(
@@ -106,6 +112,43 @@ class ContainerActivityForSearch extends StatelessWidget {
                     ],
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: (){},
+                      child: Container(
+                        height: 42,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color_Light_Blue,
+                        ),
+                        child: Center(child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("View Participants", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),),
+                        )),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        removeActivity();
+                      },
+                      child: Container(
+                        height: 42,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color_Light_Blue,
+                        ),
+                        child: Center(child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Delete Activity", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),),
+                        )),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

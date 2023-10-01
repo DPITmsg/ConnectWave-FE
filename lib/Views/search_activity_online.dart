@@ -113,7 +113,6 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     }
   }
 
-
   DateTime dateConversion(String input){
     DateTime today = DateTime.now();
 

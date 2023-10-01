@@ -47,16 +47,18 @@ class ContainerActivity extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(date),
-                        Text(title, style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(date),
+                              Text(title, softWrap: true, style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                ),
+                              ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

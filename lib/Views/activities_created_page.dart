@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Classes/User.dart';
+import 'package:my_project/Views/Widgets/container_activities_created.dart';
 
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
@@ -28,6 +29,10 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
     return activity.address != "online";
   }
 
+  void _removeActivity(ActivityDetails activity) {
+    widget.activities_created.remove(activity);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +57,14 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
                 itemCount: widget.activities_created.length,
                 itemBuilder: (context, index) {
                   final activity = widget.activities_created[index];
-                  return ContainerActivityForSearch(activity!, widget.user, _isOnline(activity));
+                  return ContainerCreatedActivity(
+                    activity: activity,
+                    user: widget.user,
+                    isOnline: _isOnline(activity),
+                    removeActivity: () {
+                      _removeActivity(activity);
+                    },
+                  );
                 },
               ),
             ),
