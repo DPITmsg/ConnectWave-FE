@@ -31,7 +31,8 @@ class ContainerCreatedActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    bool isFriend = user.friends.any((friend) => friend.name == activity.author);
+    bool isFriend = user.friends.any((friend) => friend.name == activity.author || activity.participants.contains(friend.name));
+
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -56,7 +57,13 @@ class ContainerCreatedActivity extends StatelessWidget {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(activity.title, style: Text_Search_Activity_v1,),
+                      Expanded(
+                        child: Text(
+                          activity.title,
+                          style: Text_Search_Activity_v1,
+                          softWrap: true,
+                        ),
+                      ),
                       if (isFriend)
                         Icon(Icons.people, color: Color_Blue),
                     ]
@@ -92,7 +99,10 @@ class ContainerCreatedActivity extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(activity.address, style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+                          Container(
+                              width: (screenWidth - 16) / 3,
+                              child: Center(child: Text(activity.address, style: TextStyle(color: Colors.black.withOpacity(0.5)),))
+                          ),
                         ],
                       ),
                       Padding(
