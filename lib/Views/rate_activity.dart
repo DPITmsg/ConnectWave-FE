@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/Views/Widgets/container_rate_activity.dart';
 import 'Classes/activitydetails.dart';
 import 'Classes/User.dart';
 import 'Widgets/interactive_stars.dart';
@@ -20,81 +21,66 @@ class RateActivity extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(title: Text("Rate Activity & Participants"),),
-      body: Container(
-        width: screenWidth,
-        height: screenHeight,
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Color_White,
-                boxShadow: [
-                  Shadow_Darius
-                ],
-                gradient: LinearGradient(colors: [Color(0xffc9cfcf), Color(0xffefefef)], stops: [0.3,0.7]),
-                borderRadius: BorderRadius.all(Radius.circular(16))
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(flex: 2, child: Text("Rate this activity", style: Text_Rate_Event,)),
-                    Expanded(flex: 4,child: InteractiveStars()),
-                  ],
+      appBar: AppBar(
+        title: Text("Rate Activity & Participants"),
+      ),
+      body: Builder(
+        // Create a Builder widget to access the ScaffoldMessenger
+        builder: (BuildContext scaffoldContext) {
+          return Container(
+            width: screenWidth,
+            height: screenHeight,
+            color: Color_Gray,
+            child: Column(
+              children: [
+                SizedBox(height: 10,),
+                ContainerRateActivity("Rate This Activity", "activity"),
+                SizedBox(height: 40,),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: participants.length,
+                      itemBuilder: (builder, index){
+                        User participant = participants[index];
+                        return ContainerRateActivity(participant.name, "image goes here");
+                      }
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: 40,),
-            Expanded(
-              child: ListView.builder(
-                itemCount: participants.length,
-                itemBuilder: (builder, index){
-                  User participant = participants[index];
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                Center(
+                  child: TextButton(
+                    onPressed: () {
+                      // Show a Snackbar
+                      ScaffoldMessenger.of(scaffoldContext).showSnackBar(
+                        SnackBar(
+                          content: Text('Successful'),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+
+                      Navigator.of(context).pop(); // Pop the top page
+                      Navigator.of(context).pop(); // Pop one more page
+                    },
                     child: Container(
+                      height: 42,
+                      width: 128,
                       decoration: BoxDecoration(
-                          color: Color_White,
-                          boxShadow: [
-                            Shadow_Darius
-                          ],
-                          gradient: LinearGradient(colors: [Color(0xffc9cfcf), Color(0xffefefef)], stops: [0.3,0.7]),
-                          borderRadius: BorderRadius.all(Radius.circular(16))
+                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                        boxShadow: [Shadow_Darius],
+                        color: Color_Blue,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(flex: 2, child: Text(participant.name, style: Text_Rate_Event,)),
-                          Expanded(flex: 4,child: InteractiveStars()),
-                        ],
+                      child: Center(
+                        child: Text(
+                          "Submit",
+                          style: TextStyle(fontSize: 24, color: Color_White),
+                        ),
                       ),
                     ),
-                  );
-                }
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: (){},
-                child: Container(
-                  height: 42,
-                  width: 128,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(24)),
-                    boxShadow: [
-                      Shadow_Darius
-                    ],
-                    color: Color_Blue,
                   ),
-                  child: Center(child: Text("Submit", style: TextStyle(fontSize: 24, color: Color_White),)),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      )
+          );
+        },
+      ),
     );
   }
 }

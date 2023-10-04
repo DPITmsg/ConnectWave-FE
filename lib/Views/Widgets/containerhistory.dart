@@ -47,16 +47,18 @@ class ContainerActivity extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(date),
-                        Text(title, style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          ),
-                        ),
-                      ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(date),
+                              Text(title, softWrap: true, style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                ),
+                              ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -127,7 +129,14 @@ class ContainerActivity extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(address, style: TextStyle(color: Colors.black.withOpacity(0.5)),),
+                  Wrap(
+                    children: [
+                      Container(
+                        width: screenWidth/2.2,
+                          child: Center(child: Text(address, softWrap: true, style: TextStyle(color: Colors.black.withOpacity(0.5)),))
+                      ),
+                    ],
+                  ),
                   Column(
                     children: [
                       Text("Average rating received", style: TextStyle(fontWeight: FontWeight.bold),),

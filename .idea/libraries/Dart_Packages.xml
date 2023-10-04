@@ -145,7 +145,7 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../../src/flutter_windows_3.0.3-stable/flutter/packages/flutter/lib" />
+              <option value="C:/src/flutter/packages/flutter/lib" />
             </list>
           </value>
         </entry>

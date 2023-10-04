@@ -31,7 +31,9 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
   @override
   void initState() {
     super.initState();
-    getData();
+    if (!isLoaded) {
+      getData();
+    }
     _searchController = TextEditingController();
   }
 
@@ -49,8 +51,8 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
-  List<String> categories = ['Sports', 'Gaming', 'Services', 'Other'];
-  List<String> dates = ["tomorrow", "in the next three days", "in the next 7 days", "in the next 30 days", "all"];
+  List<String> categories = ['Sports', 'Gaming', 'Services', 'Movies', 'Chill', 'Fun', 'Other', 'All'];
+  List<String> dates = ["Today/Tomorrow", "In the next three days", "In the next 7 days", "In the next 30 days", "All"];
   List<String> typeArray = ["all", "online", "offline"];
 
 
@@ -113,20 +115,19 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     }
   }
 
-
   DateTime dateConversion(String input){
     DateTime today = DateTime.now();
 
-    if (input == "tomorrow"){
+    if (input == "Today/Tomorrow"){
       return today.add(Duration(days:1));
     }
-    else if(input == "in the next three days"){
+    else if(input == "In the next three days"){
       return today.add(Duration(days:3));
     }
-    else if(input == "in the next 7 days"){
+    else if(input == "In the next 7 days"){
       return today.add(Duration(days:7));
     }
-    else if(input == "in the next 30 days"){
+    else if(input == "In the next 30 days"){
       return today.add(Duration(days: 30));
     }
     else{
@@ -148,9 +149,10 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
   }
 
   List<ActivityDetails> getFilteredActivities() {
+
     final filteredByCategory = activities!
         .where((activity) =>
-    (categorySelected.isEmpty || activity.category == categorySelected))
+    (categorySelected.isEmpty || categorySelected == "All" || activity.category == categorySelected))
         .toList();
 
     final filteredByNrParticipants = filteredByCategory.where((activity) =>

@@ -48,6 +48,12 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  void updateActivitiesCreated(List<ActivityDetails> updatedActivities) {
+    setState(() {
+      activitiesCreated = updatedActivities;
+    });
+  }
+
   AssetImage profilePic = AssetImage('assets/profilepic2.png');
 
 
@@ -72,11 +78,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       AvatarContainer(profilePic),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        padding: EdgeInsets.fromLTRB(28, 30, 0, 0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+                              alignment: Alignment.center,
                               child: Text(
                                 widget.user!.name,
                                 style: TextStyle(
@@ -84,6 +91,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontWeight: FontWeight.bold,
                                   color: Color_Dark_Gray,
                                 ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                              child: Icon(
+                                Icons.edit,
                               ),
                             ),
                           ],
@@ -124,12 +137,17 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'About',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'About',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  IconButton(onPressed: (){}, icon: Icon(Icons.edit))
+                                ],
                               ),
                               Text(widget.user!.about),
                             ],
