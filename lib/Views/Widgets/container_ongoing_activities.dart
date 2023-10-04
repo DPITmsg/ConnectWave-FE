@@ -111,6 +111,8 @@ class ContainerOngoingActivity extends StatelessWidget {
                               child: Text('Nr. of participants: ${activity.participants.length.toString()}', style: Text_Search_Activity_v2),
                             ),
                             Text('${activity.date} - ${activity.endDate}', style: Text_Search_Activity_v2),
+                            SizedBox(height: 5,),
+                            Text('Author: ${activity.author}', style: Text_Search_Activity_v2),
                           ],
                         ),
                       ),

@@ -112,7 +112,9 @@ class ContainerActivityForSearch extends StatelessWidget {
                                   ? '${activity.date} - ${activity.endDate}'
                                   : activity.date,
                               style: Text_Search_Activity_v2,
-                            )
+                            ),
+                            SizedBox(height: 5,),
+                            Text('Author: ${activity.author}', style: Text_Search_Activity_v2),
                           ],
                         ),
                       ),
