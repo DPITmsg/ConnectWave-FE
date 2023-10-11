@@ -115,7 +115,11 @@ class ContainerCreatedActivity extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Text('Nr. of participants: ${activity.participants.length.toString()}', style: Text_Search_Activity_v2),
                             ),
-                            Text('${activity.date} - ${activity.endDate}', style: Text_Search_Activity_v2),
+                            Text(
+                              activity.date != activity.endDate
+                                  ? '${activity.date} - ${activity.endDate}'
+                                  : activity.date,
+                              style: Text_Search_Activity_v2,),
                           ],
                         ),
                       ),

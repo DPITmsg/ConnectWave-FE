@@ -36,36 +36,6 @@ class _HomePageState extends State<HomePage> {
 
   bool isLoaded = false;
   User? user;
-  List<ActivityDetails>? activities;
-
-  DateTime parseDate(String input){
-    try {
-      List<String> list = [];
-      int index = 0;
-
-      for (var i = 0; i < input.length; i++){
-        if(i == input.length - 1){
-          list.add(input.substring(index, i + 1));
-          break;
-        }
-        else if (input[i] == '-'){
-          list.add(input.substring(index, i));
-          index = i + 1;
-        }
-      }
-
-      for (var i = 0; i < list.length; i++) {
-        print(list[i]);
-      }
-
-      String newString = list[2] + '-' + list[1] + '-' + list[0];
-      print(newString);
-
-      return DateTime.parse(newString);
-    } catch (e) {
-      return DateTime(0, 0, 0);
-    }
-  }
 
   @override
   void initState() {
