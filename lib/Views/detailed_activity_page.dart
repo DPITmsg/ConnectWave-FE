@@ -18,9 +18,11 @@ import 'search_activity_map.dart';
 class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
   final User user;
+  bool _didJoin = false;
+
   bool _isOnline;
 
-  bool _didJoin = false;
+
 
   bool get didJoin => _didJoin;
 
