@@ -7,11 +7,13 @@ import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
+import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
 
 import '../Service/friend_list_service.dart';
 import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/Trending.dart';
 import 'Classes/User.dart';
+import 'Classes/activitydetails.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
@@ -149,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {},
                           child: CardMenuBig(
                               Icons.connect_without_contact,
-                              SearchActivityOnlinePage(user: user!))),
+                              SearchActivityOnlinePage(user: user!,))),
                     ],
                   ),
                 ),

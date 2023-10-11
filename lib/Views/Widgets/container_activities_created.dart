@@ -11,12 +11,18 @@ import '../Styles/Gradients.dart';
 import '../detailed_activity_page.dart';
 import '../search_activity_map.dart';
 
-class ContainerActivityForSearch extends StatelessWidget {
-  ActivityDetails activity;
-  User user;
-  bool isOnline;
+class ContainerCreatedActivity extends StatelessWidget {
+  final ActivityDetails activity;
+  final User user;
+  final bool isOnline;
+  final VoidCallback removeActivity;
 
-  ContainerActivityForSearch(this.activity, this.user, this.isOnline);
+  ContainerCreatedActivity({
+    required this.activity,
+    required this.user,
+    required this.isOnline,
+    required this.removeActivity
+  });
 
   bool _isOnline(ActivityDetails activity){
     return activity.address != "online";
@@ -27,6 +33,7 @@ class ContainerActivityForSearch extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     bool isFriend = user.friends.any((friend) => friend.name == activity.author || activity.participants.contains(friend.name));
 
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       child: InkWell(
@@ -36,11 +43,11 @@ class ContainerActivityForSearch extends StatelessWidget {
         child: Container(
           width: screenWidth,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
-            gradient: Gradient_Search_Activity,
-            boxShadow: [
-              Shadow_Darius
-            ]
+              borderRadius: BorderRadius.circular(14),
+              gradient: Gradient_Search_Activity,
+              boxShadow: [
+                Shadow_Darius
+              ]
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -48,20 +55,21 @@ class ContainerActivityForSearch extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: [
-                  Expanded(
-                    child: Text(
-                      activity.title, 
-                      style: Text_Search_Activity_v1,
-                      softWrap: true,
-                    ),
-                  ),
-                  if (isFriend)
-                    Icon(Icons.people, color: Color_Blue),
-                  ]
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          activity.title,
+                          style: Text_Search_Activity_v1,
+                          softWrap: true,
+                        ),
+                      ),
+                      if (isFriend)
+                        Icon(Icons.people, color: Color_Blue),
+                    ]
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                   child: Row(
                     children: [
                       Column(
@@ -92,7 +100,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: (screenWidth - 16) / 3,
+                              width: (screenWidth - 16) / 3,
                               child: Center(child: Text(activity.address, style: TextStyle(color: Colors.black.withOpacity(0.5)),))
                           ),
                         ],
@@ -111,16 +119,50 @@ class ContainerActivityForSearch extends StatelessWidget {
                               activity.date != activity.endDate
                                   ? '${activity.date} - ${activity.endDate}'
                                   : activity.date,
-                              style: Text_Search_Activity_v2,
-                            ),
-                            SizedBox(height: 5,),
-                            Text('Author: ${activity.author}', style: Text_Search_Activity_v2),
+                              style: Text_Search_Activity_v2,),
                           ],
                         ),
                       ),
                     ],
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: (){},
+                      child: Container(
+                        height: 42,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color_Light_Blue,
+                        ),
+                        child: Center(child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("View Participants", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),),
+                        )),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        removeActivity();
+                      },
+                      child: Container(
+                        height: 42,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color_Light_Blue,
+                        ),
+                        child: Center(child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("Delete Activity", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),),
+                        )),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

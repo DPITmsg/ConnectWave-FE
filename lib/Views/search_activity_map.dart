@@ -37,7 +37,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
 
   Future<void> getData() async {
     final activityData = await fetchEventData();
-    activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now()) && activity.address != "online").toList();
+    activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now()) && activity.address != "online" && activity.author != widget.user.name).toList();
   }
 
   void _onBackPressed() {
@@ -191,9 +191,6 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
     return toReturn;
   }
 
-
-
-
   Future<void> _goToPlace(Map<String, dynamic> place) async {
     final double lat = place['geometry']['location']['lat'];
     final double lng = place['geometry']['location']['lng'];
@@ -213,7 +210,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
         BitmapDescriptor markerIcon = defaultIcon;
         String authorName = activity.author;
 
-        if (widget.user.friends.any((friend) => friend.name == authorName)) {
+        if (widget.user.friends.any((friend) => friend.name == authorName || activity.participants.contains(friend.name))) {
           markerIcon = customIcon;
         }
 

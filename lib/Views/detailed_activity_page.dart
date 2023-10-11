@@ -18,12 +18,8 @@ import 'search_activity_map.dart';
 class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
   final User user;
-  bool _didJoin = false;
-
   bool _isOnline;
-
-
-
+  bool _didJoin = false;
   bool get didJoin => _didJoin;
 
   setDidJoin(bool value) {
@@ -45,8 +41,18 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
+  void _JustASetState(){
+    setState(() {
+
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    bool isFriend = widget.user.friends.any((friend) => friend.name == widget.activity.author || widget.activity.participants.contains(friend.name));
+    bool isAuthor = widget.user.name == widget.activity.author;
+
     return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -75,7 +81,13 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(widget.activity.title, softWrap: true, style: Text_Title_Top),
+                  Row(
+                    children: [
+                      Expanded(child: Text(widget.activity.title, softWrap: true, style: Text_Title_Top)),
+                      if (isFriend)
+                        Icon(Icons.people, color: Color_Blue),
+                    ],
+                  ),
                   Expanded(
                     flex: 7,
                     child: SingleChildScrollView(
@@ -142,7 +154,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                   children: [
                                     InkWell(
                                         onTap: (){
-                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: widget.activity.participants,)));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: widget.activity.participants, isAuthor: isAuthor, Function: (){_JustASetState();},)));
                                         },
                                         child: const Icon(Icons.person_rounded)
                                     ),
@@ -282,11 +294,11 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                         Expanded(
                           child: InkWell(
                             onTap: (){
-                              Navigator.of(context).pop();
+                              _onBackPressed();
                             },
                             child: WidgetButton(
                               Center(
-                                child: Text("Cancel",
+                                child: Text("Back",
                                     style: Text_Widget_Buttons_Blue),
                               ),
                               Color_Dark_Gray,

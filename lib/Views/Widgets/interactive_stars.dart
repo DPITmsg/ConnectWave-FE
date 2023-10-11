@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:my_project/Views/Styles/Colors.dart';
 
 class InteractiveStars extends StatefulWidget {
   const InteractiveStars({Key? key});
@@ -24,7 +25,7 @@ class _InteractiveStarsState extends State<InteractiveStars> {
           itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
           itemBuilder: (context, _) => Icon(
             Icons.star,
-            color: Colors.amber,
+            color: Color_Gray,
           ),
           onRatingUpdate: (rating) {
             setState(() {
@@ -32,10 +33,6 @@ class _InteractiveStarsState extends State<InteractiveStars> {
             });
             print(ratingvar);
           },
-        ),
-        Text(
-          'Rating: $ratingvar',
-          style: TextStyle(fontSize: 16),
         ),
       ],
     );

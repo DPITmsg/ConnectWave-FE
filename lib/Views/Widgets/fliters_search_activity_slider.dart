@@ -36,6 +36,7 @@ class _FilterPressActionSliderState extends State<FilterPressSliderAction> {
     setState(() {
       selectedRange =
       '${newRange.start.toStringAsFixed(2)} - ${newRange.end.toStringAsFixed(2)}';
+      widget.onRangeSelected(newRange);
     });
   }
 

@@ -11,12 +11,13 @@ import '../Styles/Gradients.dart';
 import '../detailed_activity_page.dart';
 import '../search_activity_map.dart';
 
-class ContainerActivityForSearch extends StatelessWidget {
+class ContainerOngoingActivity extends StatelessWidget {
   ActivityDetails activity;
   User user;
   bool isOnline;
+  final VoidCallback removeActivity;
 
-  ContainerActivityForSearch(this.activity, this.user, this.isOnline);
+  ContainerOngoingActivity(this.activity, this.user, this.isOnline, this.removeActivity);
 
   bool _isOnline(ActivityDetails activity){
     return activity.address != "online";
@@ -26,6 +27,7 @@ class ContainerActivityForSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     bool isFriend = user.friends.any((friend) => friend.name == activity.author || activity.participants.contains(friend.name));
+
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -48,20 +50,21 @@ class ContainerActivityForSearch extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  Expanded(
-                    child: Text(
-                      activity.title, 
-                      style: Text_Search_Activity_v1,
-                      softWrap: true,
+                    Expanded(
+                      child: Text(
+                        activity.title,
+                        style: Text_Search_Activity_v1,
+                        softWrap: true,
+                      ),
                     ),
-                  ),
                   if (isFriend)
                     Icon(Icons.people, color: Color_Blue),
                   ]
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                   child: Row(
                     children: [
                       Column(
@@ -92,7 +95,7 @@ class ContainerActivityForSearch extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: (screenWidth - 16) / 3,
+                              width: (screenWidth - 16) / 2.5,
                               child: Center(child: Text(activity.address, style: TextStyle(color: Colors.black.withOpacity(0.5)),))
                           ),
                         ],
@@ -105,14 +108,13 @@ class ContainerActivityForSearch extends StatelessWidget {
                             Text('Category: ${activity.category}', style: Text_Search_Activity_v2),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text('Nr. of participants: ${activity.participants.length.toString()}', style: Text_Search_Activity_v2),
+                              child: Text('Nr. of participants: ${(activity.participants.length + 1).toString()}', style: Text_Search_Activity_v2),
                             ),
-                            Text(
-                              activity.date != activity.endDate
-                                  ? '${activity.date} - ${activity.endDate}'
-                                  : activity.date,
-                              style: Text_Search_Activity_v2,
-                            ),
+                        Text(
+                          activity.date != activity.endDate
+                              ? '${activity.date} - ${activity.endDate}'
+                              : activity.date,
+                          style: Text_Search_Activity_v2,),
                             SizedBox(height: 5,),
                             Text('Author: ${activity.author}', style: Text_Search_Activity_v2),
                           ],
@@ -121,6 +123,23 @@ class ContainerActivityForSearch extends StatelessWidget {
                     ],
                   ),
                 ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: InkWell(
+                    onTap: (){
+                      removeActivity();
+                    },
+                    child: Container(
+                      height: 42,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Color_Light_Blue,
+                      ),
+                      child: Center(child: Text("Leave activity", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),)),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

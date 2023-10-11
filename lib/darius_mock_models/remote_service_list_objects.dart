@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 Future<List<Map<String, dynamic>>> fetchData(String url) async {
   final response = await http.get(Uri.parse(url));
 
+
   if (response.statusCode == 200) {
     final dynamic data = json.decode(response.body);
 
@@ -20,12 +21,12 @@ Future<List<Map<String, dynamic>>> fetchData(String url) async {
 
 
 Future<List<Map<String, dynamic>>> fetchEventHistoryData() async{
-  final url = 'https://2c2c5089-4702-46c0-8b73-f9af56f0c23e.mock.pstmn.io/activityhistory';
+  final url = 'https://149ec1f0-e710-405f-ac6e-bc74fdf394a0.mock.pstmn.io/activityhistory';
   return fetchData(url);
 }
 
 Future<List<Map<String, dynamic>>> fetchEventData() async {
-  final url = 'https://e6c57aac-176c-426a-97af-1ba80c7c39ad.mock.pstmn.io/activity';
+  final url = 'https://bf8c4f5a-d8ae-43f1-8d35-3ad3765101b6.mock.pstmn.io/activity';
   return fetchData(url);
 }
 
