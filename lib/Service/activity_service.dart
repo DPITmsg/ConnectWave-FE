@@ -44,6 +44,19 @@ Future<http.Response> joinActivity(int id,String username) {
   );
 }
 
+Future<http.Response> unJoinActivity(int id,String username) {
+  return http.post(
+    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/unjoin_activity'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'id':id.toString(),
+      'username': username,
+    }),
+  );
+}
+
 Future<http.Response> postIdGetActivity(int id) {
   return http.post(
     Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/get_activity_details'),

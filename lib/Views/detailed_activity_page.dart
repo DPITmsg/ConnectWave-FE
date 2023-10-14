@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/DisplayParticipants.dart';
@@ -18,39 +17,41 @@ import 'search_activity_map.dart';
 class detailed_activity_page extends StatefulWidget {
   final ActivityDetails activity;
   final User user;
+  late final bool quickJoin;
   bool _isOnline;
-  bool _didJoin = false;
+  late bool _didJoin= quickJoin;
+
   bool get didJoin => _didJoin;
 
-  setDidJoin(bool value) {
+  set didJoin(bool value) {
     _didJoin = value;
   }
 
-  detailed_activity_page(this.activity, this.user, this._isOnline, {super.key});
+  detailed_activity_page(
+      this.activity, this.user, this._isOnline, this.quickJoin,
+      {super.key});
 
   @override
   State<detailed_activity_page> createState() => _detailed_activity_pageState();
 }
 
 class _detailed_activity_pageState extends State<detailed_activity_page> {
-
   get didJoin => widget.didJoin;
-
   void _onBackPressed() {
     Navigator.of(context).pop();
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
-  void _JustASetState(){
-    setState(() {
-
-    });
+  void _JustASetState() {
+    setState(() {});
   }
-
 
   @override
   Widget build(BuildContext context) {
-    bool isFriend = widget.user.friends.any((friend) => friend.name == widget.activity.author || widget.activity.participants.contains(friend.name));
+    bool isFriend = widget.user.friends.any((friend) =>
+        friend.name == widget.activity.author ||
+        widget.activity.participants.contains(friend.name));
     bool isAuthor = widget.user.name == widget.activity.author;
 
     return Scaffold(
@@ -59,20 +60,35 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
         height: MediaQuery.of(context).size.height,
         child: Stack(children: <Widget>[
           InkWell(
-            onDoubleTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchActivityMap(locationTarget: widget.activity.location, zoomLevel: 16, user: widget.user)));
+            onDoubleTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SearchActivityMap(
+                      locationTarget: widget.activity.location,
+                      zoomLevel: 16,
+                      user: widget.user)));
             },
-            child: SizedBox(height: MediaQuery.of(context).size.height*0.35,
-              child: widget._isOnline ? GoogleMap(
-                zoomGesturesEnabled: false,
-                zoomControlsEnabled: false,
-                rotateGesturesEnabled: false,
-                scrollGesturesEnabled: false,
-                initialCameraPosition: CameraPosition(target: LatLng(widget.activity.location.latitude, widget.activity.location.longitude), zoom: 14),
-                markers: {
-                  Marker(markerId: const MarkerId('1'), position: LatLng(widget.activity.location.latitude, widget.activity.location.longitude))
-                },
-              ): Container(color: Color_Blue,),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.35,
+              child: widget._isOnline
+                  ? GoogleMap(
+                      zoomGesturesEnabled: false,
+                      zoomControlsEnabled: false,
+                      rotateGesturesEnabled: false,
+                      scrollGesturesEnabled: false,
+                      initialCameraPosition: CameraPosition(
+                          target: LatLng(widget.activity.location.latitude,
+                              widget.activity.location.longitude),
+                          zoom: 14),
+                      markers: {
+                        Marker(
+                            markerId: const MarkerId('1'),
+                            position: LatLng(widget.activity.location.latitude,
+                                widget.activity.location.longitude))
+                      },
+                    )
+                  : Container(
+                      color: Color_Blue,
+                    ),
             ),
           ),
           WidgetBackgroundBox(
@@ -83,9 +99,10 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                 children: [
                   Row(
                     children: [
-                      Expanded(child: Text(widget.activity.title, softWrap: true, style: Text_Title_Top)),
-                      if (isFriend)
-                        Icon(Icons.people, color: Color_Blue),
+                      Expanded(
+                          child: Text(widget.activity.title,
+                              softWrap: true, style: Text_Title_Top)),
+                      if (isFriend) Icon(Icons.people, color: Color_Blue),
                     ],
                   ),
                   Expanded(
@@ -116,12 +133,14 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                   children: [
                                     const Icon(Icons.calendar_month_rounded),
                                     Text(
-                                      widget.activity.date == widget.activity.endDate ? widget.activity.date : '${widget.activity.date}     ${widget.activity.endDate}',
+                                      widget.activity.date ==
+                                              widget.activity.endDate
+                                          ? widget.activity.date
+                                          : '${widget.activity.date}     ${widget.activity.endDate}',
                                       style: Text_Detailed_Page_Bold_Black,
                                     ),
                                   ],
                                 ),
-
                               ],
                             ),
                             const SizedBox(
@@ -130,7 +149,6 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-
                                 Row(
                                   children: [
                                     const Icon(Icons.access_time_filled),
@@ -140,7 +158,6 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                     ),
                                   ],
                                 ),
-
                                 Row(
                                   children: [
                                     const Icon(Icons.category_sharp),
@@ -153,13 +170,25 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                 Row(
                                   children: [
                                     InkWell(
-                                        onTap: (){
-                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => DisplayParticipantsPage(usernames: widget.activity.participants, isAuthor: isAuthor, Function: (){_JustASetState();},)));
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DisplayParticipantsPage(
+                                                        usernames: widget
+                                                            .activity
+                                                            .participants,
+                                                        isAuthor: isAuthor,
+                                                        Function: () {
+                                                          _JustASetState();
+                                                        },
+                                                      )));
                                         },
-                                        child: const Icon(Icons.person_rounded)
-                                    ),
+                                        child:
+                                            const Icon(Icons.person_rounded)),
                                     Text(
-                                      widget.activity.participants.length.toString(),
+                                      widget.activity.participants.length
+                                          .toString(),
                                       style: Text_Detailed_Page_Bold_Black,
                                     )
                                   ],
@@ -212,34 +241,34 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                   children: [
                                     const CircleAvatar(
                                       backgroundImage:
-                                      AssetImage('assets/yoda.pfp.jpg'),
+                                          AssetImage('assets/yoda.pfp.jpg'),
                                       radius: 45.0,
                                     ),
                                     const SizedBox(width: 10.0),
                                     Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           children: [
                                             Text('Name: ',
                                                 style:
-                                                Text_Detailed_Page_Bold_White),
+                                                    Text_Detailed_Page_Bold_White),
                                             Text(widget.activity.author,
                                                 style:
-                                                Text_Detailed_Page_Bold_White),
+                                                    Text_Detailed_Page_Bold_White),
                                           ],
                                         ),
                                         Row(
                                           children: [
                                             Text('Activities completed: ',
                                                 style:
-                                                Text_Detailed_Page_Bold_White),
+                                                    Text_Detailed_Page_Bold_White),
                                             Text('TBD',
                                                 style:
-                                                Text_Detailed_Page_Bold_White),
+                                                    Text_Detailed_Page_Bold_White),
                                           ],
                                         ),
                                       ],
@@ -260,26 +289,41 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              if(didJoin == false )
-                                {
-                                  final response = await joinActivity(
-                                      widget.activity.id, widget.user.username);
-                                  if (response.body == 'true') {
-                                    widget.setDidJoin(true);
-                                  }
-                                  setState(() {});
+                              if (widget.didJoin == false) {
+                                final response = await joinActivity(
+                                    widget.activity.id, widget.user.username);
+                                if (response.body == 'true') {
+                                  widget.didJoin = true;
                                 }
+                                setState(() {});
+                              } else {
+                                final response = await unJoinActivity(
+                                    widget.activity.id, widget.user.username);
+                                if (response.body == 'true') {
+                                  widget.didJoin = false;
+                                }
+                                setState(() {});
+                              }
                             },
                             child: WidgetButton(
                               Center(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(didJoin == false ?'Join ': 'Joined',
-                                        style: didJoin == false ?Text_Widget_Buttons_Blue : Text_Widget_Buttons_Green),
+                                    Text(
+                                        widget.didJoin == false
+                                            ? 'Join '
+                                            : 'Joined',
+                                        style: widget.didJoin == false
+                                            ? Text_Widget_Buttons_Blue
+                                            : Text_Widget_Buttons_Green),
                                     Icon(
-                                      didJoin == false ?Icons.add_circle: Icons.check_circle,
-                                      color: didJoin == false ?Color_Light_Blue: Colors.green,
+                                      widget.didJoin == false
+                                          ? Icons.add_circle
+                                          : Icons.check_circle,
+                                      color: widget.didJoin == false
+                                          ? Color_Light_Blue
+                                          : Colors.green,
                                     )
                                   ],
                                 ),
@@ -293,7 +337,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                         ),
                         Expanded(
                           child: InkWell(
-                            onTap: (){
+                            onTap: () {
                               _onBackPressed();
                             },
                             child: WidgetButton(
