@@ -34,6 +34,12 @@ class WidgetBoxForYou extends StatefulWidget {
 class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
   get didJoin => widget.didJoin;
 
+  void incrementNrParticipants(){
+    setState(() {
+      widget.activity.nr_participants = widget.activity.nr_participants + 1;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +55,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
             height: MediaQuery
                 .of(context)
                 .size
-                .height * 0.2,
+                .height * 0.25,
             decoration: const BoxDecoration(
               color: Color_Dark_Gray,
             ),
@@ -140,9 +146,11 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
                                       mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(widget.activity.title,
-                                            style:
-                                            Text_Widget_ForYou_Bold_White),
+                                        Expanded(
+                                          child: Text(widget.activity.title,
+                                              style:
+                                              Text_Widget_ForYou_Bold_White),
+                                        ),
                                         Row(
                                           children: [
                                             const Icon(
@@ -174,6 +182,7 @@ class _WidgetBoxForYouState extends State<WidgetBoxForYou> {
             Expanded(
               child: InkWell(
                 onTap: () async {
+                  incrementNrParticipants();
                   if (didJoin == false) {
                     final response = await joinActivity(
                         widget.activity.id, widget.username);

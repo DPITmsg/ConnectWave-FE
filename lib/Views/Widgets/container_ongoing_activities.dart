@@ -95,7 +95,7 @@ class ContainerOngoingActivity extends StatelessWidget {
                             ),
                           ),
                           Container(
-                              width: (screenWidth - 16) / 3,
+                              width: (screenWidth - 16) / 2.5,
                               child: Center(child: Text(activity.address, style: TextStyle(color: Colors.black.withOpacity(0.5)),))
                           ),
                         ],
@@ -108,9 +108,13 @@ class ContainerOngoingActivity extends StatelessWidget {
                             Text('Category: ${activity.category}', style: Text_Search_Activity_v2),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text('Nr. of participants: ${activity.participants.length.toString()}', style: Text_Search_Activity_v2),
+                              child: Text('Nr. of participants: ${(activity.participants.length + 1).toString()}', style: Text_Search_Activity_v2),
                             ),
-                            Text('${activity.date} - ${activity.endDate}', style: Text_Search_Activity_v2),
+                        Text(
+                          activity.date != activity.endDate
+                              ? '${activity.date} - ${activity.endDate}'
+                              : activity.date,
+                          style: Text_Search_Activity_v2,),
                             SizedBox(height: 5,),
                             Text('Author: ${activity.author}', style: Text_Search_Activity_v2),
                           ],
