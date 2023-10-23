@@ -186,7 +186,9 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
+    return activities!.length == 0
+        ?  Container(child: Text('no activities'))
+    :  Scaffold(
       appBar: AppBar(
         backgroundColor: Color_Blue,
         title: Text('Search Activity'),

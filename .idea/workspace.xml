@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7af3efa0-3376-43ec-a497-53e942d79856" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/online.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/cool_text_input_field.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetForYouBox.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/container_activities_created.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/container_activities_created.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/container_ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/container_ongoing_activities.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/activities_created_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/log_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/log_in_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +56,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Darius\github\ConnectWave-FE\lib\Service" />
       <recent name="C:\Darius\github\ConnectWave-FE\assets" />
       <recent name="D:\Documents\GitHub\ConnectWave-FE\assets" />
       <recent name="C:\Darius\github\ConnectWave-FE\lib\Views" />

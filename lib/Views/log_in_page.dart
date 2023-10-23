@@ -18,7 +18,7 @@ class log_in_page extends StatefulWidget {
 class _log_in_pageState extends State<log_in_page> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController input_mail = TextEditingController();
+  TextEditingController input_username = TextEditingController();
   TextEditingController input_password = TextEditingController();
 
   bool showPassword = true;
@@ -60,21 +60,19 @@ class _log_in_pageState extends State<log_in_page> {
                             child: Column(
                               children: [
                                 TextFormField(
-                                  controller: input_mail,
+                                  controller: input_username,
                                   validator: MultiValidator([
                                     MinLengthValidator(5,
                                         errorText: 'Required field'),
-                                    EmailValidator(
-                                        errorText: 'Enter a valid mail')
                                   ]),
                                   style: Text_Input_SignIn_Login_White,
                                   autocorrect: false,
                                   decoration: InputDecoration(
-                                      hintText: 'Email address',
+                                      hintText: 'Username',
                                       hintStyle: Text_Hint_SignIn_Login_Blue,
                                       border: InputBorder.none,
                                       prefixIcon: const Icon(
-                                        Icons.mail_outline_rounded,
+                                        Icons.person,
                                         color: Color_Light_Blue,
                                       )),
                                 ),
