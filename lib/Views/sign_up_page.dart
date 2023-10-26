@@ -5,7 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetBox.dart';
-
+import '../Service/autentication_service.dart';
 import 'log_in_page.dart';
 
 class sign_in_page extends StatefulWidget {
@@ -211,6 +211,12 @@ class _sign_in_pageState extends State<sign_in_page> {
                                 onTap: () {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
+                                    registerUser(
+                                        user_name.text,
+                                        user_username.text,
+                                        user_mail.text,
+                                        user_new_password.text
+                                    );
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         backgroundColor: Colors.white,
