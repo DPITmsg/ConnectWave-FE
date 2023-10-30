@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Service/friend_list_service.dart';
 
 import 'Classes/Friend.dart';
+import 'Classes/User.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBoxFriend.dart';
@@ -11,8 +12,9 @@ List<Friend> user_list = [];
 
 class find_friends extends StatefulWidget {
   final List<Friend> user_list_2;
+  final User currentUser;
 
-  const find_friends(this.user_list_2, {super.key});
+  const find_friends(this.user_list_2,this.currentUser ,{super.key});
 
   @override
   State<find_friends> createState() => _find_friendsState();
@@ -118,7 +120,7 @@ class _find_friendsState extends State<find_friends> {
                               user_list[index].pfp,
                               InkWell(
                                 onTap: () async {
-                                  final response = await sendFriendRquest(user_list[index].name);
+                                  final response = await sendFriendRquest(user_list[index].name, widget.currentUser.username);
                                   if(response.body =='true'){
                                     widget.user_list_2.remove(user_list[index]);
                                     user_list.remove(user_list[index]);

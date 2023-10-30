@@ -163,14 +163,14 @@ class _HomePageState extends State<HomePage> {
 
                       ElevatedButton(
                         onPressed: () async {
-                          final response = await getFriendList();
+                          final response = await getFriendList(user!.username);
                           List<Friend> friends_list =
                           (jsonDecode(response.body) as List)
                               .map((e) => Friend.fromJson(e))
                               .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  friends_list_page(friends_list)));
+                                  friends_list_page(friends_list, user!)));
                         },
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.black.withOpacity(0.4),

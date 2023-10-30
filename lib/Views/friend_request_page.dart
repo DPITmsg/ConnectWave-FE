@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Service/friend_list_service.dart';
 
 import 'Classes/Friend.dart';
+import 'Classes/User.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBoxFriend.dart';
 
 class friend_request_page extends StatefulWidget {
   final List<Friend> request_list;
+  final User currentUser;
 
-  const friend_request_page(this.request_list, {super.key});
+  const friend_request_page(this.request_list,this.currentUser, {super.key});
 
   @override
   State<friend_request_page> createState() => _friend_request_pageState();
@@ -89,7 +91,7 @@ class _friend_request_pageState extends State<friend_request_page> {
                                               onTap: () async {
                                                 final response =
                                                     await responseFriendRequest(
-                                                        user.name, 'false');
+                                                        user.name, 'false',widget.currentUser.username);
                                                 if(response.body == 'true'){
                                                   widget.request_list
                                                       .remove(user);
@@ -104,7 +106,7 @@ class _friend_request_pageState extends State<friend_request_page> {
                                               onTap: () async {
                                                 final response =
                                                 await responseFriendRequest(
-                                                    user.name, 'true');
+                                                    user.name, 'true',widget.currentUser.username);
                                                 if(response.body == 'true'){
                                                   widget.request_list
                                                       .remove(user);
