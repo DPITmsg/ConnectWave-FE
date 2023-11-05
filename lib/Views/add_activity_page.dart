@@ -540,11 +540,11 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           ActivityDetails activity = ActivityDetails(
                                               id: 1,
                                               title: activity_title.text,
-                                              author: 'Zdroba Petru',
+                                              author: widget.user.username,
                                               date: activity_date.text,
                                               endDate: activity_end_date.text,
                                               address: selectedAddress,
-                                              participants: ['Zdroba Petru'],
+                                              participants: [widget.user.username],
                                               maxParticipants: int.parse(activity_nr_participants.text),
                                               description:
                                                   activity_description.text,

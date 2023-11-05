@@ -41,7 +41,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     final activityData = await fetchEventData();
 
     setState(() {
-      activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now())).toList();
+      activities = activityFromJson(json.encode(activityData));
       isLoaded = true;
     });
   }
@@ -186,9 +186,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return activities!.length == 0
-        ?  Container(child: Text('no activities'))
-    :  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Color_Blue,
         title: Text('Search Activity'),
@@ -251,7 +249,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                 FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in'),
               ],
             ),
-            Expanded(
+            activities!.length != 0 ? Expanded(
               child: Visibility(
                 visible: isLoaded,
                 replacement: Center(child: CircularProgressIndicator(),),
@@ -264,7 +262,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                   },
                 ),
               ),
-            ),
+            ): Center(child: Text('No activities!'),)
           ],
         ),
       ),

@@ -26,7 +26,7 @@ Future<List<Map<String, dynamic>>> fetchEventHistoryData() async{
 }
 
 Future<List<Map<String, dynamic>>> fetchEventData() async {
-  final url = 'https://bf8c4f5a-d8ae-43f1-8d35-3ad3765101b6.mock.pstmn.io/activity';
+  final url = 'http://192.168.1.213:8081/activities';
   return fetchData(url);
 }
 
