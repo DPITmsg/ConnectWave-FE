@@ -26,7 +26,9 @@ import 'search_activity_online.dart';
 import 'trending_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  User? user;
+
+  HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -34,6 +36,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  bool isLoaded = true;
+
+  /*
   bool isLoaded = false;
   User? user;
 
@@ -55,6 +60,8 @@ class _HomePageState extends State<HomePage> {
       print('Error loading data: $error');
     }
   }
+
+   */
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       CardMenuSmall(
-                          Icons.person_rounded, ProfilePage(user: user!)),
+                          Icons.person_rounded, ProfilePage(user: widget.user!)),
                     ],
                   ),
                 ),
@@ -145,13 +152,13 @@ class _HomePageState extends State<HomePage> {
                               SearchActivityMap(
                                   locationTarget: LatLng(46.7712, 23.6323),
                                   zoomLevel: 14,
-                                  user: user!
+                                  user: widget.user!
                               ))),
                       InkWell(
                           onTap: () {},
                           child: CardMenuBig(
                               Icons.connect_without_contact,
-                              SearchActivityOnlinePage(user: user!,))),
+                              SearchActivityOnlinePage(user: widget.user!,))),
                     ],
                   ),
                 ),
@@ -186,14 +193,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CardMenuSmall(
                           Icons.access_time_filled,
-                          OngoingActivities(user: user!)),
+                          OngoingActivities(user: widget.user!)),
                     ],
                   ),
                 ),
                 Expanded(
                     flex: 1,
                     child: CardMenuAddActivity(
-                        add_activity_page(user: user!))),
+                        add_activity_page(user: widget.user!))),
                 const InkWell(child: ForYou()),
               ],
             ),

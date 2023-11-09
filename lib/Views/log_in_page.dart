@@ -2,8 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:my_project/Service/autentication_service.dart';
+import 'package:my_project/Views/homepage.dart';
 import 'package:my_project/Views/sign_up_page.dart';
 
+import 'Classes/User.dart';
 import 'Styles/Colors.dart';
 import 'Styles/StyleText.dart';
 import 'Widgets/WidgetBox.dart';
@@ -130,15 +133,24 @@ class _log_in_pageState extends State<log_in_page> {
                                     );
                                   }
                                 },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color_Blue,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'Log in',
-                                      style: Text_Widget_Buttons_Black,
+                                child: InkWell(
+                                  onTap: () async{
+                                    User? user = await logInUser(input_username.text, input_password.text);
+
+                                    if (user != null){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage(user: user)));
+                                    }
+                                    else{
+                                      print('User is null!');
+                                    }
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Color_Blue,
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Center(
+                                      child: Text('Log in', style: Text_Widget_Buttons_Black,),
                                     ),
                                   ),
                                 ),

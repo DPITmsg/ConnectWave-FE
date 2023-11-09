@@ -33,7 +33,7 @@ Future<http.Response> getForYouList() {
 
 Future<http.Response> joinActivity(int id,String username) {
   return http.post(
-    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/join_activity'),
+    Uri.parse('http://192.168.1.213:8081/join'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

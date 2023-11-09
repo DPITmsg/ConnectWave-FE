@@ -6,6 +6,6 @@ import 'Views/welcome_page.dart';
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
-  home: HomePage(),
+  home: welcome_page(),
 ));
 

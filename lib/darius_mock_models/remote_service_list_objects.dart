@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../Views/Classes/Activity.dart';
+import '../Views/Classes/activitydetails.dart';
+
 Future<List<Map<String, dynamic>>> fetchData(String url) async {
   final response = await http.get(Uri.parse(url));
 
@@ -33,6 +36,28 @@ Future<List<Map<String, dynamic>>> fetchEventData() async {
 Future<List<Map<String, dynamic>>> fetchAddressData() async {
   final url = 'https://524667bc-2cfa-480b-9efa-69e31518f3e3.mock.pstmn.io/activity';
   return fetchData(url);
+}
+
+Future<List<ActivityDetails>> fetchEnrolledActivitesData(List<int> ids) async{
+  final url = Uri.parse('http://192.168.1.213:8081/activities/activity_by_id');
+  List<ActivityDetails> list_activities = [];
+
+  for (var i = 0; i < ids.length; i++){
+    final response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: {
+        "id": ids[i].toString(),
+      }
+    );
+    ActivityDetails activity = json.decode(response.body);
+    
+    list_activities.add(activity);
+  }
+
+  return list_activities;
 }
 
 

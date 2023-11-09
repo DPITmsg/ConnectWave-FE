@@ -20,7 +20,7 @@ class _sign_in_pageState extends State<sign_in_page> {
 
   TextEditingController user_name = TextEditingController();
   TextEditingController user_username = TextEditingController();
-  TextEditingController user_mail = TextEditingController();
+  TextEditingController user_age = TextEditingController();
   TextEditingController user_password = TextEditingController();
   TextEditingController user_new_password = TextEditingController();
 
@@ -108,8 +108,28 @@ class _sign_in_pageState extends State<sign_in_page> {
                                           color: Color_Light_Blue,
                                         )),
                                   ),
+
                                   TextFormField(
-                                    controller: user_mail,
+                                    controller: user_age,
+                                    keyboardType: TextInputType.number,
+                                    validator: ((value){
+                                      if (value!.isEmpty){
+                                        return 'Required field';
+                                      }
+                                    }
+                                    ),
+                                    decoration: InputDecoration(
+                                        hintText: 'Age',
+                                        hintStyle: Text_Hint_SignIn_Login_Blue,
+                                        border: InputBorder.none,
+                                        prefixIcon: const Icon(
+                                          Icons.calendar_today,
+                                          color: Color_Light_Blue,
+                                        )),
+                                  ),
+                                  /*
+                                  TextFormField(
+                                    controller: user_age,
                                     validator: MultiValidator([
                                       MinLengthValidator(5,
                                           errorText: 'Required field'),
@@ -127,6 +147,8 @@ class _sign_in_pageState extends State<sign_in_page> {
                                           color: Color_Light_Blue,
                                         )),
                                   ),
+
+                                   */
 
                                   TextFormField(
                                     controller: user_password,
@@ -209,14 +231,20 @@ class _sign_in_pageState extends State<sign_in_page> {
                               flex: 2,
                               child: InkWell(
                                 onTap: () {
+                                  
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
                                     registerUser(
                                         user_name.text,
                                         user_username.text,
-                                        user_mail.text,
-                                        user_new_password.text
+                                        int.parse(user_age.text),
+                                        user_new_password.text,
+                                        ['tags', 'yes'],
+                                        ['interests', 'no'],
+                                        'the about',
                                     );
+
+
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         backgroundColor: Colors.white,
@@ -229,6 +257,7 @@ class _sign_in_pageState extends State<sign_in_page> {
                                       ),
                                     );
                                   }
+                                   
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

@@ -33,10 +33,9 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
   }
 
   getData() async {
-    final activityData = await fetchEventData();
-
+    print(widget.user!.activities_enrolled.length);
+    activitiesCurrent = await fetchEnrolledActivitesData(widget.user!.activities_enrolled);
     setState(() {
-      activitiesCurrent = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_enrolled.contains(activity.id)).toList();
       isLoaded = true;
     });
   }
