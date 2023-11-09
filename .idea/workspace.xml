@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="added unjoin method and works, need to do callback function for quick join tho">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="changed all user service to send current username in backend, so that it knows who to remove/add/deny/accept/get list from">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/friend_request_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/friend_request_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/friends_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/friends_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepageHARDCODED.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepageHARDCODED.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Service/activity_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697281484582</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="changed all user service to send current username in backend, so that it knows who to remove/add/deny/accept/get list from">
+      <created>1698676325826</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698676325826</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +125,7 @@
     <MESSAGE value="pulled DARIUSBACKUP again" />
     <MESSAGE value="pulled DARIUSBACKUP again 2" />
     <MESSAGE value="added unjoin method and works, need to do callback function for quick join tho" />
-    <option name="LAST_COMMIT_MESSAGE" value="added unjoin method and works, need to do callback function for quick join tho" />
+    <MESSAGE value="changed all user service to send current username in backend, so that it knows who to remove/add/deny/accept/get list from" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed all user service to send current username in backend, so that it knows who to remove/add/deny/accept/get list from" />
   </component>
 </project>
