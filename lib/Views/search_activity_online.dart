@@ -41,7 +41,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     final activityData = await fetchEventData();
 
     setState(() {
-      activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now())).toList();
+      activities = activityFromJson(json.encode(activityData));
       isLoaded = true;
     });
   }
@@ -51,7 +51,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
-  List<String> categories = ['Sports', 'Gaming', 'Services', 'Movies', 'Books', 'Volunteering', 'Business', 'Political', 'Other', 'All'];
+  List<String> categories = ['Sports', 'Cooking', 'Social', 'Gaming','School/Work', 'Services', 'Movies', 'Books', 'Volunteering', 'Business', 'Political', 'Other'];
   List<String> dates = ["Today/Tomorrow", "In the next three days", "In the next 7 days", "In the next 30 days", "All"];
   List<String> typeArray = ["all", "online", "offline"];
 
@@ -249,7 +249,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                 FilterPressAction(dateSelected, dates, _onDateSelected, 'Happening in'),
               ],
             ),
-            Expanded(
+            activities!.length != 0 ? Expanded(
               child: Visibility(
                 visible: isLoaded,
                 replacement: Center(child: CircularProgressIndicator(),),
@@ -262,7 +262,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
                   },
                 ),
               ),
-            ),
+            ): Center(child: Text('No activities!'),)
           ],
         ),
       ),

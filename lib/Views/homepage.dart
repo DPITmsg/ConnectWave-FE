@@ -7,13 +7,10 @@ import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
-import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
 
 import '../Service/friend_list_service.dart';
-import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/Trending.dart';
 import 'Classes/User.dart';
-import 'Classes/activitydetails.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
@@ -26,7 +23,9 @@ import 'search_activity_online.dart';
 import 'trending_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  User? user;
+
+  HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -34,6 +33,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  bool isLoaded = true;
+
+  /*
   bool isLoaded = false;
   User? user;
 
@@ -55,6 +57,8 @@ class _HomePageState extends State<HomePage> {
       print('Error loading data: $error');
     }
   }
+
+   */
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       CardMenuSmall(
-                          Icons.person_rounded, ProfilePage(user: user!)),
+                          Icons.person_rounded, ProfilePage(user: widget.user!)),
                     ],
                   ),
                 ),
@@ -145,13 +149,13 @@ class _HomePageState extends State<HomePage> {
                               SearchActivityMap(
                                   locationTarget: LatLng(46.7712, 23.6323),
                                   zoomLevel: 14,
-                                  user: user!
+                                  user: widget.user!
                               ))),
                       InkWell(
                           onTap: () {},
                           child: CardMenuBig(
                               Icons.connect_without_contact,
-                              SearchActivityOnlinePage(user: user!,))),
+                              SearchActivityOnlinePage(user: widget.user!,))),
                     ],
                   ),
                 ),
@@ -163,14 +167,14 @@ class _HomePageState extends State<HomePage> {
 
                       ElevatedButton(
                         onPressed: () async {
-                          final response = await getFriendList(user!.username);
+                          final response = await getFriendList(widget.user!.username);
                           List<Friend> friends_list =
                           (jsonDecode(response.body) as List)
                               .map((e) => Friend.fromJson(e))
                               .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  friends_list_page(friends_list, user!)));
+                                  friends_list_page(friends_list,widget.user!)));
                         },
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.black.withOpacity(0.4),
@@ -186,14 +190,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                       CardMenuSmall(
                           Icons.access_time_filled,
-                          OngoingActivities(user: user!)),
+                          OngoingActivities(user: widget.user!)),
                     ],
                   ),
                 ),
                 Expanded(
                     flex: 1,
                     child: CardMenuAddActivity(
-                        add_activity_page(user: user!))),
+                        add_activity_page(user: widget.user!))),
                 const InkWell(child: ForYou()),
               ],
             ),

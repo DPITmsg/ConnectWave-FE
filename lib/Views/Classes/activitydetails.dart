@@ -51,15 +51,17 @@ class ActivityDetails {
         _participants = participants,
         _maxParticipants = maxParticipants;
 
-  factory ActivityDetails.fromJson(Map<String, dynamic> json) =>
-      ActivityDetails(
+  factory ActivityDetails.fromJson(Map<String, dynamic> json) {
+    List<String> tags_list = json['tags'].split(',');
+
+    return ActivityDetails(
         id: json["id"],
         date: json["date"],
         endDate: json["endDate"],
         time: json["time"],
         author: json["author"],
         title: json["title"],
-        tags: List<String>.from(json["tags"]),
+        tags: tags_list,
         category: json["category"],
         address: json["address"],
         description: json["description"],
@@ -67,9 +69,10 @@ class ActivityDetails {
           json["location"]["latitude"].toDouble(),
           json["location"]["longitude"].toDouble(),
         ),
-        participants: List<String>.from(json["participants"]),
+        participants: [''],
         maxParticipants: json["maxParticipants"]
-      );
+    );
+  }
 
   int get id => _id;
 

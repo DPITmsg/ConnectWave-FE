@@ -37,7 +37,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
 
   Future<void> getData() async {
     final activityData = await fetchEventData();
-    activities = activityFromJson(json.encode(activityData)).where((activity) => parseDate(activity.date).isAfter(DateTime.now()) && activity.address != "online" && activity.author != widget.user.name).toList();
+    activities = activityFromJson(json.encode(activityData));
   }
 
   void _onBackPressed() {

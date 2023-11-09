@@ -5,7 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetBox.dart';
-
+import '../Service/autentication_service.dart';
 import 'log_in_page.dart';
 
 class sign_in_page extends StatefulWidget {
@@ -20,7 +20,7 @@ class _sign_in_pageState extends State<sign_in_page> {
 
   TextEditingController user_name = TextEditingController();
   TextEditingController user_username = TextEditingController();
-  TextEditingController user_mail = TextEditingController();
+  TextEditingController user_age = TextEditingController();
   TextEditingController user_password = TextEditingController();
   TextEditingController user_new_password = TextEditingController();
 
@@ -108,8 +108,32 @@ class _sign_in_pageState extends State<sign_in_page> {
                                           color: Color_Light_Blue,
                                         )),
                                   ),
+
                                   TextFormField(
-                                    controller: user_mail,
+                                    controller: user_age,
+                                    style: Text_Input_SignIn_Login_White,
+                                    keyboardType: TextInputType.number,
+                                    validator: ((value){
+                                      if (value!.isEmpty){
+                                        return 'Required field';
+                                      }else if(int.parse(value) < 13){
+                                        return 'See you in ${13-int.parse(value)} years';
+                                      }
+                                      return null;
+                                    }
+                                    ),
+                                    decoration: InputDecoration(
+                                        hintText: 'Age',
+                                        hintStyle: Text_Hint_SignIn_Login_Blue,
+                                        border: InputBorder.none,
+                                        prefixIcon: const Icon(
+                                          Icons.calendar_today,
+                                          color: Color_Light_Blue,
+                                        )),
+                                  ),
+                                  /*
+                                  TextFormField(
+                                    controller: user_age,
                                     validator: MultiValidator([
                                       MinLengthValidator(5,
                                           errorText: 'Required field'),
@@ -127,6 +151,8 @@ class _sign_in_pageState extends State<sign_in_page> {
                                           color: Color_Light_Blue,
                                         )),
                                   ),
+
+                                   */
 
                                   TextFormField(
                                     controller: user_password,
@@ -209,20 +235,44 @@ class _sign_in_pageState extends State<sign_in_page> {
                               flex: 2,
                               child: InkWell(
                                 onTap: () {
+                                  
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        backgroundColor: Colors.white,
-                                        content: Text(
-                                          'Validation Successful',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                          ),
+                                    registerUser(
+                                        user_name.text,
+                                        user_username.text,
+                                        int.parse(user_age.text),
+                                        user_new_password.text,
+                                        ['tags', 'yes'],
+                                        ['interests', 'no'],
+                                        'the about',
+                                    );
+
+
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.green[600],
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                        content:  const Row(
+                                          children: [
+                                            Text(
+                                              'Registration complete!',
+                                              style: TextStyle(
+                                                  color: Color_White,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16
+                                              ),
+                                            ),
+                                            Icon(Icons.check, color:Color_White)
+                                          ],
                                         ),
                                       ),
                                     );
+                                    Navigator.of(context).pop();
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const log_in_page()));
                                   }
+                                   
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

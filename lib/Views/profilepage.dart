@@ -2,8 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
+import 'package:my_project/Views/Styles/Shadows.dart';
+import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import 'package:my_project/Views/edit_profile_page.dart';
 
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/ActivityHistory.dart';
@@ -188,6 +191,25 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         child: IntOrTags(widget.user!.tags),
                       ),
+                      SizedBox(height: 10,),
+                      InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfilePage(user: widget.user!)));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            color: Color_Blue,
+                            boxShadow: [
+                              Shadow_Darius
+                            ]
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Edit Profile', style: Text_Widget_ForYou_Bold_White,),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

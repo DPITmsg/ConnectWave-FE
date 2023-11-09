@@ -1,6 +1,4 @@
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/container_ongoing_activities.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
@@ -9,7 +7,6 @@ import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
-import 'Widgets/containersearchactivity.dart';
 import 'Widgets/loadingscreen.dart';
 
 class OngoingActivities extends StatefulWidget {
@@ -33,10 +30,9 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
   }
 
   getData() async {
-    final activityData = await fetchEventData();
-
+    print(widget.user!.activities_enrolled.length);
+    activitiesCurrent = await fetchEnrolledActivitesData(widget.user!.activities_enrolled);
     setState(() {
-      activitiesCurrent = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_enrolled.contains(activity.id)).toList();
       isLoaded = true;
     });
   }
