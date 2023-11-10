@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../Views/Classes/Activity.dart';
 import '../Views/Classes/activitydetails.dart';
 
 Future<List<Map<String, dynamic>>> fetchData(String url) async {
@@ -29,7 +28,7 @@ Future<List<Map<String, dynamic>>> fetchEventHistoryData() async{
 }
 
 Future<List<Map<String, dynamic>>> fetchEventData() async {
-  final url = 'http://192.168.1.213:8081/activities';
+  final url = 'https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/activities';
   return fetchData(url);
 }
 

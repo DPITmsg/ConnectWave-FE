@@ -111,11 +111,15 @@ class _sign_in_pageState extends State<sign_in_page> {
 
                                   TextFormField(
                                     controller: user_age,
+                                    style: Text_Input_SignIn_Login_White,
                                     keyboardType: TextInputType.number,
                                     validator: ((value){
                                       if (value!.isEmpty){
                                         return 'Required field';
+                                      }else if(int.parse(value) < 13){
+                                        return 'See you in ${13-int.parse(value)} years';
                                       }
+                                      return null;
                                     }
                                     ),
                                     decoration: InputDecoration(
@@ -245,17 +249,28 @@ class _sign_in_pageState extends State<sign_in_page> {
                                     );
 
 
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        backgroundColor: Colors.white,
-                                        content: Text(
-                                          'Validation Successful',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                          ),
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: Colors.green[600],
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                        content:  const Row(
+                                          children: [
+                                            Text(
+                                              'Registration complete!',
+                                              style: TextStyle(
+                                                  color: Color_White,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16
+                                              ),
+                                            ),
+                                            Icon(Icons.check, color:Color_White)
+                                          ],
                                         ),
                                       ),
                                     );
+                                    Navigator.of(context).pop();
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const log_in_page()));
                                   }
                                    
                                 },

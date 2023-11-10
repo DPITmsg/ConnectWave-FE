@@ -237,7 +237,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   }
 
   void _onMarkerTapped(ActivityDetails activity) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, widget.user, _isOnline(activity))));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, widget.user, _isOnline(activity), false)));
   }
 
   List<ActivityDetails> searchActivity(List<ActivityDetails> list, String userInput){

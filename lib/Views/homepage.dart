@@ -7,13 +7,10 @@ import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
-import 'package:my_project/darius_mock_models/remote_service_list_objects.dart';
 
 import '../Service/friend_list_service.dart';
-import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/Trending.dart';
 import 'Classes/User.dart';
-import 'Classes/activitydetails.dart';
 import 'Widgets/cardmenuaddactivity.dart';
 import 'Widgets/cardmenubig.dart';
 import 'Widgets/cardmenusmall.dart';
@@ -170,14 +167,14 @@ class _HomePageState extends State<HomePage> {
 
                       ElevatedButton(
                         onPressed: () async {
-                          final response = await getFriendList();
+                          final response = await getFriendList(widget.user!.username);
                           List<Friend> friends_list =
                           (jsonDecode(response.body) as List)
                               .map((e) => Friend.fromJson(e))
                               .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  friends_list_page(friends_list)));
+                                  friends_list_page(friends_list,widget.user!)));
                         },
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.black.withOpacity(0.4),

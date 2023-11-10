@@ -108,7 +108,7 @@ class _ProfilePageStateHardCoded extends State<ProfilePageHardCoded> {
                               CardProfile(
                                 widget.user!.friends.length.toString(),
                                 'Friends',
-                                friends_list_page(widget.user!.friends),
+                                friends_list_page(widget.user!.friends, widget.user!),
                               ),
                               CardProfile(
                                 widget.user!.activities_created.length.toString(),

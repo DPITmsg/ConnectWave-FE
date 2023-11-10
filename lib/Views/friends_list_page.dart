@@ -8,6 +8,7 @@ import 'package:my_project/Views/Widgets/WidgetButtons.dart';
 import 'package:my_project/Views/friend_request_page.dart';
 
 import 'Classes/Friend.dart';
+import 'Classes/User.dart';
 import 'Widgets/WidgetBoxFriend.dart';
 import 'Widgets/WidgetSmallButton.dart';
 
@@ -15,8 +16,9 @@ import 'find_friends.dart';
 
 class friends_list_page extends StatefulWidget {
   final List<Friend> friends_list;
+  final User user;
 
-  const friends_list_page(this.friends_list, {super.key});
+  const friends_list_page(this.friends_list, this.user,{super.key});
 
   @override
   State<friends_list_page> createState() => _friends_list_pageState();
@@ -86,7 +88,7 @@ class _friends_list_pageState extends State<friends_list_page> {
                                         onTap: () async {
                                           final response =
                                               await removeFriend(
-                                              user.name);
+                                              user.name, widget.user.username);
                                           if(response.body == 'true'){
                                             widget.friends_list.remove(user);
                                             setState(() {});
@@ -126,14 +128,14 @@ class _friends_list_pageState extends State<friends_list_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              final response = await getUserList();
+                              final response = await getUserList(widget.user.username);
                               List<Friend> user_list =
                                   (jsonDecode(response.body) as List)
                                       .map((e) => Friend.fromJson(e))
                                       .toList();
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      find_friends(user_list)));
+                                      find_friends(user_list,widget.user)));
                             },
                             child: WidgetButton(
                               Center(
@@ -150,14 +152,14 @@ class _friends_list_pageState extends State<friends_list_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              final response = await getRequestList();
+                              final response = await getRequestList(widget.user.username);
                               List<Friend> request_list =
                                   (jsonDecode(response.body) as List)
                                       .map((e) => Friend.fromJson(e))
                                       .toList();
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      friend_request_page(request_list)));
+                                      friend_request_page(request_list,widget.user,)));
                             },
                             child: WidgetButton(
                               Center(

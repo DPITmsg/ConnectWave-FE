@@ -1,6 +1,4 @@
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/container_ongoing_activities.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
@@ -9,7 +7,6 @@ import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
-import 'Widgets/containersearchactivity.dart';
 import 'Widgets/loadingscreen.dart';
 
 class OngoingActivities extends StatefulWidget {

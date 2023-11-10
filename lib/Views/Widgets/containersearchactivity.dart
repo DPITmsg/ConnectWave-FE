@@ -31,7 +31,7 @@ class ContainerActivityForSearch extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       child: InkWell(
         onTap: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, user, _isOnline(activity))));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, user, _isOnline(activity), false)));
         },
         child: Container(
           width: screenWidth,

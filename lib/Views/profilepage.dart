@@ -124,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             CardProfile(
                               widget.user!.friends.length.toString(),
                               'Friends',
-                                friends_list_page(widget.user!.friends),
+                                friends_list_page(widget.user!.friends,widget.user!),
                             ),
                             CardProfile(
                               widget.user!.activities_created.length.toString(),

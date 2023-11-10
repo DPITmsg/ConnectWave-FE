@@ -43,7 +43,7 @@ class _add_activity_pageState extends State<add_activity_page> {
   String selectedAddress = '';
   late GoogleMapController _controller;
 
-  List<String> categories = ['Sport', 'Gaming', 'Services', 'a', 'a', 'a', 'a'];
+  List<String> categories = ['Sports', 'Cooking', 'Social', 'Gaming','School/Work', 'Services', 'Movies', 'Books', 'Volunteering', 'Business', 'Political', 'Other'];
 
   bool error_tags = false;
   bool error_category = false;
@@ -564,7 +564,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                               content:  const Row(
                                                 children: [
                                                   Text(
-                                                    'Validation Successful',
+                                                    'Activity created!',
                                                     style: TextStyle(
                                                       color: Color_White,
                                                       fontWeight: FontWeight.bold,
@@ -583,7 +583,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        detailed_activity_page(activity, widget.user, _isOnline(activity))));
+                                                        detailed_activity_page(activity, widget.user, _isOnline(activity), false)));
                                           }
                                         }
                                       }
