@@ -16,8 +16,8 @@ class Friend {
 
   factory Friend.fromJson(Map<String, dynamic> json) =>
       Friend(
-        name: json["name"],
-        pfp: json['pfp'],
+        name: json["username"] ?? '',
+        pfp: json['pfp'] ?? '',
       );
 
   String get name => _name;

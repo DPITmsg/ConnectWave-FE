@@ -209,6 +209,12 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Text('Edit Profile', style: Text_Widget_ForYou_Bold_White,),
                           ),
                         ),
+                      ),
+                      IconButton(
+                          onPressed: (){
+                            Navigator.of(context).popUntil((route) => route.isFirst);
+                          },
+                          icon: Icon(Icons.logout)
                       )
                     ],
                   ),

@@ -10,10 +10,6 @@ User userFromJson(Map<String, dynamic> jsonData) {
   List<int> activities_enrolled = List<int>.from(jsonData['activities_enrolled']);
   List<int> activities_completed = List<int>.from(jsonData['activities_completed']);
 
-  List<Friend> friends_list = (jsonData['friends'] != null)
-      ? friendFromJson(jsonData['friends'])
-      : [];
-
 
   return User.fromJson({
     ...jsonData,
@@ -22,7 +18,6 @@ User userFromJson(Map<String, dynamic> jsonData) {
     'activities_created': activities_created,
     'activities_enrolled': activities_enrolled,
     'activities_completed': activities_completed,
-    'friends_list': friends_list
   });
 }
 
@@ -70,23 +65,23 @@ class User {
         _friends = friends,
         _pfp = pfp;
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      User(
-        name: json["name"],
-        username: json["username"],
-        rating: json["rating"],
-        about: json["about"],
-        interests: List<String>.from(json["interests"]),
-        tags: List<String>.from(json["tags"]),
-        age: json["age"],
-        pfp: json["pfp"],
-        activities_created: List<int>.from(json["activities_created"]),
-        activities_enrolled: List<int>.from(json["activities_enrolled"]),
-        activities_completed: List<int>.from(json["activities_completed"]),
-        friends: (json["friends"] as List<dynamic>)
-          .map((friend) => Friend.fromJson(friend))
-          .toList()
-      );
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      name: json["name"] ?? '',
+      username: json["username"] ?? '',
+      rating: json["rating"] != null ? json["rating"].toDouble() : 0.0,
+      about: json["about"] ?? '',
+      interests: ['sugi pula'],
+      tags: ['de bou'],
+      age: json["age"] ?? 0,
+      pfp: json["pfp"] ?? '',
+      activities_created: [0],
+      activities_enrolled: [0],
+      activities_completed: [0],
+      friends: [Friend(name: 'taci', pfp: '')],
+    );
+  }
+
 
   Map<String, dynamic> toJson() =>
       {

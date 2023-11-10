@@ -5,7 +5,7 @@ import 'package:my_project/Views/Classes/activitydetails.dart';
 
 Future<http.Response> createActivty(ActivityDetails activity) {
   return http.post(
-    Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/activity'),
+    Uri.parse('http://192.168.1.213:8081/activity'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -33,7 +33,7 @@ Future<http.Response> getForYouList() {
 
 Future<http.Response> joinActivity(int id,String username) {
   return http.post(
-    Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/join'),
+    Uri.parse('http://192.168.1.213:8081/join'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -58,7 +58,7 @@ Future<http.Response> postIdGetActivity(int id) {
 
 Future<http.Response> unJoinActivity(int id,String username) {
   return http.post(
-    Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/unjoin_activity'),
+    Uri.parse('http://192.168.1.213:8081/quit'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

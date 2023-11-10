@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import '../Views/Classes/User.dart';
 
 void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about) async{
-  final url = Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/user');
+  final url = Uri.parse('http://192.168.1.213:8081/user');
   String tags_string = tags.join(', ');
   String interests_string = tags.join(', ');
 
@@ -30,7 +30,7 @@ void registerUser(String name, String username, int age, String password, List<S
 }
 
 Future<User?> logInUser(String username, String password) async {
-  final url = Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/login');
+  final url = Uri.parse('http://192.168.1.213:8081/login');
 
   final response = await http.post(
     url,

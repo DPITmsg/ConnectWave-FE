@@ -53,6 +53,7 @@ class ActivityDetails {
 
   factory ActivityDetails.fromJson(Map<String, dynamic> json) {
     List<String> tags_list = json['tags'].split(',');
+    List<String> participants_list = json['participants'].split(',');
 
     return ActivityDetails(
         id: json["id"],
@@ -69,7 +70,7 @@ class ActivityDetails {
           json["location"]["latitude"].toDouble(),
           json["location"]["longitude"].toDouble(),
         ),
-        participants: [''],
+        participants: participants_list,
         maxParticipants: json["maxParticipants"]
     );
   }

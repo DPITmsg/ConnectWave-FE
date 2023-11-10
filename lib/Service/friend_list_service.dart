@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../Views/Classes/User.dart';
+
 Future<http.Response> getFriendList(String username) {
   return http.get(
       Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/friends?username=$username'),
@@ -13,7 +15,7 @@ Future<http.Response> getFriendList(String username) {
 
 Future<http.Response> getUserList(String username) {
   return http.get(
-    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/user_list?username=$username'),
+    Uri.parse('http://192.168.1.213:8081/users'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -66,4 +68,25 @@ Future<http.Response> removeFriend(String name, String currentUser) {
       'currentUser':currentUser,
     }),
   );
+}
+
+Future<User?> getUserByUsername(String username) async{
+  final url = Uri.parse('http://192.168.1.213:8081/get_user_by_username');
+
+  final response = await http.post(
+    url,
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode({'username' : username}),
+  );
+
+  if (response.statusCode == 200){
+    final data = json.decode(response.body);
+
+    User? user = userFromJson(data);
+
+    return user;
+  }
+  return null;
 }
