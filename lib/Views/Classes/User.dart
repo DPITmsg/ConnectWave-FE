@@ -70,23 +70,30 @@ class User {
         _friends = friends,
         _pfp = pfp;
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      User(
-        name: json["name"],
-        username: json["username"],
-        rating: json["rating"],
-        about: json["about"],
-        interests: List<String>.from(json["interests"]),
-        tags: List<String>.from(json["tags"]),
-        age: json["age"],
-        pfp: json["pfp"],
-        activities_created: List<int>.from(json["activities_created"]),
-        activities_enrolled: List<int>.from(json["activities_enrolled"]),
-        activities_completed: List<int>.from(json["activities_completed"]),
-        friends: (json["friends"] as List<dynamic>)
-          .map((friend) => Friend.fromJson(friend))
-          .toList()
-      );
+  factory User.fromJson(Map<String, dynamic> json) {
+    List<String> interests = (json['interests'] as List<dynamic>? ?? []).map((e) => e.toString()).toList();
+    List<String> tags = (json['tags'] as List<dynamic>? ?? []).map((e) => e.toString()).toList();
+    List<int> activities_created = (json['activities_created'] as List<dynamic>? ?? []).map((e) => e as int).toList();
+    List<int> activities_enrolled = (json['activities_enrolled'] as List<dynamic>? ?? []).map((e) => e as int).toList();
+    List<int> activities_completed = (json['activities_completed'] as List<dynamic>? ?? []).map((e) => e as int).toList();
+    List<Friend> friends = (json['friends'] as List<dynamic>? ?? []).map((friend) => Friend.fromJson(friend)).toList();
+
+    return User(
+      name: json['name'] ?? '',
+      username: json['username'] ?? '',
+      rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
+      about: json['about'] ?? '',
+      interests: interests,
+      tags: tags,
+      age: (json['age'] as num?)?.toInt() ?? 0,
+      pfp: json['pfp'] ?? '',
+      activities_created: activities_created,
+      activities_enrolled: activities_enrolled,
+      activities_completed: activities_completed,
+      friends: friends,
+    );
+  }
+
 
   Map<String, dynamic> toJson() =>
       {

@@ -5,6 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetBox.dart';
+import 'package:my_project/Views/pick_interest.dart';
 import '../Service/autentication_service.dart';
 import 'log_in_page.dart';
 
@@ -108,7 +109,6 @@ class _sign_in_pageState extends State<sign_in_page> {
                                           color: Color_Light_Blue,
                                         )),
                                   ),
-
                                   TextFormField(
                                     controller: user_age,
                                     style: Text_Input_SignIn_Login_White,
@@ -131,29 +131,6 @@ class _sign_in_pageState extends State<sign_in_page> {
                                           color: Color_Light_Blue,
                                         )),
                                   ),
-                                  /*
-                                  TextFormField(
-                                    controller: user_age,
-                                    validator: MultiValidator([
-                                      MinLengthValidator(5,
-                                          errorText: 'Required field'),
-                                      EmailValidator(
-                                          errorText: 'Enter a valid mail')
-                                    ]),
-                                    style: Text_Input_SignIn_Login_White,
-                                    autocorrect: false,
-                                    decoration: InputDecoration(
-                                        hintText: 'Email address',
-                                        hintStyle: Text_Hint_SignIn_Login_Blue,
-                                        border: InputBorder.none,
-                                        prefixIcon: const Icon(
-                                          Icons.mail_outline_rounded,
-                                          color: Color_Light_Blue,
-                                        )),
-                                  ),
-
-                                   */
-
                                   TextFormField(
                                     controller: user_password,
                                     obscureText: showPassword,
@@ -238,39 +215,8 @@ class _sign_in_pageState extends State<sign_in_page> {
                                   
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
-                                    registerUser(
-                                        user_name.text,
-                                        user_username.text,
-                                        int.parse(user_age.text),
-                                        user_new_password.text,
-                                        ['tags', 'yes'],
-                                        ['interests', 'no'],
-                                        'the about',
-                                    );
-
-
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: Colors.green[600],
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                        content:  const Row(
-                                          children: [
-                                            Text(
-                                              'Registration complete!',
-                                              style: TextStyle(
-                                                  color: Color_White,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16
-                                              ),
-                                            ),
-                                            Icon(Icons.check, color:Color_White)
-                                          ],
-                                        ),
-                                      ),
-                                    );
                                     Navigator.of(context).pop();
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const log_in_page()));
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  pick_interests(user_name.text, user_username.text, int.parse(user_age.text), user_new_password.text)));
                                   }
                                    
                                 },
@@ -281,7 +227,7 @@ class _sign_in_pageState extends State<sign_in_page> {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      'Sign in',
+                                      'Next',
                                       style: Text_Widget_Buttons_Black,
                                     ),
                                   ),

@@ -54,6 +54,12 @@ TextStyle Text_AddActivty_Small = const TextStyle(
     fontWeight: FontWeight.normal,
     decoration: TextDecoration.none);
 
+TextStyle Text_AddActivty_Small_White = const TextStyle(
+    fontSize: 12,
+    color: Color_White,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none);
+
 TextStyle Text_AddActivity_Small_Input = const TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
@@ -65,6 +71,13 @@ TextStyle Text_AddActivity_Small_Description = const TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.bold,
   color: Color_Dark_Gray,
+  decoration: TextDecoration.none,
+);
+
+TextStyle Text_AddActivity_Small_Description_White = const TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.normal,
+  color: Color_White,
   decoration: TextDecoration.none,
 );
 

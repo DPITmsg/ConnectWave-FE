@@ -19,13 +19,6 @@ class detailed_activity_page extends StatefulWidget {
   final User user;
   late final bool quickJoin;
   bool _isOnline;
-  late bool _didJoin= quickJoin;
-
-  bool get didJoin => _didJoin;
-
-  set didJoin(bool value) {
-    _didJoin = value;
-  }
 
   detailed_activity_page(
       this.activity, this.user, this._isOnline, this.quickJoin,
@@ -36,7 +29,6 @@ class detailed_activity_page extends StatefulWidget {
 }
 
 class _detailed_activity_pageState extends State<detailed_activity_page> {
-  get didJoin => widget.didJoin;
   void _onBackPressed() {
     Navigator.of(context).pop();
     Navigator.of(context)
@@ -53,7 +45,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
         friend.name == widget.activity.author ||
         widget.activity.participants.contains(friend.name));
     bool isAuthor = widget.user.name == widget.activity.author;
-
+    bool didJoin = widget.activity.participants.contains(widget.user.username);
     return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -289,18 +281,18 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              if (widget.didJoin == false) {
+                              if (didJoin == false) {
                                 final response = await joinActivity(
                                     widget.activity.id, widget.user.username);
                                 if (response.body == 'true') {
-                                  widget.didJoin = true;
+                                  didJoin = true;
                                 }
                                 setState(() {});
                               } else {
                                 final response = await unJoinActivity(
                                     widget.activity.id, widget.user.username);
                                 if (response.body == 'true') {
-                                  widget.didJoin = false;
+                                  didJoin = false;
                                 }
                                 setState(() {});
                               }
@@ -311,17 +303,17 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                        widget.didJoin == false
+                                        didJoin == false
                                             ? 'Join '
                                             : 'Joined',
-                                        style: widget.didJoin == false
+                                        style: didJoin == false
                                             ? Text_Widget_Buttons_Blue
                                             : Text_Widget_Buttons_Green),
                                     Icon(
-                                      widget.didJoin == false
+                                      didJoin == false
                                           ? Icons.add_circle
                                           : Icons.check_circle,
-                                      color: widget.didJoin == false
+                                      color: didJoin == false
                                           ? Color_Light_Blue
                                           : Colors.green,
                                     )

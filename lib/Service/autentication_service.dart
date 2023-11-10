@@ -5,8 +5,7 @@ import '../Views/Classes/User.dart';
 
 void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about) async{
   final url = Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/user');
-  String tags_string = tags.join(', ');
-  String interests_string = tags.join(', ');
+
 
   final response = await http.post(
     url,
@@ -15,9 +14,9 @@ void registerUser(String name, String username, int age, String password, List<S
       'name': name,
       'age': age,
       'password': password,
-      'tags': tags_string,
-      'interests': interests_string,
-      'about': 'this is the about',
+      'tags': tags,
+      'interests': interests,
+      'about': about,
     })
   );
 

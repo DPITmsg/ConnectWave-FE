@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="almost ready for develop, darius you need to pull this">
-      <change afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/cool_text_input_field.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Views/pick_interest.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/activity_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Service/autentication_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/log_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/log_in_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_online.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetTagsBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetTagsBox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +28,13 @@
         <projects_view />
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698676325826</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="almost ready for develop, darius you need to pull this">
+      <created>1699562354456</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699562354456</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
