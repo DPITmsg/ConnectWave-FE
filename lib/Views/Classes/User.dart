@@ -4,12 +4,11 @@ import 'Friend.dart';
 
 
 User userFromJson(Map<String, dynamic> jsonData) {
-  List<String> interests = List<String>.from(jsonData['interests']);
-  List<String> tags = List<String>.from(jsonData['tags']);
-  List<int> activities_created = List<int>.from(jsonData['activities_created']);
-  List<int> activities_enrolled = List<int>.from(jsonData['activities_enrolled']);
-  List<int> activities_completed = List<int>.from(jsonData['activities_completed']);
-
+  List<String> interests = (jsonData['interests'] != null) ? List<String>.from(jsonData['interests']) : [];
+  List<String> tags = (jsonData['tags'] != null) ? List<String>.from(jsonData['tags']) : [];
+  List<int> activities_created = (jsonData['activities_created'] != null) ? List<int>.from(jsonData['activities_created']) : [];
+  List<int> activities_enrolled = (jsonData['activities_enrolled'] != null) ? List<int>.from(jsonData['activities_enrolled']) : [];
+  List<int> activities_completed = (jsonData['activities_completed'] != null) ? List<int>.from(jsonData['activities_completed']) : [];
 
   return User.fromJson({
     ...jsonData,
@@ -20,6 +19,7 @@ User userFromJson(Map<String, dynamic> jsonData) {
     'activities_completed': activities_completed,
   });
 }
+
 
 
 String postToJson(List<User> data) =>

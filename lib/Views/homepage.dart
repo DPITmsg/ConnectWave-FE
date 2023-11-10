@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                               .toList();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  friends_list_page(friends_list,widget.user!)));
+                                  friends_list_page(widget.user!.friends,widget.user!)));
                         },
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.black.withOpacity(0.4),

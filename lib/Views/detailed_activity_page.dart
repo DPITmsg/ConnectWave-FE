@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Views/Widgets/DisplayParticipants.dart';
 import 'package:my_project/Views/Widgets/WidgetTagsBox.dart';
+import 'package:my_project/Views/profilepageHARDCODED.dart';
 
 import '../Service/activity_service.dart';
+import '../Service/friend_list_service.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
@@ -235,48 +237,59 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                             const SizedBox(
                               height: 5,
                             ),
-                            WidgetBox(
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const CircleAvatar(
-                                      backgroundImage:
-                                          AssetImage('assets/yoda.pfp.jpg'),
-                                      radius: 45.0,
-                                    ),
-                                    const SizedBox(width: 10.0),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text('Name: ',
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                            Text(widget.activity.author,
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text('Activities completed: ',
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                            Text('TBD',
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Color_Blue,
-                                Color_Light_Blue),
+                            InkWell(
+                              onTap: () async{
+                                User? user = await getUserByUsername(widget.activity.author);
+                                if (user != null){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfilePageHardCoded(user: user)));
+                                }
+                                else{
+                                  print("User is null!");
+                                }
+                              },
+                              child: WidgetBox(
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const CircleAvatar(
+                                        backgroundImage:
+                                            AssetImage('assets/yoda.pfp.jpg'),
+                                        radius: 45.0,
+                                      ),
+                                      const SizedBox(width: 10.0),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text('Name: ',
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                              Text(widget.activity.author,
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text('Activities completed: ',
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                              Text('TBD',
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Color_Blue,
+                                  Color_Light_Blue),
+                            ),
                           ],
                         ),
                       ),

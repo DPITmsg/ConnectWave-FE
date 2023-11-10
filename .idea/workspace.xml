@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04efee8c-d25b-49e9-b115-33a4df4d4b5e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/activity_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Service/autentication_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/Friend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/Friend.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/activitydetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBoxFriend.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetBoxFriend.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/darius_mock_models/remote_service_list_objects.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
