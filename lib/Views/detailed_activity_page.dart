@@ -229,27 +229,19 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                             const SizedBox(
                               height: 5,
                             ),
-                            InkWell(
-                              onTap: () async{
-                                User? user = await getUserByUsername(widget.activity.author);
-                                if (user != null){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfilePageHardCoded(user: user)));
-                                }
-                                else{
-                                  print("User is null!");
-                                }
-                              },
-                              child: WidgetBox(
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      const CircleAvatar(
-                                        backgroundImage:
-                                            AssetImage('assets/yoda.pfp.jpg'),
-                                        radius: 45.0,
-                                      ),
-                                      const SizedBox(width: 10.0),
-                                      Column(
+                            WidgetBox(
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const CircleAvatar(
+                                      backgroundImage:
+                                          AssetImage('assets/yoda.pfp.jpg'),
+                                      radius: 45.0,
+                                    ),
+                                    const SizedBox(width: 10.0),
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         mainAxisAlignment:
@@ -257,7 +249,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                         children: [
                                           Row(
                                             children: [
-                                              Text('Name: ',
+                                              Text('Username: ',
                                                   style:
                                                       Text_Detailed_Page_Bold_White),
                                               Text(widget.activity.author,
@@ -270,18 +262,28 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                               Text('Activities completed: ',
                                                   style:
                                                       Text_Detailed_Page_Bold_White),
-                                              Text('TBD',
+                                              Text(widget.user.activities_completed.length.toString(),
                                                   style:
                                                       Text_Detailed_Page_Bold_White),
                                             ],
                                           ),
+                                          Row(
+                                            children: [
+                                              Text('Friends:  ',
+                                                  style:
+                                                  Text_Detailed_Page_Bold_White),
+                                              Text(widget.user.friends.length.toString(),
+                                                  style:
+                                                  Text_Detailed_Page_Bold_White),
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                  Color_Blue,
-                                  Color_Light_Blue),
-                            ),
+                                    ),
+                                  ],
+                                ),
+                                Color_Blue,
+                                Color_Light_Blue),
                           ],
                         ),
                       ),
@@ -297,17 +299,19 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                               if (didJoin == false) {
                                 final response = await joinActivity(
                                     widget.activity.id, widget.user.username);
-                                if (response.body == 'true') {
-                                  didJoin = true;
+                                if (response.statusCode == 200) {
+                                  setState(() {
+                                    didJoin = true;
+                                  });
                                 }
-                                setState(() {});
                               } else {
                                 final response = await unJoinActivity(
                                     widget.activity.id, widget.user.username);
-                                if (response.body == 'true') {
-                                  didJoin = false;
+                                if (response.statusCode == 200) {
+                                  setState(() {
+                                    didJoin = false;
+                                  });
                                 }
-                                setState(() {});
                               }
                             },
                             child: WidgetButton(

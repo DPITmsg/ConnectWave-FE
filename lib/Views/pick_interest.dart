@@ -232,7 +232,7 @@ class _pick_interestsState extends State<pick_interests> {
                                                     Radius.circular(10)),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: !didPress ?const EdgeInsets.all(8.0): const EdgeInsets.all(10.0),
                                             child: Text(
                                               e,
                                               style: TextStyle(

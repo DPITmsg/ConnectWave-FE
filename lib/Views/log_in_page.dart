@@ -118,6 +118,7 @@ class _log_in_pageState extends State<log_in_page> {
                                   ),
                                   WidgetErrorTextSmall(
                                       'Username or password wrong!',!didRegister),
+                                  const SizedBox(height: 5,),
                                 ],
                               ),
                             ),
@@ -132,7 +133,7 @@ class _log_in_pageState extends State<log_in_page> {
                                       const SnackBar(
                                         backgroundColor: Colors.white,
                                         content: Text(
-                                          'Validation Successful',
+                                          'We are glad to have you back!',
                                           style: TextStyle(
                                             color: Colors.black,
                                           ),
