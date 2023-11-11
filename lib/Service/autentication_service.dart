@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 import '../Views/Classes/User.dart';
 
-void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about) async{
+void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about, String pfp) async{
   final url = Uri.parse('https://2523-2a02-2f0e-d-4b00-1473-dc26-7a60-5be3.ngrok-free.app/user');
 
 
@@ -17,6 +17,7 @@ void registerUser(String name, String username, int age, String password, List<S
       'tags': tags,
       'interests': interests,
       'about': about,
+      'pfp':pfp,
     })
   );
 

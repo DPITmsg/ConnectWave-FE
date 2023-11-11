@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="finished pick interests page, hope it works">
+    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="minor fixes to the join button, and also did something with the user display card in detailed activity page">
+      <change afterPath="$PROJECT_DIR$/lib/Views/pick_pfp.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetButtons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetButtons.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/log_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/log_in_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Service/autentication_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/pick_interest.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/pick_interest.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" afterDir="false" />
     </list>
@@ -132,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699636188710</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="minor fixes to the join button, and also did something with the user display card in detailed activity page">
+      <created>1699731381586</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699731381586</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +160,7 @@
     <MESSAGE value="pull commit 2" />
     <MESSAGE value="almost ready for develop, darius you need to pull this" />
     <MESSAGE value="finished pick interests page, hope it works" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished pick interests page, hope it works" />
+    <MESSAGE value="minor fixes to the join button, and also did something with the user display card in detailed activity page" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fixes to the join button, and also did something with the user display card in detailed activity page" />
   </component>
 </project>

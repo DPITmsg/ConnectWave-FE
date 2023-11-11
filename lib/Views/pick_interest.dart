@@ -17,8 +17,9 @@ class pick_interests extends StatefulWidget {
   final String username;
   final int age;
   final String password;
+  final String pfp;
 
-  const pick_interests(this.name, this.username, this.age, this.password,
+  const pick_interests(this.name, this.username, this.age, this.password,this.pfp,
       {super.key});
 
   @override
@@ -300,7 +301,8 @@ class _pick_interestsState extends State<pick_interests> {
                                         widget.password,
                                         tags,
                                         interests,
-                                        description.text);
+                                        description.text,
+                                        widget.pfp);
 
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
