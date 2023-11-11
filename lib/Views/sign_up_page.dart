@@ -216,7 +216,7 @@ class _sign_in_pageState extends State<sign_in_page> {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
                                     Navigator.of(context).pop();
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const log_in_page()));
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  pick_interests(user_name.text, user_username.text, int.parse(user_age.text), user_new_password.text)));
                                   }
                                    
                                 },

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/friend_list_service.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/Shadows.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
@@ -43,12 +44,15 @@ class _ProfilePageState extends State<ProfilePage> {
 
   getData() async {
     final activityData = await fetchEventData();
+    User? tempUser = await getUserByUsername(widget.user!.username);
 
     setState(() {
       activitiesCreated = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_created.contains(activity.id)).toList();
       activitiesCompleted = activityHistoryFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_completed.contains(activity.id)).toList();
       isLoaded = true;
+      widget.user = tempUser;
     });
+    print(tempUser!.activities_created.length);
   }
 
   void updateActivitiesCreated(List<ActivityDetails> updatedActivities) {

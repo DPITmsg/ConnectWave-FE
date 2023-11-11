@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../Views/Classes/User.dart';
+import '../Views/Classes/activitydetails.dart';
+import 'activity_service.dart';
 
 void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about) async{
   final url = Uri.parse('http://192.168.1.213:8081/user');
@@ -15,7 +17,7 @@ void registerUser(String name, String username, int age, String password, List<S
       'password': password,
       'tags': tags,
       'interests': interests,
-      'about': 'this is the about',
+      'about': about,
       'rating': 0.0
     })
   );
@@ -52,14 +54,16 @@ Future<User?> logInUser(String username, String password) async {
       print(user.about);
       return user;
     } else {
-      final message = responseData.toString(); // Convert it to a string
+      final message = responseData.toString();
       print(message);
-      return null; // Return null to indicate the login was not successful.
+      return null;
     }
   } else {
     print('Login failed with status code: ${response.statusCode}');
     print('Response body: ${response.body}');
-    return null; // Return null to indicate the login was not successful.
+    return null;
   }
 }
+
+
 

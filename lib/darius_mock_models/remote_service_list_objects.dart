@@ -37,23 +37,32 @@ Future<List<Map<String, dynamic>>> fetchAddressData() async {
   return fetchData(url);
 }
 
-Future<List<ActivityDetails>> fetchEnrolledActivitesData(List<int> ids) async{
-  final url = Uri.parse('http://192.168.1.213:8081/activities/activity_by_id');
+Future<List<ActivityDetails>> fetchEnrolledActivitesData(List<int> ids) async {
+  final url = Uri.parse('http://192.168.1.213:8081/activity_by_id');
   List<ActivityDetails> list_activities = [];
 
-  for (var i = 0; i < ids.length; i++){
+  for (var i = 0; i < ids.length; i++) {
+
+    String id = ids[i].toString();
+    print(id);
+
     final response = await http.post(
       url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: {
-        "id": ids[i].toString(),
-      }
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'id': id})
     );
-    ActivityDetails activity = json.decode(response.body);
-    
-    list_activities.add(activity);
+
+    if (response.statusCode == 200) {
+      try {
+        Map<String, dynamic> activityDetails = json.decode(response.body);
+        ActivityDetails activity = ActivityDetails.fromJson(activityDetails);
+        list_activities.add(activity);
+      } catch (e) {
+        print("Error decoding JSON: $e");
+      }
+    } else {
+      print("Request failed with status code: ${response.statusCode}");
+    }
   }
 
   return list_activities;

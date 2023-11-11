@@ -84,6 +84,8 @@ Future<User?> getUserByUsername(String username) async{
   if (response.statusCode == 200){
     final data = json.decode(response.body);
 
+    print(data['activities_created']);
+
     User? user = userFromJson(data);
 
     return user;

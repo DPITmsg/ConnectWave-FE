@@ -294,8 +294,8 @@ class _pick_interestsState extends State<pick_interests> {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
                                     registerUser(
-                                        widget.name,
                                         widget.username,
+                                        widget.name,
                                         widget.age,
                                         widget.password,
                                         tags,

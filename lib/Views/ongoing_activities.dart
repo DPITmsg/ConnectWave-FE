@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Views/Widgets/container_ongoing_activities.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 
+import '../Service/friend_list_service.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
@@ -10,9 +11,9 @@ import 'Styles/Colors.dart';
 import 'Widgets/loadingscreen.dart';
 
 class OngoingActivities extends StatefulWidget {
-  final User? user;
+  User? user;
 
-  const OngoingActivities({super.key, required this.user});
+  OngoingActivities({super.key, required this.user});
 
   @override
   State<OngoingActivities> createState() => _OngoingActivitiesState();
@@ -29,9 +30,17 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
     getData();
   }
 
+  void updateData() async{
+  }
+
   getData() async {
     print(widget.user!.activities_enrolled.length);
+    User? tempUser = await getUserByUsername(widget.user!.username);
+    setState(() {
+      widget.user = tempUser;
+    });
     activitiesCurrent = await fetchEnrolledActivitesData(widget.user!.activities_enrolled);
+
     setState(() {
       isLoaded = true;
     });

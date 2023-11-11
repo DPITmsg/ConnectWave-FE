@@ -108,7 +108,7 @@ class ContainerOngoingActivity extends StatelessWidget {
                             Text('Category: ${activity.category}', style: Text_Search_Activity_v2),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text('Nr. of participants: ${(activity.participants.length + 1).toString()}', style: Text_Search_Activity_v2),
+                              child: Text('Nr. of participants: ${(activity.participants.length).toString()}', style: Text_Search_Activity_v2),
                             ),
                         Text(
                           activity.date != activity.endDate
