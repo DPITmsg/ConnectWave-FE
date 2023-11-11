@@ -54,11 +54,6 @@ class IntOrTags extends StatelessWidget {
               }).toList(),
             ),
           ),
-          Icon(
-            Icons.add,
-            size: 24,
-            color: Color_Blue,
-          ),
         ],
       ),
     );

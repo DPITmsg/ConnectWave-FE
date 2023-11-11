@@ -90,3 +90,30 @@ Future<User?> getUserByUsername(String username) async{
   }
   return null;
 }
+
+Future<void> updateUser(String username, String new_name, String new_age, String new_about, List<String> new_tags, List<String> new_interests)async {
+  final url = Uri.parse('http://192.168.1.213:8081/edit_user');
+
+  final response = await http.post(
+    url,
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8'
+    },
+    body: jsonEncode({
+      'username': username,
+      'name': new_name,
+      'age': new_age,
+      'about': new_about,
+      'tags': new_tags,
+      'interests': new_interests,
+      'rating': 0.0,
+    })
+  );
+
+  if (response.statusCode == 200){
+    print("Worked");
+  }
+  else{
+    print("Didn't work");
+  }
+}

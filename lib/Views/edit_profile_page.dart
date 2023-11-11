@@ -22,18 +22,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
   TextEditingController _aboutController = TextEditingController();
   TextEditingController _interestsController = TextEditingController();
   TextEditingController _tagsController = TextEditingController();
+  TextEditingController _ageController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _nameController.text = widget.user.name;
     _aboutController.text = widget.user.about;
+    _ageController.text = widget.user.age.toString();
   }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(centerTitle: true, title: Text('Edit Profile Data'), backgroundColor: Color_Blue,),
       body: Container(
         color: Color_Gray,
@@ -44,7 +47,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
               AvatarContainer(AssetImage('assets/profilepic2.png')),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                child: CoolTextField(Controller: _nameController, type: 'Name'),
+                child: Row(
+                  children: [
+                    Expanded(flex: 1,child: CoolTextField(Controller: _nameController, type: 'Name')),
+                    SizedBox(width: 8,),
+                    Expanded(flex: 1,child: CoolTextField(Controller: _ageController, type: 'Age')),
+                  ],
+                ),
               ),
               CoolTextField(Controller: _aboutController, type: 'About'),
               SizedBox(height: 30),

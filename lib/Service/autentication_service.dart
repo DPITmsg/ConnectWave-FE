@@ -16,6 +16,7 @@ void registerUser(String name, String username, int age, String password, List<S
       'tags': tags,
       'interests': interests,
       'about': 'this is the about',
+      'rating': 0.0
     })
   );
 
@@ -48,6 +49,7 @@ Future<User?> logInUser(String username, String password) async {
         responseData.containsKey('user')) {
       final user = User.fromJson(responseData['user']);
       print(user.username);
+      print(user.about);
       return user;
     } else {
       final message = responseData.toString(); // Convert it to a string

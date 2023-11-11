@@ -245,7 +245,7 @@ class _sign_in_pageState extends State<sign_in_page> {
                                         user_new_password.text,
                                         ['tags', 'yes'],
                                         ['interests', 'no'],
-                                        'the about',
+                                        'this is the about',
                                     );
 
 

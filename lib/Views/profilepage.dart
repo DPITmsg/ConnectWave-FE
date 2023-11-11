@@ -79,9 +79,36 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Center(
                   child: Column(
                     children: [
-                      AvatarContainer(profilePic),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          AvatarContainer(profilePic),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfilePage(user: widget.user!)));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24),
+                                    color: Color_Blue,
+                                    boxShadow: [
+                                      Shadow_Darius
+                                    ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('Edit Profile', style: Text_Widget_ForYou_Bold_White,),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(28, 30, 0, 0),
+                        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -96,12 +123,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                              child: Icon(
-                                Icons.edit,
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -111,6 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Stars(widget.user!.rating),
                       ),
                       Text('Age: ${widget.user!.age.toString()}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color_Dark_Gray),),
+
                       Padding(
                         padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                         child: Row(
@@ -149,7 +171,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                       fontSize: 16,
                                     ),
                                   ),
-                                  IconButton(onPressed: (){}, icon: Icon(Icons.edit))
                                 ],
                               ),
                               Text(widget.user!.about),
@@ -192,30 +213,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: IntOrTags(widget.user!.tags),
                       ),
                       SizedBox(height: 10,),
-                      InkWell(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfilePage(user: widget.user!)));
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            color: Color_Blue,
-                            boxShadow: [
-                              Shadow_Darius
-                            ]
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text('Edit Profile', style: Text_Widget_ForYou_Bold_White,),
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: (){
-                            Navigator.of(context).popUntil((route) => route.isFirst);
-                          },
-                          icon: Icon(Icons.logout)
-                      )
                     ],
                   ),
                 ),
@@ -234,24 +231,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(screenWidth - 50, 50, 0, 0),
-                child: InkWell(
-                  child: SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Image.asset('assets/instagram.png'),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(screenWidth - 100, 50, 0, 0),
-                child: InkWell(
-                  child: SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Image.asset('assets/facebook.png'),
-                  ),
-                ),
+                padding: EdgeInsets.fromLTRB(screenWidth - 50, 45, 0, 0),
+                child: IconButton(
+                    onPressed: (){
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                    icon: Icon(Icons.logout, size: 32,)
+                )
               ),
             ],
           ),
