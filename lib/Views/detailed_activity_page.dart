@@ -237,33 +237,46 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                       radius: 45.0,
                                     ),
                                     const SizedBox(width: 10.0),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text('Name: ',
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                            Text(widget.activity.author,
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text('Activities completed: ',
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                            Text('TBD',
-                                                style:
-                                                    Text_Detailed_Page_Bold_White),
-                                          ],
-                                        ),
-                                      ],
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text('Username: ',
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                              Text(widget.activity.author,
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text('Activities completed: ',
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                              Text(widget.user.activities_completed.length.toString(),
+                                                  style:
+                                                      Text_Detailed_Page_Bold_White),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text('Friends:  ',
+                                                  style:
+                                                  Text_Detailed_Page_Bold_White),
+                                              Text(widget.user.friends.length.toString(),
+                                                  style:
+                                                  Text_Detailed_Page_Bold_White),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -284,17 +297,19 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                               if (didJoin == false) {
                                 final response = await joinActivity(
                                     widget.activity.id, widget.user.username);
-                                if (response.body == 'true') {
-                                  didJoin = true;
+                                if (response.statusCode == 200) {
+                                  setState(() {
+                                    didJoin = true;
+                                  });
                                 }
-                                setState(() {});
                               } else {
                                 final response = await unJoinActivity(
                                     widget.activity.id, widget.user.username);
-                                if (response.body == 'true') {
-                                  didJoin = false;
+                                if (response.statusCode == 200) {
+                                  setState(() {
+                                    didJoin = false;
+                                  });
                                 }
-                                setState(() {});
                               }
                             },
                             child: WidgetButton(

@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="almost ready for develop, darius you need to pull this">
-      <change afterPath="$PROJECT_DIR$/lib/Views/pick_interest.dart" afterDir="false" />
+    <list default="true" id="9ea6c8b6-bf03-4f9c-9e75-f547cea264c1" name="Changes" comment="finished pick interests page, hope it works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/autentication_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Styles/StyleText.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetTagsBox.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetTagsBox.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/WidgetButtons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/WidgetButtons.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/log_in_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/log_in_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/pick_interest.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/pick_interest.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699562354456</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finished pick interests page, hope it works">
+      <created>1699636188710</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699636188710</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +153,7 @@
     <MESSAGE value="changed all user service to send current username in backend, so that it knows who to remove/add/deny/accept/get list from" />
     <MESSAGE value="pull commit 2" />
     <MESSAGE value="almost ready for develop, darius you need to pull this" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost ready for develop, darius you need to pull this" />
+    <MESSAGE value="finished pick interests page, hope it works" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished pick interests page, hope it works" />
   </component>
 </project>

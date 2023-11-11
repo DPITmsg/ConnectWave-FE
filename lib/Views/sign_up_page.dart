@@ -118,7 +118,8 @@ class _sign_in_pageState extends State<sign_in_page> {
                                         return 'Required field';
                                       }else if(int.parse(value) < 13){
                                         return 'See you in ${13-int.parse(value)} years';
-                                      }
+                                      }else if(int.parse(value)> 106)
+                                        return 'You are not ${int.parse(value)} years old';
                                       return null;
                                     }
                                     ),

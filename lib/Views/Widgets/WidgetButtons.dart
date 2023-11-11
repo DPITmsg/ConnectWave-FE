@@ -9,7 +9,8 @@ class WidgetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           color: color_primary,
           borderRadius: BorderRadius.circular(90),
