@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="04efee8c-d25b-49e9-b115-33a4df4d4b5e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/autentication_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Classes/User.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Classes/User.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/interestsortags.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/interestsortags.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/sign_up_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
