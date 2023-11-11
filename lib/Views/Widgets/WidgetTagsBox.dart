@@ -10,7 +10,6 @@ class WidgetTagsBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: [Shadow_Widget_Box],
         color: Color_Light_Blue,
         borderRadius: BorderRadius.circular(360)
       ),

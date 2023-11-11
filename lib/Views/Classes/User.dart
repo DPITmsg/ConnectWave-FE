@@ -16,6 +16,7 @@ User userFromJson(Map<String, dynamic> jsonData) {
   });
 }
 
+
 String postToJson(List<User> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
