@@ -6,6 +6,7 @@ import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetBox.dart';
 import 'package:my_project/Views/pick_interest.dart';
+import 'package:my_project/Views/pick_pfp.dart';
 import '../Service/autentication_service.dart';
 import 'log_in_page.dart';
 
@@ -217,7 +218,7 @@ class _sign_in_pageState extends State<sign_in_page> {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   if (_formKey.currentState!.validate()) {
                                     Navigator.of(context).pop();
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  pick_interests(user_name.text, user_username.text, int.parse(user_age.text), user_new_password.text)));
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  pick_pfp(user_name.text, user_username.text, int.parse(user_age.text), user_new_password.text)));
                                   }
                                    
                                 },
