@@ -10,6 +10,7 @@ import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
 
 import '../Service/friend_list_service.dart';
+import '../darius_mock_models/remote_service_singular_object.dart';
 import 'Classes/Trending.dart';
 import 'Classes/User.dart';
 import 'Widgets/cardmenuaddactivity.dart';
@@ -35,31 +36,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   bool isLoaded = true;
-
-  /*
-  bool isLoaded = false;
-  User? user;
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future<void> getData() async {
-    try {
-      final userData = await fetchUserData('1278403');
-      user = User.fromJson(userData);
-
-      setState(() {
-        isLoaded = true;
-      });
-    } catch (error) {
-      print('Error loading data: $error');
-    }
-  }
-
-   */
 
   @override
   Widget build(BuildContext context) {

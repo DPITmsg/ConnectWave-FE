@@ -4,7 +4,7 @@ import '../Styles/Shadows.dart';
 
 class AvatarContainer extends StatelessWidget {
 
-  final AssetImage image;
+  final String image;
   AvatarContainer(this.image);
 
   @override
@@ -21,7 +21,7 @@ class AvatarContainer extends StatelessWidget {
       ),
       child: CircleAvatar(
         radius: 72.0,
-        backgroundImage: image,
+        backgroundImage: NetworkImage(image),
       )
     );
   }

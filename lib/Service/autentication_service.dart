@@ -5,7 +5,7 @@ import '../Views/Classes/User.dart';
 import '../Views/Classes/activitydetails.dart';
 import 'activity_service.dart';
 
-void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about) async{
+void registerUser(String name, String username, int age, String password, List<String> tags, List<String> interests, String about, String pfp) async{
   final url = Uri.parse('http://192.168.1.213:8081/user');
 
   final response = await http.post(
@@ -18,7 +18,8 @@ void registerUser(String name, String username, int age, String password, List<S
       'tags': tags,
       'interests': interests,
       'about': about,
-      'rating': 0.0
+      'rating': 0.0,
+      'pfp': pfp,
     })
   );
 

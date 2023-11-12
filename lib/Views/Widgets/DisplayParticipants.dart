@@ -5,12 +5,14 @@ import 'package:my_project/Views/Widgets/container_rate_activity.dart';
 import 'package:my_project/Views/Widgets/containerdisplayparticipants.dart';
 import 'package:my_project/Views/Widgets/loadingscreen.dart';
 
+import '../Classes/Friend.dart';
+
 class DisplayParticipantsPage extends StatefulWidget {
-  final List<String> usernames;
+  final List<Friend> participants;
   final bool isAuthor;
   final VoidCallback Function;
 
-  DisplayParticipantsPage({Key? key, required this.usernames, required this.isAuthor, required this.Function})
+  DisplayParticipantsPage({Key? key, required this.participants, required this.isAuthor, required this.Function})
       : super(key: key);
 
   @override
@@ -20,7 +22,7 @@ class DisplayParticipantsPage extends StatefulWidget {
 class _DisplayParticipantsPageState extends State<DisplayParticipantsPage> {
   void _removeParticipant(String username) {
     setState(() {
-      widget.usernames.remove(username);
+      widget.participants.remove(username);
     });
     widget.Function();
   }
@@ -38,9 +40,9 @@ class _DisplayParticipantsPageState extends State<DisplayParticipantsPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: ListView.builder(
-            itemCount: widget.usernames.length,
+            itemCount: widget.participants.length,
             itemBuilder: (builder, index) {
-              return ContainerParticipants(widget.usernames[index], 'ngl', widget.isAuthor, (){_removeParticipant(widget.usernames[index]);});
+              return ContainerParticipants(widget.participants[index].name, widget.participants[index].pfp, widget.isAuthor, (){_removeParticipant(widget.participants[index].name);});
             },
           ),
         ),

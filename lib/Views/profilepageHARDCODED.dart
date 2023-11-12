@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 import 'package:my_project/Views/activityhistory.dart';
+import 'package:my_project/Views/createdActivitiesHARDCODED.dart';
 
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/ActivityHistory.dart';
@@ -19,6 +20,7 @@ import 'friends_list_page.dart';
 
 class ProfilePageHardCoded extends StatefulWidget {
   User? user;
+  User? actualUser;
 
   ProfilePageHardCoded({Key? key, required this.user}) : super(key: key);
 
@@ -70,7 +72,7 @@ class _ProfilePageStateHardCoded extends State<ProfilePageHardCoded> {
                   child: Center(
                     child: Column(
                       children: [
-                        AvatarContainer(profilePic),
+                        AvatarContainer(widget.user!.pfp),
                         Padding(
                           padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                           child: Row(
@@ -113,7 +115,7 @@ class _ProfilePageStateHardCoded extends State<ProfilePageHardCoded> {
                               CardProfile(
                                 widget.user!.activities_created.length.toString(),
                                 'Activities Created',
-                                ActivitiesCreatedPage(activities_created: activitiesCreated, user: widget.user!),
+                                CreatedActivitiesHardCoded(userObserved: widget.user!),
                               ),
                             ],
                           ),

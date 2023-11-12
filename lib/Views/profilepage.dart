@@ -52,7 +52,6 @@ class _ProfilePageState extends State<ProfilePage> {
       isLoaded = true;
       widget.user = tempUser;
     });
-    print(tempUser!.activities_created.length);
   }
 
   void updateActivitiesCreated(List<ActivityDetails> updatedActivities) {
@@ -87,7 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          AvatarContainer(profilePic),
+                          AvatarContainer(widget.user!.pfp),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 4),
                             child: InkWell(

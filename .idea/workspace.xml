@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cae1d1d3-b3d2-4920-a595-bf8100051e90" name="Changes" comment="">
+    <list default="true" id="f4c4683c-9aa9-4fea-90be-1de277cf7919" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/Views/createdActivitiesHARDCODED.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Service/activity_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/activity_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Service/autentication_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/autentication_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/DisplayParticipants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/DisplayParticipants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/avatarcontainer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/avatarcontainer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/containerdisplayparticipants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/containerdisplayparticipants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/add_activity_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/detailed_activity_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/homepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/ongoing_activities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/profilepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Views/profilepageHARDCODED.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/profilepageHARDCODED.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

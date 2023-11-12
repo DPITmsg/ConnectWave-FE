@@ -69,3 +69,26 @@ Future<http.Response> unJoinActivity(int id,String username) {
   );
 }
 
+Future<ActivityDetails?> getActivityById(int id) async{
+  final url = Uri.parse('http://192.168.1.213:8081/activity_by_id');
+
+  final response = await http.post(
+      url,
+    headers: {
+        'Content-Type' : 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode({'id': id.toString()}),
+  );
+
+  if (response.statusCode == 200){
+    Map<String, dynamic> data = json.decode(response.body);
+
+    ActivityDetails? activity = ActivityDetails.fromJson(data);
+
+    return activity;
+  }
+  else{
+    return null;
+  }
+}
+

@@ -578,7 +578,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                           );
                                           final response =
                                               await createActivty(activity);
-                                          if (response.body == 'true') {
+                                          if (response.statusCode == 200) {
                                             Navigator.of(context).pop();
                                             Navigator.of(context).push(
                                                 MaterialPageRoute(
@@ -619,7 +619,7 @@ class _add_activity_pageState extends State<add_activity_page> {
                                     },
                                     child: WidgetButton(
                                       Center(
-                                        child: Text("Cancel",
+                                        child: Text("Back",
                                             style: Text_Widget_Buttons_Blue),
                                       ),
                                       Color_Dark_Gray,

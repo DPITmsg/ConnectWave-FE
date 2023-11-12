@@ -44,7 +44,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             children: [
-              AvatarContainer(AssetImage('assets/profilepic2.png')),
+              AvatarContainer(widget.user!.pfp),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Row(
