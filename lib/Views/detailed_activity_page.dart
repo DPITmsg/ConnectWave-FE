@@ -17,7 +17,7 @@ import 'Widgets/loadingscreen.dart';
 import 'search_activity_map.dart';
 
 class detailed_activity_page extends StatefulWidget {
-  final ActivityDetails activity;
+  ActivityDetails activity;
   final User user;
   late final bool quickJoin;
   bool _isOnline;
@@ -31,6 +31,11 @@ class detailed_activity_page extends StatefulWidget {
 }
 
 class _detailed_activity_pageState extends State<detailed_activity_page> {
+  bool isFriend = false;
+  bool isAuthor = false;
+  bool didJoin = false;
+
+
   void _onBackPressed() {
     Navigator.of(context).pop();
     Navigator.of(context)
@@ -42,12 +47,18 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    bool isFriend = widget.user.friends.any((friend) =>
-        friend.name == widget.activity.author ||
+  void initState(){
+    super.initState();
+    isFriend = widget.user.friends.any((friend) =>
+    friend.name == widget.activity.author ||
         widget.activity.participants.contains(friend.name));
-    bool isAuthor = widget.user.name == widget.activity.author;
-    bool didJoin = widget.activity.participants.contains(widget.user.username);
+    isAuthor = widget.user.name == widget.activity.author;
+    didJoin = widget.activity.participants.contains(widget.user.username);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('widget building...');
     return Scaffold(
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -296,6 +307,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
+                              print('Before joining: didJoin = $didJoin');
                               if (didJoin == false) {
                                 final response = await joinActivity(
                                     widget.activity.id, widget.user.username);
@@ -313,6 +325,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                   });
                                 }
                               }
+                              print('After joining: didJoin = $didJoin');
                             },
                             child: WidgetButton(
                               Center(
