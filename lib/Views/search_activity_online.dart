@@ -51,7 +51,7 @@ class _SearchActivityOnlinePageState extends State<SearchActivityOnlinePage> {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
-  List<String> categories = ['Sports', 'Cooking', 'Social', 'Gaming','School/Work', 'Services', 'Movies', 'Books', 'Volunteering', 'Business', 'Political', 'Other'];
+  List<String> categories = ['Sports', 'Cooking', 'Social', 'Gaming','School/Work', 'Services', 'Movies', 'Books', 'Volunteering', 'Business', 'Political', 'Other', 'All'];
   List<String> dates = ["Today/Tomorrow", "In the next three days", "In the next 7 days", "In the next 30 days", "All"];
   List<String> typeArray = ["all", "online", "offline"];
 

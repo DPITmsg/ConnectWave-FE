@@ -52,6 +52,10 @@ class _CreatedActivitiesHardCodedState extends State<CreatedActivitiesHardCoded>
     return activity.address != "online";
   }
 
+  void funcThatDoesNothing(){
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoaded ? Scaffold(

@@ -48,6 +48,8 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
         .push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
+
+
   void _JustASetState() {
     setState(() {});
   }
@@ -358,6 +360,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                         setState(() {
                                           didJoin = true;
                                           widget.activity = tempActivity!;
+                                          getParticipantsAsFriendClass();
                                         });
                                       }
                                     } else {
@@ -368,6 +371,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                         setState(() {
                                           didJoin = false;
                                           widget.activity = tempActivity!;
+                                          getParticipantsAsFriendClass();
                                         });
                                       }
                                     }

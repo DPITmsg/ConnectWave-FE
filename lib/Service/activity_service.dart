@@ -92,3 +92,21 @@ Future<ActivityDetails?> getActivityById(int id) async{
   }
 }
 
+Future<void> deleteActivity(int id) async{
+  final url = Uri.parse('http://192.168.1.213:8081/delete_activity');
+  final response = await http.delete(
+    url,
+    headers: {
+      'Content-Type' : 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode({'id': id.toString()}),
+  );
+
+  if (response.statusCode == 200){
+    print('worked');
+  }
+  else{
+    print("Didn't work");
+  }
+}
+

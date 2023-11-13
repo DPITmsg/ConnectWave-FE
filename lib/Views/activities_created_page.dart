@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/Classes/Activity.dart';
 import 'package:my_project/Views/Classes/User.dart';
 import 'package:my_project/Views/Widgets/container_activities_created.dart';
@@ -11,8 +12,9 @@ import 'Widgets/loadingscreen.dart';
 class ActivitiesCreatedPage extends StatefulWidget {
   final List<ActivityDetails> activities_created;
   final User user;
+  final VoidCallback Function;
 
-  const ActivitiesCreatedPage({Key? key, required this.activities_created, required this.user}) : super(key: key);
+  const ActivitiesCreatedPage({Key? key, required this.activities_created, required this.user, required this.Function}) : super(key: key);
 
   @override
   State<ActivitiesCreatedPage> createState() => _ActivitiesCreatedPageState();
@@ -22,6 +24,7 @@ class ActivitiesCreatedPage extends StatefulWidget {
 class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
   void _onBackPressed() {
     Navigator.of(context).pop();
+    widget.Function();
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
   }
 
@@ -29,9 +32,11 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
     return activity.address != "online";
   }
 
-  void _removeActivity(ActivityDetails activity) {
-    widget.activities_created.remove(activity);
-    setState(() {});
+  void _removeActivity(ActivityDetails activity) async{
+    deleteActivity(activity.id);
+    setState(() {
+      widget.activities_created.remove(activity);
+    });
   }
 
   @override
@@ -50,7 +55,7 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
       ),
       body: Container(
         color: Color_Gray,
-        child: Column(
+        child: widget.activities_created!.length != 0 ? Column(
           children: <Widget>[
             Expanded(
               child: ListView.builder(
@@ -69,7 +74,7 @@ class _ActivitiesCreatedPageState extends State<ActivitiesCreatedPage> {
               ),
             ),
           ],
-        ),
+        ): Center(child: Text('No activities created!')),
       ),
     );
   }

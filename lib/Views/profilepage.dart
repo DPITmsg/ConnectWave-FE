@@ -42,6 +42,13 @@ class _ProfilePageState extends State<ProfilePage> {
     getData();
   }
 
+  void updateUserProfile() async{
+    User? tempUser = await getUserByUsername(widget.user!.username);
+    setState(() {
+      widget.user = tempUser;
+    });
+  }
+
   getData() async {
     final activityData = await fetchEventData();
     User? tempUser = await getUserByUsername(widget.user!.username);
@@ -91,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: const EdgeInsets.symmetric(horizontal: 4),
                             child: InkWell(
                               onTap: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfilePage(user: widget.user!)));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditProfilePage(user: widget.user!, Function: (){updateUserProfile();},)));
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -154,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             CardProfile(
                               widget.user!.activities_created.length.toString(),
                               'Activities Created',
-                              ActivitiesCreatedPage(activities_created: activitiesCreated, user: widget.user!),
+                              ActivitiesCreatedPage(activities_created: activitiesCreated, user: widget.user!, Function: (){updateUserProfile();},),
                             ),
                           ],
                         ),

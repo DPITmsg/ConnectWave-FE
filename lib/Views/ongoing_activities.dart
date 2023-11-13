@@ -84,7 +84,7 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
       ),
       body: Container(
         color: Color_Gray,
-        child: Column(
+        child: activitiesCurrent.length != 0 ? Column(
           children: <Widget>[
             Expanded(
               child: ListView.builder(
@@ -96,7 +96,7 @@ class _OngoingActivitiesState extends State<OngoingActivities> {
               ),
             ),
           ],
-        ),
+        ): Center(child: Text("You haven't joined an activity!"),)
       ),
     ): LoadingScreenPageNoPop();
   }

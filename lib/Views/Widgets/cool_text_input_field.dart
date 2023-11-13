@@ -15,6 +15,7 @@ class _CoolTextFieldState extends State<CoolTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: null,
       decoration: InputDecoration(
           labelText: widget.type,
           labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),

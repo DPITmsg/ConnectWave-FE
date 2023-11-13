@@ -39,7 +39,7 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
           },
         ),
       ),
-      body: ListView.builder(
+      body: widget.activities!.length != 0 ? ListView.builder(
         itemCount: widget.activities?.length ?? 0,
         itemBuilder: (context, index) {
           final activity = widget.activities![index];
@@ -71,7 +71,7 @@ class _ActivityHistoryPageState extends State<ActivityHistoryPage> {
                 activity.location);
           }
         },
-      ),
+      ): Center(child: Text('No activities completed!'),)
     );
   }
 }
