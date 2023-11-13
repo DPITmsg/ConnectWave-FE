@@ -46,8 +46,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void _onBackPressed() {
     Navigator.of(context).pop();
-    widget.Function();
+    setState(() {
+      widget.Function();
+    });
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadingScreenPage()));
+    setState(() {
+      widget.Function();
+    });
   }
 
   List<String> categories = [
@@ -83,7 +88,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               children: [
-                SizedBox(height: 8,),
+                SizedBox(height: 25,),
                 AvatarContainer(widget.user!.pfp),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),

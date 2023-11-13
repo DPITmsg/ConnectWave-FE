@@ -10,8 +10,9 @@ import 'Widgets/WidgetBoxFriend.dart';
 class friend_request_page extends StatefulWidget {
   final List<Friend> request_list;
   final User currentUser;
+  final VoidCallback Function;
 
-  const friend_request_page(this.request_list,this.currentUser, {super.key});
+  const friend_request_page(this.request_list,this.currentUser, this.Function, {super.key});
 
   @override
   State<friend_request_page> createState() => _friend_request_pageState();
@@ -57,7 +58,13 @@ class _friend_request_pageState extends State<friend_request_page> {
                               ),
                             ),
                             onTap: () {
+                              setState(() {
+                                widget.Function();
+                              });
                               Navigator.of(context).pop();
+                              setState(() {
+                                widget.Function();
+                              });
                             },
                           ),
                         ),
@@ -89,6 +96,10 @@ class _friend_request_pageState extends State<friend_request_page> {
                                         children: [
                                           InkWell(
                                               onTap: () async {
+                                                await declineFriendRequest(widget.currentUser.username, user.name);
+                                                setState(() {
+                                                  widget.request_list.remove(user);
+                                                });
                                               },
                                               child: const Icon(
                                                 Icons.clear,
@@ -99,6 +110,9 @@ class _friend_request_pageState extends State<friend_request_page> {
                                           InkWell(
                                               onTap: () async {
                                                 await acceptFriendRequest(widget.currentUser.username, user.name);
+                                                setState(() {
+                                                  widget.request_list.remove(user);
+                                                });
                                               },
                                               child: const Icon(Icons.check,
                                                   color: Colors.green))

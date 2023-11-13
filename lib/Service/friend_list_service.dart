@@ -89,6 +89,24 @@ Future<void> acceptFriendRequest(String username_user, String username_friend) a
 }
 
 
+Future<void> declineFriendRequest(String name, String currentUser) async{
+  final response = await http.post(
+    Uri.parse('http://192.168.1.213:8081/decline_friend_request'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'username_user': name,
+      'username_friend':currentUser,
+    }),
+  );
+  if (response.statusCode == 200){
+    print('worked');
+  }
+  else{
+    print("didn't work");
+  }
+}
 
 Future<void> sendFriendRquest(String name, String currentUsername) async {
   final response = await http.post(
@@ -109,17 +127,23 @@ Future<void> sendFriendRquest(String name, String currentUsername) async {
     print("didn't work");
   }
 }
-Future<http.Response> removeFriend(String name, String currentUser) {
-  return http.post(
-    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/remove_friend'),
+Future<void> removeFriend(String name, String currentUser) async{
+  final response = await http.post(
+    Uri.parse('http://192.168.1.213:8081/decline_friend_request'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'name': name,
-      'currentUser':currentUser,
+      'username_user': name,
+      'username_friend':currentUser,
     }),
   );
+  if (response.statusCode == 200){
+    print('worked');
+  }
+  else{
+    print("didn't work");
+  }
 }
 
 Future<User?> getUserByUsername(String username) async{

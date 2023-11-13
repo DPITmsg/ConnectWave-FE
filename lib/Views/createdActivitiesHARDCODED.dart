@@ -10,6 +10,7 @@ import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
+import 'Widgets/containersearchactivityHARDCODED.dart';
 import 'Widgets/loadingscreen.dart';
 
 class CreatedActivitiesHardCoded extends StatefulWidget {
@@ -79,7 +80,7 @@ class _CreatedActivitiesHardCodedState extends State<CreatedActivitiesHardCoded>
                 itemCount: activitiesCreated.length ?? 0,
                 itemBuilder: (context, index) {
                   final activity = activitiesCreated[index];
-                  return ContainerActivityForSearch(activity, widget.userObserved!, _isOnline(activity));
+                  return ContainerActivityForSearchHardCoded(activity, widget.userObserved!, _isOnline(activity));
                 },
               ),
             ),

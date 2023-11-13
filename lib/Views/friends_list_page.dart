@@ -16,16 +16,36 @@ import 'Widgets/WidgetSmallButton.dart';
 import 'find_friends.dart';
 
 class friends_list_page extends StatefulWidget {
-  final List<Friend> friends_list;
+  List<Friend> friends_list;
   final User user;
 
-  const friends_list_page(this.friends_list, this.user,{super.key});
+  friends_list_page(this.friends_list, this.user,{super.key});
 
   @override
   State<friends_list_page> createState() => _friends_list_pageState();
 }
 
 class _friends_list_pageState extends State<friends_list_page> {
+
+  void updateFriendsList() async{
+
+    List<String>? listUsernames = await getFriendList(widget.user.username);
+    List<Friend> friends = [];
+
+    for (var i = 0; i < listUsernames!.length; i++){
+      User? user3 = await getUserByUsername(listUsernames[i]);
+
+      Friend userAsFriend = Friend(name: user3!.username, pfp: user3.pfp);
+
+      friends.add(userAsFriend);
+    }
+    print(friends.length);
+
+    setState(() {
+      widget.friends_list = friends;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,13 +107,6 @@ class _friends_list_pageState extends State<friends_list_page> {
                                     user.pfp,
                                     InkWell(
                                         onTap: () async {
-                                          final response =
-                                              await removeFriend(
-                                              user.name, widget.user.username);
-                                          if(response.body == 'true'){
-                                            widget.friends_list.remove(user);
-                                            setState(() {});
-                                          }
                                       },
                                       child: WidgetSmallButton(
                                         Row(
@@ -162,7 +175,7 @@ class _friends_list_pageState extends State<friends_list_page> {
                               Friend friend = Friend(name: user!.username, pfp: user.pfp);
                               userRequests.add(friend);
                             }
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => friend_request_page(userRequests, widget.user)));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => friend_request_page(userRequests, widget.user, (){updateFriendsList();})));
                             },
                             child: WidgetButton(
                               Center(

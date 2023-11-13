@@ -6,7 +6,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:my_project/Service/activity_service.dart';
 import 'package:my_project/Views/detailed_activity_page.dart';
 
+import '../Service/friend_list_service.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
+import 'Classes/Friend.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Styles/Colors.dart';
@@ -34,6 +36,21 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
   TextEditingController _searchController = TextEditingController();
   BitmapDescriptor customIcon = BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue);
   BitmapDescriptor defaultIcon = BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
+  List<String> friendsUser = [];
+
+  @override
+  void initState(){
+    super.initState();
+    getFriendsUser();
+  }
+
+  void getFriendsUser() async {
+    List<String>? listUsernames = await getFriendList(widget.user.username);
+
+    setState(() {
+      friendsUser = listUsernames!;
+    });
+  }
 
 
   Future<void> getData() async {
@@ -184,7 +201,7 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
     List<ActivityDetails> toReturn = [];
 
     for (var i = 0; i < activities.length; i++){
-      if (widget.user.friends.contains(activities[i].author)){
+      if (friendsUser.contains(activities[i].author)){
         toReturn.add(activities[i]);
       }
     }
@@ -204,14 +221,17 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
     _markers.clear();
     _markerActivityMap.clear();
 
-    if (activities.isNotEmpty) {
+    // Fetch the list of friend usernames
+    getFriendsUser();
 
-      for (var i = 0; i < activities.length; i++){
+    if (activities.isNotEmpty) {
+      for (var i = 0; i < activities.length; i++) {
         var activity = activityList[i];
         BitmapDescriptor markerIcon = defaultIcon;
         String authorName = activity.author;
 
-        if (widget.user.friends.any((friend) => friend.name == authorName || activity.participants.contains(friend.name))) {
+        // Check if the author or participants are in the friends list
+        if (friendsUser.contains(authorName) || activity.participants.any((participant) => friendsUser.contains(participant))) {
           markerIcon = customIcon;
         }
 
@@ -222,20 +242,22 @@ class _SearchActivityMapState extends State<SearchActivityMap> {
           infoWindow: InfoWindow(
             title: activityList[i].title,
             snippet: activityList[i].address,
-            onTap: () {_onMarkerTapped(activityList[i]);},
+            onTap: () {
+              _onMarkerTapped(activityList[i]);
+            },
           ),
         );
 
         _markers[cnt.toString()] = marker;
         cnt++;
-        setState(() {});
       }
-
     } else {
       _markers.clear();
-      setState(() {});
     }
+
+    setState(() {});
   }
+
 
   void _onMarkerTapped(ActivityDetails activity) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => detailed_activity_page(activity, widget.user, _isOnline(activity), false)));

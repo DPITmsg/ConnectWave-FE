@@ -127,23 +127,8 @@ class ContainerCreatedActivity extends StatelessWidget {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(
-                      onTap: (){},
-                      child: Container(
-                        height: 42,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: Color_Light_Blue,
-                        ),
-                        child: Center(child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("View Participants", style: TextStyle(color: Color_White, fontWeight: FontWeight.bold),),
-                        )),
-                      ),
-                    ),
                     InkWell(
                       onTap: () {
                         removeActivity();
