@@ -4,14 +4,36 @@ import 'package:http/http.dart' as http;
 
 import '../Views/Classes/User.dart';
 
-Future<http.Response> getFriendList(String username) {
-  return http.get(
-      Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/friends?username=$username'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+Future<List<String>?> getFriendList(String username) async {
+  final response = await http.post(
+    Uri.parse('http://192.168.1.213:8081/friends_by_username'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode({'username': username}),
   );
+
+  if (response.statusCode == 200) {
+    List<dynamic> data = json.decode(response.body);
+
+    List<String> usernamesFriends = [];
+
+    data.forEach((friend) {
+      String otherUsername = (friend['username1'] == username)
+          ? friend['username2']
+          : friend['username1'];
+
+      usernamesFriends.add(otherUsername);
+    });
+
+    print(usernamesFriends);
+    return usernamesFriends;
+  } else {
+    print('did not work');
+    return null;
+  }
 }
+
 
 Future<http.Response> getUserList(String username) {
   return http.get(
@@ -22,40 +44,70 @@ Future<http.Response> getUserList(String username) {
   );
 }
 
-Future<http.Response> getRequestList(String username) {
-  return http.get(
-    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/request?username=$username'),
+Future<List<String>?> getRequestList(String username) async {
+  final response = await http.post(
+    Uri.parse('http://192.168.1.213:8081/friend_requests_by_username'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
+    body: jsonEncode({'username': username}),
   );
+  if (response.statusCode == 200) {
+    List<dynamic> data = json.decode(response.body);
+
+    List<String> usernamesFriends = [];
+
+    data.forEach((friend) {
+      usernamesFriends.add(friend['username2']);
+    });
+
+    return usernamesFriends;
+  } else {
+    print('did not work');
+    return null;
+  }
 }
 
-Future<http.Response> responseFriendRequest(String name, String response, String currentUsername) {
-  return http.post(
-      Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/accept_or_deny'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    body: jsonEncode(<String, String>{
-      'name': name,
-      'response':response,
-      'currentUsername':currentUsername,
-    }),
-  );
-}
-
-Future<http.Response> sendFriendRquest(String name, String currentUsername) {
-  return http.post(
-    Uri.parse('https://0421adcb-e569-4ea1-90bc-1321371ea2f4.mock.pstmn.io/send_friend_request'),
+Future<void> acceptFriendRequest(String username_user, String username_friend) async{
+  final response = await http.post(
+    Uri.parse('http://192.168.1.213:8081/accept_friend_request'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'name': name,
-      'currentUsername':currentUsername,
+      'username_user': username_user,
+      'username_friend': username_friend,
     }),
   );
+
+  if (response.statusCode == 200){
+    print('worked');
+  }
+  else{
+    print("didn't work");
+  }
+}
+
+
+
+Future<void> sendFriendRquest(String name, String currentUsername) async {
+  final response = await http.post(
+    Uri.parse('http://192.168.1.213:8081/send_friend_request'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'username_user': name,
+      'username_friend': currentUsername,
+    }),
+  );
+
+  if (response.statusCode == 200){
+    print('worked');
+  }
+  else{
+    print("didn't work");
+  }
 }
 Future<http.Response> removeFriend(String name, String currentUser) {
   return http.post(

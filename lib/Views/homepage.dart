@@ -8,6 +8,7 @@ import 'package:my_project/Views/Classes/Friend.dart';
 import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/ongoing_activities.dart';
 import 'package:my_project/Views/search_activity_map.dart';
+import 'package:my_project/Views/tempFile.dart';
 
 import '../Service/friend_list_service.dart';
 import '../darius_mock_models/remote_service_singular_object.dart';
@@ -143,15 +144,20 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
 
                       ElevatedButton(
-                        onPressed: () async {
-                          final response = await getFriendList(widget.user!.username);
-                          List<Friend> friends_list =
-                          (jsonDecode(response.body) as List)
-                              .map((e) => Friend.fromJson(e))
-                              .toList();
+                        onPressed: () async{
+                          List<String>? listUsernames = await getFriendList(widget.user!.username);
+
+                          List<Friend> friendsList = [];
+                          for (var i = 0; i < listUsernames!.length; i++){
+                            User? user = await getUserByUsername(listUsernames[i]);
+
+                            Friend friend = Friend(name: user!.username, pfp: user.pfp);
+                            friendsList.add(friend);
+                          }
+
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  friends_list_page(widget.user!.friends,widget.user!)));
+                                  friends_list_page(friendsList, widget.user!)));
                         },
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.black.withOpacity(0.4),

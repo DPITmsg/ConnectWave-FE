@@ -40,6 +40,30 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
   List<Friend> participantsAsFriends = [];
   User? userAuthor;
 
+  List<Friend> friendsOfAuthor = [];
+
+  void getFriendsAuthor() async{
+    String username = widget.activity.author;
+
+    User? user2 = await getUserByUsername(username);
+
+    List<String>? listUsernames = await getFriendList(user2!.username);
+    List<Friend> friends = [];
+
+    for (var i = 0; i < listUsernames!.length; i++){
+      User? user3 = await getUserByUsername(listUsernames[i]);
+
+      Friend userAsFriend = Friend(name: user3!.username, pfp: user3.pfp);
+
+      friends.add(userAsFriend);
+    }
+    print(friends.length);
+
+    setState(() {
+      friendsOfAuthor = friends;
+    });
+  }
+
 
 
   void _onBackPressed() {
@@ -91,6 +115,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
 
     getAuthorAsUser();
     getParticipantsAsFriendClass();
+    getFriendsAuthor();
   }
 
   @override
@@ -326,7 +351,7 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                                       Text('Friends:  ',
                                                           style:
                                                           Text_Detailed_Page_Bold_White),
-                                                      Text(userAuthor!.friends.length.toString(),
+                                                      Text(friendsOfAuthor.length.toString(),
                                                           style:
                                                           Text_Detailed_Page_Bold_White),
                                                     ],
@@ -364,17 +389,20 @@ class _detailed_activity_pageState extends State<detailed_activity_page> {
                                         });
                                       }
                                     } else {
-                                      final response = await unJoinActivity(
-                                          widget.activity.id, widget.user.username);
-                                      if (response.statusCode == 200) {
-                                        ActivityDetails? tempActivity = await getActivityById(widget.activity.id);
-                                        setState(() {
-                                          didJoin = false;
-                                          widget.activity = tempActivity!;
-                                          getParticipantsAsFriendClass();
-                                        });
+                                      if (widget.user.username != widget.activity.author){
+                                        print("it's ok");
+                                        final response = await unJoinActivity(
+                                            widget.activity.id, widget.user.username);
+                                        if (response.statusCode == 200) {
+                                          ActivityDetails? tempActivity = await getActivityById(widget.activity.id);
+                                          setState(() {
+                                            didJoin = false;
+                                            widget.activity = tempActivity!;
+                                            getParticipantsAsFriendClass();
+                                          });
+                                        }
                                       }
-                                    }
+                                      }
                                     print('After joining: didJoin = $didJoin');
                                   },
                                   child: WidgetButton(

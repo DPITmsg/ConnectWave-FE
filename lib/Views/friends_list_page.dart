@@ -6,6 +6,7 @@ import 'package:my_project/Views/Styles/Colors.dart';
 import 'package:my_project/Views/Styles/StyleText.dart';
 import 'package:my_project/Views/Widgets/WidgetButtons.dart';
 import 'package:my_project/Views/friend_request_page.dart';
+import 'package:my_project/Views/tempFile.dart';
 
 import 'Classes/Friend.dart';
 import 'Classes/User.dart';
@@ -129,10 +130,10 @@ class _friends_list_pageState extends State<friends_list_page> {
                           child: InkWell(
                             onTap: () async {
                               final response = await getUserList(widget.user.username);
-                              List<Friend> user_list =
-                                  (jsonDecode(response.body) as List)
-                                      .map((e) => Friend.fromJson(e))
-                                      .toList();
+                              List<Friend> user_list = (jsonDecode(response.body) as List)
+                                  .map((e) => Friend.fromJson(e))
+                                  .toList();
+                              user_list.removeWhere((friend) => friend.name == widget.user.username);
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
                                       find_friends(user_list,widget.user)));
@@ -152,14 +153,16 @@ class _friends_list_pageState extends State<friends_list_page> {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              final response = await getRequestList(widget.user.username);
-                              List<Friend> request_list =
-                                  (jsonDecode(response.body) as List)
-                                      .map((e) => Friend.fromJson(e))
-                                      .toList();
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      friend_request_page(request_list,widget.user,)));
+                            List<String>? listUsernames = await getRequestList(widget.user!.username);
+
+                            List<Friend> userRequests = [];
+                            for (var i = 0; i < listUsernames!.length; i++){
+                              User? user = await getUserByUsername(listUsernames[i]);
+
+                              Friend friend = Friend(name: user!.username, pfp: user.pfp);
+                              userRequests.add(friend);
+                            }
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => friend_request_page(userRequests, widget.user)));
                             },
                             child: WidgetButton(
                               Center(

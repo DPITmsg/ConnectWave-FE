@@ -89,29 +89,16 @@ class _friend_request_pageState extends State<friend_request_page> {
                                         children: [
                                           InkWell(
                                               onTap: () async {
-                                                final response =
-                                                    await responseFriendRequest(
-                                                        user.name, 'false',widget.currentUser.username);
-                                                if(response.body == 'true'){
-                                                  widget.request_list
-                                                      .remove(user);
-                                                  setState(() {});
-                                                }
                                               },
                                               child: const Icon(
                                                 Icons.clear,
                                                 color: Colors.red,
-                                              )),
+                                              )
+                                              ),
+
                                           InkWell(
                                               onTap: () async {
-                                                final response =
-                                                await responseFriendRequest(
-                                                    user.name, 'true',widget.currentUser.username);
-                                                if(response.body == 'true'){
-                                                  widget.request_list
-                                                      .remove(user);
-                                                  setState(() {});
-                                                }
+                                                await acceptFriendRequest(widget.currentUser.username, user.name);
                                               },
                                               child: const Icon(Icons.check,
                                                   color: Colors.green))

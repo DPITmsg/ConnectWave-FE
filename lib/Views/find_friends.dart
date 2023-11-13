@@ -120,12 +120,9 @@ class _find_friendsState extends State<find_friends> {
                               user_list[index].pfp,
                               InkWell(
                                 onTap: () async {
-                                  final response = await sendFriendRquest(user_list[index].name, widget.currentUser.username);
-                                  if(response.body =='true'){
+                                    await sendFriendRquest(user_list[index].name, widget.currentUser.username);
                                     widget.user_list_2.remove(user_list[index]);
                                     user_list.remove(user_list[index]);
-                                    setState(() {});
-                                  }
                                 },
                                 child: WidgetSmallButton(
                                   Row(

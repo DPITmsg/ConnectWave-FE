@@ -11,6 +11,7 @@ import 'package:my_project/Views/edit_profile_page.dart';
 
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/ActivityHistory.dart';
+import 'Classes/Friend.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Widgets/avatarcontainer.dart';
@@ -34,6 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   List<ActivityDetails> activitiesCreated = [];
   List<ActivityHistory> activitiesCompleted = [];
+  List<Friend> friends = [];
   bool isLoaded = false;
 
   @override
@@ -44,8 +46,19 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void updateUserProfile() async{
     User? tempUser = await getUserByUsername(widget.user!.username);
+    List<String>? listUsernames = await getFriendList(widget.user!.username);
+
+    List<Friend> friendsList = [];
+    for (var i = 0; i < listUsernames!.length; i++){
+      User? user = await getUserByUsername(listUsernames[i]);
+
+      Friend friend = Friend(name: user!.username, pfp: user.pfp);
+      friendsList.add(friend);
+    }
+
     setState(() {
       widget.user = tempUser;
+      widget.user!.friends = friendsList;
     });
   }
 
@@ -53,11 +66,21 @@ class _ProfilePageState extends State<ProfilePage> {
     final activityData = await fetchEventData();
     User? tempUser = await getUserByUsername(widget.user!.username);
 
+    List<String>? listUsernames = await getFriendList(widget.user!.username);
+    List<Friend> friendsList = [];
+    for (var i = 0; i < listUsernames!.length; i++){
+      User? user = await getUserByUsername(listUsernames[i]);
+
+      Friend friend = Friend(name: user!.username, pfp: user.pfp);
+      friendsList.add(friend);
+    }
+
     setState(() {
       activitiesCreated = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_created.contains(activity.id)).toList();
       activitiesCompleted = activityHistoryFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_completed.contains(activity.id)).toList();
-      isLoaded = true;
       widget.user = tempUser;
+      friends = friendsList;
+      isLoaded = true;
     });
   }
 
@@ -154,9 +177,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               ActivityHistoryPage(activities: activitiesCompleted, user: widget.user!, isUser: true,),
                             ),
                             CardProfile(
-                              widget.user!.friends.length.toString(),
+                              friends.length.toString(),
                               'Friends',
-                                friends_list_page(widget.user!.friends,widget.user!),
+                                friends_list_page(friends, widget.user!),
                             ),
                             CardProfile(
                               widget.user!.activities_created.length.toString(),

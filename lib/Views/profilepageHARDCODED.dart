@@ -6,8 +6,10 @@ import 'package:my_project/Views/Widgets/loadingscreennopop.dart';
 import 'package:my_project/Views/activityhistory.dart';
 import 'package:my_project/Views/createdActivitiesHARDCODED.dart';
 
+import '../Service/friend_list_service.dart';
 import '../darius_mock_models/remote_service_list_objects.dart';
 import 'Classes/ActivityHistory.dart';
+import 'Classes/Friend.dart';
 import 'Classes/User.dart';
 import 'Classes/activitydetails.dart';
 import 'Widgets/avatarcontainer.dart';
@@ -33,6 +35,7 @@ class _ProfilePageStateHardCoded extends State<ProfilePageHardCoded> {
   List<ActivityDetails> activitiesCreated = [];
   List<ActivityHistory> activitiesCompleted = [];
   bool isLoaded = false;
+  List<Friend> friends = [];
 
   @override
   void initState() {
@@ -42,10 +45,22 @@ class _ProfilePageStateHardCoded extends State<ProfilePageHardCoded> {
 
   getData() async {
     final activityData = await fetchEventData();
+    User? tempUser = await getUserByUsername(widget.user!.username);
+
+    List<String>? listUsernames = await getFriendList(widget.user!.username);
+    List<Friend> friendsList = [];
+    for (var i = 0; i < listUsernames!.length; i++){
+      User? user = await getUserByUsername(listUsernames[i]);
+
+      Friend friend = Friend(name: user!.username, pfp: user.pfp);
+      friendsList.add(friend);
+    }
 
     setState(() {
       activitiesCreated = activityFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_created.contains(activity.id)).toList();
       activitiesCompleted = activityHistoryFromJson(json.encode(activityData)).where((activity) => widget.user!.activities_completed.contains(activity.id)).toList();
+      widget.user = tempUser;
+      friends = friendsList;
       isLoaded = true;
     });
   }
@@ -108,9 +123,9 @@ class _ProfilePageStateHardCoded extends State<ProfilePageHardCoded> {
                                 ActivityHistoryPage(activities: activitiesCompleted, user: widget.user!, isUser: false,),
                               ),
                               CardProfile(
-                                widget.user!.friends.length.toString(),
+                                friends.length.toString(),
                                 'Friends',
-                                friends_list_page(widget.user!.friends, widget.user!),
+                                friends_list_page(friends, widget.user!),
                               ),
                               CardProfile(
                                 widget.user!.activities_created.length.toString(),
