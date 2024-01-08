@@ -1,16 +1,9 @@
-# my_project
+# ConnectWave
 
-A new Flutter project.
+#### Video Demo: <https://youtu.be/50TQzzaND8o>
 
-## Getting Started
+#### Description: Mobile App that connects people with the same interests or passions. On the platform, people can create or join activities, there are no limits on what can be created - any activity you want! Therefore, ConnectWave can be used for many different purposes, from socializing and making new friends to volunteering or even discussing business ideas!
 
-This project is a starting point for a Flutter application.
+##Frontend made using Flutter
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,P
-samples, guidance on mobile development, and a full API reference.
+##[Backend](https://github.com/JonSnowv2/ConnectWave-BE)

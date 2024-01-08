@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4c4683c-9aa9-4fea-90be-1de277cf7919" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Views/Widgets/containersearchactivityHARDCODED.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Service/friend_list_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/Widgets/container_activities_created.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/Widgets/container_activities_created.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/createdActivitiesHARDCODED.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/createdActivitiesHARDCODED.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/edit_profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/find_friends.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/find_friends.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/friend_request_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/friend_request_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/friends_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/friends_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Views/search_activity_map.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
